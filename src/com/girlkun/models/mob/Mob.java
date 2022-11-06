@@ -3,8 +3,11 @@ package com.girlkun.models.mob;
 import com.girlkun.consts.ConstMap;
 import com.girlkun.consts.ConstMob;
 import com.girlkun.consts.ConstTask;
+import com.girlkun.models.item.Item;
 import com.girlkun.models.map.ItemMap;
+
 import java.util.List;
+
 import com.girlkun.models.map.Zone;
 import com.girlkun.models.player.Location;
 import com.girlkun.models.player.Pet;
@@ -13,10 +16,12 @@ import com.girlkun.models.reward.ItemMobReward;
 import com.girlkun.models.reward.MobReward;
 import com.girlkun.network.io.Message;
 import com.girlkun.server.Manager;
+import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.services.ItemMapService;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 import com.girlkun.services.TaskService;
+
 import java.util.ArrayList;
 
 public class Mob {
@@ -301,6 +306,7 @@ public class Mob {
                 msg.writer().writeInt((int) itemMap.playerId); // id nhan nat
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return itemReward;
     }
@@ -325,6 +331,16 @@ public class Mob {
             ItemMap itemMap = gold.getItemMap(zone, player, x, yEnd);
             if (itemMap != null) {
                 list.add(itemMap);
+            }
+        }
+        if (player.getSession().actived) {
+            int random = Util.nextInt(0, 100);
+            if (random > 0) {
+                Item i = Manager.RUBY_REWARDS.get(Util.nextInt(0, Manager.RUBY_REWARDS.size() - 1));
+                i.quantity = random;
+                InventoryServiceNew.gI().addItemBag(player, i);
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.getInstance().sendThongBao(player, "Bạn vừa nhận được " + random + " hồng ngọc");
             }
         }
         return list;

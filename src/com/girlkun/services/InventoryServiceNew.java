@@ -10,11 +10,6 @@ import com.girlkun.network.io.Message;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
 public class InventoryServiceNew {
 
     private static InventoryServiceNew I;
@@ -655,6 +650,7 @@ public class InventoryServiceNew {
         }
 
         //item tăng số lượng
+
         if (itemAdd.template.isUpToUp) {
             for (Item it : items) {
                 if (!it.isNotNullItem() || it.template.id != itemAdd.template.id) {
@@ -669,7 +665,7 @@ public class InventoryServiceNew {
 
                 if (it.quantity < 99) {
                     int add = 99 - it.quantity;
-                    if (itemAdd.quantity < add) {
+                    if (itemAdd.quantity <= add) {
                         it.quantity += itemAdd.quantity;
                         itemAdd.quantity = 0;
                         return true;
@@ -678,16 +674,17 @@ public class InventoryServiceNew {
                         itemAdd.quantity -= add;
                     }
                 }
-
             }
         }
 
         //add item vào ô mới
-        for (int i = 0; i < items.size(); i++) {
-            if (!items.get(i).isNotNullItem()) {
-                items.set(i, ItemService.gI().copyItem(itemAdd));
-                itemAdd.quantity = 0;
-                return true;
+        if (itemAdd.quantity > 0) {
+            for (int i = 0; i < items.size(); i++) {
+                if (!items.get(i).isNotNullItem()) {
+                    items.set(i, ItemService.gI().copyItem(itemAdd));
+                    itemAdd.quantity = 0;
+                    return true;
+                }
             }
         }
         return false;
@@ -732,7 +729,3 @@ public class InventoryServiceNew {
     }
 }
 
-/**
- * Vui lòng không sao chép mã nguồn này dưới mọi hình thức. Hãy tôn trọng tác
- * giả của mã nguồn này. Xin cảm ơn! - Girlkun75
- */

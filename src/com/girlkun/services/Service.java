@@ -3,12 +3,15 @@ package com.girlkun.services;
 import com.girlkun.database.GirlkunDB;
 import com.girlkun.consts.ConstNpc;
 import com.girlkun.consts.ConstPlayer;
+import com.girlkun.models.boss.BossID;
 import com.girlkun.utils.FileIO;
 import com.girlkun.data.DataGame;
 import com.girlkun.models.boss.BossManager;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.girlkun.models.item.Item;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.mob.Mob;
@@ -31,6 +34,7 @@ import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
+
 import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.Set;
@@ -121,6 +125,7 @@ public class Service {
             if (rs.first()) {
                 sendThongBaoOK((MySession) session, "Tài khoản đã tồn tại");
             } else {
+                pass = Util.md5(pass);
                 GirlkunDB.executeUpdate("insert into account (username, password) values()", user, pass);
                 sendThongBaoOK((MySession) session, "Đăng ký tài khoản thành công!");
             }
@@ -284,14 +289,14 @@ public class Service {
                         + player.zone.map.yPhysicInTop(player.location.x, player.location.y));
             } else if (text.startsWith("ss")) {
 
-                Message msg;
-                try {
-                    msg = new Message(48);
-                    msg.writer().writeByte(Byte.parseByte(text.replaceAll("ss", "")));
-                    player.sendMessage(msg);
-                    msg.cleanup();
-                } catch (Exception e) {
-                }
+//                Message msg;
+//                try {
+//                    msg = new Message(48);
+//                    msg.writer().writeByte(Byte.parseByte(text.replaceAll("ss", "")));
+//                    player.sendMessage(msg);
+//                    msg.cleanup();
+//                } catch (Exception e) {
+//                }
 
 //                try {
 //                    msg = new Message(113);
@@ -306,7 +311,9 @@ public class Service {
 //                } catch (Exception e) {
 //                }
             } else if (text.equals("a")) {
-//                BossFactory.createBoss(BossFactory.KINGKONG);
+                BossManager.gI().createBoss(BossID.ANDROID_13);
+                BossManager.gI().loadBoss();
+//                Message msg;
 //                try {
 //                    msg = new Message(31);
 //                    msg.writer().writeInt((int) player.id);
@@ -339,11 +346,11 @@ public class Service {
 //                try {
 //                    msg = new Message(50);
 //                    msg.writer().writeByte(10);
-//                    for(int i = 0; i < 10; i++){
-//                        
-//                    msg.writer().writeShort(i);
-//                    msg.writer().writeUTF("main " + i);
-//                    msg.writer().writeUTF("content " + i);
+//                    for (int i = 0; i < 10; i++) {
+//                        System.out.println("ok");
+//                        msg.writer().writeShort(i);
+//                        msg.writer().writeUTF("main " + i);
+//                        msg.writer().writeUTF("content " + i);
 //                    }
 //                    player.sendMessage(msg);
 //                    msg.cleanup();
@@ -777,7 +784,7 @@ public class Service {
         }
     }
 
-//    public void congTiemNang(Player pl, byte type, int tiemnang) {
+    //    public void congTiemNang(Player pl, byte type, int tiemnang) {
 //        Message msg;
 //        try {
 //            msg = new Message(-3);
@@ -1452,7 +1459,7 @@ public class Service {
                     player.getSession().pp = newPass;
                     try {
                         GirlkunDB.executeUpdate("update account set password = ? where id = ? and username = ?",
-                                rePass, player.getSession().userId, player.getSession().uu);
+                                Util.md5(rePass), player.getSession().userId, player.getSession().uu);
                         Service.getInstance().sendThongBao(player, "Đổi mật khẩu thành công!");
                     } catch (Exception ex) {
                         Service.getInstance().sendThongBao(player, "Đổi mật khẩu thất bại!");

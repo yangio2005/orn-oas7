@@ -78,14 +78,14 @@ public class Trade {
             msg.cleanup();
             Service.getInstance().hideWaitDialog(player1);
             Service.getInstance().hideWaitDialog(player2);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
     public void addItemTrade(Player pl, byte index, int quantity) {
 //        System.out.println("quantity: " + quantity);
 //        if (pl.getSession().actived) {
-        if (true) {
+        if (pl.getSession().actived) {
             if (index == -1) {
                 if (pl.equals(this.player1)) {
                     goldTrade1 = quantity;
@@ -145,7 +145,7 @@ public class Trade {
             }
         } else {
             Service.getInstance().sendThongBaoFromAdmin(pl,
-                    "|5|VUI LÒNG KÍCH HOẠT TÀI KHOẢN TẠI\n|7|NROGOD.COM\n|5|ĐỂ MỞ KHÓA TÍNH NĂNG GIAO DỊCH");
+                    "|5|VUI LÒNG KÍCH HOẠT TÀI KHOẢN TẠI\n|7|NROGOD.COM\n|5|ĐỂ MỞ KHÓA TÍNH NĂNG");
             removeItemTrade(pl, index);
         }
     }

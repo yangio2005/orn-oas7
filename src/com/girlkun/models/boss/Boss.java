@@ -18,7 +18,6 @@ import com.girlkun.utils.SkillUtil;
 import com.girlkun.utils.Util;
 
 /**
- *
  * @author ❤Girlkun75❤
  * @copyright ❤Trần Lại❤
  */
@@ -296,6 +295,13 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         }
     }
 
+    public void joinMapByZone(Player player) {
+        if (player.zone != null) {
+            this.zone = player.zone;
+            ChangeMapService.gI().changeMapBySpaceShip(this, this.zone, -1);
+        }
+    }
+
     protected void notifyJoinMap() {
         ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại map " + this.zone.map.mapName
                 + " ở khu vực nào thì mọi người tự tìm nhé!"
@@ -500,7 +506,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     public void moveTo(int x, int y) {
         byte dir = (byte) (this.location.x - x < 0 ? 1 : -1);
         byte move = (byte) Util.nextInt(40, 60);
-        PlayerService.gI().playerMove(this, this.location.x + (dir == 1 ? move : -move), y + (Util.isTrue(3, 10) ? - 50 : 0));
+        PlayerService.gI().playerMove(this, this.location.x + (dir == 1 ? move : -move), y + (Util.isTrue(3, 10) ? -50 : 0));
     }
 
     public void chat(String text) {
@@ -541,15 +547,14 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     @Override
     public void wakeupAnotherBossWhenAppear() {
         System.out.println("wake up boss when appear");
-        
+
         // hien boss tren output
         System.out.println("BOSS " + this.name + " vừa xuất hiện tại map " + this.zone.map.mapName
                 + " ở khu vực"
                 + this.zone.zoneId + " (" + this.zone.map.mapId + ")"
-                +"");
-        
-        
-        
+                + "");
+
+
         if (this.bossAppearTogether == null || this.bossAppearTogether[this.currentLevel] == null) {
             return;
         }

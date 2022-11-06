@@ -1,16 +1,11 @@
 package com.girlkun.models.player;
 
+import com.girlkun.models.map.blackball.BlackBallWar;
 import com.girlkun.services.Service;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
 import java.util.Date;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
 public class RewardBlackBall {
     
     private static final int TIME_REWARD = 79200000;
@@ -24,19 +19,25 @@ public class RewardBlackBall {
     public static final int R7S = 200000000;
 
     public static final int TIME_WAIT = 3600000;
-
+    public static long time8h;
     private Player player;
 
     public long[] timeOutOfDateReward;
+    public int[] quantilyBlackBall;
     public long[] lastTimeGetReward;
 
     public RewardBlackBall(Player player) {
         this.player = player;
         this.timeOutOfDateReward = new long[7];
         this.lastTimeGetReward = new long[7];
+        this.quantilyBlackBall = new int[7];
+        time8h = BlackBallWar.TIME_OPEN;
     }
 
     public void reward(byte star) {
+        if (this.timeOutOfDateReward[star - 1] > time8h) {
+            quantilyBlackBall[star - 1]++;
+        }
         this.timeOutOfDateReward[star - 1] = System.currentTimeMillis() + TIME_REWARD;
         Service.getInstance().point(player);
     }

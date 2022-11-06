@@ -642,10 +642,11 @@ public class PlayerDAO {
                 dataArray.clear();
 
                 //data thưởng ngọc rồng đen
-                for (int i = 1; i <= 7; i++) {
+                for (int i = 0; i < player.rewardBlackBall.timeOutOfDateReward.length; i++) {
                     JSONArray dataBlackBall = new JSONArray();
-                    dataBlackBall.add(player.rewardBlackBall.timeOutOfDateReward[i - 1]);
-                    dataBlackBall.add(player.rewardBlackBall.lastTimeGetReward[i - 1]);
+                    dataBlackBall.add(player.rewardBlackBall.timeOutOfDateReward[i]);
+                    dataBlackBall.add(player.rewardBlackBall.lastTimeGetReward[i]);
+                    dataBlackBall.add(player.rewardBlackBall.quantilyBlackBall[i]);
                     dataArray.add(dataBlackBall.toJSONString());
                     dataBlackBall.clear();
                 }

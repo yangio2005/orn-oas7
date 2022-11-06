@@ -42,6 +42,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+
+import com.girlkun.utils.Util;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -85,7 +87,7 @@ public class Manager {
     public static List<Shop> SHOPS = new ArrayList<>();
     public static final List<Clan> CLANS = new ArrayList<>();
     public static final List<String> NOTIFY = new ArrayList<>();
-
+    public static final List<Item> RUBY_REWARDS = new ArrayList<>();
     public static Manager gI() {
         if (i == null) {
             i = new Manager();
@@ -745,6 +747,7 @@ public class Manager {
                     MAP_TEMPLATES[i++] = mapTemplate;
                 }
                 Logger.success("Load map template thành công (" + MAP_TEMPLATES.length + ")\n");
+                RUBY_REWARDS.add(Util.sendDo(861,0,new ArrayList<>()));
             }
             try {
                 if (rs != null) {

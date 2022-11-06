@@ -57,9 +57,11 @@ public class Template {
         public int strRequire;
         
         public int gold;
-        
+
         public int gem;
-        
+
+        public int ruby;
+
         public int head;
         
         public int body;

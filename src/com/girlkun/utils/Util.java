@@ -3,6 +3,8 @@ package com.girlkun.utils;
 import com.girlkun.models.item.Item;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.map.Zone;
+
+import java.security.MessageDigest;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Random;
@@ -15,6 +17,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang.ArrayUtils;
+
+import javax.xml.bind.DatatypeConverter;
 
 public class Util {
 
@@ -237,10 +241,71 @@ public class Util {
 //        InventoryServiceNew.gI().addItemBag(player, ItemService.gI().createItemFromItemShop(is));
 //        InventoryServiceNew.gI().sendItemBags(player);
         Item item = ItemService.gI().createNewItem((short) itemId);
-        ios.forEach((t) -> {
-            item.itemOptions.add(t);
-        });
+        item.itemOptions.addAll(ios);
         item.itemOptions.add(new Item.ItemOption(107, sql));
         return item;
+    }
+
+    public static boolean checkDo(Item.ItemOption itemOption) {
+        switch (itemOption.optionTemplate.id) {
+            case 0:// tấn công
+                if (itemOption.param > 12000) return false;
+                break;
+            case 14:// chí mạng
+                if (itemOption.param > 30) return false;
+                break;
+            case 107:// spl
+            case 102:// spl
+                if (itemOption.param > 8) return false;
+                break;
+            case 77:
+            case 103:
+            case 95:
+            case 96:
+                if (itemOption.param > 41) {
+                    return false;
+                }
+                break;
+            case 50:// sd 3%
+                if (itemOption.param > 24) return false;
+                break;
+            case 6:// hp
+            case 7:// ki
+                if (itemOption.param > 120000) return false;
+                break;
+            case 47:// giáp
+                if (itemOption.param > 3500) return false;
+                break;
+        }
+        return true;
+    }
+
+    public static void useCheckDo(Player player, Item item, String position) {
+        try {
+            if (item.template != null) {
+                if (item.template.id >= 381 && item.template.id <= 385) return;
+                if (item.template.id >= 66 && item.template.id <= 135) return;
+                if (item.template.id >= 474 && item.template.id <= 515) return;
+                item.itemOptions.forEach(itemOption -> {
+                    if (!Util.checkDo(itemOption)) {
+                        Logger.error(player.name + "-" + item.template.name + "-" + position + "\n");
+                    }
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String md5(String pass){
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(pass.getBytes());
+            byte[] digest = md.digest();
+            return DatatypeConverter.printHexBinary(digest).toUpperCase();
+        }catch (Exception e){
+            Logger.error("Lỗi mã hóa password");
+        }
+        return "";
     }
 }

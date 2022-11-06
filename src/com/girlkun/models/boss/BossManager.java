@@ -24,11 +24,11 @@ import com.girlkun.models.boss.list_boss.nappa.*;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
 import com.girlkun.server.ServerManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author ❤Girlkun75❤
  * @copyright ❤Trần Lại❤
  */
@@ -203,6 +203,13 @@ public class BossManager implements Runnable {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public boolean existBossOnPlayer(Player player) {
+        if (player.zone.getBosses().size() > 0) {
+            return true;
+        }
+        return false;
     }
 
     public void showListBoss(Player player) {

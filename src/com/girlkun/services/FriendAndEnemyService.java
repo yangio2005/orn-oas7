@@ -64,6 +64,10 @@ public class FriendAndEnemyService {
                     openListEnemy(player);
                     break;
                 case REVENGE:
+                    if (true) {
+                        Service.getInstance().sendThongBao(player, "Không thể thực hiện");
+                        break;
+                    }
                     int id = msg.reader().readInt();
                     boolean flag = false;
                     for (Enemy e : player.enemies) {

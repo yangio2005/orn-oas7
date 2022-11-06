@@ -21,14 +21,13 @@ import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.utils.FileIO;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author 💖 Trần Lại 💖
  * @copyright 💖 GirlkuN 💖
- *
  */
 public class Zone {
 
@@ -200,7 +199,7 @@ public class Zone {
         }
         return null;
     }
-    
+
     public void pickItem(Player player, int itemMapId) {
         ItemMap itemMap = getItemMapByItemMapId(itemMapId);
         if (itemMap != null) {
@@ -342,6 +341,28 @@ public class Zone {
         }
     }
 
+    public void loadBoss(Boss boss) {
+        try {
+            if (MapService.gI().isMapOffline(this.map.mapId)) {
+                for (Player pl : this.humanoids) {
+                    if (pl.id == -boss.id) {
+                        infoPlayer(boss, pl);
+                        break;
+                    }
+                }
+            } else {
+                for (Player pl : this.bosses) {
+                    if (!boss.equals(pl)) {
+                        infoPlayer(boss, pl);
+                        infoPlayer(pl, boss);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Logger.logException(MapService.class, e);
+        }
+    }
+
     private void infoPlayer(Player plReceive, Player plInfo) {
         Message msg;
         try {
@@ -387,7 +408,7 @@ public class Zone {
             plReceive.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
-            Logger.logException(MapService.class, e);
+//            Logger.logException(MapService.class, e);
         }
         Service.getInstance().sendFlagPlayerToMe(plReceive, plInfo);
 

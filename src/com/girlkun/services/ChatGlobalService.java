@@ -39,11 +39,11 @@ public class ChatGlobalService implements Runnable {
     }
 
     public void chat(Player player, String text) {
-//        if (!player.getSession().actived) {
-//            Service.getInstance().sendThongBaoFromAdmin(player,
-//                    "|5|VUI LÒNG KÍCH HOẠT TÀI KHOẢN TẠI\n|7|NROGOD.COM\n|5|ĐỂ MỞ KHÓA TÍNH NĂNG CHAT THẾ GIỚI");
-//            return;
-//        }
+        if (!player.getSession().actived) {
+            Service.getInstance().sendThongBaoFromAdmin(player,
+                    "|5|VUI LÒNG KÍCH HOẠT TÀI KHOẢN TẠI\n|7|NROGOD.COM\n|5|ĐỂ MỞ KHÓA TÍNH NĂNG");
+            return;
+        }
         if (waitingChat.size() >= COUNT_WAIT) {
             Service.getInstance().sendThongBao(player, "Kênh thế giới hiện đang quá tải, không thể chat lúc này");
             return;
@@ -59,7 +59,7 @@ public class ChatGlobalService implements Runnable {
             return;
         }
 
-        if (player.inventory.getGemAndRuby() >= 5) {
+        if (player.inventory.gem >= 5) {
             if (player.isAdmin() || Util.canDoWithTime(player.iDMark.getLastTimeChatGlobal(), 360000)) {
                 if (player.isAdmin() || player.nPoint.power > 2000000000) {
 //                    player.inventory.subGemAndRuby(5); 

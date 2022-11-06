@@ -14,6 +14,7 @@ import com.girlkun.services.func.SummonDragon;
 import com.girlkun.services.func.TransactionService;
 import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.utils.Logger;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,10 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author 💖 Trần Lại 💖
  * @copyright 💖 GirlkuN 💖
- *
  */
 public class Client implements Runnable {
 
@@ -144,7 +143,7 @@ public class Client implements Runnable {
     }
 
     public void close() {
-        Logger.error("BEGIN KICK OUT SESSION...............................\n");
+        Logger.error("BEGIN KICK OUT SESSION.............................." + players.size() + "\n");
 //        while(!GirlkunSessionManager.gI().getSessions().isEmpty()){
 //            Logger.error("LEFT PLAYER: " + this.players.size() + ".........................\n");
 //            this.kickSession((MySession) GirlkunSessionManager.gI().getSessions().remove(0));
@@ -152,10 +151,12 @@ public class Client implements Runnable {
         while (!players.isEmpty()) {
             this.kickSession((MySession) players.remove(0).getSession());
         }
+        Logger.error("...........................................SUCCESSFUL\n");
     }
 
     public void cloneMySessionNotConnect() {
         Logger.error("BEGIN KICK OUT MySession Not Connect...............................\n");
+        Logger.error("COUNT: " + GirlkunSessionManager.gI().getSessions().size());
         if (!GirlkunSessionManager.gI().getSessions().isEmpty()) {
             for (int j = 0; j < GirlkunSessionManager.gI().getSessions().size(); j++) {
                 MySession m = (MySession) GirlkunSessionManager.gI().getSessions().get(j);
@@ -164,6 +165,7 @@ public class Client implements Runnable {
                 }
             }
         }
+        Logger.error("..........................................................SUCCESSFUL\n");
     }
 
     private void update() {

@@ -11,15 +11,14 @@ import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author 💖 Trần Lại 💖
  * @copyright 💖 GirlkuN 💖
- *
  */
 public class BlackBallWar {
 
@@ -33,11 +32,11 @@ public class BlackBallWar {
     public static final int COST_X5 = 300000000;
     public static final int COST_X7 = 500000000;
 
-    public static final byte HOUR_OPEN = 20;
+    public static final byte HOUR_OPEN = 0;
     public static final byte MIN_OPEN = 0;
     public static final byte SECOND_OPEN = 0;
 
-    public static final byte HOUR_CAN_PICK_DB = 20;
+    public static final byte HOUR_CAN_PICK_DB = 0;
     public static final byte MIN_CAN_PICK_DB = 30;
     public static final byte SECOND_CAN_PICK_DB = 10;
 
@@ -45,7 +44,7 @@ public class BlackBallWar {
     public static final byte MIN_CLOSE = 0;
     public static final byte SECOND_CLOSE = 0;
 
-//    public static final byte HOUR_OPEN = 20;
+    //    public static final byte HOUR_OPEN = 20;
 //    public static final byte MIN_OPEN = 0;
 //    public static final byte SECOND_OPEN = 0;
 //
@@ -160,7 +159,7 @@ public class BlackBallWar {
             } catch (Exception e) {
                 Logger.logException(BlackBallWar.class, e,
                         "Lỗi ban thưởng ngọc rồng đen "
-                        + star + " sao cho clan " + player.clan.id);
+                                + star + " sao cho clan " + player.clan.id);
             }
         } else {
             player.rewardBlackBall.reward((byte) star);
@@ -202,14 +201,14 @@ public class BlackBallWar {
         if (player.clan != null) {
             List<Player> players = player.zone.getPlayers();
             for (Player pl : players) {
-                if (pl.clan != null && !player.equals(pl) && player.clan.equals(pl.clan)) {
+                if (pl.clan != null && !player.equals(pl) && player.clan.equals(pl.clan) && !player.isBoss) {
                     Service.getInstance().changeFlag(player, pl.cFlag);
                     changed = true;
                     break;
                 }
             }
         }
-        if (!changed) {
+        if (!changed && !player.isBoss) {
             Service.getInstance().changeFlag(player, Util.nextInt(1, 7));
         }
     }
@@ -219,7 +218,7 @@ public class BlackBallWar {
             if (System.currentTimeMillis() < this.TIME_CAN_PICK_DB) {
                 Service.getInstance().sendThongBao(player, "Chưa thể nhặt ngọc rồng ngay lúc này, vui lòng đợi "
                         + TimeUtil.diffDate(new Date(this.TIME_CAN_PICK_DB),
-                                new Date(System.currentTimeMillis()), TimeUtil.SECOND) + " giây nữa");
+                        new Date(System.currentTimeMillis()), TimeUtil.SECOND) + " giây nữa");
                 return false;
             } else if (player.zone.finishBlackBallWar) {
                 Service.getInstance().sendThongBao(player, "Đại chiến ngọc rồng sao đen "

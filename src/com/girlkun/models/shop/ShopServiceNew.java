@@ -1,6 +1,5 @@
 package com.girlkun.models.shop;
 
-import com.girlkun.models.Template;
 import com.girlkun.models.item.Item;
 import com.girlkun.models.player.Inventory;
 import com.girlkun.models.player.Player;
@@ -11,18 +10,15 @@ import com.girlkun.services.ItemService;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
+
 import java.util.List;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
 public class ShopServiceNew {
 
     private static final byte COST_GOLD = 0;
     private static final byte COST_GEM = 1;
     private static final byte COST_ITEM_SPEC = 2;
+    private static final byte COST_RUBY = 3;
 
     private static final byte NORMAL_SHOP = 0;
     private static final byte SPEC_SHOP = 3;
@@ -62,15 +58,6 @@ public class ShopServiceNew {
         }
     }
 
-    /**
-     * Lấy ra 1 shop từ prefab
-     *
-     * @param player
-     * @param tagName
-     * @param allGender
-     * @return
-     * @throws Exception
-     */
     private Shop getShop(String tagName) throws Exception {
         for (Shop s : Manager.SHOPS) {
             if (s.tagName != null && s.tagName.equals(tagName)) {
@@ -84,26 +71,14 @@ public class ShopServiceNew {
         //**********************************************************************
     }
 
-    /**
-     * Xử lý shop trước khi gửi cho người chơi
-     *
-     * @param shop
-     */
     private Shop resolveShop(Player player, Shop shop, boolean allGender) {
-        if (shop.tagName != null && (shop.tagName.equals("BUA_1H") 
+        if (shop.tagName != null && (shop.tagName.equals("BUA_1H")
                 || shop.tagName.equals("BUA_8H") || shop.tagName.equals("BUA_1M"))) {
             return this.resolveShopBua(player, new Shop(shop));
         }
         return allGender ? new Shop(shop) : new Shop(shop, player.gender);
     }
 
-    /**
-     * Xử lý shop bùa
-     *
-     * @param player
-     * @param s
-     * @return
-     */
     private Shop resolveShopBua(Player player, Shop s) {
         for (TabShop tabShop : s.tabShops) {
             for (ItemShop item : tabShop.itemShops) {
@@ -162,12 +137,6 @@ public class ShopServiceNew {
         //**********************************************************************
     }
 
-    /**
-     * Gửi dữ liệu shop cho người chơi Cửa hàng thông thường
-     *
-     * @param player người chơi
-     * @param shop cửa hàng gửi
-     */
     private void openShopType0(Player player, Shop shop) {
         player.iDMark.setShopOpen(shop);
         player.iDMark.setTagNameShop(shop.tagName);
@@ -186,6 +155,9 @@ public class ShopServiceNew {
                             msg.writer().writeInt(itemShop.cost);
                             msg.writer().writeInt(0);
                         } else if (itemShop.typeSell == COST_GEM) {
+                            msg.writer().writeInt(0);
+                            msg.writer().writeInt(itemShop.cost);
+                        } else if (itemShop.typeSell == COST_RUBY) {
                             msg.writer().writeInt(0);
                             msg.writer().writeInt(itemShop.cost);
                         }
@@ -214,12 +186,6 @@ public class ShopServiceNew {
         }
     }
 
-    /**
-     * Gửi dữ liệu shop cho người chơi Cửa hàng mua bằng vật phẩm đặc biệt
-     *
-     * @param player người chơi
-     * @param shop cửa hàng gửi
-     */
     private void openShopType3(Player player, Shop shop) {
         player.iDMark.setShopOpen(shop);
         player.iDMark.setTagNameShop(shop.tagName);
@@ -261,12 +227,6 @@ public class ShopServiceNew {
         }
     }
 
-    /**
-     * Gửi dữ liệu cho người chơi Rương đồ đặc biệt
-     *
-     * @param player người chơi
-     * @param items danh sách vật phẩm trong rương đồ đặc biệt
-     */
     private void openShopType4(Player player, String tagName, List<Item> items) {
         if (items == null) {
             return;
@@ -313,13 +273,6 @@ public class ShopServiceNew {
         //**********************************************************************
     }
 
-    /**
-     * Nhận item từ cửa hàng, rương vật phẩm đặc biệt...
-     *
-     * @param player
-     * @param type
-     * @param tempId
-     */
     public void takeItem(Player player, byte type, int tempId) {
         String tagName = player.iDMark.getTagNameShop();
         if (tagName.equals("ITEMS_LUCKY_ROUND")) {
@@ -341,22 +294,19 @@ public class ShopServiceNew {
         Service.getInstance().sendMoney(player);
     }
 
-    /**
-     * Giảm tiền người chơi khi mua vật phẩm
-     *
-     * @param player người chơi
-     * @param is vật phẩm mua
-     * @return giảm thành công hay không
-     */
     private boolean subMoneyByItemShop(Player player, ItemShop is) {
         int gold = 0;
         int gem = 0;
+        int ruby = 0;
         switch (is.typeSell) {
             case COST_GOLD:
                 gold = is.cost;
                 break;
             case COST_GEM:
                 gem = is.cost;
+                break;
+            case COST_RUBY:
+                ruby = is.cost;
                 break;
         }
         if (player.inventory.gold < gold) {
@@ -365,16 +315,20 @@ public class ShopServiceNew {
         } else if (player.inventory.gem < gem) {
             Service.getInstance().sendThongBao(player, "Bạn không có đủ ngọc");
             return false;
+        } else if (player.inventory.ruby < ruby) {
+            Service.getInstance().sendThongBao(player, "Bạn không có đủ hồng ngọc");
+            return false;
         }
         player.inventory.gold -= is.temp.gold;
         player.inventory.gem -= is.temp.gem;
+        player.inventory.ruby -= ruby;
         return true;
     }
 
     /**
      * Mua bùa
      *
-     * @param player người chơi
+     * @param player     người chơi
      * @param itemTempId id template vật phẩm
      */
     private void buyItemBua(Player player, int itemTempId) {
@@ -395,7 +349,7 @@ public class ShopServiceNew {
     /**
      * Mua vật phẩm trong cửa hàng
      *
-     * @param player người chơi
+     * @param player     người chơi
      * @param itemTempId id template vật phẩm
      */
     public void buyItem(Player player, int itemTempId) {

@@ -1,7 +1,9 @@
 package com.girlkun.server;
 
 import com.girlkun.database.GirlkunDB;
+
 import java.net.ServerSocket;
+
 import com.girlkun.jdbc.daos.HistoryTransactionDAO;
 import com.girlkun.models.boss.BossManager;
 import com.girlkun.models.item.Item;
@@ -20,6 +22,7 @@ import com.girlkun.services.Service;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -72,7 +75,7 @@ public class ServerManager {
         activeGame();
         activeServerSocket();
         try {
-            Thread.sleep(60 * 1000);
+            Thread.sleep(1000);
             BossManager.gI().loadBoss();
         } catch (InterruptedException ex) {
             java.util.logging.Logger.getLogger(BossManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -180,7 +183,7 @@ public class ServerManager {
                 if (line.equals("baotri")) {
                     Maintenance.gI().start(15);
                 } else if (line.equals("athread")) {
-                    ServerNotify.gI().notify("GIRLKUN debug server: " + Thread.activeCount());
+                    ServerNotify.gI().notify("NROGOD debug server: " + Thread.activeCount());
                 } else if (line.equals("nplayer")) {
                     Logger.error("Player in game: " + Client.gI().getPlayers().size() + "\n");
                 } else if (line.equals("admin")) {
@@ -216,22 +219,18 @@ public class ServerManager {
                         String[] pagram1 = line.split("=")[1].split("-");
                         String[] pagram2 = line.split("=")[2].split("-");
                         if (pagram1.length == 4 && pagram2.length % 2 == 0) {
-                            if (pagram1.length == 4) {
-                                Player p = Client.gI().getPlayer(Integer.parseInt(pagram1[0]));
-                                if (p != null) {
-                                    if (pagram2.length % 2 == 0) {
-                                        for (int i = 0; i < pagram2.length; i += 2) {
-                                            ios.add(new Item.ItemOption(Integer.parseInt(pagram2[i]), Integer.parseInt(pagram2[i + 1])));
-                                        }
-                                        Item i = Util.sendDo(Integer.parseInt(pagram1[2]), Integer.parseInt(pagram1[3]), ios);
-                                        i.quantity = Integer.parseInt(pagram1[1]);
-                                        InventoryServiceNew.gI().addItemBag(p, i);
-                                        InventoryServiceNew.gI().sendItemBags(p);
-                                        Service.getInstance().sendThongBao(p, "Admin trả đồ. anh em thông cảm nhé...");
-                                    }
-                                } else {
-                                    System.out.println("Người chơi không online");
+                            Player p = Client.gI().getPlayer(Integer.parseInt(pagram1[0]));
+                            if (p != null) {
+                                for (int i = 0; i < pagram2.length; i += 2) {
+                                    ios.add(new Item.ItemOption(Integer.parseInt(pagram2[i]), Integer.parseInt(pagram2[i + 1])));
                                 }
+                                Item i = Util.sendDo(Integer.parseInt(pagram1[2]), Integer.parseInt(pagram1[3]), ios);
+                                i.quantity = Integer.parseInt(pagram1[1]);
+                                InventoryServiceNew.gI().addItemBag(p, i);
+                                InventoryServiceNew.gI().sendItemBags(p);
+                                Service.getInstance().sendThongBao(p, "Admin trả đồ. anh em thông cảm nhé...");
+                            } else {
+                                System.out.println("Người chơi không online");
                             }
                         }
                     } catch (Exception e) {
