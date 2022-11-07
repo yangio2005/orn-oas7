@@ -79,6 +79,14 @@ public class BossID {
     public  static final int DR_MYUU = -219;
     public  static final  int DR_KORE_GT = -220;
 
+    public static final int Rong_1Sao = -224;
+    public static final int Rong_2Sao = -225;
+    public static final int Rong_3Sao = -226;
+    public static final int Rong_4Sao = -227;
+    public static final int Rong_5Sao = -228;
+    public static final int Rong_6Sao = -229;
+    public static final int Rong_7Sao = -230;
+
 
     
 

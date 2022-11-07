@@ -547,14 +547,6 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     @Override
     public void wakeupAnotherBossWhenAppear() {
         System.out.println("wake up boss when appear");
-
-        // hien boss tren output
-        System.out.println("BOSS " + this.name + " vừa xuất hiện tại map " + this.zone.map.mapName
-                + " ở khu vực"
-                + this.zone.zoneId + " (" + this.zone.map.mapId + ")"
-                + "");
-
-
         if (this.bossAppearTogether == null || this.bossAppearTogether[this.currentLevel] == null) {
             return;
         }

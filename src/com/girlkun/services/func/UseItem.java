@@ -25,10 +25,8 @@ import com.girlkun.services.MapService;
 import com.girlkun.utils.Logger;
 
 /**
- *
  * @author 💖 Trần Lại 💖
  * @copyright 💖 GirlkuN 💖
- *
  */
 public class UseItem {
 
@@ -244,6 +242,13 @@ public class UseItem {
                         case 759: //sách nâng chiêu 4 đệ tử
                             upSkillPet(pl, item);
                             break;
+                        case 2000://hop qua skh, item 2000 td
+                        case 2001://hop qua skh, item 2001 nm
+                        case 2002://hop qua skh, item 2002 xd
+                            UseItem.gI().ItemSKH(pl, item);
+                            break;
+
+
                     }
                     break;
             }
@@ -608,9 +613,17 @@ public class UseItem {
                         Service.getInstance().sendThongBao(pl, "Không thể thực hiện");
                     }
                     break;
+
             }
+
         } catch (Exception e) {
             Service.getInstance().sendThongBao(pl, "Không thể thực hiện");
         }
     }
+
+    private void ItemSKH(Player pl, Item item) {//hop qua skh
+        NpcService.gI().createMenuConMeo(pl, item.template.id, -1, "Hãy chọn một món quà", "Áo", "Quần", "Găng", "Giày", "Rada", "Từ Chối");
+    }
 }
+
+

@@ -40,7 +40,7 @@ public class BlackBallWar {
     public static final byte MIN_CAN_PICK_DB = 30;
     public static final byte SECOND_CAN_PICK_DB = 10;
 
-    public static final byte HOUR_CLOSE = 21;
+    public static final byte HOUR_CLOSE = 24;
     public static final byte MIN_CLOSE = 0;
     public static final byte SECOND_CLOSE = 0;
 

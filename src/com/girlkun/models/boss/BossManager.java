@@ -20,6 +20,13 @@ import com.girlkun.models.boss.list_boss.FideBack.FideRobot;
 import com.girlkun.models.boss.list_boss.NgucTu.SongokuTaAc;
 import com.girlkun.models.boss.list_boss.fide.Fide;
 import com.girlkun.models.boss.list_boss.Doraemon.Chaien;
+import com.girlkun.models.boss.list_boss.NRD.Rong1Sao;
+import com.girlkun.models.boss.list_boss.NRD.Rong2Sao;
+import com.girlkun.models.boss.list_boss.NRD.Rong3Sao;
+import com.girlkun.models.boss.list_boss.NRD.Rong4Sao;
+import com.girlkun.models.boss.list_boss.NRD.Rong5Sao;
+import com.girlkun.models.boss.list_boss.NRD.Rong6Sao;
+import com.girlkun.models.boss.list_boss.NRD.Rong7Sao;
 import com.girlkun.models.boss.list_boss.nappa.*;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
@@ -64,42 +71,45 @@ public class BossManager implements Runnable {
 
             this.createBoss(BossID.TDST);
 
-//            this.createBoss(BossID.CUMBER);
+            this.createBoss(BossID.CUMBER);
             this.createBoss(BossID.BLACK);
 
-//            this.createBoss(BossID.SONGOKU_TA_AC);
-//            this.createBoss(BossID.COOLER_GOLD);
-//            this.createBoss(BossID.TRUNG_UY_TRANG);
+            this.createBoss(BossID.SONGOKU_TA_AC);
+            this.createBoss(BossID.COOLER_GOLD);
+            this.createBoss(BossID.TRUNG_UY_TRANG);
             this.createBoss(BossID.PIC);
             this.createBoss(BossID.POC);
             this.createBoss(BossID.KING_KONG);
 
-//            this.createBoss(BossID.DORAEMON);
-//            this.createBoss(BossID.FIDE_ROBOT);
-//            this.createBoss(BossID.VUA_COLD);
+            this.createBoss(BossID.DORAEMON);
+            this.createBoss(BossID.FIDE_ROBOT);
+            this.createBoss(BossID.VUA_COLD);
             this.createBoss(BossID.SIEU_BO_HUNG);
             this.createBoss(BossID.XEN_BO_HUNG);
 
-//            this.createBoss(BossID.TIEU_DOI_TRUONG);
+            this.createBoss(BossID.TIEU_DOI_TRUONG);
             this.createBoss(BossID.KUKU);
             this.createBoss(BossID.MAP_DAU_DINH);
             this.createBoss(BossID.RAMBO);
-            this.createBoss(BossID.KUKU);
-            this.createBoss(BossID.MAP_DAU_DINH);
-            this.createBoss(BossID.RAMBO);
-            this.createBoss(BossID.KUKU);
-            this.createBoss(BossID.MAP_DAU_DINH);
-            this.createBoss(BossID.RAMBO);
-
+//
             this.createBoss(BossID.FIDE);
             this.createBoss(BossID.DR_KORE);
 
-//            this.createBoss(BossID.ANDROID_14);
+            this.createBoss(BossID.ANDROID_14);
             this.createBoss(BossID.MABU);
             this.createBoss(BossID.MABU);
             this.createBoss(BossID.MABU);
-
+//
             this.createBoss(BossID.BROLY);
+
+
+//            this.createBoss(BossID.Rong_1Sao);
+//            this.createBoss(BossID.Rong_2Sao);
+//            this.createBoss(BossID.Rong_3Sao);
+//            this.createBoss(BossID.Rong_4Sao);
+//            this.createBoss(BossID.Rong_5Sao);
+//            this.createBoss(BossID.Rong_6Sao);
+//            this.createBoss(BossID.Rong_7Sao);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -121,13 +131,29 @@ public class BossManager implements Runnable {
 //                    return new So1();
 //                case BossID.TIEU_DOI_TRUONG:
 //                    return new TieuDoiTruong();
-//                    
+//
                 case BossID.KUKU:
                     return new Kuku();
                 case BossID.MAP_DAU_DINH:
                     return new MapDauDinh();
                 case BossID.RAMBO:
                     return new Rambo();
+
+                case BossID.Rong_1Sao:
+                    return new Rong1Sao();
+                case BossID.Rong_2Sao:
+                    return new Rong2Sao();
+                case BossID.Rong_3Sao:
+                    return new Rong3Sao();
+                case BossID.Rong_4Sao:
+                    return new Rong4Sao();
+                case BossID.Rong_5Sao:
+                    return new Rong5Sao();
+                case BossID.Rong_6Sao:
+                    return new Rong6Sao();
+                case BossID.Rong_7Sao:
+                    return new Rong7Sao();
+
 
                 case BossID.FIDE:
                     return new Fide();

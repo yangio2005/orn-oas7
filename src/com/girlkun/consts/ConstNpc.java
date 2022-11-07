@@ -147,7 +147,12 @@ public class ConstNpc {
     public static final int CONFIRM_REMOVE_ALL_ITEM_LUCKY_ROUND = 515;
     public static final int MENU_FIND_PLAYER = 516;
     public static final int CONFIRM_DISSOLUTION_CLAN = 517;
-    
+
+    public static final int MENU_OPTION_USE_ITEM2000 = 2000;
+    public static final int MENU_OPTION_USE_ITEM2001 = 2001;
+    public static final int MENU_OPTION_USE_ITEM2002 = 2002;
+
+
     //index menu rong thieng
     public static final int SHENRON_CONFIRM = 501;
     public static final int SHENRON_1_1 = 502;
@@ -194,7 +199,9 @@ public class ConstNpc {
     public static final int MENU_PHU_HP = 500;
     public static final int MENU_OPTION_PHU_HP = 501;
     public static final int MENU_OPTION_GO_HOME = 502;
-    
+
+
+
     //index menu bò mộng
     public static final int MENU_OPTION_LEVEL_SIDE_TASK = 500;
     public static final int MENU_OPTION_PAY_SIDE_TASK = 501;

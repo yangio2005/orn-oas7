@@ -172,7 +172,7 @@ public class NpcFactory {
                                 "Con cố gắng theo %1 học thành tài, đừng lo lắng cho ta."
                                         .replaceAll("%1", player.gender == ConstPlayer.TRAI_DAT ? "Quy lão Kamê"
                                                 : player.gender == ConstPlayer.NAMEC ? "Trưởng lão Guru" : "Vua Vegeta"),
-                                "Đổi mật khẩu", "Nhận 200k ngọc xanh", "Nhận 2 tỷ vàng", "Nhận đệ tử");
+                                "Đổi mật khẩu", "Nhận 200k ngọc xanh", "Nhận 2 tỷ vàng", "Nhận đệ tử", "Nhận Ruby");
                     }
                 }
             }
@@ -211,7 +211,15 @@ public class NpcFactory {
                                     this.npcChat(player, "Bú ít thôi con");
                                 }
                                 break;
-
+                            case 4:
+                                if (player.inventory.ruby == 200000) {
+                                    this.npcChat(player, "Bú ít thôi con");
+                                    break;
+                                }
+                                player.inventory.ruby = 200000;
+                                Service.getInstance().sendMoney(player);
+                                Service.getInstance().sendThongBao(player, "Bạn vừa nhận được 200K Ngọc Hồng ");
+                                break;
                         }
                     } else if (player.iDMark.getIndexMenu() == ConstNpc.QUA_TAN_THU) {
                         switch (select) {
@@ -1511,8 +1519,8 @@ public class NpcFactory {
                         this.createOtherMenu(player, ConstNpc.MENU_PHU_HP, "Ta có thể giúp gì cho ngươi?", "Phù hộ", "Từ chối");
                     } else {
                         if (BossManager.gI().existBossOnPlayer(player) ||
-                                player.zone.items.stream().anyMatch(itemMap -> ItemMapService.gI().isBlackBall(itemMap.itemTemplate.id))||
-                                player.zone.getPlayers().stream().anyMatch(p->p.iDMark.isHoldBlackBall())) {
+                                player.zone.items.stream().anyMatch(itemMap -> ItemMapService.gI().isBlackBall(itemMap.itemTemplate.id)) ||
+                                player.zone.getPlayers().stream().anyMatch(p -> p.iDMark.isHoldBlackBall())) {
                             this.createOtherMenu(player, ConstNpc.MENU_OPTION_GO_HOME, "Ta có thể giúp gì cho ngươi?", "Về nhà", "Từ chối");
                         } else {
                             this.createOtherMenu(player, ConstNpc.MENU_OPTION_GO_HOME, "Ta có thể giúp gì cho ngươi?", "Về nhà", "Gọi BOSS", "Từ chối");
@@ -1539,9 +1547,34 @@ public class NpcFactory {
                             ChangeMapService.gI().changeMapBySpaceShip(player, player.gender + 21, -1, 250);
                         } else if (select == 1) {
                             try {
-                                Boss k = BossManager.gI().createBoss(BossID.KUKU);
-                                k.currentLevel = 0;
-                                k.joinMapByZone(player);
+                                Boss k = null;
+                                switch (mapId) {
+                                    case 85:
+                                        k = BossManager.gI().createBoss(BossID.Rong_1Sao);
+                                        break;
+                                    case 86:
+                                        k = BossManager.gI().createBoss(BossID.Rong_2Sao);
+                                        break;
+                                    case 87:
+                                        k = BossManager.gI().createBoss(BossID.Rong_3Sao);
+                                        break;
+                                    case 88:
+                                        k = BossManager.gI().createBoss(BossID.Rong_4Sao);
+                                        break;
+                                    case 89:
+                                        k = BossManager.gI().createBoss(BossID.Rong_5Sao);
+                                        break;
+                                    case 90:
+                                        k = BossManager.gI().createBoss(BossID.Rong_6Sao);
+                                        break;
+                                    case 91:
+                                        k = BossManager.gI().createBoss(BossID.Rong_7Sao);
+                                        break;
+                                }
+                                if (k != null) {
+                                    k.currentLevel = 0;
+                                    k.joinMapByZone(player);
+                                }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -1967,7 +2000,15 @@ public class NpcFactory {
                             SummonDragon.gI().summonShenron(player);
                         }
                         break;
-
+                    case ConstNpc.MENU_OPTION_USE_ITEM2000:
+                    case ConstNpc.MENU_OPTION_USE_ITEM2001:
+                    case ConstNpc.MENU_OPTION_USE_ITEM2002:
+                        try {
+                            ItemService.gI().OpenSKH(player, player.iDMark.getIndexMenu(), select);
+                        } catch (Exception e) {
+                            Logger.error("Lỗi mở hộp quà");
+                        }
+                        break;
                     case ConstNpc.INTRINSIC:
                         if (select == 0) {
                             IntrinsicService.gI().showAllIntrinsic(player);
