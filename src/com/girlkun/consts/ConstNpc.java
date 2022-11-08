@@ -31,7 +31,12 @@ public class ConstNpc {
             + "Người nào tìm thấy và giữ được Ngọc Rồng Sao Đen sẽ mang phần thưởng về cho bang của mình trong vòng 1 ngày\n"
             + "Lưu ý mỗi bang có thể chiếm hữu nhiều viên khác nhau nhưng nếu cùng loại cũng chỉ nhận được 1 lần phần thưởng đó. Có 2 cách để thắng:\n"
             + "1) Giữ ngọc sao đen trên người hơn 5 phút liên tục\n"
-            + "2)Sau 30 phút tham gia tàu sẽ đón về và đang giữ ngọc sao đen trên người\n";
+            + "2)Sau 30 phút tham gia tàu sẽ đón về và đang giữ ngọc sao đen trên người";
+    public static final String HUONG_DAN_MAP_MA_BU = "Mỗi ngày từ 12h đến 13h tại đại hội võ thuật sẽ xảy ra 1 cuộc đại chiến\n"
+            + "Người nào đánh bại các boss ở map sẽ nhận được những món đồ giá trị\n"
+            + "Lưu ý khi vào map sẽ chia làm 2 phe riêng biệt\n"
+            + "Cố gắng tồn tại và chiến đấu đến Boss cuối cùng\n"
+            + "Càng vào sâu trong map sẽ có những vật phẩm đặc biệt";
 
     //npcid
     public static final byte ONG_GOHAN = 0;
@@ -194,6 +199,10 @@ public class ConstNpc {
     public static final int MENU_NOT_OPEN_BDW = 500;
     public static final int MENU_OPEN_BDW = 501;
     public static final int MENU_REWARD_BDW = 502;
+    //index menu osin
+    public static final int MENU_NOT_OPEN_MMB = 500;
+    public static final int MENU_OPEN_MMB = 501;
+    public static final int MENU_REWARD_MMB = 502;
     
     //index menu rồng sao đen
     public static final int MENU_PHU_HP = 500;

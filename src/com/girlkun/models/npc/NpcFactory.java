@@ -14,6 +14,7 @@ import com.girlkun.models.clan.Clan;
 import com.girlkun.models.clan.ClanMember;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.services.func.SummonDragon;
@@ -27,6 +28,7 @@ import com.girlkun.models.item.Item;
 import com.girlkun.models.map.Map;
 import com.girlkun.models.map.Zone;
 import com.girlkun.models.map.blackball.BlackBallWar;
+import com.girlkun.models.map.MapMaBu.MapMaBu;
 import com.girlkun.models.map.doanhtrai.DoanhTrai;
 import com.girlkun.models.map.doanhtrai.DoanhTraiService;
 import com.girlkun.models.player.Inventory;
@@ -1131,6 +1133,44 @@ public class NpcFactory {
                     } else if (this.mapId == 155) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta có thể giúp gì cho ngươi ?",
                                 "Quay về", "Từ chối");
+                    } else if (this.mapId == 52) {
+                        try{
+                        MapMaBu.gI().setTimeJoinMapMaBu();
+                        if (this.mapId == 52 ) {
+                            long now = System.currentTimeMillis();
+                            if (now > MapMaBu.TIME_OPEN_MABU && now < MapMaBu.TIME_CLOSE_MABU) {
+                                this.createOtherMenu(player, ConstNpc.MENU_OPEN_MMB, "Đại chiến Ma Bư đã mở, "
+                                                + "ngươi có muốn tham gia không?",
+                                        "Hướng dẫn\nthêm", "Tham gia", "Từ chối");
+                            }else {
+                                this.createOtherMenu(player, ConstNpc.MENU_NOT_OPEN_MMB,
+                                        "Ta có thể giúp gì cho ngươi?", "Hướng dẫn", "Từ chối");
+                            }
+
+                            }
+                        }
+                        catch (Exception ex) {
+                            Logger.error("Lỗi mở menu osin");
+                        }
+
+                    } else if (this.mapId==114){
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta có thể giúp gì cho ngươi ?",
+                                "Lên Tầng!","Quay về", "Gọi Boss","Từ chối");
+                    } else if (this.mapId == 115) {
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta có thể giúp gì cho ngươi ?",
+                                "Lên Tầng!","Quay về", "Gọi Boss","Từ chối");
+                    } else if (this.mapId == 117) {
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta có thể giúp gì cho ngươi ?",
+                                "Lên Tầng!","Quay về", "Gọi Boss","Từ chối");
+                    } else if (this.mapId == 118) {
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta có thể giúp gì cho ngươi ?",
+                                "Lên Tầng!","Quay về", "Gọi Boss","Từ chối");
+                    } else if (this.mapId == 119) {
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta có thể giúp gì cho ngươi ?",
+                                "Lên Tầng!","Quay về", "Gọi Boss","Từ chối");
+                    } else if (this.mapId == 120) {
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta có thể giúp gì cho ngươi ?",
+                                "Quay về", "Gọi Boss","Từ chối");
                     } else {
                         super.openBaseMenu(player);
                     }
@@ -1166,6 +1206,191 @@ public class NpcFactory {
                         if (player.iDMark.isBaseMenu()) {
                             if (select == 0) {
                                 ChangeMapService.gI().changeMap(player, 154, -1, 200, 312);
+                            }
+                        }
+                    } else if (this.mapId == 52) {
+                                switch (player.iDMark.getIndexMenu()) {
+                                    case ConstNpc.MENU_REWARD_MMB:
+                                        break;
+                                    case ConstNpc.MENU_OPEN_MMB:
+                                        if (select == 0) {
+                                            NpcService.gI().createTutorial(player, this.avartar, ConstNpc.HUONG_DAN_MAP_MA_BU);
+                                        } else if (select == 1) {
+                                            ChangeMapService.gI().changeMap(player, 114, -1, 318, 336);
+                                        }
+                                        break;
+                                    case ConstNpc.MENU_NOT_OPEN_BDW:
+                                        if (select == 0) {
+                                            NpcService.gI().createTutorial(player, this.avartar, ConstNpc.HUONG_DAN_MAP_MA_BU);
+                                        }
+                                        break;
+                                }
+                    } else if (this.mapId == 114) {
+                        if (player.iDMark.isBaseMenu()) {
+                            switch (select) {
+                                case 0:
+                                    ChangeMapService.gI().changeMap(player, 115, -1, 318, 336);
+                                    break;
+                                case 1:
+                                    ChangeMapService.gI().changeMap(player, 14, -1, 110, 48);//111,792
+                                    break;
+                                case 2:
+                                    try {
+                                        Boss k = null;
+                                        switch (mapId) {
+                                            case 114:
+                                                k = BossManager.gI().createBoss(BossID.RAMBO);
+                                                break;
+                                        }
+                                        if (k != null) {
+                                            k.currentLevel = 0;
+                                            k.joinMapByZone(player);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
+                            }
+                        }
+                    }  else if (this.mapId == 115) {
+                        if (player.iDMark.isBaseMenu()) {
+                            switch (select) {
+                                case 0:
+                                    ChangeMapService.gI().changeMap(player, 117, -1, 318, 336);
+                                    break;
+                                case 1:
+                                    ChangeMapService.gI().changeMap(player, 14, -1, 110, 48);
+                                    break;
+                                case 2:
+                                    try {
+                                        Boss k = null;
+                                        switch (mapId) {
+                                            case 115:
+                                                k = BossManager.gI().createBoss(BossID.KUKU);
+                                                break;
+                                        }
+                                        if (k != null) {
+                                            k.currentLevel = 0;
+                                            k.joinMapByZone(player);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
+                            }
+                        }
+                    } else if (this.mapId == 117) {
+                        if (player.iDMark.isBaseMenu()) {
+                            switch (select) {
+                                case 0:
+                                    ChangeMapService.gI().changeMap(player, 118, -1, 318, 336);
+                                    break;
+                                case 1:
+                                    ChangeMapService.gI().changeMap(player, 14, -1, 110, 48);
+                                    break;
+                                case 2:
+                                    try {
+                                        Boss k = null;
+                                        switch (mapId) {
+                                            case 117:
+                                                k = BossManager.gI().createBoss(BossID.RAMBO);
+                                                break;
+                                        }
+                                        if (k != null) {
+                                            k.currentLevel = 0;
+                                            k.joinMapByZone(player);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
+                            }
+                        }
+                    } else if (this.mapId == 118) {
+                        if (player.iDMark.isBaseMenu()) {
+                            switch (select) {
+                                case 0:
+                                    ChangeMapService.gI().changeMap(player, 119, -1, 318, 336);
+                                    break;
+                                case 1:
+                                    ChangeMapService.gI().changeMap(player, 14, -1, 110, 48);
+                                    break;
+                                case 2:
+                                    try {
+                                        Boss k = null;
+                                        switch (mapId) {
+                                            case 118:
+                                                k = BossManager.gI().createBoss(BossID.KUKU);
+                                                break;
+                                        }
+                                        if (k != null) {
+                                            k.currentLevel = 0;
+                                            k.joinMapByZone(player);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
+                            }
+                        }
+                    } else if (this.mapId == 119) {
+                        if (player.iDMark.isBaseMenu()) {
+                            switch (select) {
+                                case 0:
+                                    ChangeMapService.gI().changeMap(player, 120, -1, 318, 336);
+                                    break;
+                                case 1:
+                                    ChangeMapService.gI().changeMap(player, 14, -1, 110, 48);
+                                    break;
+                                case 2:
+                                    try {
+                                        Boss k = null;
+                                        switch (mapId) {
+                                            case 119:
+                                                k = BossManager.gI().createBoss(BossID.SONGOKU_TA_AC);
+                                                break;
+                                        }
+                                        if (k != null) {
+                                            k.currentLevel = 0;
+                                            k.joinMapByZone(player);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
+                            }
+                        }
+                    }
+                    else if (this.mapId == 120) {
+                        if (player.iDMark.isBaseMenu()) {
+                            switch (select) {
+                                case 0:
+                                    break;
+                                case 1:
+                                    ChangeMapService.gI().changeMap(player, 14, -1, 110, 48);
+                                    break;
+                                case 2:
+                                    try {
+                                        Boss k = null;
+                                        switch (mapId) {
+                                            case 120:
+                                                k = BossManager.gI().createBoss(BossID.KUKU);
+                                                break;
+                                        }
+                                        if (k != null) {
+                                            k.currentLevel = 0;
+                                            k.joinMapByZone(player);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    break;
+
                             }
                         }
                     }
@@ -1507,6 +1732,9 @@ public class NpcFactory {
                     }
                 }
             }
+
+
+
         };
     }
 
@@ -1626,6 +1854,7 @@ public class NpcFactory {
                     }
                 }
             }
+
         };
     }
 
@@ -1872,6 +2101,7 @@ public class NpcFactory {
                 case ConstNpc.KIBIT:
                     return kibit(mapId, status, cx, cy, tempId, avatar);
                 case ConstNpc.OSIN:
+
                     return osin(mapId, status, cx, cy, tempId, avatar);
                 case ConstNpc.LINH_CANH:
                     return linhCanh(mapId, status, cx, cy, tempId, avatar);

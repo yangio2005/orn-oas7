@@ -254,7 +254,10 @@ public class Service {
 //            BossManager.gI().loadBoss();
 //            return;
 //        }
+if(text.equals("a")){
+    sendThongBao(player, "MapId: "+player.zone.map.mapId);
 
+}
         if (player.getSession() != null && player.isAdmin()) {
             if (text.equals("r")) {
                 new Thread(() -> {
@@ -311,8 +314,9 @@ public class Service {
 //                } catch (Exception e) {
 //                }
             } else if (text.equals("a")) {
-                BossManager.gI().createBoss(BossID.ANDROID_13);
-                BossManager.gI().loadBoss();
+
+//                BossManager.gI().createBoss(BossID.ANDROID_13);
+//                BossManager.gI().loadBoss();
 //                Message msg;
 //                try {
 //                    msg = new Message(31);
@@ -1205,6 +1209,7 @@ public class Service {
             Logger.logException(Service.class, e);
         }
     }
+
 
     public void sendFlagPlayerToMe(Player me, Player pl) {
         Message msg;

@@ -254,5 +254,33 @@ public class PlayerService {
             }
         }
     }
+    public void hoiSinhMaBu(Player player) {
+        if (player.isDie()) {
+            boolean canHs = false;
+            if (MapService.gI().isMapMaBu(player.zone.map.mapId)) {
+                if (player.inventory.gold >= COST_GOLD_HOI_SINH_NRSD) {
+                    player.inventory.gold -= COST_GOLD_HOI_SINH_NRSD;
+                    canHs = true;
+                } else {
+                    Service.getInstance().sendThongBao(player, "Không đủ vàng để thực hiện, còn thiếu " + Util.numberToMoney(COST_GOLD_HOI_SINH_NRSD
+                            - player.inventory.gold) + " vàng");
+                    return;
+                }
+            } else {
+                if (player.inventory.gold >= COST_GOLD_HOI_SINH) {
+                    player.inventory.gold -= COST_GOLD_HOI_SINH;
+                    canHs = true;
+                } else {
+                    Service.getInstance().sendThongBao(player, "Không đủ vàng để thực hiện, còn thiếu " + Util.numberToMoney(COST_GOLD_HOI_SINH
+                            - player.inventory.gold) + " vàng");
+                    return;
+                }
+            }
+            if (canHs) {
+                Service.getInstance().sendMoney(player);
+                Service.getInstance().hsChar(player, player.nPoint.hpMax, player.nPoint.mpMax);
+            }
+        }
+    }
 
 }

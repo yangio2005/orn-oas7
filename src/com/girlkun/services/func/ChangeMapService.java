@@ -4,6 +4,7 @@ import com.girlkun.consts.ConstMap;
 import com.girlkun.consts.ConstPlayer;
 import com.girlkun.consts.ConstTask;
 import com.girlkun.models.map.Map;
+import com.girlkun.models.map.MapMaBu.MapMaBu;
 import com.girlkun.models.map.WayPoint;
 import com.girlkun.models.map.Zone;
 import com.girlkun.models.map.blackball.BlackBallWar;
@@ -86,6 +87,15 @@ public class ChangeMapService {
                         msg.writer().writeUTF(zone.map.planetName);
                     }
                     break;
+                case ConstMap.CHANGE_MAP_MA_BU:
+                    list = (pl.mapMaBu != null ? pl.mapMaBu
+                            : (pl.mapMaBu = MapService.gI().getMapMaBu()));
+                    msg.writer().writeByte(list.size());
+                    for (Zone zone : list) {
+                        msg.writer().writeUTF(zone.map.mapName);
+                        msg.writer().writeUTF(zone.map.planetName);
+                    }
+                    break;
             }
             pl.sendMessage(msg);
             msg.cleanup();
@@ -110,6 +120,10 @@ public class ChangeMapService {
                 return;
             }
             if (MapService.gI().isMapDoanhTrai(pl.zone.map.mapId)) {
+                Service.getInstance().sendThongBaoOK(pl, "Không thể đổi khu vực trong map này");
+                return;
+            }
+            if (MapService.gI().isMapMaBu(pl.zone.map.mapId)) {
                 Service.getInstance().sendThongBaoOK(pl, "Không thể đổi khu vực trong map này");
                 return;
             }
@@ -143,7 +157,7 @@ public class ChangeMapService {
             Service.getInstance().sendThongBaoOK(pl, "Không thể đổi khu vực trong map này");
             return;
         }
-        if (!pl.isAdmin()) {
+        if (!pl.isAdmin()||!pl.isBoss) {
             if (MapService.gI().isMapOffline(pl.zone.map.mapId)) {
                 Service.getInstance().sendThongBaoOK(pl, "Không thể đổi khu vực trong map này");
                 return;
@@ -152,13 +166,17 @@ public class ChangeMapService {
                 Service.getInstance().sendThongBaoOK(pl, "Không thể đổi khu vực trong map này");
                 return;
             }
+            if (MapService.gI().isMapMaBu(pl.zone.map.mapId)) {
+                Service.getInstance().sendThongBaoOK(pl, "Không thể đổi khu vực trong map này");
+                return;
+            }
         }
-        if (pl.isAdmin() || Util.canDoWithTime(pl.iDMark.getLastTimeChangeZone(), 10000)) {
+        if (pl.isAdmin() || pl.isBoss || Util.canDoWithTime(pl.iDMark.getLastTimeChangeZone(), 10000)) {
             pl.iDMark.setLastTimeChangeZone(System.currentTimeMillis());
             Map map = pl.zone.map;
             if (zoneId >= 0 && zoneId <= map.zones.size() - 1) {
                 Zone zoneJoin = map.zones.get(zoneId);
-                if (zoneJoin != null && (zoneJoin.getNumOfPlayers() >= zoneJoin.maxPlayer && !pl.isAdmin())) {
+                if (zoneJoin != null && (zoneJoin.getNumOfPlayers() >= zoneJoin.maxPlayer && !pl.isAdmin()&& !pl.isBoss)) {
                     Service.getInstance().sendThongBaoOK(pl, "Khu vực đã đầy");
                     return;
                 }
@@ -183,19 +201,21 @@ public class ChangeMapService {
      * @param x
      */
     public void changeMapBySpaceShip(Player pl, int mapId, int zone, int x) {
-        if (pl.isDie()) {
-            if (pl.haveTennisSpaceShip) {
-                Service.getInstance().hsChar(pl, pl.nPoint.hpMax, pl.nPoint.mpMax);
+        if (!pl.isAdmin() || !pl.isBoss) {
+            if (pl.isDie()) {
+                if (pl.haveTennisSpaceShip) {
+                    Service.getInstance().hsChar(pl, pl.nPoint.hpMax, pl.nPoint.mpMax);
+                } else {
+                    Service.getInstance().hsChar(pl, 1, 1);
+                }
             } else {
-                Service.getInstance().hsChar(pl, 1, 1);
+                if (pl.haveTennisSpaceShip) {
+                    pl.nPoint.setFullHpMp();
+                    PlayerService.gI().sendInfoHpMp(pl);
+                }
             }
-        } else {
-            if (pl.haveTennisSpaceShip) {
-                pl.nPoint.setFullHpMp();
-                PlayerService.gI().sendInfoHpMp(pl);
-            }
+            changeMap(pl, null, mapId, zone, x, 5, AUTO_SPACE_SHIP);
         }
-        changeMap(pl, null, mapId, zone, x, 5, AUTO_SPACE_SHIP);
     }
 
     public void changeMapBySpaceShip(Player pl, Zone zoneJoin, int x) {
@@ -275,7 +295,10 @@ public class ChangeMapService {
      * @param y
      */
     public void changeMapYardrat(Player pl, Zone zoneJoin, int x, int y) {
-        changeMap(pl, zoneJoin, -1, -1, x, y, TELEPORT_YARDRAT);
+            changeMap(pl, zoneJoin, -1, -1, x, y, TELEPORT_YARDRAT);
+
+
+
     }
 
     private void changeMap(Player pl, Zone zoneJoin, int mapId, int zoneId, int x, int y, byte typeSpace) {
@@ -330,6 +353,7 @@ public class ChangeMapService {
                 Service.getInstance().Send_Info_NV(pl);
             }
             checkJoinSpecialMap(pl);
+            checkJoinMapMaBu(pl);
         } else {
             int plX = pl.location.x;
             if (pl.location.x >= pl.zone.map.mapWidth - 60) {
@@ -805,6 +829,21 @@ public class ChangeMapService {
                 case 90:
                 case 91:
                     BlackBallWar.gI().joinMapBlackBallWar(player);
+                    break;
+            }
+        }
+    }
+    private void checkJoinMapMaBu(Player player) {
+        if (player != null && player.zone != null) {
+            switch (player.zone.map.mapId) {
+                //map mabu
+                case 114:
+                case 115:
+                case 117:
+                case 118:
+                case 119:
+                case 120:
+                    MapMaBu.gI().joinMapMabu(player);
                     break;
             }
         }

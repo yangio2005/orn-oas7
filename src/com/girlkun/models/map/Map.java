@@ -2,6 +2,7 @@ package com.girlkun.models.map;
 
 import com.girlkun.consts.ConstMap;
 import com.girlkun.models.Template;
+import com.girlkun.models.map.MapMaBu.MapMaBu;
 import com.girlkun.models.map.blackball.BlackBallWar;
 import com.girlkun.models.map.doanhtrai.DoanhTrai;
 import com.girlkun.models.map.doanhtrai.DoanhTraiService;
@@ -79,6 +80,9 @@ public class Map implements Runnable {
                 break;
             case ConstMap.MAP_BLACK_BALL_WAR:
                 nZone = BlackBallWar.AVAILABLE;
+                break;
+            case ConstMap.MAP_MA_BU:
+                nZone = MapMaBu.AVAILABLE;
                 break;
             case ConstMap.MAP_DOANH_TRAI:
                 nZone = DoanhTrai.AVAILABLE;

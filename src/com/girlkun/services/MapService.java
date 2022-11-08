@@ -238,6 +238,13 @@ public class MapService {
         }
         return list;
     }
+    public List<Zone> getMapMaBu() {
+        List<Zone> list = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            list.add(getMapById(114 + i).zones.get(0));
+        }
+        return list;
+    }
 
     private void addListMapCapsule(Player pl, List<Zone> list, Zone zone) {
         for (Zone z : list) {
@@ -275,6 +282,9 @@ public class MapService {
 
     public boolean isMapBlackBallWar(int mapId) {
         return mapId >= 85 && mapId <= 91;
+    }
+    public boolean isMapMaBu(int mapId) {
+        return mapId >= 114 && mapId <= 120;
     }
 
     public boolean isMapCold(Map map) {

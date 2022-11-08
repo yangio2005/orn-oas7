@@ -271,7 +271,7 @@ public class FriendAndEnemyService {
             if (pl != null) {
                 if (player.isAdmin() || player.nPoint.teleport) {
                     if (!pl.itemTime.isUseAnDanh || player.isAdmin()) {
-                        if ((player.isAdmin() || !pl.zone.isFullPlayer()) && MapService.gI().isMapDoanhTrai(pl.zone.map.mapId)) {
+                        if ((player.isAdmin() || !pl.zone.isFullPlayer()) && !MapService.gI().isMapDoanhTrai(pl.zone.map.mapId)&& !MapService.gI().isMapMaBu(pl.zone.map.mapId)) {
                             ChangeMapService.gI().changeMapYardrat(player, pl.zone, pl.location.x + Util.nextInt(-5, 5), pl.location.y);
                         } else {
                             Service.getInstance().sendThongBao(player, "Không thể thực hiện");
@@ -284,7 +284,7 @@ public class FriendAndEnemyService {
                 }
             }
         } catch (IOException ex) {
-            
+
         }
     }
     

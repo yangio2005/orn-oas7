@@ -52,6 +52,8 @@ public class Player {
 
     public int mapIdBeforeLogout;
     public List<Zone> mapBlackBall;
+    public List<Zone> mapMaBu;
+
     public Zone zone;
     public Zone mapBeforeCapsule;
     public List<Zone> mapCapsule;
@@ -459,6 +461,12 @@ public class Player {
         if (mapBlackBall != null) {
             mapBlackBall.clear();
             mapBlackBall = null;
+        }
+        zone = null;
+        mapBeforeCapsule = null;
+        if (mapMaBu != null) {
+            mapMaBu.clear();
+            mapMaBu = null;
         }
         zone = null;
         mapBeforeCapsule = null;
