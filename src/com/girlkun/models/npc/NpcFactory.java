@@ -718,7 +718,7 @@ public class NpcFactory {
                                 "Ngươi tìm ta có việc gì?",
                                 "Cửa hàng\nBùa", "Nâng cấp\nVật phẩm",
                                 "Nâng cấp\nBông tai\nPorata", "Làm phép\nNhập đá",
-                                "Nhập\nNgọc Rồng");
+                                "Nhập\nNgọc Rồng","Phân Rã\nĐồ Thần Linh");
                     }
                 }
             }
@@ -777,6 +777,10 @@ public class NpcFactory {
 //                                                CombineService.gI().openTabCombine(player, CombineService.NHAP_NGOC_RONG);
                                     CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NHAP_NGOC_RONG);
                                     break;
+                                case 5: //phân rã đồ thần linh
+                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.PHAN_RA_DO_THAN_LINH);
+
+
 
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_OPTION_SHOP_BUA) {
@@ -797,6 +801,8 @@ public class NpcFactory {
                                 case CombineServiceNew.NANG_CAP_BONG_TAI:
                                 case CombineServiceNew.LAM_PHEP_NHAP_DA:
                                 case CombineServiceNew.NHAP_NGOC_RONG:
+                                case CombineServiceNew.PHAN_RA_DO_THAN_LINH:
+
                                     if (select == 0) {
                                         CombineServiceNew.gI().startCombine(player);
                                     }
@@ -997,12 +1003,12 @@ public class NpcFactory {
 
             @Override
             public void openBaseMenu(Player player) {
-//                if (canOpenNpc(player)) {
-//                    if (this.mapId == 45) {
-//                        this.createOtherMenu(player, ConstNpc.BASE_MENU,
-//                                "Con muốn làm gì nào", "Đến Kaio", "Quay số\nmay mắn");
-//                    }
-//                }
+                if (canOpenNpc(player)) {
+                    if (this.mapId == 45) {
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU,
+                                "Con muốn làm gì nào", "Đến Kaio", "Quay số\nmay mắn");
+                    }
+                }
             }
 
             @Override
@@ -1011,18 +1017,18 @@ public class NpcFactory {
                     if (this.mapId == 45) {
                         if (player.iDMark.isBaseMenu()) {
                             switch (select) {
-//                                case 0:
-//                                    ChangeMapService.gI().changeMapBySpaceShip(player, 48, -1, 354);
-//                                    break;
-//                                case 1:
-//                                    this.createOtherMenu(player, ConstNpc.MENU_CHOOSE_LUCKY_ROUND,
-//                                            "Con muốn làm gì nào?", "Quay bằng\nvàng",
-//                                            "Rương phụ\n("
-//                                            + (player.inventory.itemsBoxCrackBall.size()
-//                                            - InventoryServiceNew.gI().getCountEmptyListItem(player.inventory.itemsBoxCrackBall))
-//                                            + " món)",
-//                                            "Xóa hết\ntrong rương", "Đóng");
-//                                    break;
+                                case 0:
+                                    ChangeMapService.gI().changeMapBySpaceShip(player, 48, -1, 354);
+                                   break;
+                              case 1:
+                                    this.createOtherMenu(player, ConstNpc.MENU_CHOOSE_LUCKY_ROUND,
+                                            "Con muốn làm gì nào?", "Quay bằng\nvàng",
+                                            "Rương phụ\n("
+                                            + (player.inventory.itemsBoxCrackBall.size()
+                                            - InventoryServiceNew.gI().getCountEmptyListItem(player.inventory.itemsBoxCrackBall))
+                                            + " món)",
+                                            "Xóa hết\ntrong rương", "Đóng");
+                                    break;
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_CHOOSE_LUCKY_ROUND) {
                             switch (select) {
@@ -1879,6 +1885,42 @@ public class NpcFactory {
                             switch (player.iDMark.getIndexMenu()) {
                                 case ConstNpc.BASE_MENU:
                                     if (select == 0) {
+
+                                    }
+                                    break;
+                            }
+                            break;
+                    }
+                }
+            }
+        };
+    }
+    public static Npc BILL(int mapId, int status, int cx, int cy, int tempId, int avartar) {
+        return new Npc(mapId, status, cx, cy, tempId, avartar) {
+            @Override
+            public void openBaseMenu(Player player) {
+                if (canOpenNpc(player)) {
+                    if (this.mapId == 48) {
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ngươi muốn gì nào?", "Xem Điểm", "Đóng");
+                    } else {
+                        super.openBaseMenu(player);
+                    }
+                }
+            }
+
+            @Override
+            public void confirmMenu(Player player, int select) {
+                if (canOpenNpc(player)) {
+                    switch (this.mapId) {
+                        case 48:
+                            switch (player.iDMark.getIndexMenu()) {
+                                case ConstNpc.BASE_MENU:
+                                    if (select == 0) {
+                             createOtherMenu(player, ConstNpc.BASE_MENU, "Ngươi đang có: " +"Điểm", "Đóng");
+
+
+                                    }
+                                    if (select == 1) {
 
                                     }
                                     break;

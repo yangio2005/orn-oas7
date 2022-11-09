@@ -27,6 +27,12 @@ import com.girlkun.models.boss.list_boss.NRD.Rong4Sao;
 import com.girlkun.models.boss.list_boss.NRD.Rong5Sao;
 import com.girlkun.models.boss.list_boss.NRD.Rong6Sao;
 import com.girlkun.models.boss.list_boss.NRD.Rong7Sao;
+import com.girlkun.models.boss.list_boss.Mabu12h.MabuBoss;
+import com.girlkun.models.boss.list_boss.Mabu12h.BuiBui;
+import com.girlkun.models.boss.list_boss.Mabu12h.BuiBui2;
+import com.girlkun.models.boss.list_boss.Mabu12h.Drabura;
+import com.girlkun.models.boss.list_boss.Mabu12h.Drabura2;
+import com.girlkun.models.boss.list_boss.Mabu12h.Yacon;
 import com.girlkun.models.boss.list_boss.nappa.*;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
@@ -68,6 +74,15 @@ public class BossManager implements Runnable {
             return;
         }
         try {
+
+
+            this.createBoss(BossID.DRABURA);
+            this.createBoss(BossID.DRABURA_2);
+            this.createBoss(BossID.BUI_BUI);
+            this.createBoss(BossID.BUI_BUI_2);
+            this.createBoss(BossID.YA_CON);
+            this.createBoss(BossID.MABU_12H);
+
 
             this.createBoss(BossID.TDST);
 
@@ -138,6 +153,20 @@ public class BossManager implements Runnable {
                     return new MapDauDinh();
                 case BossID.RAMBO:
                     return new Rambo();
+
+                case BossID.DRABURA:
+                    return new Drabura();
+                case BossID.DRABURA_2:
+                    return new Drabura2();
+                case BossID.BUI_BUI:
+                    return new BuiBui();
+                case BossID.BUI_BUI_2:
+                    return new BuiBui2();
+                case BossID.YA_CON:
+                    return new Yacon();
+                case BossID.MABU_12H:
+                    return new MabuBoss();
+
 
                 case BossID.Rong_1Sao:
                     return new Rong1Sao();

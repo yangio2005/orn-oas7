@@ -130,7 +130,9 @@ public class ConstNpc {
     public static final int MENU_CHUYEN_HOA_TRANG_BI = 501;
     public static final int MENU_OPTION_SHOP_BUA = 502;
     public static final int MENU_START_COMBINE = 503;
-    
+    public static final int MENU_PHAN_RA_DO_THAN_LINH = 504;
+
+
     //index menu linh canh
     public static final int MENU_JOIN_DOANH_TRAI = 502;
     

@@ -538,6 +538,9 @@ public class SkillService {
                 msg.cleanup();
             }
             Service.getInstance().addSMTN(plInjure, (byte) 2, 1, false);
+            if(plInjure.isDie()){
+               plAtt.fightMabu.changePoint((byte) 5);
+            }
         } catch (Exception e) {
             Logger.logException(SkillService.class, e);
         }

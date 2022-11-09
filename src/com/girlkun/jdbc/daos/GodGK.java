@@ -128,6 +128,11 @@ public class GodGK {
                             player.inventory.gold = Integer.parseInt(String.valueOf(dataArray.get(0)));
                             player.inventory.gem = Integer.parseInt(String.valueOf(dataArray.get(1)));
                             player.inventory.ruby = Integer.parseInt(String.valueOf(dataArray.get(2)));
+                            if (dataArray.size() == 4) {
+                                player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
+                            }else {
+                                player.inventory.coupon= 0;
+                            }
                             dataArray.clear();
 
                             //data tọa độ
@@ -137,7 +142,7 @@ public class GodGK {
                                 player.location.x = Integer.parseInt(String.valueOf(dataArray.get(1)));
                                 player.location.y = Integer.parseInt(String.valueOf(dataArray.get(2)));
                                 if (MapService.gI().isMapDoanhTrai(mapId) || MapService.gI().isMapBlackBallWar(mapId)
-                                        || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)){
+                                        || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)) {
                                     mapId = player.gender + 21;
                                     player.location.x = 300;
                                     player.location.y = 336;
@@ -573,6 +578,11 @@ public class GodGK {
                 player.inventory.gold = Integer.parseInt(String.valueOf(dataArray.get(0)));
                 player.inventory.gem = Integer.parseInt(String.valueOf(dataArray.get(1)));
                 player.inventory.ruby = Integer.parseInt(String.valueOf(dataArray.get(2)));
+                if (dataArray.size() == 4) {
+                    player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
+                }else {
+                    player.inventory.coupon= 0;
+                }
                 dataArray.clear();
 
                 //data chỉ số

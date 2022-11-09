@@ -1172,6 +1172,123 @@ public class BossesData {
             new String[]{"|-1|Khôngggggggg!!"}, //text chat 3
             TypeAppear.ANOTHER_LEVEL //type appear
     );
+
+
+
+
+    //**************************************************************************Team Mabu 12h
+    public static final BossData MABU_12H = new BossData(
+            "Mabư",
+            ConstPlayer.XAYDA,
+            new short[]{297, 298, 299, -1, -1, -1},
+            2000000,
+            new int[]{250000000},
+            new int[]{120},
+            new int[][]{
+                    {Skill.KAMEJOKO, 3, 500},
+                    {Skill.TAI_TAO_NANG_LUONG, 1, 50000},
+                    {Skill.LIEN_HOAN, 7, 1000},
+                    {Skill.KHIEN_NANG_LUONG, 7, 100000}},
+            new String[]{"|-2|Ma nhân Bư đã xuất hiện rồi"}, //text chat 1
+            new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
+            new String[]{"|-1|Nhớ mặt tao đấy",
+                    "|-1|Tobe continue.."}, //text chat 3
+            REST_1_M
+    );
+    public static final BossData DRABURA = new BossData(
+            "Ma Vương Drabura",
+            ConstPlayer.XAYDA,
+            new short[]{418,419,420, -1, -1, -1},
+            2000000,
+            new int[]{250000000},
+            new int[]{114},
+            new int[][]{
+                    {Skill.KAMEJOKO, 3, 500},
+                    {Skill.TAI_TAO_NANG_LUONG, 1, 50000},
+                    {Skill.LIEN_HOAN, 7, 1000},
+                    {Skill.ANTOMIC, 7, 100000}},
+            new String[]{"|-2|Ma nhân Bư đã xuất hiện rồi"}, //text chat 1
+            new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
+            new String[]{"|-1|Nhớ mặt tao đấy",
+                    "|-1|Tobe continue.."}, //text chat 3
+            REST_1_M
+    );
+    public static final BossData DRABURA_2 = new BossData(
+            "Ma Vương Drabura",
+            ConstPlayer.XAYDA,
+            new short[]{418,419,420, -1, -1, -1},
+            2000000,
+            new int[]{250000000},
+            new int[]{115},
+            new int[][]{
+                    {Skill.KAMEJOKO, 3, 500},
+                    {Skill.TAI_TAO_NANG_LUONG, 1, 50000},
+                    {Skill.LIEN_HOAN, 7, 1000},
+                    {Skill.ANTOMIC, 7, 100000}},
+            new String[]{"|-2|Ma nhân Bư đã xuất hiện rồi"}, //text chat 1
+            new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
+            new String[]{"|-1|Nhớ mặt tao đấy",
+                    "|-1|Tobe continue.."}, //text chat 3
+            REST_1_M
+    );
+    public static final BossData BUI_BUI = new BossData(
+            "Bui Bui",
+            ConstPlayer.XAYDA,
+            new short[]{451,452,453, -1, -1, -1},
+            2000000,
+            new int[]{250000000},
+            new int[]{117},
+            new int[][]{
+                    {Skill.KAMEJOKO, 3, 500},
+                    {Skill.TAI_TAO_NANG_LUONG, 1, 50000},
+                    {Skill.LIEN_HOAN, 7, 1000},
+                    {Skill.ANTOMIC, 7, 100000}},
+            new String[]{"|-2|Ma nhân Bư đã xuất hiện rồi"}, //text chat 1
+            new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
+            new String[]{"|-1|Nhớ mặt tao đấy",
+                    "|-1|Tobe continue.."}, //text chat 3
+            REST_1_M
+    );
+
+    public static final BossData BUI_BUI_2 = new BossData(
+            "Bui Bui",
+            ConstPlayer.XAYDA,
+            new short[]{451,452,453, -1, -1, -1},
+            2000000,
+            new int[]{250000000},
+            new int[]{118},
+            new int[][]{
+                    {Skill.KAMEJOKO, 3, 500},
+                    {Skill.TAI_TAO_NANG_LUONG, 1, 50000},
+                    {Skill.LIEN_HOAN, 7, 1000},
+                    {Skill.ANTOMIC, 7, 100000}},
+            new String[]{"|-2|Ma nhân Bư đã xuất hiện rồi"}, //text chat 1
+            new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
+            new String[]{"|-1|Nhớ mặt tao đấy",
+                    "|-1|Tobe continue.."}, //text chat 3
+            REST_1_M
+    );  public static final BossData YACON = new BossData(
+            "Yacôn",
+            ConstPlayer.XAYDA,
+            new short[]{415,416,417, -1, -1, -1},
+            2000000,
+            new int[]{250000000},
+            new int[]{119},
+            new int[][]{
+                    {Skill.KAMEJOKO, 3, 500},
+                    {Skill.TAI_TAO_NANG_LUONG, 1, 50000},
+                    {Skill.LIEN_HOAN, 7, 1000},
+                    {Skill.ANTOMIC, 7, 100000}},
+            new String[]{"|-2|Ma nhân Bư đã xuất hiện rồi"}, //text chat 1
+            new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
+            new String[]{"|-1|Nhớ mặt tao đấy",
+                    "|-1|Tobe continue.."}, //text chat 3
+            REST_1_M
+    );
+
+
+
+
     //************************************************************************** Boss nappa
     public static final BossData SONGOKU_TA_AC = new BossData(
             "Siêu Goku Tà Ác", //name

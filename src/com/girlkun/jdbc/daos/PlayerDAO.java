@@ -285,6 +285,7 @@ public class PlayerDAO {
                         ? Inventory.LIMIT_GOLD : player.inventory.gold);
                 dataArray.add(player.inventory.gem);
                 dataArray.add(player.inventory.ruby);
+                dataArray.add(player.inventory.coupon);
                 String inventory = dataArray.toJSONString();
                 dataArray.clear();
 

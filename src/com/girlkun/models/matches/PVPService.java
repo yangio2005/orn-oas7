@@ -13,11 +13,6 @@ import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.Util;
 import java.io.IOException;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
 public class PVPService {
 
     private static final int[] GOLD_CHALLENGE = {1000000, 10000000, 100000000};
@@ -174,7 +169,3 @@ public class PVPService {
     }
 }
 
-/**
- * Vui lòng không sao chép mã nguồn này dưới mọi hình thức Hãy tôn trọng tác giả
- * của mã nguồn này Xin cảm ơn! - Girlkun75
- */

@@ -78,6 +78,7 @@ public class Player {
     public NPoint nPoint;
     public RewardBlackBall rewardBlackBall;
     public EffectFlagBag effectFlagBag;
+    public FightMabu fightMabu;
 
     public Clan clan;
     public ClanMember clanMember;

@@ -27,7 +27,8 @@ public class Inventory {
     public long gold;
     public int gem;
     public int ruby;
-    
+    public int coupon;
+
     public Inventory() {
         itemsBody = new ArrayList<>();
         itemsBag = new ArrayList<>();
