@@ -5,11 +5,7 @@ import com.girlkun.models.skill.Skill;
 import com.girlkun.utils.Util;
 import com.girlkun.models.boss.BossID;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class BossesData {
 
     /**
@@ -1211,7 +1207,7 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_1_M
+            REST_10_S
     );
     public static final BossData DRABURA_2 = new BossData(
             "Ma Vương Drabura",

@@ -292,6 +292,18 @@ public class Mob {
     private List<ItemMap> mobReward(Player player, ItemMap itemTask, Message msg) {
         List<ItemMap> itemReward = new ArrayList<>();
         try {
+            if (player.getSession().actived && player.setClothes.setDHD == 5) {
+                byte random = 1;
+                if (Util.isTrue(10, 100)) {
+                    random = 2;
+                }
+                Item i = Manager.RUBY_REWARDS.get(Util.nextInt(0, Manager.RUBY_REWARDS.size() - 1));
+                i.quantity = random;
+                InventoryServiceNew.gI().addItemBag(player, i);
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.getInstance().sendThongBao(player, "Bạn vừa nhận được " + random + " hồng ngọc");
+            }
+
             itemReward = this.getItemMobReward(player, this.location.x + Util.nextInt(-10, 10),
                     this.zone.map.yPhysicInTop(this.location.x, this.location.y));
             if (itemTask != null) {
@@ -333,16 +345,7 @@ public class Mob {
                 list.add(itemMap);
             }
         }
-        if (player.getSession().actived) {
-            int random = Util.nextInt(0, 100);
-            if (random > 0) {
-                Item i = Manager.RUBY_REWARDS.get(Util.nextInt(0, Manager.RUBY_REWARDS.size() - 1));
-                i.quantity = random;
-                InventoryServiceNew.gI().addItemBag(player, i);
-                InventoryServiceNew.gI().sendItemBags(player);
-                Service.getInstance().sendThongBao(player, "Bạn vừa nhận được " + random + " hồng ngọc");
-            }
-        }
+
         return list;
     }
 

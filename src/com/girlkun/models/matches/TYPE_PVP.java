@@ -1,10 +1,6 @@
 package com.girlkun.models.matches;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public enum TYPE_PVP {
 
     THACH_DAU,

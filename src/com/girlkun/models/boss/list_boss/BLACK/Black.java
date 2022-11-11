@@ -10,11 +10,7 @@ import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 import java.util.Random;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class Black extends Boss {
 
     public Black() throws Exception {

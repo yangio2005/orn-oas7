@@ -23,12 +23,8 @@ import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.logging.Level;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class ServerManager {
@@ -77,6 +73,7 @@ public class ServerManager {
         try {
             Thread.sleep(1000);
             BossManager.gI().loadBoss();
+            Manager.MAPS.forEach(com.girlkun.models.map.Map::initBoss);
         } catch (InterruptedException ex) {
             java.util.logging.Logger.getLogger(BossManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -237,6 +234,8 @@ public class ServerManager {
                         System.out.println("Lỗi quà");
                     }
 
+                } else if (line.startsWith("test")) {
+                    System.out.println(new Random().nextInt(Manager.itemIds_NR_SB.length));
                 }
             }
         }, "Active line").start();

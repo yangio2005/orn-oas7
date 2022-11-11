@@ -1,11 +1,6 @@
 package com.girlkun.models.intrinsic;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class Intrinsic {
     public int id;
     public String name;

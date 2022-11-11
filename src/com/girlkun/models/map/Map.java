@@ -2,6 +2,9 @@ package com.girlkun.models.map;
 
 import com.girlkun.consts.ConstMap;
 import com.girlkun.models.Template;
+import com.girlkun.models.boss.Boss;
+import com.girlkun.models.boss.BossID;
+import com.girlkun.models.boss.BossManager;
 import com.girlkun.models.map.MapMaBu.MapMaBu;
 import com.girlkun.models.map.blackball.BlackBallWar;
 import com.girlkun.models.map.doanhtrai.DoanhTrai;
@@ -13,14 +16,13 @@ import com.girlkun.models.player.Player;
 import com.girlkun.server.Manager;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author 💖 Trần Lại 💖
  * @copyright 💖 GirlkuN 💖
- *
  */
 public class Map implements Runnable {
 
@@ -49,8 +51,8 @@ public class Map implements Runnable {
     public List<Npc> npcs;
 
     public Map(int mapId, String mapName, byte planetId,
-            byte tileId, byte bgId, byte bgType, byte type, int[][] tileMap,
-            int[] tileTop, int zones, int maxPlayer, List<WayPoint> wayPoints) {
+               byte tileId, byte bgId, byte bgType, byte type, int[][] tileMap,
+               int[] tileTop, int zones, int maxPlayer, List<WayPoint> wayPoints) {
         this.mapId = mapId;
         this.mapName = mapName;
         this.planetId = planetId;
@@ -72,9 +74,9 @@ public class Map implements Runnable {
         this.initItem();
         this.initTrapMap();
     }
-    
-    private void initZone(int nZone, int maxPlayer){
-        switch(this.type){
+
+    private void initZone(int nZone, int maxPlayer) {
+        switch (this.type) {
             case ConstMap.MAP_OFFLINE:
                 nZone = 1;
                 break;
@@ -88,11 +90,11 @@ public class Map implements Runnable {
                 nZone = DoanhTrai.AVAILABLE;
                 break;
         }
-        
+
         for (int i = 0; i < nZone; i++) {
             Zone zone = new Zone(this, i, maxPlayer);
             this.zones.add(zone);
-            switch(this.type){
+            switch (this.type) {
                 case ConstMap.MAP_DOANH_TRAI:
                     DoanhTraiService.gI().addMapDoanhTrai(i, zone);
                     break;
@@ -157,11 +159,11 @@ public class Map implements Runnable {
             }
         }
     }
-    
-    private void initTrapMap(){
-        for(Zone zone : zones){
+
+    private void initTrapMap() {
+        for (Zone zone : zones) {
             TrapMap trap = null;
-            switch(this.mapId){
+            switch (this.mapId) {
                 case 135:
                     trap = new TrapMap();
                     trap.x = 260;
@@ -223,6 +225,53 @@ public class Map implements Runnable {
 
     }
 
+    public void initBoss() {
+        for (Zone zone : zones) {
+            short bossId = -1;
+            switch (this.mapId) {
+                case 114:
+                    bossId = BossID.DRABURA;
+                    break;
+                case 115:
+                    bossId = BossID.DRABURA_2;
+                    break;
+                case 117:
+                    bossId = BossID.BUI_BUI;
+                    break;
+                case 118:
+                    bossId = BossID.BUI_BUI_2;
+                    break;
+                case 119:
+                    bossId = BossID.YA_CON;
+                    break;
+                case 120:
+                    bossId = BossID.MABU_12H;
+            }
+            if (bossId != -1) {
+                Boss boss = BossManager.gI().createBoss(bossId);
+                boss.zoneFinal = zone;
+                boss.joinMapByZone(zone);
+            }
+        }
+    }
+
+    public short mapIdNextMabu(short mapId) {
+        switch (mapId) {
+            case 114:
+                return 115;
+            case 115:
+                return 117;
+            case 117:
+                return 118;
+            case 118:
+                return 119;
+            case 119:
+                return 120;
+            default:
+                return -1;
+        }
+    }
+
     public Npc getNpc(Player player, int tempId) {
         for (Npc npc : npcs) {
             if (npc.tempId == tempId && Util.getDistance(player, npc) <= 60) {
@@ -235,7 +284,7 @@ public class Map implements Runnable {
     //--------------------------------------------------------------------------
     public int yPhysicInTop(int x, int y) {
         int rX = (int) x / SIZE;
-         int rY = 0;
+        int rY = 0;
         if (isTileTop(tileMap[y / SIZE][rX])) {
             return y;
         }

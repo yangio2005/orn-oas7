@@ -8,12 +8,7 @@ import com.girlkun.services.TaskService;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class NpcManager {
 
     public static Npc getByIdAndMap(int id, int mapId) {

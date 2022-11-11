@@ -1,12 +1,7 @@
 package com.girlkun.models.task;
 
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class TaskPlayer {
 
     public TaskMain taskMain;

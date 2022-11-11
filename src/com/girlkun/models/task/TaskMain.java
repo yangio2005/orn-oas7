@@ -3,12 +3,7 @@ package com.girlkun.models.task;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class TaskMain {
     
     public int id;

@@ -8,12 +8,7 @@ import com.girlkun.network.io.Message;
 import com.girlkun.utils.Util;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class IntrinsicService {
 
     private static IntrinsicService I;

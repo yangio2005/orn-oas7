@@ -5,12 +5,7 @@ import com.girlkun.services.EffectSkillService;
 import com.girlkun.services.ItemTimeService;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class EffectSkill {
 
     private Player player;

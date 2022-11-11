@@ -5,12 +5,7 @@ import com.girlkun.server.Manager;
 import com.girlkun.network.io.Message;
 import com.girlkun.server.io.MySession;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ItemData {
 
     //------------------------------------------------------ start update client

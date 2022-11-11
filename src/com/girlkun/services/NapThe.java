@@ -2,11 +2,7 @@ package com.girlkun.services;
 
 import com.girlkun.models.player.Player;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class NapThe {
 
     private static NapThe I;

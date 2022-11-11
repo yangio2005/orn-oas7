@@ -1,11 +1,6 @@
 package com.girlkun.models.clan;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ClanMessage {
 
     public static final byte BLACK = 0;

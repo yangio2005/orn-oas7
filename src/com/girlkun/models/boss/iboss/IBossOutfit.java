@@ -1,10 +1,6 @@
 package com.girlkun.models.boss.iboss;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public interface IBossOutfit {
 
     short getHead();

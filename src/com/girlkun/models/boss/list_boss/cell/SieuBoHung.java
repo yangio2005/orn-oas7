@@ -10,11 +10,7 @@ import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 import java.util.Random;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class SieuBoHung extends Boss {
 
     public SieuBoHung() throws Exception {

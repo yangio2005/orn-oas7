@@ -4,12 +4,7 @@ import com.girlkun.network.io.Message;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class MobEffectSkill {
 
     private final Mob mob;

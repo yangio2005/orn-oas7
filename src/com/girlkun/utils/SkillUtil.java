@@ -7,12 +7,7 @@ import com.girlkun.models.skill.Skill;
 import com.girlkun.models.Template.SkillTemplate;
 import com.girlkun.server.Manager;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class SkillUtil {
 
     private final static NClass nClassTD;

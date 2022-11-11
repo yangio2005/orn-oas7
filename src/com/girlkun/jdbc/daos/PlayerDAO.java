@@ -19,12 +19,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import org.json.simple.JSONArray;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class PlayerDAO {
 
     public static boolean createNewPlayer(int userId, String name, byte gender, int hair) {

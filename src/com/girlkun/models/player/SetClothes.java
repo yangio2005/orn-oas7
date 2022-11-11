@@ -2,12 +2,7 @@ package com.girlkun.models.player;
 
 import com.girlkun.models.item.Item;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class SetClothes {
 
     private Player player;
@@ -27,6 +22,8 @@ public class SetClothes {
     public byte kakarot;
     public byte cadic;
     public byte nappa;
+
+    public byte setDHD;
 
     public boolean godClothes;
     public int ctHaiTac = -1;
@@ -117,7 +114,12 @@ public class SetClothes {
                             isActSet = true;
                             cadic++;
                             break;
+                        case 21:
+                            if(io.param == 80){
+                                setDHD++;
+                            }
                     }
+
                     if (isActSet) {
                         break;
                     }
@@ -138,6 +140,7 @@ public class SetClothes {
         this.kakarot = 0;
         this.cadic = 0;
         this.nappa = 0;
+        this.setDHD = 0;
         this.godClothes = false;
         this.ctHaiTac = -1;
     }

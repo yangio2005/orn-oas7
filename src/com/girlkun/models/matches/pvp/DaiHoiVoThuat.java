@@ -5,11 +5,7 @@ import com.girlkun.models.matches.TYPE_LOSE_PVP;
 import com.girlkun.models.matches.TYPE_PVP;
 import com.girlkun.models.player.Player;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class DaiHoiVoThuat extends PVP{
 
     public DaiHoiVoThuat(Player p1, Player p2) {

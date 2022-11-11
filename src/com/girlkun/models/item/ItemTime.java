@@ -6,12 +6,7 @@ import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 import com.girlkun.services.ItemTimeService;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ItemTime {
 
     //id item text

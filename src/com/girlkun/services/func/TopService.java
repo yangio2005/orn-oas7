@@ -9,12 +9,7 @@ import com.girlkun.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class TopService {
     
     private static final String QUERY_TOP_POWER = "select player.id, player.name,"

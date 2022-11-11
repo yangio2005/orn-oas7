@@ -4,11 +4,7 @@ import com.girlkun.data.DataGame;
 import com.girlkun.network.session.ISession;
 import com.girlkun.network.example.KeyHandler;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class MyKeyHandler extends KeyHandler {
 
     @Override

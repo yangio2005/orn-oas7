@@ -6,12 +6,7 @@ import com.girlkun.network.io.Message;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ItemMapService {
 
     private static ItemMapService i;

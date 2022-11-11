@@ -2,11 +2,7 @@ package com.girlkun.models.boss.iboss;
 
 import com.girlkun.models.player.Player;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public interface IBossDie {
     
     void doSomeThing(Player playerKill);

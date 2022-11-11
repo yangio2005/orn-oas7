@@ -4,12 +4,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.utils.TimeUtil;
 import java.util.Date;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ClanMember {
 
     public Clan clan;

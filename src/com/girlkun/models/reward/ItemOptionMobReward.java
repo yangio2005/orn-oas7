@@ -4,11 +4,7 @@ import com.girlkun.models.Template;
 import com.girlkun.server.Manager;
 import lombok.Data;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 @Data
 public class ItemOptionMobReward {
 

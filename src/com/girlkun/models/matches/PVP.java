@@ -4,11 +4,7 @@ import com.girlkun.consts.ConstPlayer;
 import com.girlkun.models.player.Player;
 import com.girlkun.services.PlayerService;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public abstract class PVP implements IPVP {
 
     public TYPE_PVP typePVP;

@@ -11,11 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 @Data
 public class ItemMobReward {
 

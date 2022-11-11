@@ -16,12 +16,7 @@ import com.girlkun.services.NpcService;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class Input {
 
     private static final Map<Integer, Object> PLAYER_ID_OBJECT = new HashMap<Integer, Object>();

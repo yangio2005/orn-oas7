@@ -3,12 +3,7 @@ package com.girlkun.consts;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ConstTask {
 
     //const level side task
