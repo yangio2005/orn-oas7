@@ -1,11 +1,6 @@
 package com.girlkun.models.player;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class EffectFlagBag {
     public boolean useVoOc;
     public boolean useCayKem;

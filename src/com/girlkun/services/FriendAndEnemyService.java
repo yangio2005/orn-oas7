@@ -12,12 +12,7 @@ import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
 import java.io.IOException;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class FriendAndEnemyService {
     
     private static final byte OPEN_LIST = 0;

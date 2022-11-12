@@ -25,6 +25,7 @@ import com.girlkun.models.task.TaskMain;
 import com.girlkun.services.ItemService;
 import com.girlkun.services.MapService;
 import com.girlkun.utils.Logger;
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -49,10 +50,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 /**
- *
  * @author 💖 Trần Lại 💖
  * @copyright 💖 GirlkuN 💖
- *
  */
 public class Manager {
 
@@ -88,6 +87,11 @@ public class Manager {
     public static final List<Clan> CLANS = new ArrayList<>();
     public static final List<String> NOTIFY = new ArrayList<>();
     public static final List<Item> RUBY_REWARDS = new ArrayList<>();
+
+
+    public static final short[] itemIds_TL = {555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567, 561};
+    public static final byte[] itemIds_NR_SB = {15, 16};
+
     public static Manager gI() {
         if (i == null) {
             i = new Manager();
@@ -318,11 +322,11 @@ public class Manager {
 
                 dataArray = (JSONArray) jv.parse(
                         rs.getString("skills")
-                        .replaceAll("\\[\"", "[")
-                        .replaceAll("\"\\[", "[")
-                        .replaceAll("\"\\]", "]")
-                        .replaceAll("\\]\"", "]")
-                        .replaceAll("\\}\",\"\\{", "},{")
+                                .replaceAll("\\[\"", "[")
+                                .replaceAll("\"\\[", "[")
+                                .replaceAll("\"\\]", "]")
+                                .replaceAll("\\]\"", "]")
+                                .replaceAll("\\}\",\"\\{", "},{")
                 );
                 for (int j = 0; j < dataArray.size(); j++) {
                     JSONObject dts = (JSONObject) jv.parse(String.valueOf(dataArray.get(j)));
@@ -747,7 +751,7 @@ public class Manager {
                     MAP_TEMPLATES[i++] = mapTemplate;
                 }
                 Logger.success("Load map template thành công (" + MAP_TEMPLATES.length + ")\n");
-                RUBY_REWARDS.add(Util.sendDo(861,0,new ArrayList<>()));
+                RUBY_REWARDS.add(Util.sendDo(861, 0, new ArrayList<>()));
             }
             try {
                 if (rs != null) {

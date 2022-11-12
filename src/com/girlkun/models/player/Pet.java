@@ -15,12 +15,7 @@ import com.girlkun.services.SkillService;
 import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.TimeUtil;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class Pet extends Player {
 
     private static final short ARANGE_CAN_ATTACK = 300;

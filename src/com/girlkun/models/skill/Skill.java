@@ -3,12 +3,7 @@ package com.girlkun.models.skill;
 import com.girlkun.models.Template.SkillTemplate;
 
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class Skill {
     
     public static final int RANGE_ATTACK_CHIEU_DAM = 50;

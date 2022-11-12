@@ -14,11 +14,7 @@ import javax.imageio.stream.ImageOutputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class ImageUtil {
 
     public static void saveImage(BufferedImage image, String pathFolder, String name) {

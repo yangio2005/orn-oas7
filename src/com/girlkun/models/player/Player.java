@@ -1,7 +1,10 @@
 package com.girlkun.models.player;
 
+import com.girlkun.models.map.MapMaBu.MapMaBu;
 import com.girlkun.models.skill.PlayerSkill;
+
 import java.util.List;
+
 import com.girlkun.models.clan.Clan;
 import com.girlkun.models.intrinsic.IntrinsicPlayer;
 import com.girlkun.models.item.Item;
@@ -31,14 +34,9 @@ import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.services.func.CombineNew;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
+
 import java.util.ArrayList;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
 public class Player {
 
     private MySession session;
@@ -112,6 +110,7 @@ public class Player {
         playerIntrinsic = new IntrinsicPlayer();
         rewardBlackBall = new RewardBlackBall(this);
         effectFlagBag = new EffectFlagBag();
+        fightMabu = new FightMabu(this);
         //----------------------------------------------------------------------
         iDMark = new IDMark();
         combineNew = new CombineNew();
@@ -176,6 +175,7 @@ public class Player {
                         itemTime.update();
                     }
                     BlackBallWar.gI().update(this);
+                    MapMaBu.gI().update(this);
                     if (this.iDMark.isGotoFuture() && Util.canDoWithTime(this.iDMark.getLastTimeGoToFuture(), 6000)) {
                         ChangeMapService.gI().changeMapBySpaceShip(this, 102, -1, Util.nextInt(60, 200));
                         this.iDMark.setGotoFuture(false);
@@ -200,18 +200,19 @@ public class Player {
             }
         }
     }
+
     //--------------------------------------------------------------------------
     /*
-     * {380, 381, 382}: ht lưỡng long nhất thể xayda trái đất 
-     * {383, 384, 385}: ht porata xayda trái đất 
+     * {380, 381, 382}: ht lưỡng long nhất thể xayda trái đất
+     * {383, 384, 385}: ht porata xayda trái đất
      * {391, 392, 393}: ht namếc
      * {870, 871, 872}: ht c2 trái đất
      * {873, 874, 875}: ht c2 namếc
      * {867, 878, 869}: ht c2 xayda
      */
     private static final short[][] idOutfitFusion = {
-        {380, 381, 382}, {383, 384, 385}, {391, 392, 393},
-        {870, 871, 872}, {873, 874, 875}, {867, 868, 869}
+            {380, 381, 382}, {383, 384, 385}, {391, 392, 393},
+            {870, 871, 872}, {873, 874, 875}, {867, 868, 869}
     };
 
     public byte getAura() {

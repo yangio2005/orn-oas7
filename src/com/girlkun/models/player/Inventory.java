@@ -4,12 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.girlkun.models.item.Item;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class Inventory {
 
     public static final int LIMIT_GOLD = 2000000000;

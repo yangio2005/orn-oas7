@@ -3,11 +3,7 @@ package com.girlkun.models.boss.iboss;
 import com.girlkun.models.boss.BossStatus;
 import com.girlkun.models.player.Player;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public interface IBossNew {
 
     void update();

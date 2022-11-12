@@ -13,11 +13,7 @@ import com.girlkun.services.Service;
 import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class Android19 extends Boss {
 
     public Android19() throws Exception {

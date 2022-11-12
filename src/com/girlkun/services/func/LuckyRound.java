@@ -7,12 +7,7 @@ import com.girlkun.services.RewardService;
 import com.girlkun.services.Service;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class LuckyRound {
 
     private static final byte MAX_ITEM_IN_BOX = 20;

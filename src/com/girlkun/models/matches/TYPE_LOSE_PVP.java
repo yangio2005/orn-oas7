@@ -1,10 +1,6 @@
 package com.girlkun.models.matches;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public enum TYPE_LOSE_PVP {
 
     RUNS_AWAY,

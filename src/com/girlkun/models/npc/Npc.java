@@ -11,12 +11,7 @@ import com.girlkun.services.Service;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public abstract class Npc implements IAtionNpc {
 
     public int mapId;

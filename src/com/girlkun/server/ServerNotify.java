@@ -7,12 +7,7 @@ import com.girlkun.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ServerNotify extends Thread {
 
     private byte[] gk = new byte[]{67, 104, -61, -96, 111, 32, 109, -31, -69, -85,

@@ -11,11 +11,7 @@ import com.girlkun.services.PlayerService;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class Android14 extends Boss {
 
     public boolean callApk13;

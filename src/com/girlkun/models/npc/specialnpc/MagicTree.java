@@ -12,12 +12,7 @@ import com.girlkun.services.PlayerService;
 import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.utils.Logger;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class MagicTree {
 
     public static final byte MAX_LEVEL = 10;

@@ -19,6 +19,8 @@ public class ShopServiceNew {
     private static final byte COST_GEM = 1;
     private static final byte COST_ITEM_SPEC = 2;
     private static final byte COST_RUBY = 3;
+    private static final byte COST_COUPON = 4;
+
 
     private static final byte NORMAL_SHOP = 0;
     private static final byte SPEC_SHOP = 3;
@@ -161,6 +163,10 @@ public class ShopServiceNew {
                             msg.writer().writeInt(0);
                             msg.writer().writeInt(itemShop.cost);
                         }
+                        else if (itemShop.typeSell == COST_COUPON) {
+                            msg.writer().writeInt(0);
+                            msg.writer().writeInt(itemShop.cost);
+                        }
                         msg.writer().writeByte(itemShop.options.size());
                         for (Item.ItemOption option : itemShop.options) {
                             msg.writer().writeByte(option.optionTemplate.id);
@@ -298,6 +304,7 @@ public class ShopServiceNew {
         int gold = 0;
         int gem = 0;
         int ruby = 0;
+        int coupon = 0;
         switch (is.typeSell) {
             case COST_GOLD:
                 gold = is.cost;
@@ -308,6 +315,10 @@ public class ShopServiceNew {
             case COST_RUBY:
                 ruby = is.cost;
                 break;
+            case COST_COUPON:
+                coupon = is.cost;
+                break;
+
         }
         if (player.inventory.gold < gold) {
             Service.getInstance().sendThongBao(player, "Bạn không có đủ vàng");
@@ -319,9 +330,14 @@ public class ShopServiceNew {
             Service.getInstance().sendThongBao(player, "Bạn không có đủ hồng ngọc");
             return false;
         }
+        else if (player.inventory.coupon < coupon) {
+            Service.getInstance().sendThongBao(player, "Bạn không có đủ điểm");
+            return false;
+        }
         player.inventory.gold -= is.temp.gold;
         player.inventory.gem -= is.temp.gem;
         player.inventory.ruby -= ruby;
+        player.inventory.coupon -= coupon;
         return true;
     }
 

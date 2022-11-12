@@ -7,12 +7,7 @@ import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 import com.girlkun.network.io.Message;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public final class MobMe extends Mob {
 
     private Player player;

@@ -3,12 +3,7 @@ package com.girlkun.models.npc;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class BaseMenu {
 
     public int npcId;

@@ -12,12 +12,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.logging.Level;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class HistoryTransactionDAO {
 
     public static void insert(Player pl1, Player pl2,

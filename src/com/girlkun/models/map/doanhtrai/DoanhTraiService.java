@@ -7,11 +7,7 @@ import com.girlkun.services.func.ChangeMapService;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class DoanhTraiService {
 
     private static DoanhTraiService I;

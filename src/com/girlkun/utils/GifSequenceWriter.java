@@ -7,11 +7,7 @@ import java.awt.image.*;
 import java.io.*;
 import java.util.Iterator;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class GifSequenceWriter {
 
     protected ImageWriter gifWriter;

@@ -8,11 +8,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class TrungUyTrang extends Boss{
 
     public TrungUyTrang() throws Exception{

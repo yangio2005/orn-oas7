@@ -5,12 +5,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
 import com.girlkun.services.Service;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class EffectMapService {
 
     private static EffectMapService i;

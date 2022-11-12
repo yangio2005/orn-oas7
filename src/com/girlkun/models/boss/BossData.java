@@ -2,11 +2,7 @@ package com.girlkun.models.boss;
 
 import lombok.Data;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 @Data
 public class BossData {
 

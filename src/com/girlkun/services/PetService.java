@@ -7,12 +7,7 @@ import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.SkillUtil;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class PetService {
 
     private static PetService i;

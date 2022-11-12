@@ -3,12 +3,7 @@ package com.girlkun.server;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Logger;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class Maintenance extends Thread {
 
     public static boolean isRuning = false;

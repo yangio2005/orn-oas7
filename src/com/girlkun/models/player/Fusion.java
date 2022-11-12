@@ -3,12 +3,7 @@ package com.girlkun.models.player;
 import com.girlkun.consts.ConstPlayer;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class Fusion {
 
     public static final int TIME_FUSION = 600000;

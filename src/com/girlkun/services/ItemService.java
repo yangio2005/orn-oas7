@@ -12,8 +12,7 @@ import com.girlkun.utils.SkillUtil;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 /**
  * @author 💖 Trần Lại 💖
@@ -77,6 +76,17 @@ public class ItemService {
     }
 
     public Item createItemSetKichHoat(int tempId, int quantity) {
+        Item item = new Item();
+        item.template = getTemplate(tempId);
+        item.quantity = quantity;
+        item.itemOptions = createItemNull().itemOptions;
+        item.createTime = System.currentTimeMillis();
+        item.content = item.getContent();
+        item.info = item.getInfo();
+        return item;
+    }
+
+    public Item createItemDoHuyDiet(int tempId, int quantity) {
         Item item = new Item();
         item.template = getTemplate(tempId);
         item.quantity = quantity;
@@ -167,9 +177,9 @@ public class ItemService {
         Item itemUse = InventoryServiceNew.gI().findItem(player.inventory.itemsBag, itemUseId);
         int[][] items = {{0, 6, 21, 27, 12}, {1, 7, 22, 28, 12}, {2, 8, 23, 29, 12}};
         int[][] options = {{128, 129, 127}, {130, 131, 132}, {133, 135, 134}};
-        int skhv1 = 10;
-        int skhv2 = 10;
-        int skhc = 80;
+        int skhv1 = 30;// ti le
+        int skhv2 = 30;//ti le
+        int skhc = 40;//ti le
         int skhId = -1;
 
         int rd = Util.nextInt(1, 100);
@@ -192,12 +202,44 @@ public class ItemService {
                 item = itemSKH(items[2][select], options[2][skhId]);
                 break;
         }
-        if (item != null) {
+        if (item != null && InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
             InventoryServiceNew.gI().addItemBag(player, item);
             InventoryServiceNew.gI().sendItemBags(player);
             Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + item.template.name);
             InventoryServiceNew.gI().subQuantityItemsBag(player, itemUse, 1);
             InventoryServiceNew.gI().sendItemBags(player);
+        }else {
+            Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 1 ô trống hành trang");
+        }
+    }
+
+    public void OpenDHD(Player player, int itemUseId, int select) throws Exception {
+        if (select < 0 || select > 4) return;
+        Item itemUse = InventoryServiceNew.gI().findItem(player.inventory.itemsBag, itemUseId);
+        Item item = null;
+        int gender = -1;
+        switch (itemUseId) {
+            case 2003: //td
+                gender = 0;
+                break;
+            case 2004: //xd
+                gender = 2;
+                break;
+            case 2005: //nm
+                gender = 1;
+                break;
+        }
+        int[][] items = {{650, 651, 657, 658, 656}, {652, 653, 659, 660, 656}, {654, 655, 661, 662, 656}}; //td, namec,xd
+        item = randomCS_DHD(items[gender][select], gender);
+
+        if (item != null && InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
+            InventoryServiceNew.gI().addItemBag(player, item);
+            InventoryServiceNew.gI().sendItemBags(player);
+            Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + item.template.name);
+            InventoryServiceNew.gI().subQuantityItemsBag(player, itemUse, 1);
+            InventoryServiceNew.gI().sendItemBags(player);
+        } else {
+            Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 1 ô trống hành trang");
         }
     }
 
@@ -206,6 +248,7 @@ public class ItemService {
         if (item != null) {
             item.itemOptions.add(new Item.ItemOption(skhId, 1));
             item.itemOptions.add(new Item.ItemOption(optionIdSKH(skhId), 1));
+            item.itemOptions.add(new Item.ItemOption(30, 1));
         }
         return item;
     }
@@ -234,5 +277,68 @@ public class ItemService {
                 return 138;
         }
         return 0;
+    }
+
+    public Item itemDHD(int itemId, int dhdId) {
+        Item item = createItemSetKichHoat(itemId, 1);
+        if (item != null) {
+            item.itemOptions.add(new Item.ItemOption(dhdId, 1));
+            item.itemOptions.add(new Item.ItemOption(optionIdDHD(dhdId), 1));
+            item.itemOptions.add(new Item.ItemOption(30, 1));
+        }
+        return item;
+    }
+
+    public int optionIdDHD(int skhId) {
+        switch (skhId) {
+            case 127: //Set God Taiyoken
+                return 139;
+            case 128: //Set God Genki
+                return 140;
+            case 129: //Set God Kamejoko
+                return 141;
+
+            case 130: //Set God KI
+                return 142;
+            case 131: //Set God Dame
+                return 143;
+            case 132: //Set God Summon
+                return 144;
+
+            case 133: //Set God Galick
+                return 136;
+            case 134: //Set God Monkey
+                return 137;
+            case 135: //Set God HP
+                return 138;
+        }
+        return 0;
+    }
+
+    public Item randomCS_DHD(int itemId, int gender) {
+        Item it = createItemSetKichHoat(itemId, 1);
+        List<Integer> ao = Arrays.asList(650, 652, 654);
+        List<Integer> quan = Arrays.asList(651, 653, 655);
+        List<Integer> gang = Arrays.asList(657, 659, 661);
+        List<Integer> giay = Arrays.asList(658, 660, 662);
+        int nhd = 656;
+        if (ao.contains(itemId)) {
+            it.itemOptions.add(new Item.ItemOption(47, Util.highlightsItem(gender == 2, new Random().nextInt(1000) + 1800)));// áo từ 1800-2800 giáp
+        }
+        if (quan.contains(itemId)) {
+            it.itemOptions.add(new Item.ItemOption(6, Util.highlightsItem(gender == 0, new Random().nextInt(15000) + 70000)));
+        }
+        if (gang.contains(itemId)) {
+            it.itemOptions.add(new Item.ItemOption(0, Util.highlightsItem(gender == 2, new Random().nextInt(1500) + 8500)));
+        }
+        if (giay.contains(itemId)) {
+            it.itemOptions.add(new Item.ItemOption(7, Util.highlightsItem(gender == 1, new Random().nextInt(15000) + 70000)));//ki 100k-115k
+        }
+        if (nhd == itemId) {
+            it.itemOptions.add(new Item.ItemOption(14, new Random().nextInt(2) + 18));//chí mạng 20-24%
+        }
+        it.itemOptions.add(new Item.ItemOption(21, 80));// yêu cầu sm 80 tỉ
+        it.itemOptions.add(new Item.ItemOption(30, 1));// ko the gd
+        return it;
     }
 }

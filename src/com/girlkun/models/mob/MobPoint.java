@@ -2,12 +2,7 @@ package com.girlkun.models.mob;
 
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class MobPoint {
 
     public final Mob mob;

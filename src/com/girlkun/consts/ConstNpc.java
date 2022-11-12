@@ -1,11 +1,6 @@
 package com.girlkun.consts;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ConstNpc {
 
     public static final String CALICK_KE_CHUYEN = "20 năm trước bọn Android sát thủ đã đánh bại nhóm bảo vệ trái đất của Sôngoku và Cađíc, Pôcôlô ...\n"
@@ -112,6 +107,9 @@ public class ConstNpc {
     
     
     //----------------------index menu------------------------------------------
+    //menu o len tang map mabu
+    public static final int GO_UPSTAIRS_MENU = 10000;
+
     //index menu base
     public static final int IGNORE_MENU = 712002;
     public static final int BASE_MENU = 752002;
@@ -158,6 +156,10 @@ public class ConstNpc {
     public static final int MENU_OPTION_USE_ITEM2000 = 2000;
     public static final int MENU_OPTION_USE_ITEM2001 = 2001;
     public static final int MENU_OPTION_USE_ITEM2002 = 2002;
+    public static final int MENU_OPTION_USE_ITEM2003 = 2003;
+    public static final int MENU_OPTION_USE_ITEM2004 = 2004;
+    public static final int MENU_OPTION_USE_ITEM2005 = 2005;
+
 
 
     //index menu rong thieng

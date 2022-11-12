@@ -7,12 +7,7 @@ import com.girlkun.server.Manager;
 import com.girlkun.network.io.Message;
 import java.util.ArrayList;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class FlagBagService {
 
     private List<FlagBag> flagClan = new ArrayList<>();

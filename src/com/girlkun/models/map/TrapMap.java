@@ -5,12 +5,7 @@ import com.girlkun.services.PlayerService;
 import com.girlkun.services.func.EffectMapService;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class TrapMap {
 
     public int x;

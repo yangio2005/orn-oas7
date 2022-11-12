@@ -11,12 +11,7 @@ import com.girlkun.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class RewardService {
 
     //id option set kich hoat (tên set, hiệu ứng set, tỉ lệ, type tỉ lệ)

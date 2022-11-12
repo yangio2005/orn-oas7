@@ -12,12 +12,7 @@ import com.girlkun.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class EffectSkin {
 
     private static final String[] textOdo = new String[]{

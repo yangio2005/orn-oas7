@@ -11,11 +11,7 @@ import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 import java.util.Random;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class BuiBui2 extends Boss {
 
     public BuiBui2() throws Exception {
@@ -23,10 +19,10 @@ public class BuiBui2 extends Boss {
     }
      @Override
     public void reward(Player plKill) {
-        int[] itemDos = new int[]{555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567};
-        int[] NRs = new int[]{15, 16};
-        int randomDo = new Random().nextInt(itemDos.length);
-        int randomNR = new Random().nextInt(NRs.length);
+        short[] itemDos = new short[]{555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567};
+        byte[] NRs = new byte[]{15, 16};
+        byte randomDo =(byte) new Random().nextInt(itemDos.length);
+        byte randomNR =(byte) new Random().nextInt(NRs.length);
         if (Util.isTrue(10, 100)) {
             if (Util.isTrue(1, 5)) {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 561, 1, this.location.x, this.location.y, plKill.id));

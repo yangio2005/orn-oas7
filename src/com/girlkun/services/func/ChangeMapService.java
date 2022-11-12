@@ -22,12 +22,7 @@ import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ChangeMapService {
 
     private static final byte EFFECT_GO_TO_TUONG_LAI = 0;

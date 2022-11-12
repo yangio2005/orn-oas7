@@ -19,12 +19,7 @@ import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.utils.Logger;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class SummonDragon {
 
     public static final byte WISHED = 0;

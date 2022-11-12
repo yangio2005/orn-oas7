@@ -2,12 +2,7 @@ package com.girlkun.models.task;
 
 import com.girlkun.consts.ConstTask;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class SideTask {
 
     public SideTaskTemplate template;

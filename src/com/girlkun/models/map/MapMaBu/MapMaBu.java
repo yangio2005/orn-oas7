@@ -1,47 +1,25 @@
 package com.girlkun.models.map.MapMaBu;
 
-import com.girlkun.models.item.Item;
-import com.girlkun.models.map.ItemMap;
-import com.girlkun.models.map.Map;
 import com.girlkun.models.player.Player;
 import com.girlkun.services.MapService;
-import com.girlkun.services.PlayerService;
 import com.girlkun.services.Service;
 import com.girlkun.services.func.ChangeMapService;
-import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
-
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MapMaBu {
 
 
-
-    public static final byte HOUR_OPEN_MAP_MABU = 21;
-    public static final byte MIN_OPEN_MAP_MABU = 55;
+    public static final byte HOUR_OPEN_MAP_MABU = 2;
+    public static final byte MIN_OPEN_MAP_MABU = 56;
     public static final byte SECOND_OPEN_MAP_MABU = 0;
 
 
-
-    public static final byte HOUR_CLOSE_MAP_MABU = 22;
-    public static final byte MIN_CLOSE_MAP_MABU = 60;
+    public static final byte HOUR_CLOSE_MAP_MABU = 2;
+    public static final byte MIN_CLOSE_MAP_MABU = 58;
     public static final byte SECOND_CLOSE_MAP_MABU = 0;
 
-    //    public static final byte HOUR_OPEN = 20;
-//    public static final byte MIN_OPEN = 0;
-//    public static final byte SECOND_OPEN = 0;
-//
-//    public static final byte HOUR_CAN_PICK_DB = 1;
-//    public static final byte MIN_CAN_PICK_DB = 30;
-//    public static final byte SECOND_CAN_PICK_DB = 0;
-//
-//    public static final byte HOUR_CLOSE = 21;
-//    public static final byte MIN_CLOSE = 0;
-//    public static final byte SECOND_CLOSE = 0;
-    //*************************************
     public static final int AVAILABLE = 7;
 
     private static MapMaBu i;
@@ -63,34 +41,27 @@ public class MapMaBu {
         if (i.day == -1 || i.day != TimeUtil.getCurrDay()) {
             i.day = TimeUtil.getCurrDay();
             try {
-                this.TIME_OPEN_MABU = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_OPEN_MAP_MABU + ":" + MIN_OPEN_MAP_MABU + ":" + SECOND_OPEN_MAP_MABU, "dd/MM/yyyy HH:mm:ss");
-                this.TIME_CLOSE_MABU = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_CLOSE_MAP_MABU + ":" + MIN_CLOSE_MAP_MABU + ":" + SECOND_CLOSE_MAP_MABU, "dd/MM/yyyy HH:mm:ss");
-            } catch (Exception e) {
+                TIME_OPEN_MABU = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_OPEN_MAP_MABU + ":" + MIN_OPEN_MAP_MABU + ":" + SECOND_OPEN_MAP_MABU, "dd/MM/yyyy HH:mm:ss");
+                TIME_CLOSE_MABU = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_CLOSE_MAP_MABU + ":" + MIN_CLOSE_MAP_MABU + ":" + SECOND_CLOSE_MAP_MABU, "dd/MM/yyyy HH:mm:ss");
+            } catch (Exception ignored) {
             }
         }
     }
-
 
 
     private void kickOutOfMapMabu(Player player) {
-        if (player.cFlag == 1||player.cFlag == 2||player.cFlag == 3||player.cFlag == 4||player.cFlag == 5||player.cFlag == 6||player.cFlag == 7||player.cFlag == 8||player.cFlag == 11||player.cFlag == 12) {
-            Service.getInstance().changeFlag(player, Util.nextInt(9, 10));
+        if (MapService.gI().isMapMaBu(player.zone.map.mapId)) {
+            Service.getInstance().sendThongBao(player, "Trận đại chiến đã kết thúc, tàu vận chuyển sẽ đưa bạn về nhà");
+            ChangeMapService.gI().changeMapBySpaceShip(player, player.gender + 21, -1, 250);
         }
-        Service.getInstance().sendThongBao(player, "Trận đại chiến đã kết thúc, tàu vận chuyển sẽ đưa bạn về nhà");
-        ChangeMapService.gI().changeMapBySpaceShip(player, player.gender + 21, -1, 250);
     }
 
-    public void changeMap(Player player, byte index) {
-        try {
-            long now = System.currentTimeMillis();
-            if (now > TIME_OPEN_MABU && now < TIME_CLOSE_MABU) {
-                ChangeMapService.gI().changeMap(player,
-                        player.mapMaBu.get(index).map.mapId, -1, 50, 50);
-            } else {
-                Service.getInstance().sendThongBao(player, "Đại chiến Ma Bư chưa mở");
-                Service.getInstance().hideWaitDialog(player);
-            }
-        } catch (Exception ex) {
+    private void ketthucmabu(Player player) {
+        player.zone.finishMapMaBu = true;
+        List<Player> playersMap = player.zone.getPlayers();
+        for (int i = playersMap.size() - 1; i >= 0; i--) {
+            Player pl = playersMap.get(i);
+            kickOutOfMapMabu(pl);
         }
     }
 
@@ -110,18 +81,15 @@ public class MapMaBu {
             Service.getInstance().changeFlag(player, Util.nextInt(9, 10));
         }
     }
+
     public void update(Player player) {
         if (player.zone == null || !MapService.gI().isMapBlackBallWar(player.zone.map.mapId)) {
-
             try {
                 long now = System.currentTimeMillis();
-                if (!(now > TIME_OPEN_MABU && now < TIME_CLOSE_MABU)) {
-
-                } else {
-                    kickOutOfMapMabu(player);
+                if (now < TIME_OPEN_MABU || now > TIME_CLOSE_MABU) {
+                    ketthucmabu(player);
                 }
-
-            } catch (Exception ex) {
+            } catch (Exception ignored) {
             }
         }
 

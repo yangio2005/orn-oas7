@@ -50,6 +50,8 @@ public class Zone {
 
     public long lastTimeDropBlackBall;
     public boolean finishBlackBallWar;
+    public boolean finishMapMaBu;
+
 
     public List<TrapMap> trapMaps;
 

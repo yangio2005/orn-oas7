@@ -8,12 +8,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
 import com.girlkun.utils.Logger;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ItemTimeService {
 
     private static ItemTimeService i;

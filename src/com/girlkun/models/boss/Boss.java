@@ -3,6 +3,7 @@ package com.girlkun.models.boss;
 import com.girlkun.consts.ConstPlayer;
 import com.girlkun.models.boss.iboss.IBossNew;
 import com.girlkun.models.boss.iboss.IBossOutfit;
+import com.girlkun.models.boss.list_boss.NRD.*;
 import com.girlkun.models.map.Zone;
 import com.girlkun.models.player.Player;
 import com.girlkun.models.skill.Skill;
@@ -17,10 +18,7 @@ import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.SkillUtil;
 import com.girlkun.utils.Util;
 
-/**
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class Boss extends Player implements IBossNew, IBossOutfit {
 
     public int currentLevel = -1;
@@ -50,6 +48,8 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
 
     protected Boss parentBoss;
     public Boss[][] bossAppearTogether;
+
+    public Zone zoneFinal = null;
 
     public Boss(int id, BossData... data) throws Exception {
         this.id = id;
@@ -268,6 +268,11 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
 
     @Override
     public void joinMap() {
+        if (zoneFinal != null) {
+            joinMapByZone(zoneFinal);
+            this.notifyJoinMap();
+            return;
+        }
         if (this.zone == null) {
             if (this.parentBoss != null) {
                 this.zone = parentBoss.zone;
@@ -291,6 +296,8 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
             }
             Service.getInstance().sendFlagBag(this);
             if (this.id >= -22 && this.id <= -20) return;
+            if (MapService.gI().isMapMaBu(this.zone.map.mapId) || MapService.gI().isMapBlackBallWar(this.zone.map.mapId))
+                return;
             this.notifyJoinMap();
         }
     }
@@ -300,12 +307,20 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
             this.zone = player.zone;
             ChangeMapService.gI().changeMapBySpaceShip(this, this.zone, -1);
         }
+
+    }
+
+    public void joinMapByZone(Zone zone) {
+        if (zone != null) {
+            this.zone = zone;
+            ChangeMapService.gI().changeMapBySpaceShip(this, this.zone, -1);
+        }
     }
 
     protected void notifyJoinMap() {
         ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại map " + this.zone.map.mapName
                 + " ở khu vực nào thì mọi người tự tìm nhé!"
-//                + this.zone.zoneId + " (" + this.zone.map.mapId + ")"
+                + this.zone.zoneId + " (" + this.zone.map.mapId + ")"
                 + "");
     }
 

@@ -47,10 +47,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-/**
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class GodGK {
 
     public static Player login(MySession session, AntiLogin al) {
