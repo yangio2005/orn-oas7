@@ -8,11 +8,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class TrungUyTrang extends Boss{
 
     public TrungUyTrang() throws Exception{
@@ -49,9 +45,3 @@ public class TrungUyTrang extends Boss{
 
 
 
-
-/**
- * Vui lòng không sao chép mã nguồn này dưới mọi hình thức.
- * Hãy tôn trọng tác giả của mã nguồn này.
- * Xin cảm ơn! - Girlkun75
- */

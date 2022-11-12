@@ -5,12 +5,7 @@ import com.girlkun.models.player.Pet;
 import com.girlkun.models.player.Player;
 import java.awt.Point;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class OpenPowerService {
 
     public static final int COST_SPEED_OPEN_LIMIT_POWER = 1500000000;

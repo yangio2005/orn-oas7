@@ -1,6 +1,7 @@
 package com.girlkun.jdbc.daos;
 
 import com.girlkun.database.GirlkunDB;
+import com.girlkun.models.matches.TOP;
 import com.girlkun.result.GirlkunResultSet;
 import com.girlkun.consts.ConstPlayer;
 import com.girlkun.data.DataGame;
@@ -47,10 +48,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-/**
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class GodGK {
 
     public static Player login(MySession session, AntiLogin al) {
@@ -128,6 +126,11 @@ public class GodGK {
                             player.inventory.gold = Integer.parseInt(String.valueOf(dataArray.get(0)));
                             player.inventory.gem = Integer.parseInt(String.valueOf(dataArray.get(1)));
                             player.inventory.ruby = Integer.parseInt(String.valueOf(dataArray.get(2)));
+                            if (dataArray.size() == 4) {
+                                player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
+                            }else {
+                                player.inventory.coupon= 0;
+                            }
                             dataArray.clear();
 
                             //data tọa độ
@@ -137,7 +140,7 @@ public class GodGK {
                                 player.location.x = Integer.parseInt(String.valueOf(dataArray.get(1)));
                                 player.location.y = Integer.parseInt(String.valueOf(dataArray.get(2)));
                                 if (MapService.gI().isMapDoanhTrai(mapId) || MapService.gI().isMapBlackBallWar(mapId)
-                                        || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)){
+                                        || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)) {
                                     mapId = player.gender + 21;
                                     player.location.x = 300;
                                     player.location.y = 336;
@@ -573,6 +576,11 @@ public class GodGK {
                 player.inventory.gold = Integer.parseInt(String.valueOf(dataArray.get(0)));
                 player.inventory.gem = Integer.parseInt(String.valueOf(dataArray.get(1)));
                 player.inventory.ruby = Integer.parseInt(String.valueOf(dataArray.get(2)));
+                if (dataArray.size() == 4) {
+                    player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
+                }else {
+                    player.inventory.coupon= 0;
+                }
                 dataArray.clear();
 
                 //data chỉ số
@@ -754,4 +762,6 @@ public class GodGK {
             System.exit(0);
         }
     }
+
+
 }

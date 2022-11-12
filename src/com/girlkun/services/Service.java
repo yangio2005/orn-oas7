@@ -254,10 +254,7 @@ public class Service {
 //            BossManager.gI().loadBoss();
 //            return;
 //        }
-if(text.equals("a")){
-    sendThongBao(player, "MapId: "+player.zone.map.mapId);
 
-}
         if (player.getSession() != null && player.isAdmin()) {
             if (text.equals("r")) {
                 new Thread(() -> {

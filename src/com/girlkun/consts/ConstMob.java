@@ -1,11 +1,6 @@
 package com.girlkun.consts;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ConstMob {
 
     public static final byte MOC_NHAN = 0;

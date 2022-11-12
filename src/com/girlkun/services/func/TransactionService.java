@@ -8,12 +8,7 @@ import com.girlkun.utils.Util;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class TransactionService implements Runnable {
 
     private static final int TIME_DELAY_TRADE = 30000;

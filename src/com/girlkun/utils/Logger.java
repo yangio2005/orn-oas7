@@ -3,12 +3,7 @@ package com.girlkun.utils;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class Logger {
 
     public static final String RESET = "\033[0m";

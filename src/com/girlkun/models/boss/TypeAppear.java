@@ -1,10 +1,6 @@
 package com.girlkun.models.boss;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public enum TypeAppear {
 
     DEFAULT_APPEAR,

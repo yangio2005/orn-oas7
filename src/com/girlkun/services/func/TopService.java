@@ -1,22 +1,23 @@
 package com.girlkun.services.func;
 
+import com.girlkun.database.GirlkunDB;
 import com.girlkun.jdbc.daos.PlayerDAO;
 import com.girlkun.models.player.Player;
 import com.girlkun.server.Client;
 import com.girlkun.server.Manager;
 import com.girlkun.network.io.Message;
+import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class TopService {
-    
+
     private static final String QUERY_TOP_POWER = "select player.id, player.name,"
             + "player.power, player.head, player.gender, player.have_tennis_space_ship,"
             + "player.clan_id_sv" + Manager.SERVER + ", player.data_inventory,"
@@ -48,9 +49,6 @@ public class TopService {
     }
 
     public void showTopPower(Player player) {
-        if(true){
-            return;
-        }
         if (Util.canDoWithTime(lastTimeGetTopPower, TIME_TARGET_GET_TOP_POWER)) {
             this.lastTimeGetTopPower = System.currentTimeMillis();
             this.listTopPower.clear();
@@ -64,7 +62,7 @@ public class TopService {
             msg.writer().writeByte(this.listTopPower.size());
             for (int i = 0; i < this.listTopPower.size(); i++) {
                 Player pl = this.listTopPower.get(i);
-                msg.writer().writeInt(i+1);
+                msg.writer().writeInt(i + 1);
                 msg.writer().writeInt((int) pl.id);
                 msg.writer().writeShort(pl.getHead());
                 msg.writer().writeShort(pl.getBody());
@@ -76,6 +74,20 @@ public class TopService {
             player.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
+        }
+    }
+
+    public static void updateTop() {
+        if (Manager.timeRealTop + (30 * 60 * 1000) < System.currentTimeMillis()) {
+            Manager.timeRealTop = System.currentTimeMillis();
+            try (Connection con = GirlkunDB.getConnection()) {
+                PreparedStatement ps = null;
+                ResultSet rs = null;
+                Manager.topNV = Manager.realTop(Manager.queryTopNV, ps, rs, con);
+                Manager.topNV = Manager.realTop(Manager.queryTopNV, ps, rs, con);
+            } catch (Exception ignored) {
+                Logger.error("Lỗi đọc top");
+            }
         }
     }
 

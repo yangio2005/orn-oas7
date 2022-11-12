@@ -8,12 +8,7 @@ import com.girlkun.network.io.Message;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Logger;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class MabuEgg {
 
 //    private static final long DEFAULT_TIME_DONE = 7776000000L;

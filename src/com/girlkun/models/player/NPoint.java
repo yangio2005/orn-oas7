@@ -15,15 +15,11 @@ import com.girlkun.services.TaskService;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.SkillUtil;
 import com.girlkun.utils.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class NPoint {
 
     public static final byte MAX_LIMIT = 9;
@@ -161,6 +157,7 @@ public class NPoint {
     public short tlHpGiamODo;
 
     /*-------------------------------------------------------------------------*/
+
     /**
      * Tính toán mọi chỉ số sau khi có thay đổi
      */
@@ -173,6 +170,24 @@ public class NPoint {
 
     private void setPointWhenWearClothes() {
         resetPoint();
+        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {
+            tlHutMp += RewardBlackBall.R2S_1;
+        }
+        if (this.player.rewardBlackBall.timeOutOfDateReward[3] > System.currentTimeMillis()) {
+            tlDameAttMob.add(RewardBlackBall.R4S_2);
+        }
+        if (this.player.rewardBlackBall.timeOutOfDateReward[4] > System.currentTimeMillis()) {
+            tlPST += RewardBlackBall.R5S_1;
+        }
+        if (this.player.rewardBlackBall.timeOutOfDateReward[5] > System.currentTimeMillis()) {
+            tlPST += RewardBlackBall.R6S_1;
+            tlNeDon += RewardBlackBall.R6S_2;
+        }
+        if (this.player.rewardBlackBall.timeOutOfDateReward[6] > System.currentTimeMillis()) {
+            tlHpHoi += RewardBlackBall.R7S_1;
+            tlHutHp += RewardBlackBall.R7S_2;
+        }
+
         for (Item item : this.player.inventory.itemsBody) {
             if (item.isNotNullItem()) {
                 if (item.template.id >= 592 && item.template.id <= 594) {
@@ -354,10 +369,7 @@ public class NPoint {
     }
 
     private void setNeDon() {
-        //ngọc rồng đen 6 sao
-        if (this.player.rewardBlackBall.timeOutOfDateReward[5] > System.currentTimeMillis()) {
-            this.tlNeDon += RewardBlackBall.R6S;
-        }
+
     }
 
     private void setHpHoi() {
@@ -385,9 +397,9 @@ public class NPoint {
         if (this.player.setClothes.nappa == 5) {
             this.hpMax += ((long) this.hpMax * 100 / 100);
         }
-        //ngọc rồng đen 2 sao
-        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {
-            this.hpMax += ((long) this.hpMax * RewardBlackBall.R2S / 100);
+        //ngọc rồng đen 1 sao
+        if (this.player.rewardBlackBall.timeOutOfDateReward[0] > System.currentTimeMillis()) {
+            this.hpMax += ((long) this.hpMax * RewardBlackBall.R1S_1 / 100);
         }
         //khỉ
         if (this.player.effectSkill.isMonkey) {
@@ -453,7 +465,7 @@ public class NPoint {
         }
         //ngọc rồng đen 3 sao
         if (this.player.rewardBlackBall.timeOutOfDateReward[2] > System.currentTimeMillis()) {
-            this.mpMax += (this.mpMax * RewardBlackBall.R3S / 100);
+            this.mpMax += (this.mpMax * RewardBlackBall.R3S_1 / 100);
         }
         //pet mabư
         if (this.player.isPet && ((Pet) this.player).typePet == 1
@@ -521,7 +533,7 @@ public class NPoint {
         }
         //ngọc rồng đen 1 sao
         if (this.player.rewardBlackBall.timeOutOfDateReward[0] > System.currentTimeMillis()) {
-            this.dame += ((long) this.dame * RewardBlackBall.R1S / 100);
+            this.dame += ((long) this.dame * RewardBlackBall.R1S_2 / 100);
         }
         //phóng heo
         if (this.player.effectFlagBag.usePhongHeo) {
@@ -544,18 +556,18 @@ public class NPoint {
         for (Integer tl : this.tlDef) {
             this.def += (this.def * tl / 100);
         }
-        //ngọc rồng đen 5 sao
-        if (this.player.rewardBlackBall.timeOutOfDateReward[4] > System.currentTimeMillis()) {
-            this.def += ((long) this.def * RewardBlackBall.R5S / 100);
+        //ngọc rồng đen 2 sao
+        if (this.player.rewardBlackBall.timeOutOfDateReward[1] > System.currentTimeMillis()) {
+            this.def += ((long) this.def * RewardBlackBall.R2S_2 / 100);
         }
     }
 
     private void setCrit() {
         this.crit = this.critg;
         this.crit += this.critAdd;
-        //ngọc rồng đen 4 sao
-        if (this.player.rewardBlackBall.timeOutOfDateReward[3] > System.currentTimeMillis()) {
-            this.crit += RewardBlackBall.R4S;
+        //ngọc rồng đen 3 sao
+        if (this.player.rewardBlackBall.timeOutOfDateReward[2] > System.currentTimeMillis()) {
+            this.crit += RewardBlackBall.R3S_2;
         }
         //biến khỉ
         if (this.player.effectSkill.isMonkey) {

@@ -8,12 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class ServerLogSavePlayer implements Runnable {
 
     private static ServerLogSavePlayer i;

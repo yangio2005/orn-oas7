@@ -5,12 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class NClass {
 
     public int classId;

@@ -8,26 +8,24 @@ import com.girlkun.models.player.Player;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class Android13 extends Boss {
 
     public Android13() throws Exception {
         super(BossID.ANDROID_13, BossesData.ANDROID_13);
     }
-   @Override
+
+    @Override
     public void reward(Player plKill) {
-        int[] itemRan = new int[]{380,381,382,383,384,385};
+        int[] itemRan = new int[]{380, 381, 382, 383, 384, 385};
         int itemId = itemRan[2];
         if (Util.isTrue(15, 100)) {
             ItemMap it = new ItemMap(this.zone, itemId, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
                     this.location.y - 24), plKill.id);
-        Service.getInstance().dropItemMap(this.zone, it);
+            Service.getInstance().dropItemMap(this.zone, it);
         }
     }
+
     @Override
     public void doneChatS() {
         if (this.parentBoss == null) {

@@ -2,11 +2,7 @@ package com.girlkun.utils;
 
 import java.util.Random;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class StringUtil {
 
     public static String randomText(int length) {

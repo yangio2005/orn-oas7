@@ -5,12 +5,7 @@ import com.girlkun.models.npc.Npc;
 import com.girlkun.models.shop.Shop;
 import lombok.Data;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 @Data
 public class IDMark {
 

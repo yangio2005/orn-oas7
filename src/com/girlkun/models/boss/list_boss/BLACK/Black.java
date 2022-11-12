@@ -10,11 +10,7 @@ import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 import java.util.Random;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class Black extends Boss {
 
     public Black() throws Exception {
@@ -98,8 +94,3 @@ public class Black extends Boss {
 
 
 
-/**
- * Vui lòng không sao chép mã nguồn này dưới mọi hình thức.
- * Hãy tôn trọng tác giả của mã nguồn này.
- * Xin cảm ơn! - Girlkun75
- */

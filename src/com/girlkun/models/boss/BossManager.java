@@ -27,21 +27,22 @@ import com.girlkun.models.boss.list_boss.NRD.Rong4Sao;
 import com.girlkun.models.boss.list_boss.NRD.Rong5Sao;
 import com.girlkun.models.boss.list_boss.NRD.Rong6Sao;
 import com.girlkun.models.boss.list_boss.NRD.Rong7Sao;
+import com.girlkun.models.boss.list_boss.Mabu12h.MabuBoss;
+import com.girlkun.models.boss.list_boss.Mabu12h.BuiBui;
+import com.girlkun.models.boss.list_boss.Mabu12h.BuiBui2;
+import com.girlkun.models.boss.list_boss.Mabu12h.Drabura;
+import com.girlkun.models.boss.list_boss.Mabu12h.Drabura2;
+import com.girlkun.models.boss.list_boss.Mabu12h.Yacon;
 import com.girlkun.models.boss.list_boss.nappa.*;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
 import com.girlkun.server.ServerManager;
+import com.girlkun.services.MapService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
 public class BossManager implements Runnable {
-
-    public static final int XEN_BO_HUNG = 1;
 
     private static BossManager I;
 
@@ -57,7 +58,7 @@ public class BossManager implements Runnable {
     }
 
     private boolean loadedBoss;
-    private List<Boss> bosses;
+    private final List<Boss> bosses;
 
     public void addBoss(Boss boss) {
         this.bosses.add(boss);
@@ -68,41 +69,37 @@ public class BossManager implements Runnable {
             return;
         }
         try {
-
+            this.createBoss(BossID.DRABURA);
+            this.createBoss(BossID.DRABURA_2);
+            this.createBoss(BossID.BUI_BUI);
+            this.createBoss(BossID.BUI_BUI_2);
+            this.createBoss(BossID.YA_CON);
+            this.createBoss(BossID.MABU_12H);
             this.createBoss(BossID.TDST);
-
             this.createBoss(BossID.CUMBER);
             this.createBoss(BossID.BLACK);
-
             this.createBoss(BossID.SONGOKU_TA_AC);
             this.createBoss(BossID.COOLER_GOLD);
             this.createBoss(BossID.TRUNG_UY_TRANG);
             this.createBoss(BossID.PIC);
             this.createBoss(BossID.POC);
             this.createBoss(BossID.KING_KONG);
-
             this.createBoss(BossID.DORAEMON);
             this.createBoss(BossID.FIDE_ROBOT);
             this.createBoss(BossID.VUA_COLD);
             this.createBoss(BossID.SIEU_BO_HUNG);
             this.createBoss(BossID.XEN_BO_HUNG);
-
             this.createBoss(BossID.TIEU_DOI_TRUONG);
             this.createBoss(BossID.KUKU);
             this.createBoss(BossID.MAP_DAU_DINH);
             this.createBoss(BossID.RAMBO);
-//
             this.createBoss(BossID.FIDE);
             this.createBoss(BossID.DR_KORE);
-
             this.createBoss(BossID.ANDROID_14);
             this.createBoss(BossID.MABU);
             this.createBoss(BossID.MABU);
             this.createBoss(BossID.MABU);
-//
             this.createBoss(BossID.BROLY);
-
-
 //            this.createBoss(BossID.Rong_1Sao);
 //            this.createBoss(BossID.Rong_2Sao);
 //            this.createBoss(BossID.Rong_3Sao);
@@ -121,24 +118,24 @@ public class BossManager implements Runnable {
     public Boss createBoss(int bossID) {
         try {
             switch (bossID) {
-//                case BossID.SO_4:
-//                    return new So4();
-//                case BossID.SO_3:
-//                    return new So3();
-//                case BossID.SO_2:
-//                    return new So2();
-//                case BossID.SO_1:
-//                    return new So1();
-//                case BossID.TIEU_DOI_TRUONG:
-//                    return new TieuDoiTruong();
-//
                 case BossID.KUKU:
                     return new Kuku();
                 case BossID.MAP_DAU_DINH:
                     return new MapDauDinh();
                 case BossID.RAMBO:
                     return new Rambo();
-
+                case BossID.DRABURA:
+                    return new Drabura();
+                case BossID.DRABURA_2:
+                    return new Drabura2();
+                case BossID.BUI_BUI:
+                    return new BuiBui();
+                case BossID.BUI_BUI_2:
+                    return new BuiBui2();
+                case BossID.YA_CON:
+                    return new Yacon();
+                case BossID.MABU_12H:
+                    return new MabuBoss();
                 case BossID.Rong_1Sao:
                     return new Rong1Sao();
                 case BossID.Rong_2Sao:
@@ -153,39 +150,30 @@ public class BossManager implements Runnable {
                     return new Rong6Sao();
                 case BossID.Rong_7Sao:
                     return new Rong7Sao();
-
-
                 case BossID.FIDE:
                     return new Fide();
-
                 case BossID.DR_KORE:
                     return new DrKore();
                 case BossID.ANDROID_19:
                     return new Android19();
-
                 case BossID.ANDROID_13:
                     return new Android13();
                 case BossID.ANDROID_14:
                     return new Android14();
                 case BossID.ANDROID_15:
                     return new Android15();
-
                 case BossID.PIC:
                     return new Pic();
                 case BossID.POC:
                     return new Poc();
                 case BossID.KING_KONG:
                     return new KingKong();
-
                 case BossID.XEN_BO_HUNG:
                     return new XenBoHung();
-
                 case BossID.SIEU_BO_HUNG:
                     return new SieuBoHung();
-
                 case BossID.TRUNG_UY_TRANG:
                     return new TrungUyTrang();
-
                 case BossID.XUKA:
                     return new Xuka();
                 case BossID.NOBITA:
@@ -196,24 +184,18 @@ public class BossManager implements Runnable {
                     return new Chaien();
                 case BossID.DORAEMON:
                     return new Doraemon();
-
                 case BossID.VUA_COLD:
                     return new Kingcold();
                 case BossID.FIDE_ROBOT:
                     return new FideRobot();
-
                 case BossID.BLACK:
                     return new Black();
-
                 case BossID.XEN_CON:
                     return new Xencon();
-
                 case BossID.MABU:
                     return new Mabu();
-
                 case BossID.TDST:
                     return new TDST();
-
                 case BossID.COOLER_GOLD:
                     return new CoolerGold();
                 case BossID.CUMBER:
@@ -222,7 +204,6 @@ public class BossManager implements Runnable {
                     return new SongokuTaAc();
                 case BossID.BROLY:
                     return new Broly();
-
                 default:
                     return null;
             }
@@ -232,10 +213,7 @@ public class BossManager implements Runnable {
     }
 
     public boolean existBossOnPlayer(Player player) {
-        if (player.zone.getBosses().size() > 0) {
-            return true;
-        }
-        return false;
+        return player.zone.getBosses().size() > 0;
     }
 
     public void showListBoss(Player player) {
@@ -247,9 +225,12 @@ public class BossManager implements Runnable {
             msg = new Message(-96);
             msg.writer().writeByte(0);
             msg.writer().writeUTF("Boss");
-            msg.writer().writeByte(bosses.size());
+            msg.writer().writeByte((int) bosses.stream().filter(boss -> !MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0]) && !MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])).count());
             for (int i = 0; i < bosses.size(); i++) {
                 Boss boss = this.bosses.get(i);
+                if (MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0]) || MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])) {
+                    continue;
+                }
                 msg.writer().writeInt(i);
                 msg.writer().writeInt(i);
                 msg.writer().writeShort(boss.data[0].getOutfit()[0]);
@@ -284,14 +265,9 @@ public class BossManager implements Runnable {
                     boss.update();
                 }
                 Thread.sleep(150 - (System.currentTimeMillis() - st));
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
 
         }
     }
 }
-
-/**
- * Vui lòng không sao chép mã nguồn này dưới mọi hình thức. Hãy tôn trọng tác
- * giả của mã nguồn này. Xin cảm ơn! - Girlkun75
- */

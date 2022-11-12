@@ -8,12 +8,7 @@ import com.girlkun.server.Manager;
 import com.girlkun.network.io.Message;
 import com.girlkun.utils.Logger;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class NpcService {
     
     private static NpcService i;

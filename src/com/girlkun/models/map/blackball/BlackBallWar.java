@@ -16,10 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
+
 public class BlackBallWar {
 
     private static final int TIME_CAN_PICK_BLACK_BALL_AFTER_DROP = 5000;
@@ -32,15 +29,15 @@ public class BlackBallWar {
     public static final int COST_X5 = 300000000;
     public static final int COST_X7 = 500000000;
 
-    public static final byte HOUR_OPEN = 0;
+    public static final byte HOUR_OPEN = 21;
     public static final byte MIN_OPEN = 0;
     public static final byte SECOND_OPEN = 0;
 
-    public static final byte HOUR_CAN_PICK_DB = 0;
+    public static final byte HOUR_CAN_PICK_DB = 21;
     public static final byte MIN_CAN_PICK_DB = 30;
-    public static final byte SECOND_CAN_PICK_DB = 10;
+    public static final byte SECOND_CAN_PICK_DB = 0;
 
-    public static final byte HOUR_CLOSE = 24;
+    public static final byte HOUR_CLOSE = 22;
     public static final byte MIN_CLOSE = 0;
     public static final byte SECOND_CLOSE = 0;
 

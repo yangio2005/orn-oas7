@@ -4,19 +4,28 @@ import com.girlkun.models.map.blackball.BlackBallWar;
 import com.girlkun.services.Service;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
+
 import java.util.Date;
 
 public class RewardBlackBall {
-    
+
     private static final int TIME_REWARD = 79200000;
 
-    public static final int R1S = 21;
-    public static final int R2S = 35;
-    public static final int R3S = 35;
-    public static final int R4S = 2;
-    public static final int R5S = 14;
-    public static final int R6S = 14;
-    public static final int R7S = 200000000;
+    public static final int R1S_1 = 20;
+    public static final int R1S_2 = 15;
+    public static final int R2S_1 = 15;
+    public static final int R2S_2 = 20;
+    public static final int R3S_1 = 20;
+    public static final int R3S_2 = 10;
+    public static final int R4S_1 = 10;
+    public static final int R4S_2 = 20;
+    public static final int R5S_1 = 20;
+    public static final int R5S_2 = 20;
+    public static final int R5S_3 = 20;
+    public static final int R6S_1 = 50;
+    public static final int R6S_2 = 20;
+    public static final int R7S_1 = 10;
+    public static final int R7S_2 = 15;
 
     public static final int TIME_WAIT = 3600000;
     public static long time8h;
@@ -65,26 +74,18 @@ public class RewardBlackBall {
                 case 4:
                 case 5:
                 case 6:
-                    Service.getInstance().sendThongBao(player, "Phần thưởng chỉ số tự động nhận");
-                    break;
                 case 7:
-                    if (player.inventory.gold + R7S <= Inventory.LIMIT_GOLD) {
-                        player.inventory.gold += R7S;
-                        Service.getInstance().sendMoney(player);
-                        lastTimeGetReward[star - 1] = System.currentTimeMillis();
-                    } else {
-                        Service.getInstance().sendThongBao(player, "Vàng sau khi nhận vượt quá tối đa!");
-                    }
+//                    Service.getInstance().sendThongBao(player, "Phần thưởng chỉ số tự động nhận");
                     break;
             }
         } else {
             Service.getInstance().sendThongBao(player, "Chưa thể nhận phần quà ngay lúc này, vui lòng đợi "
-                    + TimeUtil.diffDate(new Date(lastTimeGetReward[star - 1]), new Date(lastTimeGetReward[star - 1]+TIME_WAIT), 
-                            TimeUtil.MINUTE) + " phút nữa");
+                    + TimeUtil.diffDate(new Date(lastTimeGetReward[star - 1]), new Date(lastTimeGetReward[star - 1] + TIME_WAIT),
+                    TimeUtil.MINUTE) + " phút nữa");
         }
     }
-    
-    public void dispose(){
+
+    public void dispose() {
         this.player = null;
     }
 }

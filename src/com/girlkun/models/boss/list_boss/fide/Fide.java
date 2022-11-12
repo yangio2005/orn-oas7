@@ -10,11 +10,7 @@ import com.girlkun.services.Service;
 import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class Fide extends Boss {
 
     public Fide() throws Exception {
@@ -67,8 +63,3 @@ public class Fide extends Boss {
 
 
 
-/**
- * Vui lòng không sao chép mã nguồn này dưới mọi hình thức.
- * Hãy tôn trọng tác giả của mã nguồn này.
- * Xin cảm ơn! - Girlkun75
- */

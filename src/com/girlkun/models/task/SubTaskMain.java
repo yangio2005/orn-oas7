@@ -1,11 +1,6 @@
 package com.girlkun.models.task;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class SubTaskMain {
 
     public short count;

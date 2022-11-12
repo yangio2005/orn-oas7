@@ -19,12 +19,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import org.json.simple.JSONArray;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class PlayerDAO {
 
     public static boolean createNewPlayer(int userId, String name, byte gender, int hair) {
@@ -285,6 +280,7 @@ public class PlayerDAO {
                         ? Inventory.LIMIT_GOLD : player.inventory.gold);
                 dataArray.add(player.inventory.gem);
                 dataArray.add(player.inventory.ruby);
+                dataArray.add(player.inventory.coupon);
                 String inventory = dataArray.toJSONString();
                 dataArray.clear();
 
@@ -685,8 +681,6 @@ public class PlayerDAO {
                 Logger.success("Total time save player " + player.name + " thành công! " + (System.currentTimeMillis() - st) + "\n");
             } catch (Exception e) {
                 Logger.logException(PlayerDAO.class, e, "Lỗi save player " + player.name);
-            } finally {
-
             }
         }
     }
@@ -694,7 +688,7 @@ public class PlayerDAO {
     public static void subGoldBar(Player player, int num) {
         PreparedStatement ps = null;
         try (Connection con = GirlkunDB.getConnection();) {
-            ps = con.prepareStatement("update account set thoi_vang = (thoi_vang - ?) where id = ?");
+            ps = con.prepareStatement("update account set thoi_vang = ? where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().userId);
             ps.executeUpdate();

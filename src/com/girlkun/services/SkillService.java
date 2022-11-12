@@ -15,12 +15,7 @@ import com.girlkun.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class SkillService {
 
     private static SkillService i;
@@ -538,6 +533,9 @@ public class SkillService {
                 msg.cleanup();
             }
             Service.getInstance().addSMTN(plInjure, (byte) 2, 1, false);
+            if(plInjure.isDie() && !plAtt.isBoss){
+               plAtt.fightMabu.changePoint((byte) 5);
+            }
         } catch (Exception e) {
             Logger.logException(SkillService.class, e);
         }

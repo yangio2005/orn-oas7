@@ -24,10 +24,7 @@ import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.services.MapService;
 import com.girlkun.utils.Logger;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
+
 public class UseItem {
 
     private static final int ITEM_BOX_TO_BODY_OR_BAG = 0;
@@ -214,7 +211,8 @@ public class UseItem {
                         case 383: //bổ khí
                         case 384: //giáp xên
                         case 385: //ẩn danh
-                        case 379: //máy dò
+                        case 379: //máy dò capsule
+
                         case 663: //bánh pudding
                         case 664: //xúc xíc
                         case 665: //kem dâu
@@ -248,6 +246,11 @@ public class UseItem {
                             UseItem.gI().ItemSKH(pl, item);
                             break;
 
+                        case 2003://hop qua skh, item 2003 td
+                        case 2004://hop qua skh, item 2004 nm
+                        case 2005://hop qua skh, item 2005 xd
+                            UseItem.gI().ItemDHD(pl, item);
+                            break;
 
                     }
                     break;
@@ -402,7 +405,7 @@ public class UseItem {
                 pl.itemTime.lastTimeAnDanh = System.currentTimeMillis();
                 pl.itemTime.isUseAnDanh = true;
                 break;
-            case 379: //máy dò
+            case 379: //máy dò capsule
                 pl.itemTime.lastTimeUseMayDo = System.currentTimeMillis();
                 pl.itemTime.isUseMayDo = true;
                 break;
@@ -622,6 +625,9 @@ public class UseItem {
     }
 
     private void ItemSKH(Player pl, Item item) {//hop qua skh
+        NpcService.gI().createMenuConMeo(pl, item.template.id, -1, "Hãy chọn một món quà", "Áo", "Quần", "Găng", "Giày", "Rada", "Từ Chối");
+    }
+    private void ItemDHD(Player pl, Item item) {//hop qua do huy diet
         NpcService.gI().createMenuConMeo(pl, item.template.id, -1, "Hãy chọn một món quà", "Áo", "Quần", "Găng", "Giày", "Rada", "Từ Chối");
     }
 }

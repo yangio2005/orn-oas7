@@ -1,10 +1,6 @@
 package com.girlkun.models.boss;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class BossID {
 
     private BossID(){
@@ -87,6 +83,14 @@ public class BossID {
     public static final int Rong_6Sao = -229;
     public static final int Rong_7Sao = -230;
 
+    //mabu 12h
+
+    public static final int DRABURA = -233;
+    public static final int BUI_BUI = -234;
+    public static final int YA_CON = -235;
+    public static final int MABU_12H = -236;
+    public static final int DRABURA_2 = -237;
+    public static final int BUI_BUI_2 = -238;
 
     
 
@@ -120,9 +124,3 @@ public class BossID {
 
 
 
-
-/**
- * Vui lòng không sao chép mã nguồn này dưới mọi hình thức.
- * Hãy tôn trọng tác giả của mã nguồn này.
- * Xin cảm ơn! - Girlkun75
- */

@@ -8,11 +8,7 @@ import com.girlkun.services.Service;
 import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.Util;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class TraThu extends PVP {
 
     public TraThu(Player p1, Player p2) {

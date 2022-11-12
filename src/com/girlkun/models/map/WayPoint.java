@@ -1,11 +1,6 @@
 package com.girlkun.models.map;
 
-/**
- *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- *
- */
+
 public class WayPoint {
 
     public short minX;

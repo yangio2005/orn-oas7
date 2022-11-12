@@ -2,11 +2,7 @@ package com.girlkun.services;
 
 import com.girlkun.models.player.Player;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class NapThe {
 
     private static NapThe I;
@@ -45,9 +41,3 @@ public class NapThe {
 
 
 
-
-/**
- * Vui lòng không sao chép mã nguồn này dưới mọi hình thức.
- * Hãy tôn trọng tác giả của mã nguồn này.
- * Xin cảm ơn! - Girlkun75
- */

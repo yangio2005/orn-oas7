@@ -4,11 +4,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.server.ServerManager;
 import java.util.ArrayList;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class PVPManager implements Runnable {
 
     private static PVPManager i;

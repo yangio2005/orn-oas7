@@ -21,10 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
+
 public class Client implements Runnable {
 
     private static Client i;

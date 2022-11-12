@@ -2,11 +2,7 @@ package com.girlkun.models.matches;
 
 import com.girlkun.models.player.Player;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public interface IPVP {
 
     void start();

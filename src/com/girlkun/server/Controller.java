@@ -1,18 +1,19 @@
 package com.girlkun.server;
 
 import com.girlkun.database.GirlkunDB;
+import com.girlkun.models.item.Item;
 import com.girlkun.result.GirlkunResultSet;
 import com.girlkun.consts.ConstIgnoreName;
 import com.girlkun.consts.ConstMap;
-import com.girlkun.services.Service;
+import com.girlkun.services.*;
 import com.girlkun.utils.Util;
 import com.girlkun.data.DataGame;
 import com.girlkun.server.io.MySession;
+
 import java.io.IOException;
-import com.girlkun.services.ClanService;
+
 import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.services.func.UseItem;
-import com.girlkun.services.FlagBagService;
 import com.girlkun.services.func.Input;
 import com.girlkun.consts.ConstNpc;
 import com.girlkun.consts.ConstTask;
@@ -27,23 +28,16 @@ import com.girlkun.models.shop.ShopServiceNew;
 import com.girlkun.network.handler.IMessageHandler;
 import com.girlkun.network.io.Message;
 import com.girlkun.network.session.ISession;
-import com.girlkun.services.PlayerService;
-import com.girlkun.services.ChatGlobalService;
-import com.girlkun.services.FriendAndEnemyService;
-import com.girlkun.services.IntrinsicService;
-import com.girlkun.services.ItemMapService;
-import com.girlkun.services.ItemTimeService;
-import com.girlkun.services.NpcService;
-import com.girlkun.services.SkillService;
-import com.girlkun.services.SubMenuService;
-import com.girlkun.services.TaskService;
 import com.girlkun.services.func.CombineServiceNew;
+
 import static com.girlkun.services.func.Input.CHOOSE_LEVEL_BDKB;
 import static com.girlkun.services.func.Input.NUMERIC;
+
 import com.girlkun.services.func.LuckyRound;
 import com.girlkun.services.func.RadaService;
 import com.girlkun.services.func.TransactionService;
 import com.girlkun.utils.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -663,9 +657,23 @@ public class Controller implements IMessageHandler {
         if (TaskService.gI().getIdTask(player) == ConstTask.TASK_0_0) {
             NpcService.gI().createTutorial(player, -1,
                     "Chào mừng " + player.name + " đến với ngọc rồng online server NROGOD\n"
-                    + "Nhiệm vụ đầu tiên của bạn là di chuyển\n"
-                    + "Bạn hãy di chuyển nhân vật theo mũi tên chỉ hướng");
+                            + "Nhiệm vụ đầu tiên của bạn là di chuyển\n"
+                            + "Bạn hãy di chuyển nhân vật theo mũi tên chỉ hướng");
         }
+
+        //send vàng tự động
+        if (session.goldBar > 0) {
+            if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
+                int quantity = player.getSession().goldBar;
+                Item goldBar = ItemService.gI().createNewItem((short) 457, quantity);
+                InventoryServiceNew.gI().addItemBag(player, goldBar);
+                InventoryServiceNew.gI().sendItemBags(player);
+                session.goldBar = 0;
+                PlayerDAO.subGoldBar(player, session.goldBar);
+                NpcService.gI().createTutorial(player, -1, "Ông đã để " + quantity + " thỏi vàng vào hành trang con rồi đấy");
+            }
+        }
+
     }
 
     private void sendThongBaoServer(Player player) {

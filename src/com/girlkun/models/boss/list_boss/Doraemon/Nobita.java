@@ -11,11 +11,7 @@ import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 import java.util.Random;
 
-/**
- *
- * @author ❤Girlkun75❤
- * @copyright ❤Trần Lại❤
- */
+
 public class Nobita extends Boss {
 
     public Nobita() throws Exception {
@@ -89,8 +85,3 @@ public class Nobita extends Boss {
 
 
 
-/**
- * Vui lòng không sao chép mã nguồn này dưới mọi hình thức.
- * Hãy tôn trọng tác giả của mã nguồn này.
- * Xin cảm ơn! - Girlkun75
- */
