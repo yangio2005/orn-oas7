@@ -46,10 +46,7 @@ import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
+
 public class NpcFactory {
 
     private static boolean nhanVang = false;
@@ -68,7 +65,7 @@ public class NpcFactory {
             public void openBaseMenu(Player player) {
                 if (canOpenNpc(player)) {
                     if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
-                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?",  "Giải tán bang hội", "Từ chối");
+                        this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?", "Giải tán bang hội", "Từ chối");
                     }
                 }
             }
@@ -1217,10 +1214,10 @@ public class NpcFactory {
                                 if (select == 0) {
                                     NpcService.gI().createTutorial(player, this.avartar, ConstNpc.HUONG_DAN_MAP_MA_BU);
                                 } else if (select == 1) {
-                                    if(!player.getSession().actived) {
+                                    if (!player.getSession().actived) {
                                         Service.getInstance().sendThongBao(player, "Vui lòng kích hoạt tài khoản để sử dụng chức năng này");
-                                    }else
-                                    ChangeMapService.gI().changeMap(player, 114, -1, 318, 336);
+                                    } else
+                                        ChangeMapService.gI().changeMap(player, 114, -1, 318, 336);
                                 }
                                 break;
                             case ConstNpc.MENU_NOT_OPEN_BDW:
@@ -1575,11 +1572,11 @@ public class NpcFactory {
                             if (select == 0) {
                                 NpcService.gI().createTutorial(player, this.avartar, ConstNpc.HUONG_DAN_BLACK_BALL_WAR);
                             } else if (select == 1) {
-                                if(!player.getSession().actived){
+                                if (!player.getSession().actived) {
                                     Service.getInstance().sendThongBao(player, "Vui lòng kích hoạt tài khoản để sử dụng chức năng này");
 
-                                }else
-                                player.iDMark.setTypeChangeMap(ConstMap.CHANGE_BLACK_BALL);
+                                } else
+                                    player.iDMark.setTypeChangeMap(ConstMap.CHANGE_BLACK_BALL);
                                 ChangeMapService.gI().openChangeMapTab(player);
                             }
                             break;
@@ -1700,7 +1697,7 @@ public class NpcFactory {
             public void openBaseMenu(Player player) {
                 if (canOpenNpc(player)) {
                     createOtherMenu(player, ConstNpc.BASE_MENU, "Ta cảm nhận được những luồng sức mạnh khủng khiếp ở hành tinh này\n thật đáng sợ",
-                            "Top\nSức Mạnh", "Top\nNhiệm Vụ","Đóng");
+                            "Top\nSức Mạnh", "Top\nNhiệm Vụ", "Đóng");
                 }
             }
 
@@ -1709,13 +1706,10 @@ public class NpcFactory {
                 if (canOpenNpc(player)) {
                     if (player.iDMark.isBaseMenu()) {
                         if (select == 0) {
-
+                            Util.showListBoss(player, (byte) select);
                         }
                         if (select == 1) {
-
-                        }
-                        if (select == 2) {
-
+                            Util.showListBoss(player, (byte) select);
                         }
                     }
                 }

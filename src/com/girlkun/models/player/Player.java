@@ -22,6 +22,7 @@ import com.girlkun.models.map.blackball.BlackBallWar;
 import com.girlkun.models.matches.IPVP;
 import com.girlkun.models.matches.TYPE_LOSE_PVP;
 import com.girlkun.models.skill.Skill;
+import com.girlkun.server.Manager;
 import com.girlkun.services.Service;
 import com.girlkun.server.io.MySession;
 import com.girlkun.models.task.TaskPlayer;
@@ -32,6 +33,7 @@ import com.girlkun.services.FriendAndEnemyService;
 import com.girlkun.services.TaskService;
 import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.services.func.CombineNew;
+import com.girlkun.services.func.TopService;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
 
@@ -174,6 +176,7 @@ public class Player {
                     if (itemTime != null) {
                         itemTime.update();
                     }
+                    TopService.gI().updateTop();
                     BlackBallWar.gI().update(this);
                     MapMaBu.gI().update(this);
                     if (this.iDMark.isGotoFuture() && Util.canDoWithTime(this.iDMark.getLastTimeGoToFuture(), 6000)) {

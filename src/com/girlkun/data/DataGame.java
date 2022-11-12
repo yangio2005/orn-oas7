@@ -3,9 +3,11 @@ package com.girlkun.data;
 import com.girlkun.database.GirlkunDB;
 import com.girlkun.models.Template.HeadAvatar;
 import com.girlkun.models.Template.MapTemplate;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
 import com.girlkun.utils.FileIO;
 import com.girlkun.services.Service;
 import com.girlkun.models.skill.NClass;
@@ -19,6 +21,7 @@ import com.girlkun.network.session.Session;
 import com.girlkun.server.Manager;
 import com.girlkun.server.io.MySession;
 import com.girlkun.utils.Logger;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
@@ -33,7 +36,7 @@ public class DataGame {
     public static byte vsMap = 75;
     public static byte vsSkill = 5;
     public static byte vsItem = 76;
-    public static int vsRes = 752004;
+    public static int vsRes = 752005;
 
     public static String LINK_IP_PORT = "Girlkun75-1:localhost:14445:0";
     private static final String MOUNT_NUM = "733:1,734:2,735:3,743:4,744:5,746:6,795:7,849:8,897:9,920:10";
@@ -63,8 +66,8 @@ public class DataGame {
             msg.writer().writeByte(0);
 
             long[] smtieuchuan = {1000L, 3000L, 15000L, 40000L, 90000L, 170000L, 340000L, 700000L,
-                1500000L, 15000000L, 150000000L, 1500000000L, 5000000000L, 10000000000L, 40000000000L,
-                50010000000L, 60010000000L, 70010000000L, 80010000000L, 100010000000L};
+                    1500000L, 15000000L, 150000000L, 1500000000L, 5000000000L, 10000000000L, 40000000000L,
+                    50010000000L, 60010000000L, 70010000000L, 80010000000L, 100010000000L};
             msg.writer().writeByte(smtieuchuan.length);
             for (int i = 0; i < smtieuchuan.length; i++) {
                 msg.writer().writeLong(smtieuchuan[i]);
@@ -303,6 +306,7 @@ public class DataGame {
 
 
     private static List<Integer> list = new ArrayList<>();
+
     public static void requestMobTemplate(MySession session, int id) {
 //        if (list.contains(id)) {
 //            System.out.println("send mob: " + id);

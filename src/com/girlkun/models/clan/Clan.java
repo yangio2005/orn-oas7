@@ -21,10 +21,7 @@ import java.sql.PreparedStatement;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
+
 public class Clan {
 
     public static int NEXT_ID = 0;
@@ -358,19 +355,9 @@ public class Clan {
             ps = con.prepareStatement("delete from clan_sv" + Manager.SERVER + " where id = ?");
             ps.setInt(1, id);
             ps.executeUpdate();
-
-            ps = con.prepareStatement("update player set clan_id_sv" + Manager.SERVER + " = -1 where clan_id_sv" + Manager.SERVER + " = ?");
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
             ps.close();
         } catch (Exception e) {
             Logger.logException(Clan.class, e, "Có lỗi khi delete clan");
-        } finally {
-            try {
-                ps.close();
-            } catch (Exception e) {
-            }
         }
     }
 

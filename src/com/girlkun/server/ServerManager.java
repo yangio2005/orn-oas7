@@ -50,7 +50,6 @@ public class ServerManager {
         }
         HistoryTransactionDAO.deleteHistory();
     }
-//nplayer
 
     public static ServerManager gI() {
         if (instance == null) {
@@ -234,8 +233,6 @@ public class ServerManager {
                         System.out.println("Lỗi quà");
                     }
 
-                } else if (line.startsWith("test")) {
-                    System.out.println(new Random().nextInt(Manager.itemIds_NR_SB.length));
                 }
             }
         }, "Active line").start();

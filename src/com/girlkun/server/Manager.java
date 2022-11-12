@@ -4,6 +4,7 @@ import com.girlkun.database.GirlkunDB;
 import com.girlkun.consts.ConstPlayer;
 import com.girlkun.consts.ConstMap;
 import com.girlkun.data.DataGame;
+import com.girlkun.jdbc.daos.GodGK;
 import com.girlkun.jdbc.daos.ShopDAO;
 import com.girlkun.models.Template.*;
 import com.girlkun.models.clan.Clan;
@@ -11,6 +12,7 @@ import com.girlkun.models.clan.ClanMember;
 import com.girlkun.models.intrinsic.Intrinsic;
 import com.girlkun.models.item.Item;
 import com.girlkun.models.map.WayPoint;
+import com.girlkun.models.matches.TOP;
 import com.girlkun.models.npc.Npc;
 import com.girlkun.models.npc.NpcFactory;
 import com.girlkun.models.reward.ItemMobReward;
@@ -49,10 +51,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
+
 public class Manager {
 
     private static Manager i;
@@ -87,8 +86,19 @@ public class Manager {
     public static final List<Clan> CLANS = new ArrayList<>();
     public static final List<String> NOTIFY = new ArrayList<>();
     public static final List<Item> RUBY_REWARDS = new ArrayList<>();
+    public static final String queryTopSM = "SELECT name, gender, CAST( split_str(data_point,',',2) AS UNSIGNED) AS sm FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(data_point,',',2)  AS UNSIGNED) DESC LIMIT 10;";
+    public static final String queryTopSD = "SELECT name, gender, CAST( split_str(data_point,',',8) AS UNSIGNED) AS sd FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(data_point,',',8)  AS UNSIGNED) DESC LIMIT 10;";
+    public static final String queryTopHP = "SELECT name, gender, CAST( split_str(data_point,',',6) AS UNSIGNED) AS hp FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(data_point,',',6)  AS UNSIGNED) DESC LIMIT 10;";
+    public static final String queryTopKI = "SELECT name, gender, CAST( split_str(data_point,',',7) AS UNSIGNED) AS ki FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(data_point,',',7)  AS UNSIGNED) DESC LIMIT 10;";
+    public static final String queryTopNV = "SELECT name, gender, CAST( split_str(split_str(data_task,',',1),'[',2)  AS UNSIGNED) AS nv FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(split_str(data_task,',',1),'[',2)  AS UNSIGNED) DESC, CAST(split_str(data_task,',',2)  AS UNSIGNED) DESC, CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 10;";
 
 
+    public static List<TOP> topSM;
+    public static List<TOP> topSD;
+    public static List<TOP> topHP;
+    public static List<TOP> topKI;
+    public static List<TOP> topNV;
+    public static long timeRealTop = 0;
     public static final short[] itemIds_TL = {555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567, 561};
     public static final byte[] itemIds_NR_SB = {15, 16};
 
@@ -753,6 +763,11 @@ public class Manager {
                 Logger.success("Load map template thành công (" + MAP_TEMPLATES.length + ")\n");
                 RUBY_REWARDS.add(Util.sendDo(861, 0, new ArrayList<>()));
             }
+            topSM = realTop(queryTopSM, ps, rs, con);
+            Logger.success("Load top sm thành công (" + topSM.size() + ")\n");
+            topNV = realTop(queryTopNV, ps, rs, con);
+            Logger.success("Load top nv thành công (" + topNV.size() + ")\n");
+            Manager.timeRealTop = System.currentTimeMillis();
             try {
                 if (rs != null) {
                     rs.close();
@@ -778,6 +793,31 @@ public class Manager {
         }
         Logger.log(Logger.PURPLE, "Tổng thời gian load database: " + (System.currentTimeMillis() - st) + "(ms)\n");
     }
+
+    public static List<TOP> realTop(String query, PreparedStatement ps, ResultSet rs, Connection con) {
+        List<TOP> tops = new ArrayList<>();
+        try {
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                TOP top = TOP.builder().name(rs.getString("name")).gender(rs.getByte("gender")).build();
+                switch (query) {
+                    case queryTopSM:
+                        top.setPower(rs.getLong("sm"));
+                        break;
+                    case queryTopNV:
+                        top.setNv(rs.getByte("nv"));
+                        break;
+                }
+                tops.add(top);
+            }
+        } catch (Exception e) {
+
+        }
+        return tops;
+    }
+
+
 
     public void loadProperties() throws IOException {
         Properties properties = new Properties();

@@ -25,10 +25,7 @@ import com.girlkun.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
+
 public class Zone {
 
     public static final byte PLAYERS_TIEU_CHUAN_TRONG_MAP = 7;

@@ -1,22 +1,36 @@
 package com.girlkun.utils;
 
+import com.girlkun.database.GirlkunDB;
+import com.girlkun.models.Template;
+import com.girlkun.models.boss.Boss;
 import com.girlkun.models.item.Item;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.map.Zone;
 
 import java.security.MessageDigest;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.NumberFormat;
-import java.util.Locale;
-import java.util.Random;
-import java.util.Arrays;
+import java.util.*;
+
+import com.girlkun.models.matches.TOP;
 import com.girlkun.models.mob.Mob;
 import com.girlkun.models.npc.Npc;
 import com.girlkun.models.player.Player;
+import com.girlkun.network.io.Message;
+import com.girlkun.server.Manager;
 import com.girlkun.services.ItemService;
-import java.util.List;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.girlkun.services.MapService;
 import org.apache.commons.lang.ArrayUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -141,28 +155,28 @@ public class Util {
     }
 
     private static final char[] SOURCE_CHARACTERS = {'À', 'Á', 'Â', 'Ã', 'È', 'É',
-        'Ê', 'Ì', 'Í', 'Ò', 'Ó', 'Ô', 'Õ', 'Ù', 'Ú', 'Ý', 'à', 'á', 'â',
-        'ã', 'è', 'é', 'ê', 'ì', 'í', 'ò', 'ó', 'ô', 'õ', 'ù', 'ú', 'ý',
-        'Ă', 'ă', 'Đ', 'đ', 'Ĩ', 'ĩ', 'Ũ', 'ũ', 'Ơ', 'ơ', 'Ư', 'ư', 'Ạ',
-        'ạ', 'Ả', 'ả', 'Ấ', 'ấ', 'Ầ', 'ầ', 'Ẩ', 'ẩ', 'Ẫ', 'ẫ', 'Ậ', 'ậ',
-        'Ắ', 'ắ', 'Ằ', 'ằ', 'Ẳ', 'ẳ', 'Ẵ', 'ẵ', 'Ặ', 'ặ', 'Ẹ', 'ẹ', 'Ẻ',
-        'ẻ', 'Ẽ', 'ẽ', 'Ế', 'ế', 'Ề', 'ề', 'Ể', 'ể', 'Ễ', 'ễ', 'Ệ', 'ệ',
-        'Ỉ', 'ỉ', 'Ị', 'ị', 'Ọ', 'ọ', 'Ỏ', 'ỏ', 'Ố', 'ố', 'Ồ', 'ồ', 'Ổ',
-        'ổ', 'Ỗ', 'ỗ', 'Ộ', 'ộ', 'Ớ', 'ớ', 'Ờ', 'ờ', 'Ở', 'ở', 'Ỡ', 'ỡ',
-        'Ợ', 'ợ', 'Ụ', 'ụ', 'Ủ', 'ủ', 'Ứ', 'ứ', 'Ừ', 'ừ', 'Ử', 'ử', 'Ữ',
-        'ữ', 'Ự', 'ự',};
+            'Ê', 'Ì', 'Í', 'Ò', 'Ó', 'Ô', 'Õ', 'Ù', 'Ú', 'Ý', 'à', 'á', 'â',
+            'ã', 'è', 'é', 'ê', 'ì', 'í', 'ò', 'ó', 'ô', 'õ', 'ù', 'ú', 'ý',
+            'Ă', 'ă', 'Đ', 'đ', 'Ĩ', 'ĩ', 'Ũ', 'ũ', 'Ơ', 'ơ', 'Ư', 'ư', 'Ạ',
+            'ạ', 'Ả', 'ả', 'Ấ', 'ấ', 'Ầ', 'ầ', 'Ẩ', 'ẩ', 'Ẫ', 'ẫ', 'Ậ', 'ậ',
+            'Ắ', 'ắ', 'Ằ', 'ằ', 'Ẳ', 'ẳ', 'Ẵ', 'ẵ', 'Ặ', 'ặ', 'Ẹ', 'ẹ', 'Ẻ',
+            'ẻ', 'Ẽ', 'ẽ', 'Ế', 'ế', 'Ề', 'ề', 'Ể', 'ể', 'Ễ', 'ễ', 'Ệ', 'ệ',
+            'Ỉ', 'ỉ', 'Ị', 'ị', 'Ọ', 'ọ', 'Ỏ', 'ỏ', 'Ố', 'ố', 'Ồ', 'ồ', 'Ổ',
+            'ổ', 'Ỗ', 'ỗ', 'Ộ', 'ộ', 'Ớ', 'ớ', 'Ờ', 'ờ', 'Ở', 'ở', 'Ỡ', 'ỡ',
+            'Ợ', 'ợ', 'Ụ', 'ụ', 'Ủ', 'ủ', 'Ứ', 'ứ', 'Ừ', 'ừ', 'Ử', 'ử', 'Ữ',
+            'ữ', 'Ự', 'ự',};
 
     private static final char[] DESTINATION_CHARACTERS = {'A', 'A', 'A', 'A', 'E',
-        'E', 'E', 'I', 'I', 'O', 'O', 'O', 'O', 'U', 'U', 'Y', 'a', 'a',
-        'a', 'a', 'e', 'e', 'e', 'i', 'i', 'o', 'o', 'o', 'o', 'u', 'u',
-        'y', 'A', 'a', 'D', 'd', 'I', 'i', 'U', 'u', 'O', 'o', 'U', 'u',
-        'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A',
-        'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'E', 'e',
-        'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'E',
-        'e', 'I', 'i', 'I', 'i', 'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o',
-        'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o', 'O',
-        'o', 'O', 'o', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u',
-        'U', 'u', 'U', 'u',};
+            'E', 'E', 'I', 'I', 'O', 'O', 'O', 'O', 'U', 'U', 'Y', 'a', 'a',
+            'a', 'a', 'e', 'e', 'e', 'i', 'i', 'o', 'o', 'o', 'o', 'u', 'u',
+            'y', 'A', 'a', 'D', 'd', 'I', 'i', 'U', 'u', 'O', 'o', 'U', 'u',
+            'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A',
+            'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'A', 'a', 'E', 'e',
+            'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'E',
+            'e', 'I', 'i', 'I', 'i', 'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o',
+            'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o', 'O',
+            'o', 'O', 'o', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u',
+            'U', 'u', 'U', 'u',};
 
     public static char removeAccent(char ch) {
         int index = Arrays.binarySearch(SOURCE_CHARACTERS, ch);
@@ -236,7 +250,7 @@ public class Util {
         double highlightsNumber = 1.1;
         return highlights ? (int) (value * highlightsNumber) : value;
     }
-    
+
     public static Item sendDo(int itemId, int sql, List<Item.ItemOption> ios) {
 //        InventoryServiceNew.gI().addItemBag(player, ItemService.gI().createItemFromItemShop(is));
 //        InventoryServiceNew.gI().sendItemBags(player);
@@ -297,15 +311,74 @@ public class Util {
         }
     }
 
-    public static String md5(String pass){
+    public static String md5(String pass) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(pass.getBytes());
             byte[] digest = md.digest();
             return DatatypeConverter.printHexBinary(digest).toUpperCase();
-        }catch (Exception e){
+        } catch (Exception e) {
             Logger.error("Lỗi mã hóa password");
         }
         return "";
+    }
+
+    public static void showListBoss(Player player, byte select) {
+        List<TOP> tops = select == 0 ? Manager.topSM : Manager.topNV;
+        Message msg;
+        try {
+            msg = new Message(-96);
+            msg.writer().writeByte(0);
+            msg.writer().writeUTF("Boss");
+            msg.writer().writeByte(tops.size());
+            for (int i = 0; i < tops.size(); i++) {
+                TOP top = tops.get(i);
+                msg.writer().writeInt(i + 1);
+                msg.writer().writeInt(i + 1);
+                msg.writer().writeShort(getHead(top.getGender()));
+                msg.writer().writeShort(getBody(top.getGender()));
+                msg.writer().writeShort(getLeg(top.getGender()));
+                msg.writer().writeUTF(top.getName());
+                msg.writer().writeUTF(select == 0 ? top.getPower() + "" : top.getNv() + "");
+                msg.writer().writeUTF(select == 0 ? top.getPower() + "" : top.getNv() + "");
+            }
+            player.sendMessage(msg);
+            msg.cleanup();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static byte getHead(byte gender) {
+        switch (gender) {
+            case 2:
+                return 28;
+            case 1:
+                return 32;
+            default:
+                return 64;
+        }
+    }
+
+    public static byte getLeg(byte gender) {
+        switch (gender) {
+            case 2:
+                return 17;
+            case 1:
+                return 11;
+            default:
+                return 15;
+        }
+    }
+
+    public static byte getBody(byte gender) {
+        switch (gender) {
+            case 2:
+                return 16;
+            case 1:
+                return 10;
+            default:
+                return 14;
+        }
     }
 }

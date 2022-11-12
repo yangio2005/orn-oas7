@@ -681,8 +681,6 @@ public class PlayerDAO {
                 Logger.success("Total time save player " + player.name + " thành công! " + (System.currentTimeMillis() - st) + "\n");
             } catch (Exception e) {
                 Logger.logException(PlayerDAO.class, e, "Lỗi save player " + player.name);
-            } finally {
-
             }
         }
     }
@@ -690,7 +688,7 @@ public class PlayerDAO {
     public static void subGoldBar(Player player, int num) {
         PreparedStatement ps = null;
         try (Connection con = GirlkunDB.getConnection();) {
-            ps = con.prepareStatement("update account set thoi_vang = (thoi_vang - ?) where id = ?");
+            ps = con.prepareStatement("update account set thoi_vang = ? where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().userId);
             ps.executeUpdate();

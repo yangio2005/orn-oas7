@@ -14,10 +14,7 @@ import com.girlkun.utils.Util;
 
 import java.util.*;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
+
 public class ItemService {
 
     private static ItemService i;

@@ -15,10 +15,10 @@ import com.girlkun.services.EffectSkillService;
 import com.girlkun.services.PetService;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
+
 import java.util.Random;
 
 /**
- *
  * @author Administrator
  */
 public class CoolerGold extends Boss {
@@ -29,7 +29,7 @@ public class CoolerGold extends Boss {
 
     @Override
     public void reward(Player plKill) {
-        int[] itemDos = new int[]{561,1048,1049,1050};
+        int[] itemDos = new int[]{561, 1048, 1049, 1050};
         int[] NRs = new int[]{15, 16};
         int randomDo = new Random().nextInt(itemDos.length);
         int randomNR = new Random().nextInt(NRs.length);

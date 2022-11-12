@@ -24,10 +24,7 @@ import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.services.MapService;
 import com.girlkun.utils.Logger;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
+
 public class UseItem {
 
     private static final int ITEM_BOX_TO_BODY_OR_BAG = 0;

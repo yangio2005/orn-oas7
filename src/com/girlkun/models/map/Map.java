@@ -20,10 +20,6 @@ import com.girlkun.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN 💖
- */
 public class Map implements Runnable {
 
     public static final byte T_EMPTY = 0;
@@ -68,7 +64,7 @@ public class Map implements Runnable {
         try {
             this.mapHeight = tileMap.length * SIZE;
             this.mapWidth = tileMap[0].length * SIZE;
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         this.initZone(zones, maxPlayer);
         this.initItem();
