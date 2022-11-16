@@ -239,10 +239,10 @@ public class Util {
             it.options.add(new Item.ItemOption(7, highlightsItem(it.itemTemplate.gender == 1, new Random().nextInt(10001) + 35000)));
         }
         if (ntl == tempId) {
-            it.options.add(new Item.ItemOption(14, new Random().nextInt(4) + 15));
+            it.options.add(new Item.ItemOption(14, new Random().nextInt(3) + 15));
         }
         it.options.add(new Item.ItemOption(21, 15));
-        it.options.add(new Item.ItemOption(107, new Random().nextInt(7) + 0));
+//        it.options.add(new Item.ItemOption(107, new Random().nextInt(7) + 0)); //sao pha le
         return it;
     }
 

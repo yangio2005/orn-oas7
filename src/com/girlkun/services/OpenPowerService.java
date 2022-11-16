@@ -8,7 +8,7 @@ import java.awt.Point;
 
 public class OpenPowerService {
 
-    public static final int COST_SPEED_OPEN_LIMIT_POWER = 1500000000;
+    public static final int COST_SPEED_OPEN_LIMIT_POWER = 500000000;
 
     private static OpenPowerService i;
 

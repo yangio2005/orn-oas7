@@ -69,7 +69,6 @@ public class GodGK {
 //                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
 //                } else
 
-
                 if (rs.getBoolean("ban")) {
                     Service.getInstance().sendThongBaoOK(session, "Tài khoản đã bị khóa!");
                 } else if (rs.getTimestamp("last_time_login").getTime() > session.lastTimeLogout) {
@@ -128,8 +127,8 @@ public class GodGK {
                             player.inventory.ruby = Integer.parseInt(String.valueOf(dataArray.get(2)));
                             if (dataArray.size() == 4) {
                                 player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
-                            }else {
-                                player.inventory.coupon= 0;
+                            } else {
+                                player.inventory.coupon = 0;
                             }
                             dataArray.clear();
 
@@ -538,6 +537,7 @@ public class GodGK {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            Logger.error(session.uu);
             player.dispose();
             player = null;
             Logger.logException(GodGK.class, e);
@@ -578,8 +578,8 @@ public class GodGK {
                 player.inventory.ruby = Integer.parseInt(String.valueOf(dataArray.get(2)));
                 if (dataArray.size() == 4) {
                     player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
-                }else {
-                    player.inventory.coupon= 0;
+                } else {
+                    player.inventory.coupon = 0;
                 }
                 dataArray.clear();
 
@@ -763,5 +763,157 @@ public class GodGK {
         }
     }
 
+    public static void checkVang() {
+        int thoi_vang = 0;
+        long st = System.currentTimeMillis();
+        JSONValue jv = new JSONValue();
+        JSONArray dataArray = null;
+        JSONObject dataObject = null;
+        Player player;
+        PreparedStatement ps = null;
+        String name = "";
+        ResultSet rs = null;
+        try (Connection con = GirlkunDB.getConnection()) {
+            ps = con.prepareStatement("select * from player");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int plHp = 200000000;
+                int plMp = 200000000;
+                player = new Player();
+                player.id = rs.getInt("id");
+                player.name = rs.getString("name");
+                name = rs.getString("name");
+                player.head = rs.getShort("head");
+                player.gender = rs.getByte("gender");
+                player.haveTennisSpaceShip = rs.getBoolean("have_tennis_space_ship");
+                //data kim lượng
+                dataArray = (JSONArray) JSONValue.parse(rs.getString("data_inventory"));
+                player.inventory.gold = Integer.parseInt(String.valueOf(dataArray.get(0)));
+                player.inventory.gem = Integer.parseInt(String.valueOf(dataArray.get(1)));
+                player.inventory.ruby = Integer.parseInt(String.valueOf(dataArray.get(2)));
+                if (dataArray.size() == 4) {
+                    player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
+                } else {
+                    player.inventory.coupon = 0;
+                }
+                dataArray.clear();
 
+                //data chỉ số
+                dataArray = (JSONArray) JSONValue.parse(rs.getString("data_point"));
+                player.nPoint.limitPower = Byte.parseByte(String.valueOf(dataArray.get(0)));
+                player.nPoint.power = Long.parseLong(String.valueOf(dataArray.get(1)));
+                player.nPoint.tiemNang = Long.parseLong(String.valueOf(dataArray.get(2)));
+                player.nPoint.stamina = Short.parseShort(String.valueOf(dataArray.get(3)));
+                player.nPoint.maxStamina = Short.parseShort(String.valueOf(dataArray.get(4)));
+                player.nPoint.hpg = Integer.parseInt(String.valueOf(dataArray.get(5)));
+                player.nPoint.mpg = Integer.parseInt(String.valueOf(dataArray.get(6)));
+                player.nPoint.dameg = Integer.parseInt(String.valueOf(dataArray.get(7)));
+                player.nPoint.defg = Integer.parseInt(String.valueOf(dataArray.get(8)));
+                player.nPoint.critg = Byte.parseByte(String.valueOf(dataArray.get(9)));
+                dataArray.get(10); //** Năng động
+                plHp = Integer.parseInt(String.valueOf(dataArray.get(11)));
+                plMp = Integer.parseInt(String.valueOf(dataArray.get(12)));
+                dataArray.clear();
+
+                //data body
+                dataArray = (JSONArray) JSONValue.parse(rs.getString("items_body"));
+                for (int i = 0; i < dataArray.size(); i++) {
+                    Item item = null;
+                    JSONArray dataItem = (JSONArray) JSONValue.parse(dataArray.get(i).toString());
+                    short tempId = Short.parseShort(String.valueOf(dataItem.get(0)));
+                    if (tempId != -1) {
+                        item = ItemService.gI().createNewItem(tempId, Integer.parseInt(String.valueOf(dataItem.get(1))));
+                        JSONArray options = (JSONArray) JSONValue.parse(String.valueOf(dataItem.get(2)).replaceAll("\"", ""));
+                        for (int j = 0; j < options.size(); j++) {
+                            JSONArray opt = (JSONArray) JSONValue.parse(String.valueOf(options.get(j)));
+                            item.itemOptions.add(new Item.ItemOption(Integer.parseInt(String.valueOf(opt.get(0))),
+                                    Integer.parseInt(String.valueOf(opt.get(1)))));
+
+                        }
+                        item.createTime = Long.parseLong(String.valueOf(dataItem.get(3)));
+                        if (ItemService.gI().isOutOfDateTime(item)) {
+                            item = ItemService.gI().createItemNull();
+                        }
+                    } else {
+                        item = ItemService.gI().createItemNull();
+                    }
+                    Util.useCheckDo(player, item, "body");
+                    player.inventory.itemsBody.add(item);
+                    if (item.template.id == 457) {
+                        thoi_vang += item.quantity;
+                    }
+                }
+                dataArray.clear();
+
+                //data bag
+                dataArray = (JSONArray) JSONValue.parse(rs.getString("items_bag"));
+                for (int i = 0; i < dataArray.size(); i++) {
+                    Item item = null;
+                    JSONArray dataItem = (JSONArray) JSONValue.parse(dataArray.get(i).toString());
+                    short tempId = Short.parseShort(String.valueOf(dataItem.get(0)));
+                    if (tempId != -1) {
+                        item = ItemService.gI().createNewItem(tempId, Integer.parseInt(String.valueOf(dataItem.get(1))));
+                        JSONArray options = (JSONArray) JSONValue.parse(String.valueOf(dataItem.get(2)).replaceAll("\"", ""));
+                        for (int j = 0; j < options.size(); j++) {
+                            JSONArray opt = (JSONArray) JSONValue.parse(String.valueOf(options.get(j)));
+                            item.itemOptions.add(new Item.ItemOption(Integer.parseInt(String.valueOf(opt.get(0))),
+                                    Integer.parseInt(String.valueOf(opt.get(1)))));
+                        }
+                        item.createTime = Long.parseLong(String.valueOf(dataItem.get(3)));
+                        if (ItemService.gI().isOutOfDateTime(item)) {
+                            item = ItemService.gI().createItemNull();
+                        }
+                    } else {
+                        item = ItemService.gI().createItemNull();
+                    }
+                    Util.useCheckDo(player, item, "bag");
+                    if (item.template.id == 457) {
+                        thoi_vang += item.quantity;
+                    }
+                    player.inventory.itemsBag.add(item);
+                }
+                dataArray.clear();
+
+                //data box
+                dataArray = (JSONArray) JSONValue.parse(rs.getString("items_box"));
+                for (int i = 0; i < dataArray.size(); i++) {
+                    Item item = null;
+                    JSONArray dataItem = (JSONArray) JSONValue.parse(dataArray.get(i).toString());
+                    short tempId = Short.parseShort(String.valueOf(dataItem.get(0)));
+                    if (tempId != -1) {
+                        item = ItemService.gI().createNewItem(tempId, Integer.parseInt(String.valueOf(dataItem.get(1))));
+                        JSONArray options = (JSONArray) JSONValue.parse(String.valueOf(dataItem.get(2)).replaceAll("\"", ""));
+                        for (int j = 0; j < options.size(); j++) {
+                            JSONArray opt = (JSONArray) JSONValue.parse(String.valueOf(options.get(j)));
+                            item.itemOptions.add(new Item.ItemOption(Integer.parseInt(String.valueOf(opt.get(0))),
+                                    Integer.parseInt(String.valueOf(opt.get(1)))));
+                        }
+                        item.createTime = Long.parseLong(String.valueOf(dataItem.get(3)));
+                        if (ItemService.gI().isOutOfDateTime(item)) {
+                            item = ItemService.gI().createItemNull();
+                        }
+                    } else {
+                        item = ItemService.gI().createItemNull();
+                    }
+                    Util.useCheckDo(player, item, "box");
+                    if (item.template.id == 457) {
+                        thoi_vang += item.quantity;
+                    }
+                    player.inventory.itemsBox.add(item);
+                }
+                dataArray.clear();
+                if (thoi_vang > 4000) {
+                    Logger.error("play:" + player.name);
+                    Logger.error("thoi_vang:" + thoi_vang);
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(name);
+            e.printStackTrace();
+            Logger.logException(Manager.class, e, "Lỗi load database");
+            System.exit(0);
+        }
+    }
 }

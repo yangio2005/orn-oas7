@@ -2,6 +2,7 @@ package com.girlkun.models.npc;
 
 import com.girlkun.consts.ConstMap;
 import com.girlkun.models.boss.list_boss.nappa.Kuku;
+import com.girlkun.server.io.MySession;
 import com.girlkun.services.*;
 import com.girlkun.consts.ConstNpc;
 import com.girlkun.consts.ConstPlayer;
@@ -798,11 +799,14 @@ public class NpcFactory {
                                 case CombineServiceNew.LAM_PHEP_NHAP_DA:
                                 case CombineServiceNew.NHAP_NGOC_RONG:
                                 case CombineServiceNew.PHAN_RA_DO_THAN_LINH:
-
                                     if (select == 0) {
                                         CombineServiceNew.gI().startCombine(player);
                                     }
                                     break;
+                            }
+                        } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_PHAN_RA_DO_THAN_LINH) {
+                            if (select == 0) {
+                                CombineServiceNew.gI().startCombine(player);
                             }
                         }
                     }
@@ -2181,6 +2185,7 @@ public class NpcFactory {
                             Service.getInstance().sendThongBao(player, "Ban người chơi " + ((Player) PLAYERID_OBJECT.get(player.id)).name + " thành công");
                         }
                         break;
+
                     case ConstNpc.BUFF_PET:
                         if (select == 0) {
                             Player pl = (Player) PLAYERID_OBJECT.get(player.id);
@@ -2264,16 +2269,17 @@ public class NpcFactory {
                                     }
                                     break;
                                 case 2:
-                                    if (p != null) {
-                                        Input.gI().createFormChangeName(player, p);
-                                    }
+                                    Input.gI().createFormChangeName(player, p);
                                     break;
                                 case 3:
-                                    if (p != null) {
-                                        String[] selects = new String[]{"Đồng ý", "Hủy"};
-                                        NpcService.gI().createMenuConMeo(player, ConstNpc.BAN_PLAYER, -1,
-                                                "Bạn có chắc chắn muốn ban " + p.name, selects, p);
-                                    }
+                                    String[] selects = new String[]{"Đồng ý", "Hủy"};
+                                    NpcService.gI().createMenuConMeo(player, ConstNpc.BAN_PLAYER, -1,
+                                            "Bạn có chắc chắn muốn ban " + p.name, selects, p);
+                                    break;
+                                case 4:
+                                    Service.getInstance().sendThongBao(player, "Kik người chơi " + p.name + " thành công");
+                                    Client.gI().getPlayers().remove(p);
+                                    Client.gI().kickSession(p.getSession());
                                     break;
                             }
                         }

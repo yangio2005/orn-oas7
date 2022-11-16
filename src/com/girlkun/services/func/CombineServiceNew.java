@@ -8,6 +8,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.server.ServerNotify;
 import com.girlkun.network.io.Message;
 import com.girlkun.services.*;
+import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
 
 import java.util.ArrayList;
@@ -168,7 +169,7 @@ public class CombineServiceNew {
                         if (star < MAX_STAR_ITEM) {
                             player.combineNew.goldCombine = getGoldPhaLeHoa(star);
                             player.combineNew.gemCombine = getGemPhaLeHoa(star);
-                            player.combineNew.ratioCombine = getRatioPhaLeHoa(star) * 50;
+                            player.combineNew.ratioCombine = getRatioPhaLeHoa(star);
 
                             String npcSay = item.template.name + "\n|2|";
                             for (Item.ItemOption io : item.itemOptions) {
@@ -293,26 +294,37 @@ public class CombineServiceNew {
                 }
                 break;
             case PHAN_RA_DO_THAN_LINH:
-//                if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
-//                    if (player.combineNew.itemsCombine.size() == 1) {
-//                        Item item = player.combineNew.itemsCombine.get(0);
-//                        if (item != null && item.isNotNullItem() && (item.template.id > 0 && item.template.id <= 3) && item.quantity >= 1) {
-//                            String npcSay = "|2|Con có muốn biến  " + item.template.name + " thành\n"
-//                                    + "1 điểm?";
-//                            this.baHatMit.createOtherMenu(player, ConstNpc.MENU_PHAN_RA_DO_THAN_LINH, npcSay, "Phân Rã", "Từ chối");
-//                        } else {
-//                            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Con phải đưa ta 1 món đồ thần linh phù hợp mới có thể phân rã", "Đóng");
-//                        }
-//                    } else {
-//                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Con phải đưa ta 1 món đồ thần linh phù hợp mới có thể phân rã", "Đóng");
-//                    }
-//                } else {
-//                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hành trang cần ít nhất 1 chỗ trống để ta làm phép", "Đóng");
-//                }
+                if (player.combineNew.itemsCombine.size() == 0) {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Con hãy đưa ta đồ thần linh để phân rã", "Đóng");
+                    return;
+                }
+                if (player.combineNew.itemsCombine.size() == 1) {
+                    List<Integer> itemdov2 = new ArrayList<>(Arrays.asList(562, 564, 566));
+                    int couponAdd = 0;
+                    Item item = player.combineNew.itemsCombine.get(0);
+                    if (item.isNotNullItem()) {
+                        if (item.template.id >= 555 && item.template.id <= 567) {
+                            couponAdd = itemdov2.stream().anyMatch(t -> t == item.template.id) ? 2 : item.template.id == 561 ? 3 : 1;
+                        }
+                    }
+                    if (couponAdd == 0) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Ta chỉ có thể phân rã đồ thần linh thôi", "Đóng");
+                        return;
+                    }
+                    String npcSay = "|2|Sau khi phân rải vật phẩm\n|7|"
+                            + "Bạn sẽ nhận được : " + couponAdd + " Điểm\n"
+                            + (500000000 > player.inventory.gold ? "|7|" : "|1|")
+                            + "Cần " + Util.numberToMoney(500000000) + " vàng";
 
-
-                phanradothanlinh(player);
-                break;
+                    if (player.inventory.gold < 500000000) {
+                        this.baHatMit.npcChat(player, "Hết tiền rồi\nẢo ít thôi con");
+                        return;
+                    }
+                    this.baHatMit.createOtherMenu(player, ConstNpc.MENU_PHAN_RA_DO_THAN_LINH,
+                            npcSay, "Nâng cấp\n" + Util.numberToMoney(500000000) + " vàng", "Từ chối");
+                } else {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Ta chỉ có thể phân rã 1 lần 1 món đồ thần linh", "Đóng");
+                }
         }
     }
 
@@ -322,10 +334,6 @@ public class CombineServiceNew {
      * @param player
      */
     public void startCombine(Player player) {
-        if (false) {
-            Service.getInstance().sendThongBao(player, "Tính năng đang tạm khóa");
-            return;
-        }
         switch (player.combineNew.typeCombine) {
             case EP_SAO_TRANG_BI:
                 epSaoTrangBi(player);
@@ -343,7 +351,7 @@ public class CombineServiceNew {
                 nangCapVatPham(player);
                 break;
             case PHAN_RA_DO_THAN_LINH:
-                dapDoKichHoat(player);
+                phanradothanlinh(player);
                 break;
         }
         player.iDMark.setIndexMenu(ConstNpc.IGNORE_MENU);
@@ -468,31 +476,17 @@ public class CombineServiceNew {
 
     private void phanradothanlinh(Player player) {
         if (player.combineNew.itemsCombine.size() == 1) {
-            Item dtl = null;
+            player.inventory.gold -= 500000000;
             List<Integer> itemdov2 = new ArrayList<>(Arrays.asList(562, 564, 566));
-            int couponAdd = 0;
             Item item = player.combineNew.itemsCombine.get(0);
-            if (item.isNotNullItem()) {
-                if (item.template.id >= 555 && item.template.id <= 567) {
-                    dtl = item;
-                    couponAdd = itemdov2.contains(item.template.id) ? 2 : item.template.id == 561 ? 3 : 1;
-                }
-            }
-
-            if (dtl != null) {
-                sendEffectSuccessCombine(player);
-                player.inventory.coupon += couponAdd;
-                this.baHatMit.npcChat(player, "Con đã nhận được " + couponAdd + " điểm");
-                InventoryServiceNew.gI().subQuantityItemsBag(player, dtl, 1);
-                player.combineNew.itemsCombine = new ArrayList<>();
-                InventoryServiceNew.gI().sendItemBags(player);
-
-            }else {
-                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Con hãy đưa ta đồ thần linh để phân rã", "Đóng");
-            }
-        }else {
-            this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Ta chỉ có thể phân rã 1 lần 1 món đồ thần linh", "Đóng");
-
+            int couponAdd = itemdov2.stream().anyMatch(t -> t == item.template.id) ? 2 : item.template.id == 561 ? 3 : 1;
+            sendEffectSuccessCombine(player);
+            player.inventory.coupon += couponAdd;
+            this.baHatMit.npcChat(player, "Con đã nhận được " + couponAdd + " điểm");
+            InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1);
+            player.combineNew.itemsCombine = new ArrayList<>();
+            InventoryServiceNew.gI().sendItemBags(player);
+            Service.getInstance().sendMoney(player);
         }
     }
 
@@ -640,7 +634,8 @@ public class CombineServiceNew {
                 if (star < MAX_STAR_ITEM) {
                     player.inventory.gold -= gold;
                     player.inventory.subGemAndRuby(gem);
-                    if (Util.isTrue(player.combineNew.ratioCombine, 300)) {
+                    byte ratio = (optionStar != null && optionStar.param > 4) ? (byte) 2 : 1;
+                    if (Util.isTrue(player.combineNew.ratioCombine, 100 * ratio)) {
                         if (optionStar == null) {
                             item.itemOptions.add(new Item.ItemOption(107, 1));
                         } else {

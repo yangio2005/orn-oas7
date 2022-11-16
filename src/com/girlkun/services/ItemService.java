@@ -312,6 +312,7 @@ public class ItemService {
         return 0;
     }
 
+
     public Item randomCS_DHD(int itemId, int gender) {
         Item it = createItemSetKichHoat(itemId, 1);
         List<Integer> ao = Arrays.asList(650, 652, 654);
@@ -320,19 +321,19 @@ public class ItemService {
         List<Integer> giay = Arrays.asList(658, 660, 662);
         int nhd = 656;
         if (ao.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(47, Util.highlightsItem(gender == 2, new Random().nextInt(1000) + 1800)));// áo từ 1800-2800 giáp
+            it.itemOptions.add(new Item.ItemOption(47, Util.highlightsItem(gender == 2, new Random().nextInt(1001) + 1800))); // áo từ 1800-2800 giáp
         }
         if (quan.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(6, Util.highlightsItem(gender == 0, new Random().nextInt(15000) + 70000)));
+            it.itemOptions.add(new Item.ItemOption(6, Util.highlightsItem(gender == 0, new Random().nextInt(16001) + 50000))); // ki 50-66k
         }
         if (gang.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(0, Util.highlightsItem(gender == 2, new Random().nextInt(1500) + 8500)));
+            it.itemOptions.add(new Item.ItemOption(0, Util.highlightsItem(gender == 2, new Random().nextInt(1501) + 8500))); // 8500-10000
         }
         if (giay.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(7, Util.highlightsItem(gender == 1, new Random().nextInt(15000) + 70000)));//ki 100k-115k
+            it.itemOptions.add(new Item.ItemOption(7, Util.highlightsItem(gender == 1, new Random().nextInt(16001) + 50000))); // ki 50-66kk
         }
         if (nhd == itemId) {
-            it.itemOptions.add(new Item.ItemOption(14, new Random().nextInt(2) + 18));//chí mạng 20-24%
+            it.itemOptions.add(new Item.ItemOption(14, new Random().nextInt(3) + 17)); //chí mạng 17-19%
         }
         it.itemOptions.add(new Item.ItemOption(21, 80));// yêu cầu sm 80 tỉ
         it.itemOptions.add(new Item.ItemOption(30, 1));// ko the gd

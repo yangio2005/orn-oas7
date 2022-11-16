@@ -97,13 +97,13 @@ public class ItemMap {
             return;
         }
 
-        if (Util.canDoWithTime(createTime, 30000)) {
+        if (Util.canDoWithTime(createTime, 15000)) {
             if (this.zone.map.mapId != 21 && this.zone.map.mapId != 22
                     && this.zone.map.mapId != 23 && this.itemTemplate.id != 78) {
                 ItemMapService.gI().removeItemMapAndSendClient(this);
             }
         }
-        if (Util.canDoWithTime(createTime, 15000)) {
+        if (Util.canDoWithTime(createTime, 10000)) {
             this.playerId = -1;
         }
     }

@@ -1085,7 +1085,7 @@ public class NPoint {
     }
 
     public void increasePoint(byte type, short point) {
-        if (point <= 0) {
+        if (point <= 0 || point > 100) {
             return;
         }
         long tiemNangUse = 0;
@@ -1157,7 +1157,7 @@ public class NPoint {
             Service.getInstance().sendThongBaoOK(player, "Bạn không đủ tiềm năng");
             return false;
         }
-        if (this.tiemNang >= tiemNang) {
+        if (this.tiemNang >= tiemNang && this.tiemNang - tiemNang >= 0) {
             this.tiemNang -= tiemNang;
             TaskService.gI().checkDoneTaskUseTiemNang(player);
             return true;

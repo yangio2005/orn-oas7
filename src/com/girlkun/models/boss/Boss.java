@@ -24,7 +24,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     public int currentLevel = -1;
     protected final BossData[] data;
 
-    protected BossStatus bossStatus;
+    public BossStatus bossStatus;
 
     protected Zone lastZone;
 
@@ -318,9 +318,9 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     }
 
     protected void notifyJoinMap() {
-        ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại map " + this.zone.map.mapName
-                + " ở khu vực nào thì mọi người tự tìm nhé!"
-                + this.zone.zoneId + " (" + this.zone.map.mapId + ")"
+        ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName
+//                + " ở khu vực nào thì mọi người tự tìm nhé!"
+//                + this.zone.zoneId + " (" + this.zone.map.mapId + ")"
                 + "");
     }
 
@@ -561,7 +561,11 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
 
     @Override
     public void wakeupAnotherBossWhenAppear() {
-        System.out.println("wake up boss when appear");
+//        System.out.println("wake up boss when appear");
+        System.out.println("BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName
+                + " khu vực "
+                + this.zone.zoneId + "(" + this.zone.map.mapId + ")"
+                + "");
         if (this.bossAppearTogether == null || this.bossAppearTogether[this.currentLevel] == null) {
             return;
         }
@@ -586,8 +590,10 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
 
     @Override
     public void wakeupAnotherBossWhenDisappear() {
-        System.out.println("wake up boss when disappear");
+//        System.out.println("wake up boss when disappear");
+        System.out.println("Boss " + this.name +" vừa bị tiêu diệt");
     }
+
 }
 
 /**

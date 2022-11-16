@@ -61,6 +61,7 @@ public class Manager {
     public static byte MAX_PER_IP = 2;
     public static int MAX_PLAYER = 2000;
     public static byte RATE_EXP_SERVER = 2;
+//    public static byte RATE_EXP_SERVER = 1;// sau khi chinh
 
     public static MapTemplate[] MAP_TEMPLATES;
     public static final List<com.girlkun.models.map.Map> MAPS = new ArrayList<>();
@@ -571,23 +572,17 @@ public class Manager {
                         ItemMobReward item = new ItemMobReward(itemId, mapDrop,
                                 new int[]{Integer.parseInt(quantity[0]), Integer.parseInt(quantity[1])},
                                 new int[]{Integer.parseInt(ratio[0]), Integer.parseInt(ratio[1])}, gender);
-
-                        int[] r = new int[]{Integer.parseInt(ratio[0]), Integer.parseInt(ratio[1])};
-                        switch (item.getTemp().type) {
-                            case 30: //spl
-                                r[0] = r[0] * 3;
-                                break;
-                            case 14: //da nang cap
-                                r[0] = r[0] * 3;
-                                break;
-                            case 12: //nr
-                                r[0] = r[0] * 3;
-                                break;
-                            default: //do
-                                r[0] = r[0] * 50;
-                                break;
+                        if (item.getTemp().type == 30) {
+                            item.setRatio(new int[]{20, Integer.parseInt(ratio[1])});
                         }
-                        item.setRatio(r);
+                        if (item.getTemp().type == 14) {
+                            item.setRatio(new int[]{20, Integer.parseInt(ratio[1])});
+                        }
+//                        System.out.println(mobReward.getMobId());
+//                        System.out.println(item.getTemp().name);
+//                        System.out.println(item.getTemp().type);
+//                        System.out.println(item.getRatio()[0] + "/" + item.getRatio()[1]);
+//                        System.out.println(item.getQuantity()[0] + "/" + item.getQuantity()[1]);
 
                         if (item.getTemp().type == 9) {
                             mobReward.getGoldReward().add(item);
@@ -816,7 +811,6 @@ public class Manager {
         }
         return tops;
     }
-
 
 
     public void loadProperties() throws IOException {

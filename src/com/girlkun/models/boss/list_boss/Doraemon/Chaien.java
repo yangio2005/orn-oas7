@@ -1,6 +1,5 @@
 package com.girlkun.models.boss.list_boss.Doraemon;
 
-import com.girlkun.consts.ConstPlayer;
 import com.girlkun.models.boss.Boss;
 import com.girlkun.models.boss.BossID;
 import com.girlkun.models.boss.BossStatus;

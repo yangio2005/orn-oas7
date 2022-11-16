@@ -2,7 +2,6 @@ package com.girlkun.models.map.blackball;
 
 import com.girlkun.models.item.Item;
 import com.girlkun.models.map.ItemMap;
-import com.girlkun.models.map.Map;
 import com.girlkun.models.player.Player;
 import com.girlkun.services.MapService;
 import com.girlkun.services.PlayerService;
@@ -12,7 +11,6 @@ import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,12 +27,12 @@ public class BlackBallWar {
     public static final int COST_X5 = 300000000;
     public static final int COST_X7 = 500000000;
 
-    public static final byte HOUR_OPEN = 21;
+    public static final byte HOUR_OPEN = 20;
     public static final byte MIN_OPEN = 0;
     public static final byte SECOND_OPEN = 0;
 
-    public static final byte HOUR_CAN_PICK_DB = 21;
-    public static final byte MIN_CAN_PICK_DB = 30;
+    public static final byte HOUR_CAN_PICK_DB = 20;
+    public static final byte MIN_CAN_PICK_DB = 3;
     public static final byte SECOND_CAN_PICK_DB = 0;
 
     public static final byte HOUR_CLOSE = 22;

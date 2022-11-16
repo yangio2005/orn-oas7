@@ -6,31 +6,32 @@ import com.girlkun.models.boss.BossStatus;
 import com.girlkun.models.boss.BossesData;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
+import com.girlkun.server.Manager;
 import com.girlkun.services.Service;
 import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
+
 import java.util.Random;
 
 
 public class MabuBoss extends Boss {
 
     public MabuBoss() throws Exception {
-        super(BossID.MABU_12H , BossesData.MABU_12H);
+        super(BossID.MABU_12H, BossesData.MABU_12H);
     }
-     @Override
+
+    @Override
     public void reward(Player plKill) {
-        int[] itemDos = new int[]{555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567};
-        int[] NRs = new int[]{15, 16};
-        int randomDo = new Random().nextInt(itemDos.length);
-        int randomNR = new Random().nextInt(NRs.length);
+        byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
+        byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length);
         if (Util.isTrue(10, 100)) {
-            if (Util.isTrue(1, 5)) {
+            if (Util.isTrue(1, 10)) {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 561, 1, this.location.x, this.location.y, plKill.id));
-                return;
+            } else {
+                Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x, this.location.y, plKill.id));
             }
-            Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, itemDos[randomDo], 1, this.location.x, this.location.y, plKill.id));
         } else {
-            Service.getInstance().dropItemMap(this.zone, new ItemMap(zone, NRs[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+            Service.getInstance().dropItemMap(this.zone, new ItemMap(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
         }
     }
 }

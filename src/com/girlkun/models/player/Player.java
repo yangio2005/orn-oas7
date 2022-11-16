@@ -176,10 +176,9 @@ public class Player {
                     if (itemTime != null) {
                         itemTime.update();
                     }
-                    TopService.gI().updateTop();
                     BlackBallWar.gI().update(this);
                     MapMaBu.gI().update(this);
-                    if (this.iDMark.isGotoFuture() && Util.canDoWithTime(this.iDMark.getLastTimeGoToFuture(), 6000)) {
+                    if (!isBoss && this.iDMark.isGotoFuture() && Util.canDoWithTime(this.iDMark.getLastTimeGoToFuture(), 6000)) {
                         ChangeMapService.gI().changeMapBySpaceShip(this, 102, -1, Util.nextInt(60, 200));
                         this.iDMark.setGotoFuture(false);
                     }
@@ -569,3 +568,4 @@ public class Player {
         name = null;
     }
 }
+//nplayer
