@@ -350,7 +350,7 @@ public class Clan {
     }
 
     public void deleteDB(int id) {
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("delete from clan_sv" + Manager.SERVER + " where id = ?");
             ps.setInt(1, id);

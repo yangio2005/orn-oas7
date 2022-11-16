@@ -59,6 +59,7 @@ public class TransactionService implements Runnable {
                             if (action == SEND_INVITE_TRADE) {
                                 if (Util.canDoWithTime(pl.iDMark.getLastTimeTrade(), TIME_DELAY_TRADE)
                                         && Util.canDoWithTime(plMap.iDMark.getLastTimeTrade(), TIME_DELAY_TRADE)) {
+                                    pl.iDMark.setLastTimeTrade(System.currentTimeMillis());
                                     pl.iDMark.setPlayerTradeId((int) plMap.id);
                                     sendInviteTrade(pl, plMap);
                                 } else {

@@ -1,7 +1,6 @@
 package com.girlkun.models.boss.list_boss.Mabu12h;
 
 import com.girlkun.models.boss.Boss;
-import com.girlkun.models.boss.BossID;
 import com.girlkun.models.boss.BossesData;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
@@ -14,7 +13,7 @@ import java.util.Random;
 public class BuiBui extends Boss {
 
     public BuiBui() throws Exception {
-        super(BossID.BUI_BUI, BossesData.BUI_BUI);
+        super(Util.randomBossId(), BossesData.BUI_BUI);
     }
 
     @Override

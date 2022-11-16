@@ -1,24 +1,19 @@
 package com.girlkun.models.boss.list_boss.Mabu12h;
 
 import com.girlkun.models.boss.Boss;
-import com.girlkun.models.boss.BossID;
-import com.girlkun.models.boss.BossStatus;
 import com.girlkun.models.boss.BossesData;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
 import com.girlkun.server.Manager;
-import com.girlkun.services.EffectSkillService;
 import com.girlkun.services.Service;
-import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 
 import java.util.Random;
 
-
 public class Drabura2 extends Boss {
 
     public Drabura2() throws Exception {
-        super(BossID.DRABURA_2, BossesData.DRABURA_2);
+        super(Util.randomBossId(), BossesData.DRABURA_2);
     }
 
     @Override
@@ -36,28 +31,6 @@ public class Drabura2 extends Boss {
         }
         plKill.fightMabu.changePoint((byte) 20);
     }
-//    @Override
-//    public int injured(Player plAtt, int damage, boolean piercing, boolean isMobAttack) {
-//        if (!this.isDie()) {
-//            if (!piercing && Util.isTrue(this.nPoint.tlNeDon, 100)) {
-//                this.chat("Xí hụt");
-//                return 0;
-//            }
-//            damage = this.nPoint.subDameInjureWithDeff(damage);
-//            if (!piercing && effectSkill.isShielding) {
-//                if (damage > nPoint.hpMax) {
-//                    EffectSkillService.gI().breakShield(this);
-//                }
-//                damage = 1;
-//            }
-//            if (damage > 1000000) {
-//                damage = 1000000;
-//            }
-//            return damage;
-//        } else {
-//            return 0;
-//        }
-//    }
 }
 
 

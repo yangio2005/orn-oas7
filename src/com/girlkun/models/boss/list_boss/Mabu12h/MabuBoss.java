@@ -1,23 +1,19 @@
 package com.girlkun.models.boss.list_boss.Mabu12h;
 
 import com.girlkun.models.boss.Boss;
-import com.girlkun.models.boss.BossID;
-import com.girlkun.models.boss.BossStatus;
 import com.girlkun.models.boss.BossesData;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
 import com.girlkun.server.Manager;
 import com.girlkun.services.Service;
-import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 
 import java.util.Random;
 
-
 public class MabuBoss extends Boss {
 
     public MabuBoss() throws Exception {
-        super(BossID.MABU_12H, BossesData.MABU_12H);
+        super(Util.randomBossId(), BossesData.MABU_12H);
     }
 
     @Override

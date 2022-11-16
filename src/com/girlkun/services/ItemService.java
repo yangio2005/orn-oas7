@@ -205,7 +205,7 @@ public class ItemService {
             Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + item.template.name);
             InventoryServiceNew.gI().subQuantityItemsBag(player, itemUse, 1);
             InventoryServiceNew.gI().sendItemBags(player);
-        }else {
+        } else {
             Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 1 ô trống hành trang");
         }
     }
@@ -213,7 +213,6 @@ public class ItemService {
     public void OpenDHD(Player player, int itemUseId, int select) throws Exception {
         if (select < 0 || select > 4) return;
         Item itemUse = InventoryServiceNew.gI().findItem(player.inventory.itemsBag, itemUseId);
-        Item item = null;
         int gender = -1;
         switch (itemUseId) {
             case 2003: //td
@@ -227,7 +226,7 @@ public class ItemService {
                 break;
         }
         int[][] items = {{650, 651, 657, 658, 656}, {652, 653, 659, 660, 656}, {654, 655, 661, 662, 656}}; //td, namec,xd
-        item = randomCS_DHD(items[gender][select], gender);
+        Item item = randomCS_DHD(items[gender][select], gender);
 
         if (item != null && InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
             InventoryServiceNew.gI().addItemBag(player, item);
@@ -321,19 +320,19 @@ public class ItemService {
         List<Integer> giay = Arrays.asList(658, 660, 662);
         int nhd = 656;
         if (ao.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(47, Util.highlightsItem(gender == 2, new Random().nextInt(1001) + 1800))); // áo từ 1800-2800 giáp
+            it.itemOptions.add(new Item.ItemOption(47, Util.highlightsItem(gender == 2, new Random().nextInt(1800) + 1001))); // áo từ 1800-2800 giáp
         }
         if (quan.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(6, Util.highlightsItem(gender == 0, new Random().nextInt(16001) + 50000))); // ki 50-66k
+            it.itemOptions.add(new Item.ItemOption(6, Util.highlightsItem(gender == 0, new Random().nextInt(50000) + 16001))); // ki 50-66k
         }
         if (gang.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(0, Util.highlightsItem(gender == 2, new Random().nextInt(1501) + 8500))); // 8500-10000
+            it.itemOptions.add(new Item.ItemOption(0, Util.highlightsItem(gender == 2, new Random().nextInt(8500) + 1501))); // 8500-10000
         }
         if (giay.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(7, Util.highlightsItem(gender == 1, new Random().nextInt(16001) + 50000))); // ki 50-66kk
+            it.itemOptions.add(new Item.ItemOption(7, Util.highlightsItem(gender == 1, new Random().nextInt(50000) + 16001))); // ki 50-66kk
         }
         if (nhd == itemId) {
-            it.itemOptions.add(new Item.ItemOption(14, new Random().nextInt(3) + 17)); //chí mạng 17-19%
+            it.itemOptions.add(new Item.ItemOption(14, new Random().nextInt(17) + 3)); //chí mạng 17-19%
         }
         it.itemOptions.add(new Item.ItemOption(21, 80));// yêu cầu sm 80 tỉ
         it.itemOptions.add(new Item.ItemOption(30, 1));// ko the gd

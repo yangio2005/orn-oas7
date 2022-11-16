@@ -3,6 +3,7 @@ package com.girlkun.utils;
 import com.girlkun.database.GirlkunDB;
 import com.girlkun.models.Template;
 import com.girlkun.models.boss.Boss;
+import com.girlkun.models.boss.BossManager;
 import com.girlkun.models.item.Item;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.map.Zone;
@@ -380,5 +381,13 @@ public class Util {
             default:
                 return 14;
         }
+    }
+
+    public static int randomBossId() {
+        int bossId = Util.nextInt(10000);
+        while (BossManager.gI().getBossById(bossId) != null) {
+            bossId = Util.nextInt(10000);
+        }
+        return bossId;
     }
 }
