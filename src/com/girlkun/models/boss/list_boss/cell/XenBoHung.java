@@ -8,6 +8,7 @@ import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
 import com.girlkun.services.PlayerService;
 import com.girlkun.services.Service;
+import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 
 import java.util.Random;
@@ -24,9 +25,10 @@ public class XenBoHung extends Boss {
 
     @Override
     public void reward(Player plKill) {
-        ItemMap it = new ItemMap(this.zone,16, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
+        ItemMap it = new ItemMap(this.zone, 16, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
                 this.location.y - 24), plKill.id);
         Service.getInstance().dropItemMap(this.zone, it);
+        TaskService.gI().checkDoneTaskKillBoss(plKill, this);
     }
 
     @Override

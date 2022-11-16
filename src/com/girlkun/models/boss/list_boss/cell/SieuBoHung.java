@@ -6,7 +6,9 @@ import com.girlkun.models.boss.BossesData;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
 import com.girlkun.services.Service;
+import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
+
 import java.util.Random;
 
 
@@ -31,6 +33,7 @@ public class SieuBoHung extends Boss {
         } else {
             Service.getInstance().dropItemMap(this.zone, new ItemMap(zone, NRs[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
         }
+        TaskService.gI().checkDoneTaskKillBoss(plKill, this);
     }
 
 //    @Override
