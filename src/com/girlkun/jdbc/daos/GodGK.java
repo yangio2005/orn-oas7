@@ -763,7 +763,7 @@ public class GodGK {
         }
     }
 
-    public static void checkVang() {
+    public static void checkVang(int x) {
         int thoi_vang = 0;
         long st = System.currentTimeMillis();
         JSONValue jv = new JSONValue();
@@ -902,7 +902,7 @@ public class GodGK {
                     player.inventory.itemsBox.add(item);
                 }
                 dataArray.clear();
-                if (thoi_vang > 4000) {
+                if (thoi_vang > x) {
                     Logger.error("play:" + player.name);
                     Logger.error("thoi_vang:" + thoi_vang);
                 }

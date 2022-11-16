@@ -4,6 +4,7 @@ import com.girlkun.database.GirlkunDB;
 
 import java.net.ServerSocket;
 
+import com.girlkun.jdbc.daos.GodGK;
 import com.girlkun.jdbc.daos.HistoryTransactionDAO;
 import com.girlkun.models.boss.BossManager;
 import com.girlkun.models.item.Item;
@@ -195,14 +196,6 @@ public class ServerManager {
                             Logger.error("Lỗi save clan!...................................\n");
                         }
                     }).start();
-                } else if (line.equals("kik")) {
-                    try {
-                        new Thread(() -> {
-                            Client.gI().cloneMySessionNotConnect();
-                        }).start();
-                    } catch (Exception e) {
-                        System.out.println("loi kik");
-                    }
                 } else if (line.startsWith("a")) {
                     String a = line.replace("a ", "");
                     Service.getInstance().sendThongBaoAllPlayer(a);
@@ -233,6 +226,17 @@ public class ServerManager {
                         System.out.println("Lỗi quà");
                     }
 
+                } else if (line.startsWith("checkvang")) {
+//                    checkvang@123@
+                    String a = line.replace("checkvang", "");
+                    new Thread(() -> {
+                        try {
+                            GodGK.checkVang(Integer.parseInt(a.split("@")[1]));
+                            Logger.error("Xong checkvang ");
+                        } catch (Exception e) {
+                            Logger.error("Lỗi checkvang!...................................\n");
+                        }
+                    }).start();
                 }
             }
         }, "Active line").start();
