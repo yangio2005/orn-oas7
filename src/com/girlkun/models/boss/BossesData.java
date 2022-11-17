@@ -1052,11 +1052,11 @@ public class BossesData {
             "Mabư",
             ConstPlayer.XAYDA,
             new short[]{297, 298, 299, -1, -1, -1},
-            2000000,
+            200000,
             new int[]{250000000},
             new int[]{52},
             new int[][]{
-                    {Skill.KAMEJOKO, 3, 500},
+                    {Skill.KAMEJOKO, 3, 5000},
                     {Skill.LIEN_HOAN, 7, 1000},
                     {Skill.KHIEN_NANG_LUONG, 7, 100000}},
             new String[]{"|-2|Ma nhân Bư đã xuất hiện rồi"}, //text chat 1
@@ -1412,7 +1412,7 @@ public class BossesData {
             ConstPlayer.XAYDA,
             new short[]{297, 298, 299, -1, -1, -1},
             1000000,
-            new int[]{250000000},
+            new int[]{500000000},
             new int[]{120},
             new int[][]{
                     {Skill.KAMEJOKO, 3, 5000},
@@ -1428,7 +1428,7 @@ public class BossesData {
             ConstPlayer.XAYDA,
             new short[]{418, 419, 420, -1, -1, -1},
             100000,
-            new int[]{34000000},
+            new int[]{500000000},
             new int[]{114},
             new int[][]{
                     {Skill.KAMEJOKO, 3, 5000},
@@ -1445,7 +1445,7 @@ public class BossesData {
             ConstPlayer.XAYDA,
             new short[]{418, 419, 420, -1, -1, -1},
             200000,
-            new int[]{34000000},
+            new int[]{500000000},
             new int[]{115},
             new int[][]{
                     {Skill.KAMEJOKO, 3, 5000},
@@ -1462,7 +1462,7 @@ public class BossesData {
             ConstPlayer.XAYDA,
             new short[]{451, 452, 453, -1, -1, -1},
             200000,
-            new int[]{333000000},
+            new int[]{500000000},
             new int[]{117},
             new int[][]{
                     {Skill.KAMEJOKO, 3, 5000},
@@ -1480,7 +1480,7 @@ public class BossesData {
             ConstPlayer.XAYDA,
             new short[]{451, 452, 453, -1, -1, -1},
             200000,
-            new int[]{333000000},
+            new int[]{500000000},
             new int[]{118},
             new int[][]{
                     {Skill.KAMEJOKO, 3, 5000},
@@ -1497,7 +1497,7 @@ public class BossesData {
             ConstPlayer.XAYDA,
             new short[]{415, 416, 417, -1, -1, -1},
             200000,
-            new int[]{400000000},
+            new int[]{500000000},
             new int[]{119},
             new int[][]{
                     {Skill.KAMEJOKO, 3, 500},

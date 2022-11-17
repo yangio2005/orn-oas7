@@ -1,6 +1,5 @@
 package com.girlkun.data;
 
-import com.girlkun.database.GirlkunDB;
 import com.girlkun.models.Template.HeadAvatar;
 import com.girlkun.models.Template.MapTemplate;
 
@@ -17,7 +16,6 @@ import com.girlkun.models.Template.NpcTemplate;
 import com.girlkun.models.Template.SkillTemplate;
 import com.girlkun.network.session.ISession;
 import com.girlkun.network.io.Message;
-import com.girlkun.network.session.Session;
 import com.girlkun.server.Manager;
 import com.girlkun.server.io.MySession;
 import com.girlkun.utils.Logger;
