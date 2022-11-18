@@ -55,6 +55,7 @@ public class MySession extends Session {
     public int goldBar;
     public List<Item> itemsReward;
     public String dataReward;
+    public int newreg;
 
     public int version;
 
