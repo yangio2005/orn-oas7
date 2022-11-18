@@ -15,6 +15,7 @@ import com.girlkun.models.npc.NpcFactory;
 import com.girlkun.models.player.Player;
 import com.girlkun.server.Manager;
 import com.girlkun.services.Service;
+import com.girlkun.services.func.TopService;
 import com.girlkun.utils.Util;
 
 import java.util.ArrayList;
@@ -113,6 +114,7 @@ public class Map implements Runnable {
                 for (Zone zone : this.zones) {
                     zone.update();
                 }
+                TopService.gI().updateTop();
                 long timeDo = System.currentTimeMillis() - st;
                 Thread.sleep(1000 - timeDo);
             } catch (Exception e) {
@@ -120,7 +122,7 @@ public class Map implements Runnable {
             }
         }
     }
-
+// a bao tri 1 phut nha baotri
     public void initMob(byte[] mobTemp, byte[] mobLevel, int[] mobHp, short[] mobX, short[] mobY) {
         for (int i = 0; i < mobTemp.length; i++) {
             int mobTempId = mobTemp[i];
@@ -276,7 +278,6 @@ public class Map implements Runnable {
         }
         return null;
     }
-
     //--------------------------------------------------------------------------
     public int yPhysicInTop(int x, int y) {
         int rX = (int) x / SIZE;

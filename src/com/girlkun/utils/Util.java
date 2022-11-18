@@ -3,6 +3,7 @@ package com.girlkun.utils;
 import com.girlkun.database.GirlkunDB;
 import com.girlkun.models.Template;
 import com.girlkun.models.boss.Boss;
+import com.girlkun.models.boss.BossManager;
 import com.girlkun.models.item.Item;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.map.Zone;
@@ -239,10 +240,10 @@ public class Util {
             it.options.add(new Item.ItemOption(7, highlightsItem(it.itemTemplate.gender == 1, new Random().nextInt(10001) + 35000)));
         }
         if (ntl == tempId) {
-            it.options.add(new Item.ItemOption(14, new Random().nextInt(4) + 15));
+            it.options.add(new Item.ItemOption(14, new Random().nextInt(3) + 15));
         }
         it.options.add(new Item.ItemOption(21, 15));
-        it.options.add(new Item.ItemOption(107, new Random().nextInt(7) + 0));
+//        it.options.add(new Item.ItemOption(107, new Random().nextInt(7) + 0)); //sao pha le
         return it;
     }
 
@@ -380,5 +381,13 @@ public class Util {
             default:
                 return 14;
         }
+    }
+
+    public static int randomBossId() {
+        int bossId = Util.nextInt(10000);
+        while (BossManager.gI().getBossById(bossId) != null) {
+            bossId = Util.nextInt(10000);
+        }
+        return bossId;
     }
 }

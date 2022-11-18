@@ -1,6 +1,5 @@
 package com.girlkun.data;
 
-import com.girlkun.database.GirlkunDB;
 import com.girlkun.models.Template.HeadAvatar;
 import com.girlkun.models.Template.MapTemplate;
 
@@ -17,7 +16,6 @@ import com.girlkun.models.Template.NpcTemplate;
 import com.girlkun.models.Template.SkillTemplate;
 import com.girlkun.network.session.ISession;
 import com.girlkun.network.io.Message;
-import com.girlkun.network.session.Session;
 import com.girlkun.server.Manager;
 import com.girlkun.server.io.MySession;
 import com.girlkun.utils.Logger;
@@ -36,7 +34,7 @@ public class DataGame {
     public static byte vsMap = 75;
     public static byte vsSkill = 5;
     public static byte vsItem = 76;
-    public static int vsRes = 752005;
+    public static int vsRes = 752006;
 
     public static String LINK_IP_PORT = "Girlkun75-1:localhost:14445:0";
     private static final String MOUNT_NUM = "733:1,734:2,735:3,743:4,744:5,746:6,795:7,849:8,897:9,920:10";

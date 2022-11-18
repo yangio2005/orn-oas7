@@ -13,6 +13,7 @@ import com.girlkun.services.Service;
 import com.girlkun.services.GiftService;
 import com.girlkun.services.NapThe;
 import com.girlkun.services.NpcService;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,7 +66,7 @@ public class Input {
                     Player pl = Client.gI().getPlayer(text[0]);
                     if (pl != null) {
                         NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_FIND_PLAYER, -1, "Ngài muốn..?",
-                                new String[]{"Đi tới\n" + pl.name, "Gọi " + pl.name + "\ntới đây", "Đổi tên", "Ban"},
+                                new String[]{"Đi tới\n" + pl.name, "Gọi " + pl.name + "\ntới đây", "Đổi tên", "Ban", "Kick"},
                                 pl);
                     } else {
                         Service.getInstance().sendThongBao(player, "Người chơi không tồn tại hoặc đang offline");
@@ -155,8 +156,8 @@ public class Input {
     public void createFormFindPlayer(Player pl) {
         createForm(pl, FIND_PLAYER, "Tìm kiếm người chơi", new SubInput("Tên người chơi", ANY));
     }
-    
-    public void createFormNapThe(Player pl, byte loaiThe){
+
+    public void createFormNapThe(Player pl, byte loaiThe) {
         pl.iDMark.setLoaiThe(loaiThe);
         createForm(pl, NAP_THE, "Nạp thẻ", new SubInput("Mã thẻ", ANY), new SubInput("Seri", ANY));
     }

@@ -16,11 +16,8 @@ import com.girlkun.models.reward.ItemMobReward;
 import com.girlkun.models.reward.MobReward;
 import com.girlkun.network.io.Message;
 import com.girlkun.server.Manager;
-import com.girlkun.services.InventoryServiceNew;
-import com.girlkun.services.ItemMapService;
-import com.girlkun.services.Service;
+import com.girlkun.services.*;
 import com.girlkun.utils.Util;
-import com.girlkun.services.TaskService;
 
 import java.util.ArrayList;
 
@@ -290,9 +287,10 @@ public class Mob {
     }
 
     private List<ItemMap> mobReward(Player player, ItemMap itemTask, Message msg) {
+//        nplayer
         List<ItemMap> itemReward = new ArrayList<>();
         try {
-            if (player.getSession().actived && player.setClothes.setDHD == 5) {
+            if (!player.isBoss && !player.isPet && player.getSession().actived && player.setClothes.setDHD == 5) {
                 byte random = 1;
                 if (Util.isTrue(10, 100)) {
                     random = 2;
@@ -303,7 +301,7 @@ public class Mob {
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.getInstance().sendThongBao(player, "Bạn vừa nhận được " + random + " hồng ngọc");
             }
-
+//a bao tri 1 phut nhe
             itemReward = this.getItemMobReward(player, this.location.x + Util.nextInt(-10, 10),
                     this.zone.map.yPhysicInTop(this.location.x, this.location.y));
             if (itemTask != null) {
@@ -345,7 +343,9 @@ public class Mob {
                 list.add(itemMap);
             }
         }
-
+        if (player.itemTime.isUseMayDo && Util.isTrue(20, 100) && this.tempId > 57 && this.tempId < 66) {
+            list.add(new ItemMap(zone, 380, 1, x, player.location.y, player.id));
+        }
         return list;
     }
 

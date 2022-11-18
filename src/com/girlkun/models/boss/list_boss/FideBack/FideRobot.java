@@ -1,15 +1,11 @@
 package com.girlkun.models.boss.list_boss.FideBack;
 
-import com.girlkun.consts.ConstPlayer;
 import com.girlkun.models.boss.Boss;
 import com.girlkun.models.boss.BossID;
 import com.girlkun.models.boss.BossesData;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
-import com.girlkun.models.skill.Skill;
-import com.girlkun.services.PlayerService;
 import com.girlkun.services.Service;
-import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 import java.util.Random;
 

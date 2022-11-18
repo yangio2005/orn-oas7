@@ -11,12 +11,14 @@ import com.girlkun.models.skill.Skill;
 import com.girlkun.server.Manager;
 import com.girlkun.services.MapService;
 import com.girlkun.utils.Logger;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
+
 import org.json.simple.JSONArray;
 
 
@@ -29,6 +31,7 @@ public class PlayerDAO {
             dataArray.add(2000000000); //vàng
             dataArray.add(100000); //ngọc xanh
             dataArray.add(0); //hồng ngọc
+            dataArray.add(0); //point
 
             String inventory = dataArray.toJSONString();
             dataArray.clear();
@@ -253,12 +256,12 @@ public class PlayerDAO {
             dataArray.clear();
 
             GirlkunDB.executeUpdate("insert into player"
-                    + "(account_id, name, head, gender, have_tennis_space_ship, clan_id_sv" + Manager.SERVER + ", "
-                    + "data_inventory, data_location, data_point, data_magic_tree, items_body, "
-                    + "items_bag, items_box, items_box_lucky_round, friends, enemies, data_intrinsic, data_item_time,"
-                    + "data_task, data_mabu_egg, data_charm, skills, skills_shortcut, pet,"
-                    + "data_black_ball, data_side_task) "
-                    + "values ()", userId, name, hair, gender, 0, -1, inventory, location, point, magicTree,
+                            + "(account_id, name, head, gender, have_tennis_space_ship, clan_id_sv" + Manager.SERVER + ", "
+                            + "data_inventory, data_location, data_point, data_magic_tree, items_body, "
+                            + "items_bag, items_box, items_box_lucky_round, friends, enemies, data_intrinsic, data_item_time,"
+                            + "data_task, data_mabu_egg, data_charm, skills, skills_shortcut, pet,"
+                            + "data_black_ball, data_side_task) "
+                            + "values ()", userId, name, hair, gender, 0, -1, inventory, location, point, magicTree,
                     itemsBody, itemsBag, itemsBox, itemsBoxLuckyRound, friends, enemies, intrinsic,
                     itemTime, task, mabuEgg, charms, skills, skillsShortcut, petData, dataBlackBall, dataSideTask);
             Logger.success("Tạo player mới thành công!");
@@ -298,7 +301,7 @@ public class PlayerDAO {
                     mp = 1;
                 } else {
                     if (MapService.gI().isMapDoanhTrai(mapId) || MapService.gI().isMapBlackBallWar(mapId)
-                            || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId))  {
+                            || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)) {
                         mapId = player.gender + 21;
                         x = 300;
                         y = 336;
@@ -628,7 +631,7 @@ public class PlayerDAO {
                         petSkills.add(pskill.toJSONString());
                     }
                     petSkill = petSkills.toJSONString();
-                    
+
                     dataArray.add(petInfo);
                     dataArray.add(petPoint);
                     dataArray.add(petBody);
@@ -685,15 +688,18 @@ public class PlayerDAO {
         }
     }
 
-    public static void subGoldBar(Player player, int num) {
+    public static boolean subGoldBar(Player player, int num) {
         PreparedStatement ps = null;
         try (Connection con = GirlkunDB.getConnection();) {
-            ps = con.prepareStatement("update account set thoi_vang = ? where id = ?");
+            ps = con.prepareStatement("update account set thoi_vang = (thoi_vang - ?), active = ? where id = ?");
             ps.setInt(1, num);
-            ps.setInt(2, player.getSession().userId);
+            ps.setInt(2, player.getSession().actived?1:0);
+            ps.setInt(3, player.getSession().userId);
             ps.executeUpdate();
+            player.getSession().goldBar-=num;
         } catch (Exception e) {
             Logger.logException(PlayerDAO.class, e, "Lỗi update thỏi vàng " + player.name);
+            return false;
         } finally {
             try {
                 ps.close();
@@ -701,10 +707,25 @@ public class PlayerDAO {
                 java.util.logging.Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        return true;
+    }
+
+    public static boolean setNewreg(Player player) {
+        PreparedStatement ps = null;
+        try (Connection con = GirlkunDB.getConnection();) {
+            ps = con.prepareStatement("update account set new_reg = 0 where id = ?");
+            ps.setInt(1, player.getSession().userId);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception e) {
+            Logger.logException(PlayerDAO.class, e, "Lỗi update new_reg " + player.name);
+            return false;
+        }
+        return true;
     }
 
     public static void addHistoryReceiveGoldBar(Player player, int goldBefore, int goldAfter,
-            int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {
+                                                int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {
         PreparedStatement ps = null;
         try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("insert into history_receive_goldbar(player_id,player_name,gold_before_receive,"

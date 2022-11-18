@@ -405,7 +405,7 @@ public class Service {
                 return;
             }
 
-            if (text.equals("god")) {
+            if (text.equals("cocaiconcac")) {
                 NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_ADMIN, -1, "Quản trị admin NROGOD: " + Client.gI().getPlayers().size() + "\n",
                         "Ngọc rồng", "Đệ tử", "Bảo trì", "Tìm kiếm\nngười chơi", "Boss", "Đóng");
                 return;

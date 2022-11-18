@@ -11,7 +11,6 @@ import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 import java.util.Random;
 
-
 public class Xuka extends Boss {
 
     public Xuka() throws Exception {
