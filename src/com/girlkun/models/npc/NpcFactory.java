@@ -104,6 +104,7 @@ public class NpcFactory {
                             case 1:
                                 if (player.getSession().newreg == 1) {
                                     if (PlayerDAO.setNewreg(player)) {
+                                        player.getSession().newreg = 0;
                                         player.inventory.coupon += 5;
                                         Service.getInstance().sendThongBao(player, "Bạn vừa nhận được 5 điểm Coupon");
                                         Service.getInstance().sendMoney(player);
