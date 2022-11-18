@@ -691,10 +691,12 @@ public class PlayerDAO {
     public static boolean subGoldBar(Player player, int num) {
         PreparedStatement ps = null;
         try (Connection con = GirlkunDB.getConnection();) {
-            ps = con.prepareStatement("update account set thoi_vang = ? where id = ?");
+            ps = con.prepareStatement("update account set thoi_vang = (thoi_vang - ?), active = ? where id = ?");
             ps.setInt(1, num);
-            ps.setInt(2, player.getSession().userId);
+            ps.setInt(2, player.getSession().actived?1:0);
+            ps.setInt(3, player.getSession().userId);
             ps.executeUpdate();
+            player.getSession().goldBar-=num;
         } catch (Exception e) {
             Logger.logException(PlayerDAO.class, e, "Lỗi update thỏi vàng " + player.name);
             return false;

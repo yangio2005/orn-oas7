@@ -214,12 +214,14 @@ public class NpcFactory {
                                 if (player.getSession().goldBar > 0) {
                                     if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
                                         int quantity = player.getSession().goldBar;
-                                        Item goldBar = ItemService.gI().createNewItem((short) 457, quantity);
-                                        InventoryServiceNew.gI().addItemBag(player, goldBar);
-                                        InventoryServiceNew.gI().sendItemBags(player);
-                                        PlayerDAO.subGoldBar(player, player.getSession().goldBar);
-                                        this.npcChat(player, "Ta đã gửi " + player.getSession().goldBar + " thỏi vàng vào hành trang của con\n con hãy kiểm tra ");
-                                        player.getSession().goldBar = 0;
+                                        if (PlayerDAO.subGoldBar(player, player.getSession().goldBar)) {
+                                            Item goldBar = ItemService.gI().createNewItem((short) 457, quantity);
+                                            InventoryServiceNew.gI().addItemBag(player, goldBar);
+                                            InventoryServiceNew.gI().sendItemBags(player);
+                                            this.npcChat(player, "Ta đã gửi " + quantity + " thỏi vàng vào hành trang của con\n con hãy kiểm tra ");
+                                        } else {
+                                            this.npcChat(player, "Lỗi vui lòng báo admin...");
+                                        }
                                     } else {
                                         this.npcChat(player, "Hãy chừa cho ta 1 ô trống");
                                     }
@@ -229,7 +231,7 @@ public class NpcFactory {
 
                                 break;
                             case 4:
-                                this.createOtherMenu(player, ConstNpc.CONFIRM_ACTIVE, "Mở thành viên chi phí 20 thỏi vàng", "Đồng ý", "Từ Chối");
+                                NpcService.gI().createMenuConMeo(player, ConstNpc.CONFIRM_ACTIVE, -1, "Mở thành viên chi phí 20 thỏi vàng", "Đồng ý", "Từ Chối");
                                 break;
                         }
                     }
@@ -2261,11 +2263,13 @@ public class NpcFactory {
                         switch (select) {
                             case 0:
                                 if (player.getSession().goldBar >= 20) {
-                                    player.getSession().goldBar -= 20;
-                                    PlayerDAO.subGoldBar(player, 20);
                                     player.getSession().actived = true;
-                                    Service.getInstance().sendThongBao(player, "Đã mở thành viên thành công!");
-                                    break;
+                                    if (PlayerDAO.subGoldBar(player, 20)) {
+                                        Service.getInstance().sendThongBao(player, "Đã mở thành viên thành công!");
+                                        break;
+                                    } else {
+                                        this.npcChat(player, "Lỗi vui lòng báo admin...");
+                                    }
                                 }
                                 Service.getInstance().sendThongBao(player, "Bạn không có vàng\n Vui lòng NROGOD.COM để nạp thỏi vàng");
                                 break;
@@ -2278,7 +2282,7 @@ public class NpcFactory {
                             }
                             Service.getInstance().sendThongBao(player, "Đã xóa hết vật phẩm trong rương");
                         }
-                        break;
+                        break;//nplayer
                     case ConstNpc.MENU_FIND_PLAYER:
                         Player p = (Player) PLAYERID_OBJECT.get(player.id);
                         if (p != null) {

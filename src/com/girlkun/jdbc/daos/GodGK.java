@@ -913,7 +913,6 @@ public class GodGK {
             System.out.println(name);
             e.printStackTrace();
             Logger.logException(Manager.class, e, "Lỗi load database");
-            System.exit(0);
         }
     }
 }
