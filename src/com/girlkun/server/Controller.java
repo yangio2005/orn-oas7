@@ -663,18 +663,6 @@ public class Controller implements IMessageHandler {
                             + "Bạn hãy di chuyển nhân vật theo mũi tên chỉ hướng");
         }
 
-        //send vàng tự động
-        if (session.goldBar > 0 && InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
-            if (PlayerDAO.subGoldBar(player, 0)) {
-                int quantity = player.getSession().goldBar;
-                Item goldBar = ItemService.gI().createNewItem((short) 457, quantity);
-                InventoryServiceNew.gI().addItemBag(player, goldBar);
-                InventoryServiceNew.gI().sendItemBags(player);
-                session.goldBar = 0;
-                NpcService.gI().createTutorial(player, -1, "Ông đã để " + quantity + " thỏi vàng vào hành trang con rồi đấy");
-            }
-        }
-
     }
 
     private void sendThongBaoServer(Player player) {

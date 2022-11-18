@@ -708,6 +708,20 @@ public class PlayerDAO {
         return true;
     }
 
+    public static boolean setNewreg(Player player) {
+        PreparedStatement ps = null;
+        try (Connection con = GirlkunDB.getConnection();) {
+            ps = con.prepareStatement("update account set new_reg = 0 where id = ?");
+            ps.setInt(1, player.getSession().userId);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception e) {
+            Logger.logException(PlayerDAO.class, e, "Lỗi update new_reg " + player.name);
+            return false;
+        }
+        return true;
+    }
+
     public static void addHistoryReceiveGoldBar(Player player, int goldBefore, int goldAfter,
                                                 int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {
         PreparedStatement ps = null;
