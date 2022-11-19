@@ -14,14 +14,14 @@ public class ConstNpc {
             + "Bệnh của Gôku ở quá khứ là nan y, nhưng với trình độ y học tương lai chỉ cần uống thuốc là khỏi...\n"
             + "Hãy đi theo cháu đến tương lai giúp nhóm của Gôku đánh bạn bọn Android sát thủ\n"
             + "Khi nào chú cần sự giúp đỡ của cháu hãy đến đây nhé";
-    
+
     public static final String HUONG_DAN_DOANH_TRAI = "1) Trại độc nhãn là nơi các ngươi không nên vào vì những tướng tá rất mạnh. Hahaha\n"
             + "2) Trong trại độc nhãn, mỗi vị tướng đều giữ ngọc rồng từ 4 sao đến 6 sao, tùy lúc\n"
             + "3) Nếu ngươi thích chết thì cứ việc vào. Nhưng ta chỉ cho vào mỗi ngày một lần thôi, để ngươi khỏi phải chết nhiều, hahaha.\n"
             + "4) Các vị tướng trong trại rất mạnh nhé, các ngươi không đơn giản có thể đánh bại họ bằng cách bình thường như đánh quái được đâu\n"
             + "5) Muốn vào, ngươi phải đi cùng một người đồng đội cùng bang (phải đứng gần ngươi). Nhưng ta khuyên là nên đi 3-4 người cùng.\n"
             + "6) Mỗi lần vào, ngươi chỉ có 30 phút để đánh. Sau 30 phút mà ngươi vẫn không thắng, ta sẽ cho máy bay chở ngươi về nhà.";
-    
+
     public static final String HUONG_DAN_BLACK_BALL_WAR = "Mỗi ngày từ 20h đến 21h các hành tinh có Ngọc Rồng Sao Đen sẽ xảy ra 1 cuộc đại chiến\n"
             + "Người nào tìm thấy và giữ được Ngọc Rồng Sao Đen sẽ mang phần thưởng về cho bang của mình trong vòng 1 ngày\n"
             + "Lưu ý mỗi bang có thể chiếm hữu nhiều viên khác nhau nhưng nếu cùng loại cũng chỉ nhận được 1 lần phần thưởng đó. Có 2 cách để thắng:\n"
@@ -104,8 +104,8 @@ public class ConstNpc {
     public static final byte MR_POPO = 67;
     public static final byte PANCHY = 68;
     public static final byte THO_DAI_CA = 69;
-    
-    
+
+
     //----------------------index menu------------------------------------------
     //menu o len tang map mabu
     public static final int GO_UPSTAIRS_MENU = 10000;
@@ -113,16 +113,19 @@ public class ConstNpc {
     //index menu base
     public static final int IGNORE_MENU = 712002;
     public static final int BASE_MENU = 752002;
-    
+
     //index quy lão kamê
     public static final int MENU_OPEN_DBKB = 500;
     public static final int MENU_OPENED_DBKB = 501;
     public static final int MENU_ACCEPT_GO_TO_BDKB = 502;
-    
+    public static final int MENU_EVENT = 523;
+    public static final int MENU_GIAO_BONG = 524;
+    public static final int CONFIRM_DOI_THUONG_SU_KIEN = 525;
+
     //index than vu tru
     public static final int MENU_DI_CHUYEN = 500;
-    
-    
+
+
     //index menu ba hat mit
     public static final int MENU_PHA_LE_HOA_TRANG_BI = 500;
     public static final int MENU_CHUYEN_HOA_TRANG_BI = 501;
@@ -133,8 +136,8 @@ public class ConstNpc {
 
     //index menu linh canh
     public static final int MENU_JOIN_DOANH_TRAI = 502;
-    
-    
+
+
     //index menu con meo
     public static final int MAKE_MATCH_PVP = 502;
     public static final int MAKE_FRIEND = 503;
@@ -160,7 +163,7 @@ public class ConstNpc {
     public static final int MENU_OPTION_USE_ITEM2003 = 2003;
     public static final int MENU_OPTION_USE_ITEM2004 = 2004;
     public static final int MENU_OPTION_USE_ITEM2005 = 2005;
-
+    public static final int MENU_OPTION_USE_ITEM736 = 736;
 
 
     //index menu rong thieng
@@ -176,30 +179,30 @@ public class ConstNpc {
     public static final int MAGIC_TREE_CONFIRM_UPGRADE = 503;
     public static final int MAGIC_TREE_UPGRADE = 504;
     public static final int MAGIC_TREE_CONFIRM_UNUPGRADE = 505;
-    
+
     //index menu mabu egg
     public static final int CAN_NOT_OPEN_EGG = 500;
     public static final int CAN_OPEN_EGG = 501;
     public static final int CONFIRM_OPEN_EGG = 502;
     public static final int CONFIRM_DESTROY_EGG = 503;
-    
+
     //index menu npc nhà
     public static final int QUA_TAN_THU = 500;
     public static final int MENU_PHAN_THUONG = 501;
     public static final int NAP_THE = 502;
-    
+
     //index menu quốc vương
     public static final int OPEN_POWER_MYSEFT = 500;
     public static final int OPEN_POWER_PET = 501;
-    
+
     //index menu thượng đế
     public static final int MENU_CHOOSE_LUCKY_ROUND = 500;
-    
+
     //index menu cui
     public static final int MENU_FIND_KUKU = 501;
     public static final int MENU_FIND_MAP_DAU_DINH = 502;
     public static final int MENU_FIND_RAMBO = 503;
-    
+
     //index menu rồng omega
     public static final int MENU_NOT_OPEN_BDW = 500;
     public static final int MENU_OPEN_BDW = 501;
@@ -208,21 +211,20 @@ public class ConstNpc {
     public static final int MENU_NOT_OPEN_MMB = 500;
     public static final int MENU_OPEN_MMB = 501;
     public static final int MENU_REWARD_MMB = 502;
-    
+
     //index menu rồng sao đen
     public static final int MENU_PHU_HP = 500;
     public static final int MENU_OPTION_PHU_HP = 501;
     public static final int MENU_OPTION_GO_HOME = 502;
 
 
-
     //index menu bò mộng
     public static final int MENU_OPTION_LEVEL_SIDE_TASK = 500;
     public static final int MENU_OPTION_PAY_SIDE_TASK = 501;
-    
+
     //------------------------------shop id-------------------------------------
     //npcname_shoporder
-    
+
     public static final int SHOP_BUNMA_QK_0 = 500;
     public static final int SHOP_DENDE_0 = 501;
     public static final int SHOP_APPULE_0 = 502;
@@ -235,5 +237,5 @@ public class ConstNpc {
     public static final int SIDE_BOX_LUCKY_ROUND = 509;
     public static final int SHOP_BUNMA_TL_0 = 510;
     public static final int SIDE_BOX_ITEM_REWARD = 511;
-    
+
 }

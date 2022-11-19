@@ -390,4 +390,13 @@ public class Util {
         }
         return bossId;
     }
+
+    public static long tinhLuyThua(int coSo, int soMu) {
+        long ketQua = 1;
+
+        for (int i = 0; i < soMu; i++) {
+            ketQua *= coSo;
+        }
+        return ketQua;
+    }
 }

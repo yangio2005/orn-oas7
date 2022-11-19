@@ -66,10 +66,10 @@ public class NpcFactory {
             public void openBaseMenu(Player player) {
                 if (canOpenNpc(player)) {
                     if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
-                        if (player.getSession().newreg == 1) {
-                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?", "Giải tán bang hội", "Nhận quà\nđền bù");
+                        if (player.getSession().is_gift_box) {
+                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?", "Sự kiện\n20/11", "Giải tán bang hội", "Nhận quà\nđền bù");
                         } else {
-                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?", "Giải tán bang hội");
+                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?", "Sự kiện\n20/11", "Giải tán bang hội");
                         }
                     }
                 }
@@ -81,6 +81,11 @@ public class NpcFactory {
                     if (player.iDMark.isBaseMenu()) {
                         switch (select) {
                             case 0:
+                                NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_EVENT, -1, "Hãy mang bông về cho ta, với 100 bông ta sẽ đổi cho con 1 hộp quà\n " +
+                                                "mỗi lần mở hộp quà con sẽ nhận được 1 điểm\n với 3000 điểm sự kiện con sẽ đổi được 1 HỘP QUÀ VIP ",
+                                        "Điểm sự kiện", "Bảng xếp hạng sự kiện", "Giao bông", "Đổi Thưởng");
+                                break;
+                            case 1:
                                 Clan clan = player.clan;
                                 if (clan != null) {
                                     ClanMember cm = clan.getClanMember((int) player.id);
@@ -101,10 +106,10 @@ public class NpcFactory {
                                 }
                                 Service.getInstance().sendThongBao(player, "Có bang hội đâu ba!!!");
                                 break;
-                            case 1:
-                                if (player.getSession().newreg == 1) {
+                            case 2:
+                                if (player.getSession().is_gift_box) {
                                     if (PlayerDAO.setNewreg(player)) {
-                                        player.getSession().newreg = 0;
+                                        player.getSession().is_gift_box = false;
                                         player.inventory.coupon += 5;
                                         Service.getInstance().sendThongBao(player, "Bạn vừa nhận được 5 điểm Coupon");
                                         Service.getInstance().sendMoney(player);
@@ -647,7 +652,7 @@ public class NpcFactory {
                 if (canOpenNpc(player)) {
                     createOtherMenu(player, ConstNpc.BASE_MENU,
                             "Xin chào, ta có một số vật phẩm đặt biệt cậu có muốn xem không?",
-                            "Cửa hàng", "Tiệm\nhồng ngọc");
+                            "Cửa hàng", "Tiệm\nhồng ngọc", "Hộp Quà\nEvent 20/11");
                 }
             }
 
@@ -663,6 +668,14 @@ public class NpcFactory {
                                 case 1: //tiệm hồng ngọc
                                     ShopServiceNew.gI().opendShop(player, "SANTA_RUBY", false);
                                     break;
+                                case 2:
+                                    if (player.getSession().actived) {
+                                        ShopServiceNew.gI().opendShop(player, "SANTA_EVENT", false);
+                                    } else {
+                                        Service.getInstance().sendThongBao(player, "Vui lòng kích hoạt tài khoản để sử dụng chức năng này");
+                                    }
+                                    break;
+
 //                                case 2: //tiệm hớt tóc
 //                                    ShopServiceNew.gI().opendShop(player, "SANTA_HEAD", false);
 //                                    break;
@@ -2145,6 +2158,13 @@ public class NpcFactory {
                             Logger.error("Lỗi mở hộp quà");
                         }
                         break;
+                    case ConstNpc.MENU_OPTION_USE_ITEM736:
+                        try {
+                            ItemService.gI().OpenDHD(player, player.iDMark.getIndexMenu(), select);
+                        } catch (Exception e) {
+                            Logger.error("Lỗi mở hộp quà");
+                        }
+                        break;
                     case ConstNpc.INTRINSIC:
                         if (select == 0) {
                             IntrinsicService.gI().showAllIntrinsic(player);
@@ -2293,6 +2313,33 @@ public class NpcFactory {
                                     Client.gI().kickSession(p.getSession());
                                     break;
                             }
+                        }
+                        break;
+                    case ConstNpc.MENU_EVENT:
+                        switch (select) {
+                            case 0:
+                                Service.getInstance().sendThongBaoOK(player, "Điểm sự kiện: " + player.getSession().event + " ngon ngon...");
+                                break;
+                            case 1:
+                                Service.getInstance().sendThongBaoOK(player, "Mày top 1 rồi khỏi coi");
+                                break;
+                            case 2:
+                                NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_GIAO_BONG, -1, "Người muốn giao bao nhiêu bông...",
+                                        "100 bông", "1000 bông", "10000 bông");
+                                break;
+                            case 3:
+                                NpcService.gI().createMenuConMeo(player, ConstNpc.CONFIRM_DOI_THUONG_SU_KIEN, -1, "Con có thực sự muốn đổi thưởng?\nPhải giao cho ta 3000 điểm sự kiện đấy... ",
+                                        "Đồng ý", "Từ chối");
+                                break;
+
+                        }
+                        break;
+                    case ConstNpc.MENU_GIAO_BONG:
+                        ItemService.gI().giaobong(player, (int) Util.tinhLuyThua(10, select + 2));
+                        break;
+                    case ConstNpc.CONFIRM_DOI_THUONG_SU_KIEN:
+                        if (select == 0) {
+                            ItemService.gI().openBoxVip(player);
                         }
                         break;
                 }

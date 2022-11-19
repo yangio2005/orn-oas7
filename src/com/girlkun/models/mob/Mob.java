@@ -346,6 +346,9 @@ public class Mob {
         if (player.itemTime.isUseMayDo && Util.isTrue(20, 100) && this.tempId > 57 && this.tempId < 66) {
             list.add(new ItemMap(zone, 380, 1, x, player.location.y, player.id));
         }
+        if (player.getSession().actived && Util.isTrue(30, 100)) {
+            list.add(new ItemMap(zone, 610, 1, x, player.location.y, player.id));
+        }
         return list;
     }
 

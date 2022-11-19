@@ -134,6 +134,7 @@ public class TransactionService implements Runnable {
     public void cancelTrade(Player player) {
         Trade trade = PLAYER_TRADE.get(player);
         if (trade != null) {
+            player.iDMark.setLastTimeTrade(System.currentTimeMillis());
             trade.cancelTrade();
         }
     }
