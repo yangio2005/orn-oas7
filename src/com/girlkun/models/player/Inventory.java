@@ -23,6 +23,7 @@ public class Inventory {
     public int gem;
     public int ruby;
     public int coupon;
+    public int event;
 
     public Inventory() {
         itemsBody = new ArrayList<>();

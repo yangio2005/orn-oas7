@@ -92,6 +92,7 @@ public class Manager {
     public static final String queryTopHP = "SELECT name, gender, CAST( split_str(data_point,',',6) AS UNSIGNED) AS hp FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(data_point,',',6)  AS UNSIGNED) DESC LIMIT 10;";
     public static final String queryTopKI = "SELECT name, gender, CAST( split_str(data_point,',',7) AS UNSIGNED) AS ki FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(data_point,',',7)  AS UNSIGNED) DESC LIMIT 10;";
     public static final String queryTopNV = "SELECT name, gender, CAST( split_str(split_str(data_task,',',1),'[',2)  AS UNSIGNED) AS nv FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(split_str(data_task,',',1),'[',2)  AS UNSIGNED) DESC, CAST(split_str(data_task,',',2)  AS UNSIGNED) DESC, CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 10;";
+    public static final String queryTopSK = "SELECT name, gender, event FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY event ASC LIMIT 10;";
 
 
     public static List<TOP> topSM;
@@ -99,6 +100,7 @@ public class Manager {
     public static List<TOP> topHP;
     public static List<TOP> topKI;
     public static List<TOP> topNV;
+    public static List<TOP> topSK;
     public static long timeRealTop = 0;
     public static final short[] itemIds_TL = {555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567, 561};
     public static final byte[] itemIds_NR_SB = {15, 16};
@@ -758,10 +760,12 @@ public class Manager {
                 Logger.success("Load map template thành công (" + MAP_TEMPLATES.length + ")\n");
                 RUBY_REWARDS.add(Util.sendDo(861, 0, new ArrayList<>()));
             }
-            topSM = realTop(queryTopSM, ps, rs, con);
+            topSM = realTop(queryTopSM, con);
             Logger.success("Load top sm thành công (" + topSM.size() + ")\n");
-            topNV = realTop(queryTopNV, ps, rs, con);
+            topNV = realTop(queryTopNV, con);
             Logger.success("Load top nv thành công (" + topNV.size() + ")\n");
+            topSK = realTop(queryTopSK, con);
+            Logger.success("Load top nv thành công (" + topSK.size() + ")\n");
             Manager.timeRealTop = System.currentTimeMillis();
             try {
                 if (rs != null) {
@@ -789,11 +793,11 @@ public class Manager {
         Logger.log(Logger.PURPLE, "Tổng thời gian load database: " + (System.currentTimeMillis() - st) + "(ms)\n");
     }
 
-    public static List<TOP> realTop(String query, PreparedStatement ps, ResultSet rs, Connection con) {
+    public static List<TOP> realTop(String query, Connection con) {
         List<TOP> tops = new ArrayList<>();
         try {
-            ps = con.prepareStatement(query);
-            rs = ps.executeQuery();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 TOP top = TOP.builder().name(rs.getString("name")).gender(rs.getByte("gender")).build();
                 switch (query) {
@@ -802,6 +806,9 @@ public class Manager {
                         break;
                     case queryTopNV:
                         top.setNv(rs.getByte("nv"));
+                        break;
+                    case queryTopSK:
+                        top.setSk(rs.getByte("event"));
                         break;
                 }
                 tops.add(top);

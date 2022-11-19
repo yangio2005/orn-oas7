@@ -65,12 +65,11 @@ public class GodGK {
                 session.goldBar = rs.getInt("account.thoi_vang");
                 session.dataReward = rs.getString("reward");
                 session.is_gift_box = rs.getBoolean("is_gift_box");
-                session.event = rs.getInt("event");
 
 
 //                if (!session.isAdmin) {
-//                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
-//                } else
+////                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
+////                } else
 
                 if (rs.getBoolean("ban")) {
                     Service.getInstance().sendThongBaoOK(session, "Tài khoản đã bị khóa!");
@@ -128,10 +127,11 @@ public class GodGK {
                             player.inventory.gold = Integer.parseInt(String.valueOf(dataArray.get(0)));
                             player.inventory.gem = Integer.parseInt(String.valueOf(dataArray.get(1)));
                             player.inventory.ruby = Integer.parseInt(String.valueOf(dataArray.get(2)));
-                            if (dataArray.size() == 4) {
-                                player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
+                            player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
+                            if (dataArray.size() == 5) {
+                                player.inventory.event = Integer.parseInt(String.valueOf(dataArray.get(4)));
                             } else {
-                                player.inventory.coupon = 0;
+                                player.inventory.event = 0;
                             }
                             dataArray.clear();
 

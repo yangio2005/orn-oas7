@@ -1718,10 +1718,10 @@ public class NpcFactory {
                 if (canOpenNpc(player)) {
                     if (player.iDMark.isBaseMenu()) {
                         if (select == 0) {
-                            Util.showListBoss(player, (byte) select);
+                            Util.showListTop(player, (byte) select);
                         }
                         if (select == 1) {
-                            Util.showListBoss(player, (byte) select);
+                            Util.showListTop(player, (byte) select);
                         }
                     }
                 }
@@ -2318,10 +2318,10 @@ public class NpcFactory {
                     case ConstNpc.MENU_EVENT:
                         switch (select) {
                             case 0:
-                                Service.getInstance().sendThongBaoOK(player, "Điểm sự kiện: " + player.getSession().event + " ngon ngon...");
+                                Service.getInstance().sendThongBaoOK(player, "Điểm sự kiện: " + player.inventory.event + " ngon ngon...");
                                 break;
                             case 1:
-                                Service.getInstance().sendThongBaoOK(player, "Mày top 1 rồi khỏi coi");
+                                Util.showListTop(player, (byte) 2);
                                 break;
                             case 2:
                                 NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_GIAO_BONG, -1, "Người muốn giao bao nhiêu bông...",

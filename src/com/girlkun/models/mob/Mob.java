@@ -301,7 +301,7 @@ public class Mob {
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.getInstance().sendThongBao(player, "Bạn vừa nhận được " + random + " hồng ngọc");
             }
-//a bao tri 1 phut nhe
+
             itemReward = this.getItemMobReward(player, this.location.x + Util.nextInt(-10, 10),
                     this.zone.map.yPhysicInTop(this.location.x, this.location.y));
             if (itemTask != null) {
@@ -346,7 +346,7 @@ public class Mob {
         if (player.itemTime.isUseMayDo && Util.isTrue(20, 100) && this.tempId > 57 && this.tempId < 66) {
             list.add(new ItemMap(zone, 380, 1, x, player.location.y, player.id));
         }
-        if (player.getSession().actived && Util.isTrue(30, 100)) {
+        if (!player.isPet && player.getSession().actived && Util.isTrue(30, 100)) {
             list.add(new ItemMap(zone, 610, 1, x, player.location.y, player.id));
         }
         return list;

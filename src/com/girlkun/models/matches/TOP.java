@@ -14,4 +14,5 @@ public class TOP {
     private long hp;
     private long sd;
     private byte nv;
+    private int sk;
 }

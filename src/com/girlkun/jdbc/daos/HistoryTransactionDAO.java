@@ -29,11 +29,13 @@ public class HistoryTransactionDAO {
         for (Item item : itemP1) {
             if (item.isNotNullItem()) {
                 itemPlayer1 += item.template.name + " (x" + item.quantity + "),";
+                System.out.println(item.quantity);
             }
         }
         for (Item item : itemP2) {
             if (item.isNotNullItem()) {
                 itemPlayer2 += item.template.name + " (x" + item.quantity + "),";
+                System.out.println(item.quantity);
             }
         }
         String beforeTran1 = "";

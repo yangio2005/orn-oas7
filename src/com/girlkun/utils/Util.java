@@ -324,13 +324,24 @@ public class Util {
         return "";
     }
 
-    public static void showListBoss(Player player, byte select) {
-        List<TOP> tops = select == 0 ? Manager.topSM : Manager.topNV;
+    public static void showListTop(Player player, byte select) {
+        List<TOP> tops = Manager.topSK;
+        switch (select) {
+            case 0:
+                tops = Manager.topSM;
+                break;
+            case 1:
+                tops = Manager.topNV;
+                break;
+            case 2:
+                tops = Manager.topSK;
+                break;
+        }
         Message msg;
         try {
             msg = new Message(-96);
             msg.writer().writeByte(0);
-            msg.writer().writeUTF("Boss");
+            msg.writer().writeUTF("Top");
             msg.writer().writeByte(tops.size());
             for (int i = 0; i < tops.size(); i++) {
                 TOP top = tops.get(i);
@@ -340,8 +351,20 @@ public class Util {
                 msg.writer().writeShort(getBody(top.getGender()));
                 msg.writer().writeShort(getLeg(top.getGender()));
                 msg.writer().writeUTF(top.getName());
-                msg.writer().writeUTF(select == 0 ? top.getPower() + "" : top.getNv() + "");
-                msg.writer().writeUTF(select == 0 ? top.getPower() + "" : top.getNv() + "");
+                switch (select) {
+                    case 0:
+                        msg.writer().writeUTF(top.getPower() + "");
+                        msg.writer().writeUTF(top.getPower() + "");
+                        break;
+                    case 1:
+                        msg.writer().writeUTF(top.getNv() + "");
+                        msg.writer().writeUTF(top.getNv() + "");
+                        break;
+                    default:
+                        msg.writer().writeUTF(top.getSk() + "");
+                        msg.writer().writeUTF(top.getSk() + "");
+                        break;
+                }
             }
             player.sendMessage(msg);
             msg.cleanup();

@@ -277,7 +277,7 @@ public class ItemService {
             InventoryServiceNew.gI().subQuantityItemsBag(player, itemUse, 1);
             InventoryServiceNew.gI().addItemBag(player, item);
             InventoryServiceNew.gI().sendItemBags(player);
-            player.getSession().event++;
+            player.inventory.event++;
             Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + item.template.name);
             CombineServiceNew.gI().sendEffectOpenItem(player, icon[0], icon[1]);
         } catch (Exception e) {
@@ -388,7 +388,7 @@ public class ItemService {
         item.itemOptions.add(new Item.ItemOption(76, 1));//VIP
         item.itemOptions.add(new Item.ItemOption(77, 28));//hp 28%
         item.itemOptions.add(new Item.ItemOption(103, 25));//ki 25%
-        item.itemOptions.add(new Item.ItemOption(147, 26));//sd 26%
+        item.itemOptions.add(new Item.ItemOption(147, 24));//sd 26%
         item.itemOptions.add(new Item.ItemOption(117, 18));//Đẹp + 18% sd
         if (Util.isTrue(995, 1000) && rating) {// tỉ lệ ra hsd
             item.itemOptions.add(new Item.ItemOption(93, new Random().nextInt(3) + 1));//hsd
@@ -429,7 +429,6 @@ public class ItemService {
     public Item randomRac() {
         short[] racs = {20, 19, 18, 17, 220, 221, 222, 223, 224};
         Item item = createItemSetKichHoat(racs[Util.nextInt(racs.length - 1)], 1);
-        item.itemOptions.add(new Item.ItemOption(30, 1));//ko the gd
         return item;
     }
 
@@ -438,14 +437,12 @@ public class ItemService {
             Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 2 ô trống hành trang");
             return;
         }
-        if (player.getSession().event < 3000) {
+        if (player.inventory.event < 3000) {
             Service.getInstance().sendThongBao(player, "Bạn không đủ bông...");
             return;
         }
         Item item;
-        if (Util.isTrue(30, 100)) {
-            item = vanBay2011(false);
-        } else if (Util.isTrue(30, 100)) {
+        if (Util.isTrue(45, 100)) {
             item = caitrang2011(false);
         } else {
             item = phuKien2011(false);
@@ -455,7 +452,7 @@ public class ItemService {
         icon[1] = item.template.iconID;
         InventoryServiceNew.gI().addItemBag(player, item);
         InventoryServiceNew.gI().sendItemBags(player);
-        player.getSession().event -= 3000;
+        player.inventory.event -= 3000;
         Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + item.template.name);
         CombineServiceNew.gI().sendEffectOpenItem(player, icon[0], icon[1]);
     }
@@ -469,10 +466,11 @@ public class ItemService {
                 return;
             }
             InventoryServiceNew.gI().subQuantityItemsBag(player, itemUse, quantity);
-            Item item = createItemSetKichHoat(736, quantity / 100);
+            Item item = createItemSetKichHoat(736, (quantity / 100));
+            item.itemOptions.add(new Item.ItemOption(30, 1));//ko the gd
             InventoryServiceNew.gI().addItemBag(player, item);
             InventoryServiceNew.gI().sendItemBags(player);
-            Service.getInstance().sendThongBao(player, "Bạn đã nhận được x" + item.quantity + " " + item.template.name);
+            Service.getInstance().sendThongBao(player, "Bạn đã nhận được x" + (quantity / 100) + " " + item.template.name);
         } catch (Exception e) {
             Service.getInstance().sendThongBao(player, "Bạn không đủ bông...");
         }

@@ -284,6 +284,7 @@ public class PlayerDAO {
                 dataArray.add(player.inventory.gem);
                 dataArray.add(player.inventory.ruby);
                 dataArray.add(player.inventory.coupon);
+                dataArray.add(player.inventory.event);
                 String inventory = dataArray.toJSONString();
                 dataArray.clear();
 
@@ -693,10 +694,10 @@ public class PlayerDAO {
         try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set thoi_vang = (thoi_vang - ?), active = ? where id = ?");
             ps.setInt(1, num);
-            ps.setInt(2, player.getSession().actived?1:0);
+            ps.setInt(2, player.getSession().actived ? 1 : 0);
             ps.setInt(3, player.getSession().userId);
             ps.executeUpdate();
-            player.getSession().goldBar-=num;
+            player.getSession().goldBar -= num;
         } catch (Exception e) {
             Logger.logException(PlayerDAO.class, e, "Lỗi update thỏi vàng " + player.name);
             return false;
@@ -707,6 +708,7 @@ public class PlayerDAO {
                 java.util.logging.Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        insertHistoryGold(player, num);
         return true;
     }
 
@@ -779,6 +781,21 @@ public class PlayerDAO {
             } catch (Exception e) {
             }
         }
+    }
+
+    public static boolean insertHistoryGold(Player player, int quantily) {
+        PreparedStatement ps = null;
+        try (Connection con = GirlkunDB.getConnection();) {
+            ps = con.prepareStatement("insert into history_gold(name,gold) values (?,?)");
+            ps.setString(1, player.name);
+            ps.setInt(2, quantily);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception e) {
+            Logger.logException(PlayerDAO.class, e, "Lỗi insert history_gold " + player.name);
+            return false;
+        }
+        return true;
     }
 
 }

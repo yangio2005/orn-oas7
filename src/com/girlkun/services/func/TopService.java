@@ -81,10 +81,9 @@ public class TopService {
         if (Manager.timeRealTop + (30 * 60 * 1000) < System.currentTimeMillis()) {
             Manager.timeRealTop = System.currentTimeMillis();
             try (Connection con = GirlkunDB.getConnection()) {
-                PreparedStatement ps = null;
-                ResultSet rs = null;
-                Manager.topNV = Manager.realTop(Manager.queryTopNV, ps, rs, con);
-                Manager.topSM = Manager.realTop(Manager.queryTopSM, ps, rs, con);
+                Manager.topNV = Manager.realTop(Manager.queryTopNV, con);
+                Manager.topSM = Manager.realTop(Manager.queryTopSM, con);
+                Manager.topSK = Manager.realTop(Manager.queryTopSK, con);
             } catch (Exception ignored) {
                 Logger.error("Lỗi đọc top");
             }
