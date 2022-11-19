@@ -657,7 +657,7 @@ public class InventoryServiceNew {
                     continue;
                 }
                 //457-thỏi vàng; 590-bí kiếp
-                if (itemAdd.template.id == 457 || itemAdd.template.id == 590) {
+                if (itemAdd.template.id == 457 || itemAdd.template.id == 590 || itemAdd.template.id == 610) {
                     it.quantity += itemAdd.quantity;
                     itemAdd.quantity = 0;
                     return true;

@@ -21,6 +21,7 @@ public class CombineNew {
     public int gemCombine;
     public float ratioCombine;
     public int countDaNangCap;
+    public int countDaBaoVe;
 
     public CombineNew() {
         this.itemsCombine = new ArrayList<>();

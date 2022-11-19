@@ -64,7 +64,9 @@ public class GodGK {
                 session.actived = rs.getBoolean("active");
                 session.goldBar = rs.getInt("account.thoi_vang");
                 session.dataReward = rs.getString("reward");
-                session.newreg = rs.getInt("new_reg");
+                session.is_gift_box = rs.getBoolean("is_gift_box");
+                session.event = rs.getInt("event");
+
 
 //                if (!session.isAdmin) {
 //                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");

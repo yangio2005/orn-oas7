@@ -240,6 +240,7 @@ public class CombineServiceNew {
                             player.combineNew.goldCombine = getGoldNangCapDo(level);
                             player.combineNew.ratioCombine = getTileNangCapDo(level);
                             player.combineNew.countDaNangCap = getCountDaNangCapDo(level);
+                            player.combineNew.countDaBaoVe = getCountDaBaoVe(level);
 
                             String npcSay = "|2|Hiện tại " + trangBi.template.name + " (+" + level + ")\n|0|";
                             for (Item.ItemOption io : trangBi.itemOptions) {
@@ -578,7 +579,7 @@ public class CombineServiceNew {
                     }
                 }
                 if (star < starEmpty) {
-                    player.inventory.subGemAndRuby(gem);
+                    player.inventory.gem -= gem;
                     int optionId = getOptionDaPhaLe(daPhaLe);
                     int param = getParamDaPhaLe(daPhaLe);
                     Item.ItemOption option = null;
@@ -990,6 +991,21 @@ public class CombineServiceNew {
                 return 35;
             case 6:
                 return 50;
+        }
+        return 0;
+    }
+
+    private int getCountDaBaoVe(int level) {
+        switch (level) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                return 1;
+            case 6:
+                return 3;
         }
         return 0;
     }
