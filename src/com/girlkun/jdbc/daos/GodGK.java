@@ -63,8 +63,8 @@ public class GodGK {
                 session.lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
                 session.actived = rs.getBoolean("active");
                 session.goldBar = rs.getInt("account.thoi_vang");
-                session.dataReward = rs.getString("reward");
                 session.is_gift_box = rs.getBoolean("is_gift_box");
+                session.bdPlayer = rs.getDouble("db_player");
 
 
 //                if (!session.isAdmin) {

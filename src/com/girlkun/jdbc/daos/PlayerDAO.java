@@ -708,7 +708,9 @@ public class PlayerDAO {
                 java.util.logging.Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        insertHistoryGold(player, num);
+        if (num > 1000) {
+            insertHistoryGold(player, num);
+        }
         return true;
     }
 

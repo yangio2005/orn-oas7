@@ -84,8 +84,10 @@ public class Trade {
             if (index == -1) {
                 if (pl.equals(this.player1)) {
                     goldTrade1 = quantity;
+//                    System.out.println("goldTrade1: " + goldTrade1);
                 } else {
                     goldTrade2 = quantity;
+//                    System.out.println("goldTrade2: " + goldTrade2);
                 }
             } else {
                 Item item = null;
@@ -106,6 +108,7 @@ public class Trade {
                         for (int i = 0; i < n; i++) {
                             Item itemTrade = ItemService.gI().copyItem(item);
                             itemTrade.quantity = 99;
+                            itemTrade.quantityGD = 99;
                             if (pl.equals(this.player1)) {
                                 InventoryServiceNew.gI().subQuantityItem(itemsBag1, item, itemTrade.quantity);
                                 itemsTrade1.add(itemTrade);
@@ -117,6 +120,7 @@ public class Trade {
                         if (left > 0) {
                             Item itemTrade = ItemService.gI().copyItem(item);
                             itemTrade.quantity = left;
+                            itemTrade.quantityGD = left;
                             if (pl.equals(this.player1)) {
                                 InventoryServiceNew.gI().subQuantityItem(itemsBag1, item, itemTrade.quantity);
                                 itemsTrade1.add(itemTrade);
@@ -128,6 +132,7 @@ public class Trade {
                     } else {
                         Item itemTrade = ItemService.gI().copyItem(item);
                         itemTrade.quantity = quantity != 0 ? quantity : 1;
+                        itemTrade.quantityGD = quantity != 0 ? quantity : 1;
                         if (pl.equals(this.player1)) {
                             InventoryServiceNew.gI().subQuantityItem(itemsBag1, item, itemTrade.quantity);
                             itemsTrade1.add(itemTrade);

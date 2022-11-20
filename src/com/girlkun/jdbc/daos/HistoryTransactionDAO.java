@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -16,26 +17,44 @@ import java.util.logging.Level;
 public class HistoryTransactionDAO {
 
     public static void insert(Player pl1, Player pl2,
-            int goldP1, int goldP2, List<Item> itemP1, List<Item> itemP2,
-            List<Item> bag1Before, List<Item> bag2Before,
-            List<Item> bag1After,
-            List<Item> bag2After,
-            long gold1Before, long gold2Before, long gold1After, long gold2After) {
+                              int goldP1, int goldP2, List<Item> itemP1, List<Item> itemP2,
+                              List<Item> bag1Before, List<Item> bag2Before,
+                              List<Item> bag1After,
+                              List<Item> bag2After,
+                              long gold1Before, long gold2Before, long gold1After, long gold2After) {
 
         String player1 = pl1.name + " (" + pl1.id + ")";
         String player2 = pl2.name + " (" + pl2.id + ")";
         String itemPlayer1 = "Gold: " + goldP1 + ", ";
         String itemPlayer2 = "Gold: " + goldP2 + ", ";
+        List<Item> doGD1 = new ArrayList<>();
+        List<Item> doGD2 = new ArrayList<>();
         for (Item item : itemP1) {
-            if (item.isNotNullItem()) {
-                itemPlayer1 += item.template.name + " (x" + item.quantity + "),";
-                System.out.println(item.quantity);
+            if (item.isNotNullItem() && doGD1.stream().noneMatch(item1 -> item1.template.id == item.template.id)) {
+                doGD1.add(item);
+            } else if (item.isNotNullItem()) {
+                doGD1.stream().filter(item1 -> item1.template.id == item.template.id).findFirst().get().quantityGD += item.quantityGD;
             }
         }
         for (Item item : itemP2) {
+            if (item.isNotNullItem() && doGD2.stream().noneMatch(item1 -> item1.template.id == item.template.id)) {
+                doGD2.add(item);
+            } else if (item.isNotNullItem()) {
+                doGD2.stream().filter(item1 -> item1.template.id == item.template.id).findFirst().get().quantityGD += item.quantityGD;
+            }
+        }
+
+
+        for (Item item : doGD1) {
             if (item.isNotNullItem()) {
-                itemPlayer2 += item.template.name + " (x" + item.quantity + "),";
-                System.out.println(item.quantity);
+                itemPlayer1 += item.template.name + " (x" + item.quantityGD + "),";
+//                System.out.println(item.template.name + " (x" + item.quantityGD + "),");
+            }
+        }
+        for (Item item : doGD2) {
+            if (item.isNotNullItem()) {
+                itemPlayer2 += item.template.name + " (x" + item.quantityGD + "),";
+//                System.out.println(item.template.name + " (x" + item.quantityGD + "),");
             }
         }
         String beforeTran1 = "";

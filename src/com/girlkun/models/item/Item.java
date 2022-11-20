@@ -19,6 +19,8 @@ public class Item {
 
     public int quantity;
 
+    public int quantityGD = 0;
+
     public List<ItemOption> itemOptions;
 
     public long createTime;

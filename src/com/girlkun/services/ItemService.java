@@ -427,9 +427,29 @@ public class ItemService {
     }
 
     public Item randomRac() {
-        short[] racs = {20, 19, 18, 17, 220, 221, 222, 223, 224};
+        short[] racs = {20, 19, 18, 17, 610};
         Item item = createItemSetKichHoat(racs[Util.nextInt(racs.length - 1)], 1);
+        if (optionRac(item.template.id) != 0) {
+            item.itemOptions.add(new Item.ItemOption(optionRac(item.template.id), 1));
+        }
         return item;
+    }
+
+    public byte optionRac(short itemId) {
+        switch (itemId) {
+            case 220:
+                return 71;
+            case 221:
+                return 70;
+            case 222:
+                return 69;
+            case 224:
+                return 67;
+            case 223:
+                return 68;
+            default:
+                return 0;
+        }
     }
 
     public void openBoxVip(Player player) {
