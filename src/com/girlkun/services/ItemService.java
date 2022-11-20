@@ -290,9 +290,38 @@ public class ItemService {
         if (item != null) {
             item.itemOptions.add(new Item.ItemOption(skhId, 1));
             item.itemOptions.add(new Item.ItemOption(optionIdSKH(skhId), 1));
+            item.itemOptions.add(new Item.ItemOption(optionItemSKH(item.template.type), pagramItemSKH(item.template.type)));
             item.itemOptions.add(new Item.ItemOption(30, 1));
         }
         return item;
+    }
+
+    public int optionItemSKH(int typeItem) {
+        switch (typeItem) {
+            case 0:
+                return 47;
+            case 1:
+                return 6;
+            case 2:
+                return 0;
+            case 3:
+                return 7;
+            default:
+                return 14;
+        }
+    }
+
+    public int pagramItemSKH(int typeItem) {
+        switch (typeItem) {
+            case 0:
+            case 2:
+                return Util.nextInt(5);
+            case 1:
+            case 3:
+                return Util.nextInt(20, 30);
+            default:
+                return Util.nextInt(3);
+        }
     }
 
     public int optionIdSKH(int skhId) {
