@@ -362,7 +362,7 @@ public class Util {
                         break;
                     default:
                         msg.writer().writeUTF(top.getSk() + "");
-                        msg.writer().writeUTF(top.getSk() + "");
+                        msg.writer().writeUTF(phanthuong(i + 1));
                         break;
                 }
             }
@@ -370,6 +370,19 @@ public class Util {
             msg.cleanup();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static String phanthuong(int i) {
+        switch (i) {
+            case 1:
+                return "5 tr";
+            case 2:
+                return "3tr";
+            case 3:
+                return "1tr";
+            default:
+                return "100k";
         }
     }
 
