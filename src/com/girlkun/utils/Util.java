@@ -361,7 +361,7 @@ public class Util {
                         msg.writer().writeUTF(top.getNv() + "");
                         break;
                     default:
-                        msg.writer().writeUTF("");
+                        msg.writer().writeUTF(top.getSk() + " điểm");
                         msg.writer().writeUTF(phanthuong(i + 1));
                         break;
                 }

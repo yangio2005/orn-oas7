@@ -288,9 +288,9 @@ public class ItemService {
     public Item itemSKH(int itemId, int skhId) {
         Item item = createItemSetKichHoat(itemId, 1);
         if (item != null) {
+            item.itemOptions.add(new Item.ItemOption(optionItemSKH(item.template.type), pagramItemSKH(item.template.type)));
             item.itemOptions.add(new Item.ItemOption(skhId, 1));
             item.itemOptions.add(new Item.ItemOption(optionIdSKH(skhId), 1));
-            item.itemOptions.add(new Item.ItemOption(optionItemSKH(item.template.type), pagramItemSKH(item.template.type)));
             item.itemOptions.add(new Item.ItemOption(30, 1));
         }
         return item;
