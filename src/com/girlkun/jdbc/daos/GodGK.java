@@ -64,7 +64,6 @@ public class GodGK {
                 session.actived = rs.getBoolean("active");
                 session.goldBar = rs.getInt("account.thoi_vang");
                 session.is_gift_box = rs.getBoolean("is_gift_box");
-                session.bdPlayer = rs.getDouble("db_player");
 
 
 //                if (!session.isAdmin) {
