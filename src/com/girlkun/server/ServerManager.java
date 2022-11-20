@@ -225,18 +225,6 @@ public class ServerManager {
                     } catch (Exception e) {
                         System.out.println("Lỗi quà");
                     }
-
-                } else if (line.startsWith("checkvang")) {
-//                    checkvang@123@
-                    String a = line.replace("checkvang", "");
-                    new Thread(() -> {
-                        try {
-                            GodGK.checkVang(Integer.parseInt(a.split("@")[1]));
-                            Logger.error("Xong checkvang ");
-                        } catch (Exception e) {
-                            Logger.error("Lỗi checkvang!...................................\n");
-                        }
-                    }).start();
                 }
             }
         }, "Active line").start();
