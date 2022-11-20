@@ -108,7 +108,7 @@ public class NpcFactory {
                                 break;
                             case 2:
                                 if (player.getSession().is_gift_box) {
-                                    if (PlayerDAO.setNewreg(player)) {
+                                    if (PlayerDAO.setIs_gift_box(player)) {
                                         player.getSession().is_gift_box = false;
                                         player.inventory.coupon += 5;
                                         Service.getInstance().sendThongBao(player, "Bạn vừa nhận được 5 điểm Coupon");

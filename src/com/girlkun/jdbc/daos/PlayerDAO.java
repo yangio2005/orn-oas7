@@ -714,10 +714,10 @@ public class PlayerDAO {
         return true;
     }
 
-    public static boolean setNewreg(Player player) {
+    public static boolean setIs_gift_box(Player player) {
         PreparedStatement ps = null;
         try (Connection con = GirlkunDB.getConnection();) {
-            ps = con.prepareStatement("update account set new_reg = 0 where id = ?");
+            ps = con.prepareStatement("update account set is_gift_box = 0 where id = ?");
             ps.setInt(1, player.getSession().userId);
             ps.executeUpdate();
             ps.close();
