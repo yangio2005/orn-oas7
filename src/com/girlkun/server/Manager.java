@@ -92,7 +92,7 @@ public class Manager {
     public static final String queryTopHP = "SELECT name, gender, CAST( split_str(data_point,',',6) AS UNSIGNED) AS hp FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(data_point,',',6)  AS UNSIGNED) DESC LIMIT 10;";
     public static final String queryTopKI = "SELECT name, gender, CAST( split_str(data_point,',',7) AS UNSIGNED) AS ki FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(data_point,',',7)  AS UNSIGNED) DESC LIMIT 10;";
     public static final String queryTopNV = "SELECT name, gender, CAST( split_str(split_str(data_task,',',1),'[',2)  AS UNSIGNED) AS nv FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str(split_str(data_task,',',1),'[',2)  AS UNSIGNED) DESC, CAST(split_str(data_task,',',2)  AS UNSIGNED) DESC, CAST( split_str(data_point,',',2) AS UNSIGNED) DESC LIMIT 10;";
-    public static final String queryTopSK = "SELECT name, gender, event FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY event ASC LIMIT 10;";
+    public static final String queryTopSK = "SELECT name, gender, CAST( split_str( data_inventory,',',5)  AS UNSIGNED) FROM player INNER JOIN account ON account.id = player.account_id WHERE account.is_admin = 0 AND account.ban = 0 ORDER BY CAST( split_str( data_inventory,',',5)  AS UNSIGNED) DESC LIMIT 10;";
 
 
     public static List<TOP> topSM;
