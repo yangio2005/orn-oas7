@@ -113,8 +113,9 @@ public class UseItem {
     public void doItem(Player player, Message _msg) {
         TransactionService.gI().cancelTrade(player);
         Message msg;
+        byte type;
         try {
-            byte type = _msg.reader().readByte();
+            type = _msg.reader().readByte();
             int where = _msg.reader().readByte();
             int index = _msg.reader().readByte();
 //            System.out.println(type + " " + where + " " + index);

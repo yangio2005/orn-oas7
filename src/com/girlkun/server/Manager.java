@@ -808,7 +808,7 @@ public class Manager {
                         top.setNv(rs.getByte("nv"));
                         break;
                     case queryTopSK:
-                        top.setSk(rs.getByte("event"));
+                        top.setSk(rs.getInt("event"));
                         break;
                 }
                 tops.add(top);

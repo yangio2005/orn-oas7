@@ -634,7 +634,7 @@ public class CombineServiceNew {
                 }
                 if (star < MAX_STAR_ITEM) {
                     player.inventory.gold -= gold;
-                    player.inventory.subGemAndRuby(gem);
+                    player.inventory.gem -= gem;
                     byte ratio = (optionStar != null && optionStar.param > 4) ? (byte) 2 : 1;
                     if (Util.isTrue(player.combineNew.ratioCombine, 100 * ratio)) {
                         if (optionStar == null) {

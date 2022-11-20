@@ -406,6 +406,10 @@ public class InventoryServiceNew {
     public void itemBagToBox(Player player, int index) {
         Item item = player.inventory.itemsBag.get(index);
         if (item != null) {
+            if (item.template.id == 457) {
+                Service.getInstance().sendThongBao(player, "Không thể cất vàng vào rương");
+                return;
+            }
             if (addItemBox(player, item)) {
                 if (item.quantity == 0) {
                     Item sItem = ItemService.gI().createItemNull();

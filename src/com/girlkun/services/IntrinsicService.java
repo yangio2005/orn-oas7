@@ -118,14 +118,14 @@ public class IntrinsicService {
     public void openVip(Player player) {
         if (player.nPoint.power >= 10000000000L) {
             int gemRequire = 100;
-            if (player.inventory.getGemAndRuby() >= 100) {
-                player.inventory.subGemAndRuby(gemRequire);
+            if (player.inventory.gem >= 100) {
+                player.inventory.gem -= gemRequire;
                 PlayerService.gI().sendInfoHpMpMoney(player);
                 changeIntrinsic(player);
                 player.playerIntrinsic.countOpen = 0;
             } else {
                 Service.getInstance().sendThongBao(player, "Bạn không có đủ ngọc, còn thiếu "
-                        + (gemRequire - player.inventory.getGemAndRuby()) + " ngọc nữa");
+                        + (gemRequire - player.inventory.gem) + " ngọc nữa");
             }
         } else {
             Service.getInstance().sendThongBao(player, "Yêu cầu sức mạnh tối thiểu 10 tỷ");

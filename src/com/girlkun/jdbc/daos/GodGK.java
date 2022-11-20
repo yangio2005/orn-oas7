@@ -67,8 +67,8 @@ public class GodGK {
 
 
 //                if (!session.isAdmin) {
-////                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
-////                } else
+//                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
+//                } else
 
                 if (rs.getBoolean("ban")) {
                     Service.getInstance().sendThongBaoOK(session, "Tài khoản đã bị khóa!");
@@ -81,9 +81,10 @@ public class GodGK {
                         Service.getInstance().sendThongBaoOK(session, "Tài khoản đang được đăng nhập tại máy chủ khác");
                     }
                 } else {
+                    boolean isAdmin = rs.getBoolean("is_admin");
                     long lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
                     int secondsPass = (int) ((System.currentTimeMillis() - lastTimeLogout) / 1000);
-                    if (secondsPass < Manager.SECOND_WAIT_LOGIN) {
+                    if (!isAdmin && secondsPass < Manager.SECOND_WAIT_LOGIN) {
                         Service.getInstance().sendThongBaoOK(session, "Vui lòng chờ " + (Manager.SECOND_WAIT_LOGIN - secondsPass) + "s");
                     } else {
                         rs = GirlkunDB.executeQuery("select * from player where account_id = ? limit 1", session.userId);
@@ -127,7 +128,12 @@ public class GodGK {
                             player.inventory.gem = Integer.parseInt(String.valueOf(dataArray.get(1)));
                             player.inventory.ruby = Integer.parseInt(String.valueOf(dataArray.get(2)));
                             player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
-                            if (dataArray.size() == 5) {
+                            if (dataArray.size() >= 4) {
+                                player.inventory.coupon = Integer.parseInt(String.valueOf(dataArray.get(3)));
+                            } else {
+                                player.inventory.coupon = 0;
+                            }
+                            if (dataArray.size() >= 5) {
                                 player.inventory.event = Integer.parseInt(String.valueOf(dataArray.get(4)));
                             } else {
                                 player.inventory.event = 0;

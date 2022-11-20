@@ -488,11 +488,11 @@ public class ClanService {
                     }
                 }
                 if (flagBag.gem > 0) {
-                    if (player.inventory.getGemAndRuby() >= flagBag.gem) {
-                        player.inventory.subGemAndRuby(flagBag.gem);
+                    if (player.inventory.gem >= flagBag.gem) {
+                        player.inventory.gem -= flagBag.gem;
                     } else {
                         Service.getInstance().sendThongBao(player, "Bạn không đủ ngọc, còn thiếu "
-                                + (flagBag.gem - player.inventory.getGemAndRuby()) + " ngọc");
+                                + (flagBag.gem - player.inventory.gem) + " ngọc");
                         return;
                     }
                 }
@@ -696,11 +696,11 @@ public class ClanService {
                     }
                 }
                 if (flagBag.gem > 0) {
-                    if (player.inventory.getGemAndRuby() >= flagBag.gem) {
-                        player.inventory.subGemAndRuby(flagBag.gem);
+                    if (player.inventory.gem >= flagBag.gem) {
+                        player.inventory.gem -= flagBag.gem;
                     } else {
                         Service.getInstance().sendThongBao(player, "Bạn không đủ ngọc, còn thiếu "
-                                + (flagBag.gem - player.inventory.getGemAndRuby()) + " ngọc");
+                                + (flagBag.gem - player.inventory.gem) + " ngọc");
                         return;
                     }
                 }

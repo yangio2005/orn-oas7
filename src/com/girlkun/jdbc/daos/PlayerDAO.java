@@ -32,6 +32,7 @@ public class PlayerDAO {
             dataArray.add(100000); //ngọc xanh
             dataArray.add(0); //hồng ngọc
             dataArray.add(0); //point
+            dataArray.add(0); //event
 
             String inventory = dataArray.toJSONString();
             dataArray.clear();

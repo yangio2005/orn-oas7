@@ -290,7 +290,7 @@ public class Mob {
 //        nplayer
         List<ItemMap> itemReward = new ArrayList<>();
         try {
-            if (!player.isBoss && !player.isPet && player.getSession().actived && player.setClothes.setDHD == 5) {
+            if ((!player.isPet && player.getSession().actived && player.setClothes.setDHD == 5) || (player.isPet && ((Pet) player).master.getSession().actived && ((Pet) player).setClothes.setDHD == 5)) {
                 byte random = 1;
                 if (Util.isTrue(10, 100)) {
                     random = 2;
@@ -346,7 +346,7 @@ public class Mob {
         if (player.itemTime.isUseMayDo && Util.isTrue(20, 100) && this.tempId > 57 && this.tempId < 66) {
             list.add(new ItemMap(zone, 380, 1, x, player.location.y, player.id));
         }
-        if (!player.isPet && player.getSession().actived && Util.isTrue(30, 100)) {
+        if (!player.isPet && player.getSession().actived && Util.isTrue(20, 100)) {
             list.add(new ItemMap(zone, 610, 1, x, player.location.y, player.id));
         }
         return list;

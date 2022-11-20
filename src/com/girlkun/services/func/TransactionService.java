@@ -4,6 +4,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Logger;
+import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,12 +64,11 @@ public class TransactionService implements Runnable {
                                     pl.iDMark.setPlayerTradeId((int) plMap.id);
                                     sendInviteTrade(pl, plMap);
                                 } else {
-                                    Service.getInstance().sendThongBao(pl, "Không thể giao dịch ngay lúc này");
+                                    Service.getInstance().sendThongBao(pl, "Thử lại sau " +
+                                            TimeUtil.getTimeLeft(Math.max(pl.iDMark.getLastTimeTrade(), plMap.iDMark.getLastTimeTrade()), TIME_DELAY_TRADE / 1000));
                                 }
                             } else {
                                 if (plMap.iDMark.getPlayerTradeId() == pl.id) {
-                                    pl.iDMark.setLastTimeTrade(System.currentTimeMillis());
-                                    plMap.iDMark.setLastTimeTrade(System.currentTimeMillis());
                                     trade = new Trade(pl, plMap);
                                     trade.openTabTrade();
                                 }
@@ -134,7 +134,6 @@ public class TransactionService implements Runnable {
     public void cancelTrade(Player player) {
         Trade trade = PLAYER_TRADE.get(player);
         if (trade != null) {
-            player.iDMark.setLastTimeTrade(System.currentTimeMillis());
             trade.cancelTrade();
         }
     }

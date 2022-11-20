@@ -327,6 +327,8 @@ public class Trade {
     private static final byte FAIL_NOT_ENOUGH_BAG_P2 = 4;
 
     private void sendNotifyTrade(byte status) {
+        player1.iDMark.setLastTimeTrade(System.currentTimeMillis());
+        player2.iDMark.setLastTimeTrade(System.currentTimeMillis());
         switch (status) {
             case SUCCESS:
                 Service.getInstance().sendThongBao(player1, "Giao dịch thành công");
