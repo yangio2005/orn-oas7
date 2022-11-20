@@ -403,6 +403,9 @@ public class ItemService {
         item.itemOptions.add(new Item.ItemOption(77, new Random().nextInt(5) + 5));
         item.itemOptions.add(new Item.ItemOption(103, new Random().nextInt(5) + 5));
         item.itemOptions.add(new Item.ItemOption(147, new Random().nextInt(5) + 5));
+        if (Util.isTrue(1, 100)) {
+            item.itemOptions.get(Util.nextInt(item.itemOptions.size() - 1)).param = 10;
+        }
         item.itemOptions.add(new Item.ItemOption(30, 1));//ko the gd
         if (Util.isTrue(995, 1000) && rating) {// tỉ lệ ra hsd
             item.itemOptions.add(new Item.ItemOption(93, new Random().nextInt(3) + 1));//hsd
