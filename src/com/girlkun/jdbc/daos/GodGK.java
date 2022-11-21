@@ -64,14 +64,21 @@ public class GodGK {
                 session.actived = rs.getBoolean("active");
                 session.goldBar = rs.getInt("account.thoi_vang");
                 session.is_gift_box = rs.getBoolean("is_gift_box");
-
-
-//                if (!session.isAdmin) {
-//                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
-//                } else
-
-                if (rs.getBoolean("ban")) {
+                long lastTimeLogin = rs.getTimestamp("last_time_login").getTime();
+                int secondsPass1 = (int) ((System.currentTimeMillis() - lastTimeLogin) / 1000);
+                long lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
+                int secondsPass = (int) ((System.currentTimeMillis() - lastTimeLogout) / 1000);
+                if (!session.isAdmin) {
+                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
+                } else if (rs.getBoolean("ban")) {
                     Service.getInstance().sendThongBaoOK(session, "Tài khoản đã bị khóa!");
+                } else if (secondsPass1 < Manager.SECOND_WAIT_LOGIN) {
+                    if (secondsPass < secondsPass1) {
+                        Service.getInstance().sendThongBaoOK(session, "Vui lòng chờ " + (Manager.SECOND_WAIT_LOGIN - secondsPass) + "s");
+                        return null;
+                    }
+                    Service.getInstance().sendThongBaoOK(session, "Vui lòng chờ " + (Manager.SECOND_WAIT_LOGIN - secondsPass1) + "s");
+                    return null;
                 } else if (rs.getTimestamp("last_time_login").getTime() > session.lastTimeLogout) {
                     Player plInGame = Client.gI().getPlayerByUser(session.userId);
                     if (plInGame != null) {
@@ -81,10 +88,7 @@ public class GodGK {
                         Service.getInstance().sendThongBaoOK(session, "Tài khoản đang được đăng nhập tại máy chủ khác");
                     }
                 } else {
-                    boolean isAdmin = rs.getBoolean("is_admin");
-                    long lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
-                    int secondsPass = (int) ((System.currentTimeMillis() - lastTimeLogout) / 1000);
-                    if (!isAdmin && secondsPass < Manager.SECOND_WAIT_LOGIN) {
+                    if (secondsPass < Manager.SECOND_WAIT_LOGIN) {
                         Service.getInstance().sendThongBaoOK(session, "Vui lòng chờ " + (Manager.SECOND_WAIT_LOGIN - secondsPass) + "s");
                     } else {
                         rs = GirlkunDB.executeQuery("select * from player where account_id = ? limit 1", session.userId);
