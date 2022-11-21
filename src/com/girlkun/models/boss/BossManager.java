@@ -1,6 +1,6 @@
 package com.girlkun.models.boss;
 
-import com.girlkun.models.boss.list_boss.BLACK.Black;
+import com.girlkun.models.boss.list_boss.BLACK.*;
 import com.girlkun.models.boss.list_boss.NgucTu.CoolerGold;
 import com.girlkun.models.boss.list_boss.Doraemon.Doraemon;
 import com.girlkun.models.boss.list_boss.FideBack.Kingcold;
@@ -75,21 +75,30 @@ public class BossManager implements Runnable {
             this.createBoss(BossID.BUI_BUI_2);
             this.createBoss(BossID.YA_CON);
             this.createBoss(BossID.MABU_12H);
+
             this.createBoss(BossID.TDST);
-//            this.createBoss(BossID.CUMBER);
+            this.createBoss(BossID.TDST);
+            this.createBoss(BossID.TDST);
+
             this.createBoss(BossID.BLACK);
-//            this.createBoss(BossID.SONGOKU_TA_AC);
-//            this.createBoss(BossID.COOLER_GOLD);
-//            this.createBoss(BossID.TRUNG_UY_TRANG);
+            this.createBoss(BossID.BLACK1);
+            this.createBoss(BossID.ZAMASMAX);
+            this.createBoss(BossID.ZAMASZIN);
+            this.createBoss(BossID.BLACK2);
+
             this.createBoss(BossID.PIC);
             this.createBoss(BossID.POC);
             this.createBoss(BossID.KING_KONG);
-//            this.createBoss(BossID.DORAEMON);
-//            this.createBoss(BossID.FIDE_ROBOT);
-//            this.createBoss(BossID.VUA_COLD);
+
             this.createBoss(BossID.SIEU_BO_HUNG);
+            this.createBoss(BossID.XEN_CON);
+            this.createBoss(BossID.XEN_CON);
+            this.createBoss(BossID.XEN_CON);
+            this.createBoss(BossID.XEN_CON);
+            this.createBoss(BossID.XEN_CON);
+
             this.createBoss(BossID.XEN_BO_HUNG);
-            this.createBoss(BossID.TIEU_DOI_TRUONG);
+
             this.createBoss(BossID.KUKU);
             this.createBoss(BossID.MAP_DAU_DINH);
             this.createBoss(BossID.RAMBO);
@@ -99,14 +108,6 @@ public class BossManager implements Runnable {
             this.createBoss(BossID.MABU);
             this.createBoss(BossID.MABU);
             this.createBoss(BossID.MABU);
-//            this.createBoss(BossID.BROLY);
-//            this.createBoss(BossID.Rong_1Sao);
-//            this.createBoss(BossID.Rong_2Sao);
-//            this.createBoss(BossID.Rong_3Sao);
-//            this.createBoss(BossID.Rong_4Sao);
-//            this.createBoss(BossID.Rong_5Sao);
-//            this.createBoss(BossID.Rong_6Sao);
-//            this.createBoss(BossID.Rong_7Sao);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -188,8 +189,21 @@ public class BossManager implements Runnable {
                     return new Kingcold();
                 case BossID.FIDE_ROBOT:
                     return new FideRobot();
+
+                case BossID.ZAMASMAX:
+                    return new ZamasMax();
+                case BossID.ZAMASZIN:
+                    return new ZamasKaio();
+                case BossID.BLACK2:
+                    return new SuperBlack2();
+                //black + ssj
+                case BossID.BLACK1:
+                    return new BlackGokuTl();
+                //gokutd
                 case BossID.BLACK:
-                    return new Black();
+                    return new BlackGokuBase();
+
+
                 case BossID.XEN_CON:
                     return new Xencon();
                 case BossID.MABU:

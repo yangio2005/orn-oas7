@@ -176,8 +176,8 @@ public class ItemService {
         Item itemUse = InventoryServiceNew.gI().findItem(player.inventory.itemsBag, itemUseId);
         int[][] items = {{0, 6, 21, 27, 12}, {1, 7, 22, 28, 12}, {2, 8, 23, 29, 12}};
         int[][] options = {{128, 129, 127}, {130, 131, 132}, {133, 135, 134}};
-        int skhv1 = 30;// ti le
-        int skhv2 = 30;//ti le
+        int skhv1 = 25;// ti le
+        int skhv2 = 35;//ti le
         int skhc = 40;//ti le
         int skhId = -1;
 

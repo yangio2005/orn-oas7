@@ -46,7 +46,7 @@ public class BossID {
     
     public static final int COOLER_GOLD = -201;
     public static final int VUA_COLD = -202;
-    public static final int BLACK = -203;
+
 
     public static final int HIT = -204;
     public static final int CHILL_1 = -205;
@@ -91,6 +91,17 @@ public class BossID {
     public static final int MABU_12H = -236;
     public static final int DRABURA_2 = -237;
     public static final int BUI_BUI_2 = -238;
+
+
+    public static final int THAN_HUY_DIET = -239;
+    public static final int THIEN_SU_WHIS = -240;
+
+
+    public static final int BLACK = -203;
+    public static final int BLACK1 = -241;
+    public static final int BLACK2 = -242;
+    public static final int ZAMASMAX = -243;
+    public static final int ZAMASZIN = -244;
 
     
 
