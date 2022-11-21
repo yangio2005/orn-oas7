@@ -50,13 +50,16 @@ public class ThachDau extends PVP {
 
     @Override
     public void sendResult(Player plLose, TYPE_LOSE_PVP typeLose) {
-        if(typeLose == TYPE_LOSE_PVP.RUNS_AWAY){
+        if (typeLose == TYPE_LOSE_PVP.RUNS_AWAY) {
             Service.getInstance().sendThongBao(p1.equals(plLose) ? p2 : p1, "Đối thủ sợ quá bỏ chạy. Bạn thắng nhận được " + Util.numberToMoney(this.goldReward) + " vàng");
             Service.getInstance().sendThongBao(p1.equals(plLose) ? p1 : p2, "Bạn bị xử thua vì bỏ chạy");
-        } else if(typeLose == TYPE_LOSE_PVP.DEAD){
+            (p1.equals(plLose) ? p1 : p2).inventory.gold -= this.goldThachDau;
+        } else if (typeLose == TYPE_LOSE_PVP.DEAD) {
             Service.getInstance().sendThongBao(p1.equals(plLose) ? p2 : p1, "Đối thủ kiệt sức. Bạn thắng nhận được " + Util.numberToMoney(this.goldReward) + " vàng");
             Service.getInstance().sendThongBao(p1.equals(plLose) ? p1 : p2, "Bạn bị xử thua vì kiệt sức");
+            (p1.equals(plLose) ? p1 : p2).inventory.gold -= this.goldThachDau;
         }
+        Service.getInstance().sendMoney(p1.equals(plLose) ? p1 : p2);
     }
 
 }
