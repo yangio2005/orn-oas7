@@ -274,6 +274,16 @@ public class PlayerDAO {
     }
 
     public static void updatePlayer(Player player) {
+        boolean checkLogout = false;
+        try (Connection con = GirlkunDB.getConnection()) {
+            checkLogout = checkLogout(con, player);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (checkLogout){
+            System.out.println("có player nhân bản");
+            return;
+        }
         if (player.iDMark.isLoadedAllDataPlayer()) {
             long st = System.currentTimeMillis();
             try {
@@ -799,6 +809,32 @@ public class PlayerDAO {
             return false;
         }
         return true;
+    }
+
+    public static boolean checkLogout(Connection con, Player player) {
+        long lastTimeLogout = 0;
+        long lastTimeLogin = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement("select * from account where id = ? limit 1");
+            ps.setInt(1, player.getSession().userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
+                lastTimeLogin = rs.getTimestamp("last_time_login").getTime();
+            }
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return lastTimeLogout > lastTimeLogin;
     }
 
 }
