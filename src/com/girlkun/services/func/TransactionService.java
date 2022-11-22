@@ -1,11 +1,16 @@
 package com.girlkun.services.func;
 
+import com.girlkun.database.GirlkunDB;
+import com.girlkun.jdbc.daos.PlayerDAO;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
+import com.girlkun.server.Client;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
+
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,6 +65,22 @@ public class TransactionService implements Runnable {
                             if (action == SEND_INVITE_TRADE) {
                                 if (Util.canDoWithTime(pl.iDMark.getLastTimeTrade(), TIME_DELAY_TRADE)
                                         && Util.canDoWithTime(plMap.iDMark.getLastTimeTrade(), TIME_DELAY_TRADE)) {
+                                    boolean checkLogout1 = false;
+                                    boolean checkLogout2 = false;
+                                    try (Connection con = GirlkunDB.getConnection()) {
+                                        checkLogout1 = PlayerDAO.checkLogout(con, pl);
+                                        checkLogout2 = PlayerDAO.checkLogout(con, plMap);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    if (checkLogout1) {
+                                        Client.gI().kickSession(pl.getSession());
+                                        break;
+                                    }
+                                    if (checkLogout2) {
+                                        Client.gI().kickSession(plMap.getSession());
+                                        break;
+                                    }
                                     pl.iDMark.setLastTimeTrade(System.currentTimeMillis());
                                     pl.iDMark.setPlayerTradeId((int) plMap.id);
                                     sendInviteTrade(pl, plMap);
