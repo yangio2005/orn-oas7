@@ -56,6 +56,7 @@ public class GodGK {
         GirlkunResultSet rs = null;
 
         try {
+            Thread.sleep(Util.nextInt(0, 1000));
             rs = GirlkunDB.executeQuery("select * from account where username = ? and password = ?", session.uu, Util.md5(session.pp));
             if (rs.first()) {
                 session.userId = rs.getInt("account.id");
@@ -70,11 +71,10 @@ public class GodGK {
 
 //                if (!session.isAdmin) {
 //                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
-//                }
+//                }else
 
 
-
-                else if (rs.getBoolean("ban")) {
+                if (rs.getBoolean("ban")) {
                     Service.getInstance().sendThongBaoOK(session, "Tài khoản đã bị khóa!");
                 } else if (secondsPass1 < Manager.SECOND_WAIT_LOGIN) {
                     if (secondsPass < secondsPass1) {
@@ -84,17 +84,17 @@ public class GodGK {
                     Service.getInstance().sendThongBaoOK(session, "Vui lòng chờ " + (Manager.SECOND_WAIT_LOGIN - secondsPass1) + "s");
                     return null;
                 } else if (rs.getTimestamp("last_time_login").getTime() > session.lastTimeLogout) {
-                    Player plInGame = Client.gI().getPlayerByUser(session.userId);
-                    if (plInGame != null) {
-                        Client.gI().kickSession(plInGame.getSession());
-                        Service.getInstance().sendThongBaoOK(session, "Máy chủ tắt hoặc mất sóng");
-                    } else {
-                        Service.getInstance().sendThongBaoOK(session, "Tài khoản đang được đăng nhập tại máy chủ khác");
-                    }
+//                    Player plInGame = Client.gI().getPlayerByUser(session.userId);
+//                    if (plInGame != null) {
+//                        Client.gI().kickSession(plInGame.getSession());
+//                        Service.getInstance().sendThongBaoOK(session, "Máy chủ tắt hoặc mất sóng");
+//                    } else {
+//                    }
+                    Service.getInstance().sendThongBaoOK(session, "Tài khoản đang được đăng nhập tại máy chủ khác");
                 } else {
                     if (secondsPass < Manager.SECOND_WAIT_LOGIN) {
                         Service.getInstance().sendThongBaoOK(session, "Vui lòng chờ " + (Manager.SECOND_WAIT_LOGIN - secondsPass) + "s");
-                    } else {
+                    } else {//set time logout trước rồi đọc data player
                         rs = GirlkunDB.executeQuery("select * from player where account_id = ? limit 1", session.userId);
                         if (!rs.first()) {
                             //-28 -4 version data game
@@ -103,6 +103,7 @@ public class GodGK {
                             DataGame.sendDataItemBG(session);
                             Service.getInstance().switchToCreateChar(session);
                         } else {
+                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
                             int plHp = 200000000;
                             int plMp = 200000000;
                             JSONValue jv = new JSONValue();
@@ -542,7 +543,6 @@ public class GodGK {
                             player.nPoint.hp = plHp;
                             player.nPoint.mp = plMp;
                             player.iDMark.setLoadedAllDataPlayer(true);
-                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
                         }
                     }
                 }

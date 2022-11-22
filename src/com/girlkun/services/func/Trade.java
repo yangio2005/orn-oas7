@@ -80,6 +80,11 @@ public class Trade {
     public void addItemTrade(Player pl, byte index, int quantity) {
 //        System.out.println("quantity: " + quantity);
 //        if (pl.getSession().actived) {
+        if (quantity > 10000) {
+            removeItemTrade(pl, index);
+            Service.getInstance().sendThongBao(pl, "Không thể thực hiện...");
+            return;
+        }
         if (pl.getSession().actived) {
             if (index == -1) {
                 if (pl.equals(this.player1)) {

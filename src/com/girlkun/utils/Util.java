@@ -21,11 +21,13 @@ import com.girlkun.models.mob.Mob;
 import com.girlkun.models.npc.Npc;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
+import com.girlkun.server.Client;
 import com.girlkun.server.Manager;
 import com.girlkun.services.ItemService;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import com.girlkun.services.MapService;
 import org.apache.commons.lang.ArrayUtils;
@@ -434,5 +436,15 @@ public class Util {
             ketQua *= coSo;
         }
         return ketQua;
+    }
+
+    public static void checkPlayer(Player player) {
+        new Thread(() -> {
+            List<Player> list = Client.gI().getPlayers().stream().filter(p -> !p.isPet && p.getSession().userId == player.getSession().userId).collect(Collectors.toList());
+            if (list.size() > 1) {
+                list.forEach(pp -> Client.gI().kickSession(pp.getSession()));
+                list.clear();
+            }
+        }).start();
     }
 }
