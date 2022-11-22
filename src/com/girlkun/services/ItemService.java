@@ -392,19 +392,19 @@ public class ItemService {
         List<Integer> giay = Arrays.asList(658, 660, 662);
         int nhd = 656;
         if (ao.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(47, Util.highlightsItem(gender == 2, new Random().nextInt(1000) + 1800))); // áo từ 1800-2800 giáp
+            it.itemOptions.add(new Item.ItemOption(47, Util.highlightsItem(gender == 2, new Random().nextInt(1001) + 1800))); // áo từ 1800-2800 giáp
         }
         if (quan.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(22, Util.highlightsItem(gender == 0, new Random().nextInt(15) + 85))); // hp 85-100k
+            it.itemOptions.add(new Item.ItemOption(22, Util.highlightsItem(gender == 0, new Random().nextInt(16) + 85))); // hp 85-100k
         }
         if (gang.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(0, Util.highlightsItem(gender == 2, new Random().nextInt(1500) + 8500))); // 8500-10000
+            it.itemOptions.add(new Item.ItemOption(0, Util.highlightsItem(gender == 2, new Random().nextInt(1501) + 8500))); // 8500-10000
         }
         if (giay.contains(itemId)) {
-            it.itemOptions.add(new Item.ItemOption(23, Util.highlightsItem(gender == 1, new Random().nextInt(10) + 80))); // ki 80-90k
+            it.itemOptions.add(new Item.ItemOption(23, Util.highlightsItem(gender == 1, new Random().nextInt(11) + 80))); // ki 80-90k
         }
         if (nhd == itemId) {
-            it.itemOptions.add(new Item.ItemOption(14, new Random().nextInt(2) + 17)); //chí mạng 17-19%
+            it.itemOptions.add(new Item.ItemOption(14, new Random().nextInt(3) + 17)); //chí mạng 17-19%
         }
         it.itemOptions.add(new Item.ItemOption(21, 80));// yêu cầu sm 80 tỉ
         it.itemOptions.add(new Item.ItemOption(30, 1));// ko the gd

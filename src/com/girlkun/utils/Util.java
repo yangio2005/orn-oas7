@@ -233,13 +233,13 @@ public class Util {
             it.options.add(new Item.ItemOption(47, highlightsItem(it.itemTemplate.gender == 2, new Random().nextInt(501) + 1000)));
         }
         if (quan.contains(tempId)) {
-            it.options.add(new Item.ItemOption(22, highlightsItem(it.itemTemplate.gender == 0, new Random().nextInt(10) + 45)));
+            it.options.add(new Item.ItemOption(22, highlightsItem(it.itemTemplate.gender == 0, new Random().nextInt(11) + 45)));
         }
         if (gang.contains(tempId)) {
             it.options.add(new Item.ItemOption(0, highlightsItem(it.itemTemplate.gender == 2, new Random().nextInt(1001) + 3500)));
         }
         if (giay.contains(tempId)) {
-            it.options.add(new Item.ItemOption(23, highlightsItem(it.itemTemplate.gender == 1, new Random().nextInt(10) + 35)));
+            it.options.add(new Item.ItemOption(23, highlightsItem(it.itemTemplate.gender == 1, new Random().nextInt(11) + 35)));
         }
         if (ntl == tempId) {
             it.options.add(new Item.ItemOption(14, new Random().nextInt(3) + 15));

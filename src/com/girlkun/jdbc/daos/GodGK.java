@@ -54,7 +54,6 @@ public class GodGK {
     public static Player login(MySession session, AntiLogin al) {
         Player player = null;
         GirlkunResultSet rs = null;
-
         try {
             Thread.sleep(Util.nextInt(0, 1000));
             rs = GirlkunDB.executeQuery("select * from account where username = ? and password = ?", session.uu, Util.md5(session.pp));
