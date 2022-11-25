@@ -22,6 +22,7 @@ public class SetClothes {
     public byte kakarot;
     public byte cadic;
     public byte nappa;
+    public byte setWORLDCUP;
 
     public byte setDHD;
 

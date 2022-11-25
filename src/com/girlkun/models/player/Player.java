@@ -93,6 +93,8 @@ public class Player {
     public short head;
 
     public byte typePk;
+    public int x;
+    public int y;
 
     public byte cFlag;
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class LuckyRound {
 
-    private static final byte MAX_ITEM_IN_BOX = 20;
+    private static final byte MAX_ITEM_IN_BOX = 100;
 
     //1 gem and ruby
     public static final byte USING_GEM = 2;

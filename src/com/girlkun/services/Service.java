@@ -1573,4 +1573,27 @@ public class Service {
         }
         DataGame.sendLinkIP(session);
     }
+    public void DropVeTinh (Player pl, Item item, Zone map, int x, int y) {
+        ItemMap itemMap = new ItemMap(map, item.template, item.quantity, x, y, pl.id);
+        itemMap.options = item.itemOptions;
+        map.addItem(itemMap);
+        Message msg = null;
+        try {
+            msg = new Message(68);
+            msg.writer().writeShort(itemMap.itemMapId);
+            msg.writer().writeShort(itemMap.itemTemplate.id);
+            msg.writer().writeShort(itemMap.x);
+            msg.writer().writeShort(itemMap.y);
+            msg.writer().writeInt(-2);
+            msg.writer().writeShort(200);
+            sendMessAllPlayerInMap(map, msg);
+        } catch (Exception exception) {
+
+        } finally {
+            if (msg != null) {
+                msg.cleanup();
+                msg = null;
+            }
+        }
+    }
 }
