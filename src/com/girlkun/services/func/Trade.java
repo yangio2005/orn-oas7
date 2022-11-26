@@ -11,6 +11,7 @@ import com.girlkun.services.Service;
 import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
 public class Trade {
 
     private static final int TIME_TRADE = 180000;
+    private static final int QUANLITY_MAX = 20000;
 
     private Player player1;
     private Player player2;
@@ -78,9 +80,7 @@ public class Trade {
     }
 
     public void addItemTrade(Player pl, byte index, int quantity) {
-//        System.out.println("quantity: " + quantity);
-//        if (pl.getSession().actived) {
-        if (quantity > 5000) {
+        if (quantity > QUANLITY_MAX) {
             removeItemTrade(pl, index);
             Service.getInstance().sendThongBao(pl, "Đã quá giới hạn giao dịch...");
             return;
@@ -89,10 +89,8 @@ public class Trade {
             if (index == -1) {
                 if (pl.equals(this.player1)) {
                     goldTrade1 = quantity;
-//                    System.out.println("goldTrade1: " + goldTrade1);
                 } else {
                     goldTrade2 = quantity;
-//                    System.out.println("goldTrade2: " + goldTrade2);
                 }
             } else {
                 Item item = null;

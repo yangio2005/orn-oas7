@@ -102,7 +102,6 @@ public class GodGK {
                             DataGame.sendDataItemBG(session);
                             Service.getInstance().switchToCreateChar(session);
                         } else {
-                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
                             int plHp = 200000000;
                             int plMp = 200000000;
                             JSONValue jv = new JSONValue();
@@ -116,7 +115,8 @@ public class GodGK {
                             player.head = rs.getShort("head");
                             player.gender = rs.getByte("gender");
                             player.haveTennisSpaceShip = rs.getBoolean("have_tennis_space_ship");
-
+                            player.violate = rs.getInt("violate");
+                            player.totalPlayerViolate = 0;
                             int clanId = rs.getInt("clan_id_sv" + Manager.SERVER);
                             if (clanId != -1) {
                                 Clan clan = ClanService.gI().getClanById(clanId);
@@ -154,6 +154,7 @@ public class GodGK {
                                 int mapId = Integer.parseInt(String.valueOf(dataArray.get(0)));
                                 player.location.x = Integer.parseInt(String.valueOf(dataArray.get(1)));
                                 player.location.y = Integer.parseInt(String.valueOf(dataArray.get(2)));
+                                player.location.lastTimeplayerMove = System.currentTimeMillis();
                                 if (MapService.gI().isMapDoanhTrai(mapId) || MapService.gI().isMapBlackBallWar(mapId)
                                         || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)) {
                                     mapId = player.gender + 21;
@@ -542,6 +543,7 @@ public class GodGK {
                             player.nPoint.hp = plHp;
                             player.nPoint.mp = plMp;
                             player.iDMark.setLoadedAllDataPlayer(true);
+                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
                         }
                     }
                 }

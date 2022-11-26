@@ -1028,13 +1028,13 @@ public class NpcFactory {
                                 case 0:
                                     ChangeMapService.gI().changeMapBySpaceShip(player, 48, -1, 354);
                                     break;
-                              case 1:
+                                case 1:
                                     this.createOtherMenu(player, ConstNpc.MENU_CHOOSE_LUCKY_ROUND,
                                             "Con muốn làm gì nào?", "Quay bằng\nvàng",
                                             "Rương phụ\n("
-                                            + (player.inventory.itemsBoxCrackBall.size()
-                                            - InventoryServiceNew.gI().getCountEmptyListItem(player.inventory.itemsBoxCrackBall))
-                                            + " món)",
+                                                    + (player.inventory.itemsBoxCrackBall.size()
+                                                    - InventoryServiceNew.gI().getCountEmptyListItem(player.inventory.itemsBoxCrackBall))
+                                                    + " món)",
                                             "Xóa hết\ntrong rương", "Đóng");
                                     break;
                             }
@@ -2282,6 +2282,7 @@ public class NpcFactory {
                             for (int i = 0; i < player.inventory.itemsBoxCrackBall.size(); i++) {
                                 player.inventory.itemsBoxCrackBall.set(i, ItemService.gI().createItemNull());
                             }
+                            player.inventory.itemsBoxCrackBall.clear();
                             Service.getInstance().sendThongBao(player, "Đã xóa hết vật phẩm trong rương");
                         }
                         break;

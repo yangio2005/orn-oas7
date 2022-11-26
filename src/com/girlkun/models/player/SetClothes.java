@@ -22,8 +22,8 @@ public class SetClothes {
     public byte kakarot;
     public byte cadic;
     public byte nappa;
-    public byte setWORLDCUP;
 
+    public byte worldcup;
     public byte setDHD;
 
     public boolean godClothes;
@@ -119,6 +119,11 @@ public class SetClothes {
                             if(io.param == 80){
                                 setDHD++;
                             }
+                        case 196:
+                        case 197:
+                            isActSet = true;
+                            worldcup++;
+                            break;
                     }
 
                     if (isActSet) {
@@ -142,6 +147,7 @@ public class SetClothes {
         this.cadic = 0;
         this.nappa = 0;
         this.setDHD = 0;
+        this.worldcup = 0;
         this.godClothes = false;
         this.ctHaiTac = -1;
     }

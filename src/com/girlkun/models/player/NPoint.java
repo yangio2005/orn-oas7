@@ -187,6 +187,9 @@ public class NPoint {
             tlHpHoi += RewardBlackBall.R7S_1;
             tlHutHp += RewardBlackBall.R7S_2;
         }
+        if (this.player.setClothes.worldcup == 2) {
+            this.tlDameCrit.add(10);
+        }
 
         for (Item item : this.player.inventory.itemsBody) {
             if (item.isNotNullItem()) {
@@ -397,6 +400,10 @@ public class NPoint {
         if (this.player.setClothes.nappa == 5) {
             this.hpMax += ((long) this.hpMax * 100 / 100);
         }
+        //set worldcup
+        if (this.player.setClothes.worldcup == 2) {
+            this.hpMax += ((long) this.hpMax * 10 / 100);
+        }
         //ngọc rồng đen 1 sao
         if (this.player.rewardBlackBall.timeOutOfDateReward[0] > System.currentTimeMillis()) {
             this.hpMax += ((long) this.hpMax * RewardBlackBall.R1S_1 / 100);
@@ -467,6 +474,10 @@ public class NPoint {
         if (this.player.rewardBlackBall.timeOutOfDateReward[2] > System.currentTimeMillis()) {
             this.mpMax += (this.mpMax * RewardBlackBall.R3S_1 / 100);
         }
+        //set worldcup
+        if (this.player.setClothes.worldcup == 2) {
+            this.mpMax += ((long) this.mpMax * 10 / 100);
+        }
         //pet mabư
         if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
@@ -534,6 +545,10 @@ public class NPoint {
         //ngọc rồng đen 1 sao
         if (this.player.rewardBlackBall.timeOutOfDateReward[0] > System.currentTimeMillis()) {
             this.dame += ((long) this.dame * RewardBlackBall.R1S_2 / 100);
+        }
+        //set worldcup
+        if (this.player.setClothes.worldcup == 2) {
+            this.dame += ((long) this.dame * 10 / 100);
         }
         //phóng heo
         if (this.player.effectFlagBag.usePhongHeo) {

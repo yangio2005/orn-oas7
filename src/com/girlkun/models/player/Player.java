@@ -93,8 +93,6 @@ public class Player {
     public short head;
 
     public byte typePk;
-    public int x;
-    public int y;
 
     public byte cFlag;
 
@@ -102,6 +100,10 @@ public class Player {
 
     public boolean justRevived;
     public long lastTimeRevived;
+
+    public int violate;
+    public byte totalPlayerViolate;
+    public long timeChangeZone;
 
     public Player() {
         location = new Location();
@@ -154,6 +156,7 @@ public class Player {
         if (!this.beforeDispose) {
             try {
                 if (!iDMark.isBan()) {
+
                     if (nPoint != null) {
                         nPoint.update();
                     }
@@ -193,6 +196,9 @@ public class Player {
                         if (trap != null) {
                             trap.doPlayer(this);
                         }
+                    }
+                    if (location.lastTimeplayerMove < System.currentTimeMillis() - 10 * 60 * 1000) {
+                        Client.gI().kickSession(getSession());
                     }
                 } else {
                     if (Util.canDoWithTime(iDMark.getLastTimeBan(), 5000)) {
