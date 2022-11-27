@@ -132,6 +132,7 @@ public class PlayerService {
             }
             player.location.x = x;
             player.location.y = y;
+            player.location.lastTimeplayerMove = System.currentTimeMillis();
             switch (player.zone.map.mapId) {
                 case 85:
                 case 86:

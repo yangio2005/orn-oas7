@@ -527,5 +527,39 @@ public class ItemService {
             Service.getInstance().sendThongBao(player, "Bạn không đủ bông...");
         }
     }
+    public Item PK_WC(int itemId) {
+        Item phukien = createItemSetKichHoat(itemId, 1);
+        int co = 983;
+        int cup = 982;
+        int bong = 966;
+        if (cup == itemId)  {
+            phukien.itemOptions.add(new Item.ItemOption(77,new Random().nextInt(6) + 5)); // hp 5-10%
+        }
+        if (co == itemId)  {
+            phukien.itemOptions.add(new Item.ItemOption(103,new Random().nextInt(6) + 5)); // ki 5-10%
+        }
+        if (bong == itemId)  {
+            phukien.itemOptions.add(new Item.ItemOption(50,new Random().nextInt(6) + 5)); // sd 5- 10%
+        }
+        phukien.itemOptions.add(new Item.ItemOption(192, 1));//WORLDCUP
+        phukien.itemOptions.add(new Item.ItemOption(193, 1));//(2 món kích hoạt ....)
+        if (Util.isTrue(99, 100)) {// tỉ lệ ra hsd
+            phukien.itemOptions.add(new Item.ItemOption(93, new Random().nextInt(2) + 1));//hsd
+        }
+        return phukien;
+    }
+    //Cải trang Gohan WC
+    public Item CT_WC(boolean rating) {
+        Item caitrang = createItemSetKichHoat(883, 1);
+        caitrang.itemOptions.add(new Item.ItemOption(77, 30));// hp 30%
+        caitrang.itemOptions.add(new Item.ItemOption(103, 15));// ki 15%
+        caitrang.itemOptions.add(new Item.ItemOption(50, 20));// sd 20%
+        caitrang.itemOptions.add(new Item.ItemOption(192, 1));//WORLDCUP
+        caitrang.itemOptions.add(new Item.ItemOption(193, 1));//(2 món kích hoạt ....)
+        if (Util.isTrue(99, 100) && rating) {// tỉ lệ ra hsd
+            caitrang.itemOptions.add(new Item.ItemOption(93, new Random().nextInt(2) + 1));//hsd
+        }
+        return caitrang;
+    }
 
 }

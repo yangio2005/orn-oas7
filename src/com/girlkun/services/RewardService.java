@@ -836,7 +836,7 @@ public class RewardService {
                     }
                     list.add(it);
                 } else {
-                    Item it = ItemService.gI().createNewItem((short) 189);
+                    Item it = ItemService.gI().createNewItem((short) 189); //vang
                     it.quantity = Util.nextInt(5, 50) * 1000;
                     list.add(it);
                 }

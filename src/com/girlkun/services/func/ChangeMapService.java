@@ -20,6 +20,7 @@ import com.girlkun.services.PlayerService;
 import com.girlkun.services.TaskService;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
+
 import java.util.List;
 
 
@@ -152,7 +153,7 @@ public class ChangeMapService {
             Service.getInstance().sendThongBaoOK(pl, "Không thể đổi khu vực trong map này");
             return;
         }
-        if (!pl.isAdmin()||!pl.isBoss) {
+        if (!pl.isAdmin() || !pl.isBoss) {
             if (MapService.gI().isMapOffline(pl.zone.map.mapId)) {
                 Service.getInstance().sendThongBaoOK(pl, "Không thể đổi khu vực trong map này");
                 return;
@@ -171,7 +172,7 @@ public class ChangeMapService {
             Map map = pl.zone.map;
             if (zoneId >= 0 && zoneId <= map.zones.size() - 1) {
                 Zone zoneJoin = map.zones.get(zoneId);
-                if (zoneJoin != null && (zoneJoin.getNumOfPlayers() >= zoneJoin.maxPlayer && !pl.isAdmin()&& !pl.isBoss)) {
+                if (zoneJoin != null && (zoneJoin.getNumOfPlayers() >= zoneJoin.maxPlayer && !pl.isAdmin() && !pl.isBoss)) {
                     Service.getInstance().sendThongBaoOK(pl, "Khu vực đã đầy");
                     return;
                 }
@@ -290,8 +291,7 @@ public class ChangeMapService {
      * @param y
      */
     public void changeMapYardrat(Player pl, Zone zoneJoin, int x, int y) {
-            changeMap(pl, zoneJoin, -1, -1, x, y, TELEPORT_YARDRAT);
-
+        changeMap(pl, zoneJoin, -1, -1, x, y, TELEPORT_YARDRAT);
 
 
     }
@@ -333,6 +333,7 @@ public class ChangeMapService {
             zoneJoin.mapInfo(pl); //-24
             pl.zone.load_Me_To_Another(pl);
             if (!pl.isBoss && !pl.isPet) {
+                pl.timeChangeZone = System.currentTimeMillis();
                 pl.zone.load_Another_To_Me(pl);
             }
             pl.iDMark.setIdSpaceShip(NON_SPACE_SHIP);
@@ -595,7 +596,7 @@ public class ChangeMapService {
             if (player.effectSkill.useTroi) {
                 EffectSkillService.gI().removeUseTroi(player);
             }
-            if(player.effectSkin.xHPKI > 1){
+            if (player.effectSkin.xHPKI > 1) {
                 player.effectSkin.xHPKI = 1;
                 Service.getInstance().point(player);
             }
@@ -828,6 +829,7 @@ public class ChangeMapService {
             }
         }
     }
+
     private void checkJoinMapMaBu(Player player) {
         if (player != null && player.zone != null) {
             switch (player.zone.map.mapId) {

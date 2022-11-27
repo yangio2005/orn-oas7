@@ -69,7 +69,7 @@ public class PVPService {
         pl.iDMark.setIdPlayThachDau(plMap.id);
         NpcService.gI().createMenuConMeo(pl, ConstNpc.MAKE_MATCH_PVP,
                 -1, plMap.name + " (sức mạnh " + Util.numberToMoney(plMap.nPoint.power)
-                + ")\nBạn muốn cược bao nhiêu vàng?",
+                        + ")\nBạn muốn cược bao nhiêu vàng?",
                 this.optionsGoldChallenge);
     }
 
@@ -78,6 +78,10 @@ public class PVPService {
             return;
         }
         Player plMap = pl.zone.getPlayerInMap(pl.iDMark.getIdPlayThachDau());
+        if (!plMap.getSession().actived) {
+            Service.getInstance().sendThongBao(pl, "Đối thủ chưa là thành viên của GOD");
+            return;
+        }
         if (plMap == null) {
             Service.getInstance().sendThongBao(pl, "Đối thủ đã rời khỏi map");
             return;

@@ -10,14 +10,14 @@ import java.util.List;
 
 public class LuckyRound {
 
-    private static final byte MAX_ITEM_IN_BOX = 20;
+    private static final byte MAX_ITEM_IN_BOX = 100;
 
     //1 gem and ruby
     public static final byte USING_GEM = 2;
     public static final byte USING_GOLD = 0;
 
     private static final byte PRICE_GEM = 4;
-    private static final int PRICE_GOLD = 20000000;
+    private static final int PRICE_GOLD = 25000000;
 
     private static LuckyRound i;
 

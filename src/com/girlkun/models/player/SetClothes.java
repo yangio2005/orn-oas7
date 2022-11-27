@@ -23,6 +23,7 @@ public class SetClothes {
     public byte cadic;
     public byte nappa;
 
+    public byte worldcup;
     public byte setDHD;
 
     public boolean godClothes;
@@ -45,8 +46,8 @@ public class SetClothes {
             }
         }
         Item ct = this.player.inventory.itemsBody.get(5);
-        if(ct.isNotNullItem()){
-            switch(ct.template.id){
+        if (ct.isNotNullItem()) {
+            switch (ct.template.id) {
                 case 618:
                 case 619:
                 case 620:
@@ -57,6 +58,10 @@ public class SetClothes {
                 case 626:
                 case 627:
                     this.ctHaiTac = ct.template.id;
+                    break;
+                case 883:
+                case 904:
+                    this.worldcup++;
                     break;
             }
         }
@@ -115,9 +120,10 @@ public class SetClothes {
                             cadic++;
                             break;
                         case 21:
-                            if(io.param == 80){
+                            if (io.param == 80) {
                                 setDHD++;
                             }
+                            break;
                     }
 
                     if (isActSet) {
@@ -141,11 +147,12 @@ public class SetClothes {
         this.cadic = 0;
         this.nappa = 0;
         this.setDHD = 0;
+        this.worldcup = 0;
         this.godClothes = false;
         this.ctHaiTac = -1;
     }
-    
-    public void dispose(){
+
+    public void dispose() {
         this.player = null;
     }
 }

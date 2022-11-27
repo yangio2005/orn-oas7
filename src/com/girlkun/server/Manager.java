@@ -547,7 +547,6 @@ public class Manager {
                 }
             }
             Logger.success("Load reward lucky round thành công (" + LUCKY_ROUND_REWARDS.size() + ")\n");
-
             //load reward mob
             folder = new File("data/girlkun/mob_reward");
             for (File fileEntry : folder.listFiles()) {
@@ -574,10 +573,10 @@ public class Manager {
                         ItemMobReward item = new ItemMobReward(itemId, mapDrop,
                                 new int[]{Integer.parseInt(quantity[0]), Integer.parseInt(quantity[1])},
                                 new int[]{Integer.parseInt(ratio[0]), Integer.parseInt(ratio[1])}, gender);
-                        if (item.getTemp().type == 30) {
+                        if (item.getTemp().type == 30) { // sao pha lê
                             item.setRatio(new int[]{20, Integer.parseInt(ratio[1])});
                         }
-                        if (item.getTemp().type == 14) {
+                        if (item.getTemp().type == 14) { //14 đá nâng cấp
                             item.setRatio(new int[]{20, Integer.parseInt(ratio[1])});
                         }
 //                        System.out.println(mobReward.getMobId());
@@ -586,7 +585,7 @@ public class Manager {
 //                        System.out.println(item.getRatio()[0] + "/" + item.getRatio()[1]);
 //                        System.out.println(item.getQuantity()[0] + "/" + item.getQuantity()[1]);
 
-                        if (item.getTemp().type == 9) {
+                        if (item.getTemp().type == 9) { //vàng
                             mobReward.getGoldReward().add(item);
                         } else {
                             mobReward.getItemReward().add(item);

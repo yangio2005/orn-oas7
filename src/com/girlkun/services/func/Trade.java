@@ -11,6 +11,7 @@ import com.girlkun.services.Service;
 import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
 public class Trade {
 
     private static final int TIME_TRADE = 180000;
+    private static final int QUANLITY_MAX = 20000;
 
     private Player player1;
     private Player player2;
@@ -78,10 +80,8 @@ public class Trade {
     }
 
     public void addItemTrade(Player pl, byte index, int quantity) {
-//        System.out.println("quantity: " + quantity);
-//        if (pl.getSession().actived) {
-        if (quantity > 5000) {
-            removeItemTrade(pl, index);
+        if (quantity > QUANLITY_MAX) {
+            removeItemTrade2(pl, index);
             Service.getInstance().sendThongBao(pl, "Đã quá giới hạn giao dịch...");
             return;
         }
@@ -89,10 +89,8 @@ public class Trade {
             if (index == -1) {
                 if (pl.equals(this.player1)) {
                     goldTrade1 = quantity;
-//                    System.out.println("goldTrade1: " + goldTrade1);
                 } else {
                     goldTrade2 = quantity;
-//                    System.out.println("goldTrade2: " + goldTrade2);
                 }
             } else {
                 Item item = null;
@@ -164,6 +162,18 @@ public class Trade {
             pl.sendMessage(msg);
             msg.cleanup();
             Service.getInstance().sendThongBao(pl, "Không thể giao dịch vật phẩm này");
+        } catch (Exception e) {
+        }
+    }
+
+    private void removeItemTrade2(Player pl, byte index) {
+        Message msg;
+        try {
+            msg = new Message(-86);
+            msg.writer().writeByte(2);
+            msg.writer().write(index);
+            pl.sendMessage(msg);
+            msg.cleanup();
         } catch (Exception e) {
         }
     }

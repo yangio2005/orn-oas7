@@ -204,6 +204,17 @@ public class UseItem {
                         case 212: //nho xanh
                             eatGrapes(pl, item);
                             break;
+                        case 342:
+                        case 343:
+                        case 344:
+                        case 345:
+                            if (pl.zone.items.stream().filter(it -> it != null && it.itemTemplate.type == 22).count() < 5) {
+                                Service.getInstance().DropVeTinh(pl, item, pl.zone, pl.location.x, pl.location.y);
+                                InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                            } else {
+                                Service.getInstance().sendThongBao(pl, "Đặt ít thôi con");
+                            }
+                            break;
                         case 380: //cskb
                             openCSKB(pl, item);
                             break;
