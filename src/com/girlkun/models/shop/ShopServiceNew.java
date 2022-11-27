@@ -162,8 +162,7 @@ public class ShopServiceNew {
                         } else if (itemShop.typeSell == COST_RUBY) {
                             msg.writer().writeInt(0);
                             msg.writer().writeInt(itemShop.cost);
-                        }
-                        else if (itemShop.typeSell == COST_COUPON) {
+                        } else if (itemShop.typeSell == COST_COUPON) {
                             msg.writer().writeInt(0);
                             msg.writer().writeInt(itemShop.cost);
                         }
@@ -329,8 +328,7 @@ public class ShopServiceNew {
         } else if (player.inventory.ruby < ruby) {
             Service.getInstance().sendThongBao(player, "Bạn không có đủ hồng ngọc");
             return false;
-        }
-        else if (player.inventory.coupon < coupon) {
+        } else if (player.inventory.coupon < coupon) {
             Service.getInstance().sendThongBao(player, "Bạn không có đủ điểm");
             return false;
         }
@@ -481,7 +479,6 @@ public class ShopServiceNew {
         if (items == null) {
             return;
         }
-        System.out.println("index: " + index);
         Item item = items.get(index);
         switch (type) {
             case 0: //nhận

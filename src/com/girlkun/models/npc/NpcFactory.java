@@ -1014,7 +1014,11 @@ public class NpcFactory {
                 if (canOpenNpc(player)) {
                     if (this.mapId == 45) {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                                "Con muốn làm gì nào", "Đến Kaio", "Quay số\nmay mắn ");
+                                "Con muốn làm gì nào", "Quay số\nmay mắn ",
+                                "Rương phụ\n("
+                                        + (player.inventory.itemsBoxCrackBall.size()
+                                        - InventoryServiceNew.gI().getCountEmptyListItem(player.inventory.itemsBoxCrackBall))
+                                        + " món)", "Xóa hết\ntrong rương", "Đến Kaio");
                     }
                 }
             }
@@ -1025,17 +1029,21 @@ public class NpcFactory {
                     if (this.mapId == 45) {
                         if (player.iDMark.isBaseMenu()) {
                             switch (select) {
-                                case 0:
+                                case 3:
                                     ChangeMapService.gI().changeMapBySpaceShip(player, 48, -1, 354);
                                     break;
+                                case 2:
+                                    NpcService.gI().createMenuConMeo(player,
+                                            ConstNpc.CONFIRM_REMOVE_ALL_ITEM_LUCKY_ROUND, this.avartar,
+                                            "Con có chắc muốn xóa hết vật phẩm trong rương phụ? Sau khi xóa "
+                                                    + "sẽ không thể khôi phục!",
+                                            "Đồng ý", "Hủy bỏ");
+                                    break;
                                 case 1:
-                                    this.createOtherMenu(player, ConstNpc.MENU_CHOOSE_LUCKY_ROUND,
-                                            "Con muốn làm gì nào?", "Quay bằng\nvàng",
-                                            "Rương phụ\n("
-                                                    + (player.inventory.itemsBoxCrackBall.size()
-                                                    - InventoryServiceNew.gI().getCountEmptyListItem(player.inventory.itemsBoxCrackBall))
-                                                    + " món)",
-                                            "Xóa hết\ntrong rương", "Đóng");
+                                    ShopServiceNew.gI().opendShop(player, "ITEMS_LUCKY_ROUND", true);
+                                    break;
+                                case 0:
+                                    LuckyRound.gI().openCrackBallUI(player, LuckyRound.USING_GOLD);
                                     break;
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_CHOOSE_LUCKY_ROUND) {

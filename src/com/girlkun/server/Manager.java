@@ -521,7 +521,6 @@ public class Manager {
                     String line = null;
                     while ((line = br.readLine()) != null) {
                         line = line.replaceAll("[{}\\[\\]]", "");
-                        System.out.println(line);
                         String[] arrSub = line.split("\\|");
                         String[] data1 = arrSub[0].split(":");
                         ItemLuckyRound item = new ItemLuckyRound();
@@ -548,7 +547,6 @@ public class Manager {
                 }
             }
             Logger.success("Load reward lucky round thành công (" + LUCKY_ROUND_REWARDS.size() + ")\n");
-
             //load reward mob
             folder = new File("data/girlkun/mob_reward");
             for (File fileEntry : folder.listFiles()) {

@@ -280,7 +280,7 @@ public class SkillService {
                 if (!MapService.gI().isMapOffline(player.zone.map.mapId)) {
                     List<Player> playersMap = player.zone.getHumanoids();
                     for (Player pl : playersMap) {
-                        if (pl != null && !player.equals(pl) && !player.nPoint.khangTDHS) {
+                        if (pl != null && !player.equals(pl) && !pl.nPoint.khangTDHS) {
                             if (Util.getDistance(player, pl) <= SkillUtil.getRangeStun(player.playerSkill.skillSelect.point)
                                     && canAttackPlayer(player, pl) //                                        && (!pl.playerSkill.prepareQCKK && !pl.playerSkill.prepareLaze && !pl.playerSkill.prepareTuSat)
                                     ) {

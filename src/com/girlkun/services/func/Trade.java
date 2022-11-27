@@ -81,7 +81,7 @@ public class Trade {
 
     public void addItemTrade(Player pl, byte index, int quantity) {
         if (quantity > QUANLITY_MAX) {
-            removeItemTrade(pl, index);
+            removeItemTrade2(pl, index);
             Service.getInstance().sendThongBao(pl, "Đã quá giới hạn giao dịch...");
             return;
         }
@@ -162,6 +162,18 @@ public class Trade {
             pl.sendMessage(msg);
             msg.cleanup();
             Service.getInstance().sendThongBao(pl, "Không thể giao dịch vật phẩm này");
+        } catch (Exception e) {
+        }
+    }
+
+    private void removeItemTrade2(Player pl, byte index) {
+        Message msg;
+        try {
+            msg = new Message(-86);
+            msg.writer().writeByte(2);
+            msg.writer().write(index);
+            pl.sendMessage(msg);
+            msg.cleanup();
         } catch (Exception e) {
         }
     }

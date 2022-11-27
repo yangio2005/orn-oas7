@@ -445,9 +445,7 @@ public class Controller implements IMessageHandler {
                     break;
             }
         } catch (Exception e) {
-            Logger.error(String.valueOf(_msg.command));
-            Logger.error(String.valueOf(_session.player));
-            Logger.logException(Controller.class, e);
+            e.printStackTrace();
         } finally {
             _msg.cleanup();
             _msg.dispose();

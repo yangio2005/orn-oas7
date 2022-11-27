@@ -188,11 +188,17 @@ public class NPoint {
             tlHutHp += RewardBlackBall.R7S_2;
         }
         if (this.player.setClothes.worldcup == 2) {
-            this.tlDameCrit.add(10);
+            this.tlDameCrit.add(20);
         }
 
         for (Item item : this.player.inventory.itemsBody) {
             if (item.isNotNullItem()) {
+                switch (item.template.id) {
+                    case 966:
+                    case 982:
+                    case 983:
+                        player.setClothes.worldcup++;
+                }
                 if (item.template.id >= 592 && item.template.id <= 594) {
                     teleport = true;
                 }

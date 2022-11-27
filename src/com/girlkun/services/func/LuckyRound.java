@@ -17,7 +17,7 @@ public class LuckyRound {
     public static final byte USING_GOLD = 0;
 
     private static final byte PRICE_GEM = 4;
-    private static final int PRICE_GOLD = 20000000;
+    private static final int PRICE_GOLD = 25000000;
 
     private static LuckyRound i;
 
