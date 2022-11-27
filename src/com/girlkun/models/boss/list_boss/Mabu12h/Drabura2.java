@@ -20,7 +20,7 @@ public class Drabura2 extends Boss {
     public void reward(Player plKill) {
         byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length);
-        if (Util.isTrue(5, 100)) {
+        if (Util.isTrue(3, 100)) {
             if (Util.isTrue(1, 10)) {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 561, 1, this.location.x, this.location.y, plKill.id));
             } else {

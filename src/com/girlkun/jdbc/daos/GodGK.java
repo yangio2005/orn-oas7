@@ -102,7 +102,6 @@ public class GodGK {
                             DataGame.sendDataItemBG(session);
                             Service.getInstance().switchToCreateChar(session);
                         } else {
-                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
                             int plHp = 200000000;
                             int plMp = 200000000;
                             JSONValue jv = new JSONValue();
@@ -542,6 +541,7 @@ public class GodGK {
                             player.nPoint.hp = plHp;
                             player.nPoint.mp = plMp;
                             player.iDMark.setLoadedAllDataPlayer(true);
+                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
                         }
                     }
                 }
