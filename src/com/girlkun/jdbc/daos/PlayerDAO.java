@@ -274,16 +274,6 @@ public class PlayerDAO {
     }
 
     public static void updatePlayer(Player player) {
-        boolean checkLogout = false;
-        try (Connection con = GirlkunDB.getConnection()) {
-            checkLogout = checkLogout(con, player);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (checkLogout){
-            System.out.println("có player nhân bản");
-            return;
-        }
         if (player.iDMark.isLoadedAllDataPlayer()) {
             long st = System.currentTimeMillis();
             try {

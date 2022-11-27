@@ -538,7 +538,7 @@ public class BossesData {
                     "|-1|Lại thêm một tên ngốc nữa chán sống!"
             }, //text chat 2
             new String[]{"|-2|Khốn kiếp, Pic.. hắn bị Cell hấp thu rồi!!"}, //text chat 3
-            REST_15_M
+            REST_5_M
     );
 
     public static final BossData XEN_BO_HUNG_2 = new BossData(
@@ -636,7 +636,7 @@ public class BossesData {
                     "|-1|Nếu không còn ai tham dự trò chơi của Cell,.. thì toàn bộ cư dân trái đất sẽ bị tiêu diệt!"
             }, //text chat 2
             new String[]{"|-1|Hô hô hô, đây sẽ là kết thúc của lũ ngu ngốc các ngươi!! Ta sẽ chết nhưng sẽ kéo theo cái hành tinh này luôn"}, //text chat 3
-            REST_5_M
+            REST_10_M
     );
 
     public static final BossData SIEU_BO_HUNG_2 = new BossData(
@@ -667,7 +667,7 @@ public class BossesData {
                     {Skill.QUA_CAU_KENH_KHI, 7, 10000},
                     {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
                     {Skill.KHIEN_NANG_LUONG, 7, 100000},
-                    {Skill.TAI_TAO_NANG_LUONG, 7, 110000},
+                    {Skill.TAI_TAO_NANG_LUONG, 7, 50000},
                     {Skill.THOI_MIEN, 7, 100000}},
             //skill
             new String[]{"|-2|Tại sao!? Sao ngươi vẫn còn sống vậy!?",
@@ -943,10 +943,14 @@ public class BossesData {
             "Black Goku", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{550, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            80000, //dame
+            250000, //dame
             new int[]{777000000}, //hp
             new int[]{0,1,2,3,4,5,6,27,28,29}, //map join
-            (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO), //skill
+            new int[][]{
+                    {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
+                    {Skill.KAMEJOKO, 7, 10000},
+                    {Skill.TAI_TAO_NANG_LUONG, 1, 40000}},
+            //skill
             new String[]{"|-1|Ta là Sôn Gô Ku",
                     "|-1|Cơ thể này,sức mạnh này",
                     "|-1|Ta khá thích việc loại bỏ các ngươi",
@@ -997,7 +1001,7 @@ public class BossesData {
             new int[]{1000000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
             new int[][]{
-                    {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
+                    {Skill.DICH_CHUYEN_TUC_THOI, 7, 5000},
                     {Skill.KAMEJOKO, 7, 10000},
                     {Skill.ANTOMIC, 7, 10000}},
             //skill
@@ -1019,7 +1023,7 @@ public class BossesData {
             "Super Black Goku Rose", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{553, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            6800000, //dame
+            680000, //dame
             new int[]{1000000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
             new int[][]{

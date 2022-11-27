@@ -53,6 +53,7 @@ public class BossManager implements Runnable {
         return BossManager.I;
     }
 
+
     private BossManager() {
         this.bosses = new ArrayList<>();
     }
