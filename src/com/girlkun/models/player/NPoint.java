@@ -187,16 +187,16 @@ public class NPoint {
             tlHpHoi += RewardBlackBall.R7S_1;
             tlHutHp += RewardBlackBall.R7S_2;
         }
-        if (this.player.setClothes.worldcup == 2) {
-            this.tlDameCrit.add(20);
-        }
 
+        this.player.setClothes.worldcup = 0;
         for (Item item : this.player.inventory.itemsBody) {
             if (item.isNotNullItem()) {
                 switch (item.template.id) {
                     case 966:
                     case 982:
                     case 983:
+                    case 883:
+                    case 904:
                         player.setClothes.worldcup++;
                 }
                 if (item.template.id >= 592 && item.template.id <= 594) {
@@ -555,6 +555,7 @@ public class NPoint {
         //set worldcup
         if (this.player.setClothes.worldcup == 2) {
             this.dame += ((long) this.dame * 10 / 100);
+            this.tlDameCrit.add(20);
         }
         //phóng heo
         if (this.player.effectFlagBag.usePhongHeo) {

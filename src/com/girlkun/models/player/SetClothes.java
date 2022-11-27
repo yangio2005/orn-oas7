@@ -59,10 +59,7 @@ public class SetClothes {
                 case 627:
                     this.ctHaiTac = ct.template.id;
                     break;
-                case 883:
-                case 904:
-                    this.worldcup++;
-                    break;
+
             }
         }
     }

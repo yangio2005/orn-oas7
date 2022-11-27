@@ -68,9 +68,9 @@ public class GodGK {
                 long lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
                 int secondsPass = (int) ((System.currentTimeMillis() - lastTimeLogout) / 1000);
 
-                if (!session.isAdmin) {
-                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
-                }else
+//                if (!session.isAdmin) {
+//                    Service.getInstance().sendThongBaoOK(session, "Chi danh cho admin");
+//                }else
 
 
                 if (rs.getBoolean("ban")) {
