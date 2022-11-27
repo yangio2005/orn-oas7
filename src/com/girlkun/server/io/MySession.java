@@ -18,6 +18,7 @@ import com.girlkun.services.MapService;
 import com.girlkun.services.Service;
 import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.Logger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,6 +63,7 @@ public class MySession extends Session {
 
     public MySession(Socket socket) {
         super(socket);
+        ipAddress = socket.getInetAddress().getHostAddress();
     }
 
     public void initItemsReward() {
