@@ -785,8 +785,10 @@ public class NpcFactory {
                                     break;
                                 case 5: //phân rã đồ thần linh
                                     CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.PHAN_RA_DO_THAN_LINH);
-
-
+                                    break;
+                                case 6:
+                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_CAP_DO_TS);
+                                    break;
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_OPTION_SHOP_BUA) {
                             switch (select) {
@@ -807,12 +809,17 @@ public class NpcFactory {
                                 case CombineServiceNew.LAM_PHEP_NHAP_DA:
                                 case CombineServiceNew.NHAP_NGOC_RONG:
                                 case CombineServiceNew.PHAN_RA_DO_THAN_LINH:
+                                case CombineServiceNew.NANG_CAP_DO_TS:
                                     if (select == 0) {
                                         CombineServiceNew.gI().startCombine(player);
                                     }
                                     break;
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_PHAN_RA_DO_THAN_LINH) {
+                            if (select == 0) {
+                                CombineServiceNew.gI().startCombine(player);
+                            }
+                        } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_NANG_CAP_DO_TS) {
                             if (select == 0) {
                                 CombineServiceNew.gI().startCombine(player);
                             }

@@ -14,6 +14,7 @@ import com.girlkun.utils.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class CombineServiceNew {
@@ -50,6 +51,7 @@ public class CombineServiceNew {
     public static final int LAM_PHEP_NHAP_DA = 512;
     public static final int NHAP_NGOC_RONG = 513;
     public static final int PHAN_RA_DO_THAN_LINH = 514;
+    public static final int NANG_CAP_DO_TS = 515;
 
     private final Npc baHatMit;
 
@@ -326,6 +328,40 @@ public class CombineServiceNew {
                 } else {
                     this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Ta chỉ có thể phân rã 1 lần 1 món đồ thần linh", "Đóng");
                 }
+                break;
+            case NANG_CAP_DO_TS:
+                if (player.combineNew.itemsCombine.size() == 0) {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy đưa ta 2 món Hủy Diệt bất kì và 1 món Thần Linh cùng loại", "Đóng");
+                    return;
+                }
+                if (player.combineNew.itemsCombine.size() == 3) {
+                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.template.id >= 555 && item.template.id <= 567).count() < 1) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Thiếu đồ thần linh", "Đóng");
+                        return;
+                    }
+                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.template.id >= 650 && item.template.id <= 662).count() < 2) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Thiếu đồ hủy diệt", "Đóng");
+                        return;
+                    }
+
+                    String npcSay = "|2|Con có muốn đổi các món nguyên liệu ?\n|7|"
+                            + "Và nhận được 1 món thiên sứ tương ứng\n"
+                            + "|1|Cần " + Util.numberToMoney(500000000) + " vàng";
+
+                    if (player.inventory.gold < 500000000) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hết tiền rồi\nẢo ít thôi con", "Đóng");
+                        return;
+                    }
+                    this.baHatMit.createOtherMenu(player, ConstNpc.MENU_NANG_CAP_DO_TS,
+                            npcSay, "Nâng cấp\n" + Util.numberToMoney(500000000) + " vàng", "Từ chối");
+                } else {
+                    if (player.combineNew.itemsCombine.size() > 3) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cất đi con ta không thèm", "Đóng");
+                        return;
+                    }
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Còn thiếu nguyên liệu để nâng cấp hãy quay lại sau", "Đóng");
+                }
+                break;
         }
     }
 
@@ -353,6 +389,9 @@ public class CombineServiceNew {
                 break;
             case PHAN_RA_DO_THAN_LINH:
                 phanradothanlinh(player);
+                break;
+            case NANG_CAP_DO_TS:
+                openDTS(player);
                 break;
         }
         player.iDMark.setIndexMenu(ConstNpc.IGNORE_MENU);
@@ -488,6 +527,46 @@ public class CombineServiceNew {
             player.combineNew.itemsCombine = new ArrayList<>();
             InventoryServiceNew.gI().sendItemBags(player);
             Service.getInstance().sendMoney(player);
+        }
+    }
+
+    public void openDTS(Player player) {
+        //check sl đồ tl, đồ hd
+        if (player.combineNew.itemsCombine.size() != 3) {
+            Service.getInstance().sendThongBao(player, "Thiếu đồ");
+            return;
+        }
+        if (player.combineNew.itemsCombine.stream().filter(item -> item != null && item.template.id >= 555 && item.template.id <= 567).count() != 1) {
+            Service.getInstance().sendThongBao(player, "Thiếu đồ thần linh");
+            return;
+        }
+        if (player.combineNew.itemsCombine.stream().filter(item -> item != null && item.template.id >= 650 && item.template.id <= 662).count() != 2) {
+            Service.getInstance().sendThongBao(player, "Thiếu đồ hủy diệt");
+            return;
+        }
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
+            if (player.inventory.gold < 500000000) {
+                Service.getInstance().sendThongBao(player, "Ảo ít thôi con...");
+                return;
+            }
+            player.inventory.gold -= 500000000;
+            sendEffectSuccessCombine(player);
+            Item itemTL = player.combineNew.itemsCombine.stream().filter(item -> item.template.id >= 555 && item.template.id <= 567).findFirst().get();
+            List<Item> itemHDs = player.combineNew.itemsCombine.stream().filter(item -> item.template.id >= 650 && item.template.id <= 662).collect(Collectors.toList());
+            short[][] itemIds = {{1048, 1051, 1054, 1057, 1060}, {1049, 1052, 1055, 1058, 1061}, {1050, 1053, 1056, 1059, 1062}}; // thứ tự td - 0,nm - 1, xd - 2
+
+            Item itemTS = ItemService.gI().DoThienSu(itemIds[itemTL.template.gender > 2 ? player.gender : itemTL.template.gender][itemTL.template.type], itemTL.template.gender);
+            InventoryServiceNew.gI().addItemBag(player, itemTS);
+
+            InventoryServiceNew.gI().subQuantityItemsBag(player, itemTL, 1);
+            itemHDs.forEach(item -> InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1));
+            InventoryServiceNew.gI().sendItemBags(player);
+            Service.getInstance().sendMoney(player);
+            Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + itemTS.template.name);
+            player.combineNew.itemsCombine.clear();
+            reOpenItemCombine(player);
+        } else {
+            Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 1 ô trống hành trang");
         }
     }
 
@@ -1242,6 +1321,8 @@ public class CombineServiceNew {
                 return "Ta sẽ phù phép cho trang bị của ngươi trở lên mạnh mẽ";
             case PHAN_RA_DO_THAN_LINH:
                 return "Ta sẽ phân rã \n  trang bị của người thành điểm!";
+            case NANG_CAP_DO_TS:
+                return "Ta sẽ nâng cấp \n  trang bị của người thành\n đồ thiên sứ!";
             default:
                 return "";
         }
@@ -1262,6 +1343,10 @@ public class CombineServiceNew {
             case PHAN_RA_DO_THAN_LINH:
                 return "vào hành trang\nChọn trang bị\n(Áo, quần, găng, giày hoặc rađa)\nChọn loại đá để phân rã\n"
                         + "Sau đó chọn 'Phân Rã'";
+            case NANG_CAP_DO_TS:
+                return "vào hành trang\nChọn 2 trang bị hủy diệt bất kì\n(Áo, quần, găng, giày hoặc rađa)\nChọn tiếp 1 món đồ thần linh (Áo, quần, găng, giày hoặc rađa) \n " +
+                        " đồ thiên sứ sẽ cùng loại \n với đồ thần linh"
+                        + "Sau đó chọn 'Nâng Cấp'";
             default:
                 return "";
         }

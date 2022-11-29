@@ -15,6 +15,7 @@ import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class ItemService {
@@ -527,19 +528,20 @@ public class ItemService {
             Service.getInstance().sendThongBao(player, "Bạn không đủ bông...");
         }
     }
+
     public Item PK_WC(int itemId) {
         Item phukien = createItemSetKichHoat(itemId, 1);
         int co = 983;
         int cup = 982;
         int bong = 966;
-        if (cup == itemId)  {
-            phukien.itemOptions.add(new Item.ItemOption(77,new Random().nextInt(6) + 5)); // hp 5-10%
+        if (cup == itemId) {
+            phukien.itemOptions.add(new Item.ItemOption(77, new Random().nextInt(6) + 5)); // hp 5-10%
         }
-        if (co == itemId)  {
-            phukien.itemOptions.add(new Item.ItemOption(103,new Random().nextInt(6) + 5)); // ki 5-10%
+        if (co == itemId) {
+            phukien.itemOptions.add(new Item.ItemOption(103, new Random().nextInt(6) + 5)); // ki 5-10%
         }
-        if (bong == itemId)  {
-            phukien.itemOptions.add(new Item.ItemOption(50,new Random().nextInt(6) + 5)); // sd 5- 10%
+        if (bong == itemId) {
+            phukien.itemOptions.add(new Item.ItemOption(50, new Random().nextInt(6) + 5)); // sd 5- 10%
         }
         phukien.itemOptions.add(new Item.ItemOption(192, 1));//WORLDCUP
         phukien.itemOptions.add(new Item.ItemOption(193, 1));//(2 món kích hoạt ....)
@@ -548,6 +550,7 @@ public class ItemService {
         }
         return phukien;
     }
+
     //Cải trang Gohan WC
     public Item CT_WC(boolean rating) {
         Item caitrang = createItemSetKichHoat(883, 1);
@@ -562,4 +565,85 @@ public class ItemService {
         return caitrang;
     }
 
+    public void openDTS(Player player) {
+        //check sl đồ tl, đồ hd
+        if (player.combineNew.itemsCombine.stream().filter(item -> item.template.id >= 555 && item.template.id <= 567).count() < 1) {
+            Service.getInstance().sendThongBao(player, "Thiếu đồ thần linh");
+            return;
+        }
+        if (player.combineNew.itemsCombine.stream().filter(item -> item.template.id >= 650 && item.template.id <= 662).count() < 2) {
+            Service.getInstance().sendThongBao(player, "Thiếu đồ hủy diệt");
+            return;
+        }
+        if (player.combineNew.itemsCombine.size() != 3) {
+            Service.getInstance().sendThongBao(player, "Thiếu đồ");
+            return;
+        }
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
+            Item itemTL = player.combineNew.itemsCombine.stream().filter(item -> item.template.id >= 555 && item.template.id <= 567).findFirst().get();
+            List<Item> itemHDs = player.combineNew.itemsCombine.stream().filter(item -> item.template.id >= 650 && item.template.id <= 662).collect(Collectors.toList());
+            short[][] itemIds = {{1048, 1051, 1054, 1057, 1060}, {1049, 1052, 1055, 1058, 1061}, {1050, 1053, 1056, 1059, 1062}}; // thứ tự td - 0,nm - 1, xd - 2
+
+            Item itemTS = DoThienSu(itemIds[player.gender][itemTL.template.type], player.gender);
+            InventoryServiceNew.gI().addItemBag(player, itemTS);
+
+            InventoryServiceNew.gI().subQuantityItemsBag(player, itemTL, 1);
+            itemHDs.forEach(item -> InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1));
+
+            InventoryServiceNew.gI().sendItemBags(player);
+            Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + itemTS.template.name);
+        } else {
+            Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 1 ô trống hành trang");
+        }
+    }
+
+    public Item DoThienSu(int itemId, int gender) {
+        Item dots = createItemSetKichHoat(itemId, 1);
+        List<Integer> ao = Arrays.asList(1048, 1049, 1050);
+        List<Integer> quan = Arrays.asList(1051, 1052, 1053);
+        List<Integer> gang = Arrays.asList(1054, 1055, 1056);
+        List<Integer> giay = Arrays.asList(1057, 1058, 1059);
+        List<Integer> nhan = Arrays.asList(1060, 1061, 1062);
+        //áo
+        if (ao.contains(itemId)) {
+            dots.itemOptions.add(new Item.ItemOption(47, Util.highlightsItem(gender == 2, new Random().nextInt(1201) + 2800))); // áo từ 2800-4000 giáp
+        }
+        //quần
+        if (Util.isTrue(80, 100)) {
+            if (quan.contains(itemId)) {
+                dots.itemOptions.add(new Item.ItemOption(22, Util.highlightsItem(gender == 0, new Random().nextInt(11) + 120))); // hp 120k-130k
+            }
+        } else {
+            if (quan.contains(itemId)) {
+                dots.itemOptions.add(new Item.ItemOption(22, Util.highlightsItem(gender == 0, new Random().nextInt(21) + 130))); // hp 130-150k 15%
+            }
+        }
+        //găng
+        if (Util.isTrue(80, 100)) {
+            if (gang.contains(itemId)) {
+                dots.itemOptions.add(new Item.ItemOption(0, Util.highlightsItem(gender == 2, new Random().nextInt(651) + 9350))); // 9350-10000
+            }
+        } else {
+            if (gang.contains(itemId)) {
+                dots.itemOptions.add(new Item.ItemOption(0, Util.highlightsItem(gender == 2, new Random().nextInt(1001) + 10000))); // gang 15% 10-11k -xayda 12k1
+            }
+        }
+        //giày
+        if (Util.isTrue(80, 100)) {
+            if (giay.contains(itemId)) {
+                dots.itemOptions.add(new Item.ItemOption(23, Util.highlightsItem(gender == 1, new Random().nextInt(21) + 90))); // ki 90-110k
+            }
+        } else {
+            if (giay.contains(itemId)) {
+                dots.itemOptions.add(new Item.ItemOption(23, Util.highlightsItem(gender == 1, new Random().nextInt(21) + 110))); // ki 110-130k
+            }
+        }
+
+        if (nhan.contains(itemId)) {
+            dots.itemOptions.add(new Item.ItemOption(14, Util.highlightsItem(gender == 1, new Random().nextInt(3) + 18))); // nhẫn 18-20%
+        }
+        dots.itemOptions.add(new Item.ItemOption(21, 120));
+        dots.itemOptions.add(new Item.ItemOption(30, 1));
+        return dots;
+    }
 }
