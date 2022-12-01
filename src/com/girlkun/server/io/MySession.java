@@ -18,6 +18,7 @@ import com.girlkun.services.MapService;
 import com.girlkun.services.Service;
 import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.Logger;
+import com.girlkun.utils.Util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -144,6 +145,7 @@ public class MySession extends Session {
         } else {
             Player player = null;
             try {
+                Thread.sleep(Util.nextInt(0, 1000));
                 long st = System.currentTimeMillis();
                 this.uu = username;
                 this.pp = password;

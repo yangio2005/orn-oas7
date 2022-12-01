@@ -26,7 +26,7 @@ public class CombineServiceNew {
     private static final int TIME_COMBINE = 1500;
 
     private static final byte MAX_STAR_ITEM = 8;
-    private static final byte MAX_LEVEL_ITEM = 7;
+    private static final byte MAX_LEVEL_ITEM = 8;
 
     private static final byte OPEN_TAB_COMBINE = 0;
     private static final byte REOPEN_TAB_COMBINE = 1;
@@ -240,10 +240,9 @@ public class CombineServiceNew {
                         }
                         if (level < MAX_LEVEL_ITEM) {
                             player.combineNew.goldCombine = getGoldNangCapDo(level);
-                            player.combineNew.ratioCombine = getTileNangCapDo(level);
+                            player.combineNew.ratioCombine = (float) getTileNangCapDo(level);
                             player.combineNew.countDaNangCap = getCountDaNangCapDo(level);
-                            player.combineNew.countDaBaoVe = getCountDaBaoVe(level);
-
+                            player.combineNew.countDaBaoVe = (short) getCountDaBaoVe(level);
                             String npcSay = "|2|Hiện tại " + trangBi.template.name + " (+" + level + ")\n|0|";
                             for (Item.ItemOption io : trangBi.itemOptions) {
                                 if (io.optionTemplate.id != 72) {
@@ -284,7 +283,7 @@ public class CombineServiceNew {
                                         npcSay, "Còn thiếu\n" + Util.numberToMoney((player.combineNew.goldCombine - player.inventory.gold)) + " vàng");
                             } else {
                                 this.baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE,
-                                        npcSay, "Nâng cấp\n" + Util.numberToMoney(player.combineNew.goldCombine) + " vàng", "Từ chối");
+                                        npcSay, "Nâng cấp\n" + Util.numberToMoney(player.combineNew.goldCombine) + " vàng", "Nâng Cấp Sử Dụng " + player.combineNew.countDaBaoVe + " Đá Bảo Vệ", "Từ chối");
                             }
                         } else {
                             this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Trang bị của ngươi đã đạt cấp tối đa", "Đóng");
@@ -384,9 +383,7 @@ public class CombineServiceNew {
             case NHAP_NGOC_RONG:
                 nhapNgocRong(player);
                 break;
-            case NANG_CAP_VAT_PHAM:
-                nangCapVatPham(player);
-                break;
+
             case PHAN_RA_DO_THAN_LINH:
                 phanradothanlinh(player);
                 break;
@@ -398,6 +395,17 @@ public class CombineServiceNew {
         player.combineNew.clearParamCombine();
         player.combineNew.lastTimeCombine = System.currentTimeMillis();
 
+    }
+
+    public void startCombine2(Player player, int select) {
+        switch (player.combineNew.typeCombine) {
+            case NANG_CAP_VAT_PHAM:
+                nangCapVatPham(player, select);
+                break;
+        }
+        player.iDMark.setIndexMenu(ConstNpc.IGNORE_MENU);
+        player.combineNew.clearParamCombine();
+        player.combineNew.lastTimeCombine = System.currentTimeMillis();
     }
 
     private void doiKiemThan(Player player) {
@@ -770,17 +778,33 @@ public class CombineServiceNew {
 //            }
 //        }
 //    }
-    private void nangCapVatPham(Player player) {
+    private void nangCapVatPham(Player player, int select) {
+        if (select > 1) return;//0 không đá/ 1 là đá
         if (player.combineNew.itemsCombine.size() == 2) {
             if (isCoupleItemNangCap(player.combineNew.itemsCombine.get(0), player.combineNew.itemsCombine.get(1))) {
                 int countDaNangCap = player.combineNew.countDaNangCap;
                 int gold = player.combineNew.goldCombine;
+                short countDaBaoVe = player.combineNew.countDaBaoVe;
                 if (player.inventory.gold < gold) {
                     Service.getInstance().sendThongBao(player, "Không đủ vàng để thực hiện");
                     return;
                 }
                 Item trangBi = null;
                 Item daNangCap = null;
+                Item daBV = null;
+                if (select == 1) {
+                    try {
+                        daBV = InventoryServiceNew.gI().findItemBag(player, 987);
+                    } catch (Exception e) {
+                        Service.getInstance().sendThongBao(player, "Không đủ đá bảo vệ");
+                        return;
+                    }
+                    if (daBV.quantity < countDaBaoVe) {
+                        Service.getInstance().sendThongBao(player, "Không đủ đá bảo vệ");
+                        return;
+                    }
+                }
+
                 if (player.combineNew.itemsCombine.get(0).template.type < 5) {
                     trangBi = player.combineNew.itemsCombine.get(0);
                     daNangCap = player.combineNew.itemsCombine.get(1);
@@ -834,7 +858,7 @@ public class CombineServiceNew {
 //                        }
                         sendEffectSuccessCombine(player);
                     } else {
-                        if (level == 2 || level == 4 || level == 6) {
+                        if ((level == 2 || level == 4 || level == 6) && select != 1) {
                             option.param -= (option.param * 10 / 100);
                             if (option2 != null) {
                                 option2.param -= (option2.param * 10 / 100);
@@ -843,6 +867,7 @@ public class CombineServiceNew {
                         }
                         sendEffectFailCombine(player);
                     }
+                    if (select == 1) InventoryServiceNew.gI().subQuantityItemsBag(player, daBV, countDaBaoVe);
                     InventoryServiceNew.gI().subQuantityItemsBag(player, daNangCap, player.combineNew.countDaNangCap);
                     InventoryServiceNew.gI().sendItemBags(player);
                     Service.getInstance().sendMoney(player);
@@ -1034,7 +1059,7 @@ public class CombineServiceNew {
         return 0;
     }
 
-    private int getTileNangCapDo(int level) {
+    private double getTileNangCapDo(int level) {
         switch (level) {
             case 0:
                 return 80;
@@ -1050,6 +1075,8 @@ public class CombineServiceNew {
                 return 5;
             case 6:
                 return 1;
+            case 7:
+                return 0.3;
         }
         return 0;
     }
@@ -1070,23 +1097,14 @@ public class CombineServiceNew {
                 return 35;
             case 6:
                 return 50;
+            case 7:
+                return 70;
         }
         return 0;
     }
 
     private int getCountDaBaoVe(int level) {
-        switch (level) {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                return 1;
-            case 6:
-                return 3;
-        }
-        return 0;
+        return level + 1;
     }
 
     private int getGoldNangCapDo(int level) {
@@ -1105,6 +1123,9 @@ public class CombineServiceNew {
                 return 23000000;
             case 6:
                 return 100000000;
+            case 7:
+                return 250000000;
+//                return 1;
         }
         return 0;
     }

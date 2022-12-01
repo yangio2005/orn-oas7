@@ -724,7 +724,7 @@ public class NpcFactory {
                                 "Ngươi tìm ta có việc gì?",
                                 "Cửa hàng\nBùa", "Nâng cấp\nVật phẩm",
                                 "Nâng cấp\nBông tai\nPorata", "Làm phép\nNhập đá",
-                                "Nhập\nNgọc Rồng", "Phân Rã\nĐồ Thần Linh");
+                                "Nhập\nNgọc Rồng", "Phân Rã\nĐồ Thần Linh","Nâng Cấp \nĐồ Thiên Sứ");
                     }
                 }
             }
@@ -805,6 +805,8 @@ public class NpcFactory {
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_START_COMBINE) {
                             switch (player.combineNew.typeCombine) {
                                 case CombineServiceNew.NANG_CAP_VAT_PHAM:
+                                    CombineServiceNew.gI().startCombine2(player, select);
+                                    break;
                                 case CombineServiceNew.NANG_CAP_BONG_TAI:
                                 case CombineServiceNew.LAM_PHEP_NHAP_DA:
                                 case CombineServiceNew.NHAP_NGOC_RONG:
@@ -1722,22 +1724,71 @@ public class NpcFactory {
         return new Npc(mapId, status, cx, cy, tempId, avartar) {
             @Override
             public void openBaseMenu(Player player) {
-                if (canOpenNpc(player)) {
-                    createOtherMenu(player, ConstNpc.BASE_MENU, "Ta cảm nhận được những luồng sức mạnh khủng khiếp ở hành tinh này\n thật đáng sợ",
-                            "Top\nSức Mạnh", "Top\nNhiệm Vụ", "Đóng");
+                if (this.mapId == 14) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta sẽ dẫn cậu tới hành tinh Berrus\nCậu sẽ mạnh lên nhiều lắm đó!", "Tới ngay", "Từ chối");
+                }
+                if (this.mapId == 7) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta sẽ dẫn cậu tới hành tinh Berrus\nCậu sẽ mạnh lên nhiều lắm đó!", "Tới ngay", "Từ chối");
+                }
+                if (this.mapId == 0) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta sẽ dẫn cậu tới hành tinh Berrus\nCậu sẽ mạnh lên nhiều lắm đó!", "Tới ngay", "Từ chối");
+                }
+                if (this.mapId == 146) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Cậu không chịu nổi khi ở đây sao?\nCậu sẽ khó mà mạnh lên được", "Trốn về", "Ở lại");
+                }
+                if (this.mapId == 147) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Cậu không chịu nổi khi ở đây sao?\nCậu sẽ khó mà mạnh lên được", "Trốn về", "Ở lại");
+                }
+                if (this.mapId == 148) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Cậu không chịu nổi khi ở đây sao?\nCậu sẽ khó mà mạnh lên được", "Trốn về", "Ở lại");
                 }
             }
 
             @Override
             public void confirmMenu(Player player, int select) {
                 if (canOpenNpc(player)) {
-                    if (player.iDMark.isBaseMenu()) {
+                    if (player.iDMark.isBaseMenu() && this.mapId == 7) {
                         if (select == 0) {
-                            Util.showListTop(player, (byte) select);
+                            ChangeMapService.gI().changeMapBySpaceShip(player, 146, -1, 168);
                         }
                         if (select == 1) {
-                            Util.showListTop(player, (byte) select);
                         }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 14) {
+                        if (select == 0) {
+                            ChangeMapService.gI().changeMapBySpaceShip(player, 148, -1, 831);
+                        }
+                        if (select == 1) {
+                        }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 0) {
+                        if (select == 0) {
+                            ChangeMapService.gI().changeMapBySpaceShip(player, 147, -1, 168);
+                        }
+                        if (select == 1) {
+                        }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 147) {
+                        if (select == 0) {
+                            ChangeMapService.gI().changeMapBySpaceShip(player, 0, -1, 450);
+                        }
+                        if (select == 1) {
+                        }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 148) {
+                        if (select == 0) {
+                            ChangeMapService.gI().changeMapBySpaceShip(player, 14, -1, 450);
+                        }
+                        if (select == 1) {
+                        }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 146) {
+                        if (select == 0) {
+                            ChangeMapService.gI().changeMapBySpaceShip(player, 7, -1, 450);
+                        }
+                        if (select == 1) {
+                        }
+
                     }
                 }
             }

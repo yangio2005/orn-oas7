@@ -7,6 +7,7 @@ import com.girlkun.models.player.Inventory;
 import com.girlkun.models.player.Pet;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -661,7 +662,7 @@ public class InventoryServiceNew {
                     continue;
                 }
                 //457-thỏi vàng; 590-bí kiếp
-                if (itemAdd.template.id == 457 || itemAdd.template.id == 590 || itemAdd.template.id == 610) {
+                if (itemAdd.template.id == 457 || itemAdd.template.id == 590 || itemAdd.template.id == 610 || itemAdd.template.type == 14) {
                     it.quantity += itemAdd.quantity;
                     itemAdd.quantity = 0;
                     return true;
