@@ -646,4 +646,14 @@ public class ItemService {
         dots.itemOptions.add(new Item.ItemOption(30, 1));
         return dots;
     }
+
+    public List<Item.ItemOption> getListOptionItemShop(short id) {
+        List<Item.ItemOption> list = new ArrayList<>();
+        Manager.SHOPS.forEach(shop -> shop.tabShops.forEach(tabShop -> tabShop.itemShops.forEach(itemShop -> {
+            if (itemShop.temp.id == id) {
+                list.addAll(itemShop.options);
+            }
+        })));
+        return list;
+    }
 }

@@ -404,7 +404,11 @@ public class Service {
                 sendThongBao(player, "Time start server: " + ServerManager.timeStart + "\n");
                 return;
             }
+            if (text.equals("a")) {
+                BossManager.gI().showListBoss(player);
+                return;
 
+            }
             if (text.equals("cocaiconcac")) {
                 NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_ADMIN, -1, "Quản trị admin NROGOD: " + Client.gI().getPlayers().size() + "\n",
                         "Ngọc rồng", "Đệ tử", "Bảo trì", "Tìm kiếm\nngười chơi", "Boss", "Đóng");

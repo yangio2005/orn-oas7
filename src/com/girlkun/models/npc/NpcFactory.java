@@ -805,8 +805,6 @@ public class NpcFactory {
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_START_COMBINE) {
                             switch (player.combineNew.typeCombine) {
                                 case CombineServiceNew.NANG_CAP_VAT_PHAM:
-                                    CombineServiceNew.gI().startCombine2(player, select);
-                                    break;
                                 case CombineServiceNew.NANG_CAP_BONG_TAI:
                                 case CombineServiceNew.LAM_PHEP_NHAP_DA:
                                 case CombineServiceNew.NHAP_NGOC_RONG:
@@ -1742,6 +1740,10 @@ public class NpcFactory {
                 if (this.mapId == 148) {
                     this.createOtherMenu(player, ConstNpc.BASE_MENU, "Cậu không chịu nổi khi ở đây sao?\nCậu sẽ khó mà mạnh lên được", "Trốn về", "Ở lại");
                 }
+                if (this.mapId == 48) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Đã tìm đủ nguyên liệu cho tôi chưa?\n Tôi sẽ giúp cậu mạnh lên kha khá đấy!", "Hướng Dẫn",
+                            "Đổi SKH VIP", "Từ Chối");
+                }
             }
 
             @Override
@@ -1787,6 +1789,16 @@ public class NpcFactory {
                             ChangeMapService.gI().changeMapBySpaceShip(player, 7, -1, 450);
                         }
                         if (select == 1) {
+                        }
+
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 48) {
+                        if (select == 0) {
+                            NpcService.gI().createTutorial(player, this.avartar, ConstNpc.HUONG_DAN_DOI_SKH_VIP);
+                        }
+                        if (select == 1) {
+                            CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_CAP_SKH_VIP);
+
                         }
 
                     }

@@ -93,5 +93,25 @@ public class Item {
             this.optionTemplate = null;
         }
     }
+    public boolean isSKH() {
+        for (ItemOption itemOption:itemOptions
+             ) {
+            if(itemOption.optionTemplate.id >= 127 && itemOption.optionTemplate.id <= 135 ){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isDTS() {
+        for (ItemOption itemOption:itemOptions
+        ) {
+            if(itemOption.optionTemplate.id >= 21 && itemOption.param ==120 ){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }
