@@ -34,6 +34,12 @@ public class Item {
         this.createTime = System.currentTimeMillis();
     }
 
+    public Item(short itemId) {
+        this.template = ItemService.gI().getTemplate(itemId);
+        this.itemOptions = new ArrayList<>();
+        this.createTime = System.currentTimeMillis();
+    }
+
     public String getInfo() {
         String strInfo = "";
         for (ItemOption itemOption : itemOptions) {
@@ -79,8 +85,8 @@ public class Item {
             this.optionTemplate = ItemService.gI().getItemOptionTemplate(tempId);
             this.param = param;
         }
-        
-        public ItemOption(Template.ItemOptionTemplate temp, int param){
+
+        public ItemOption(Template.ItemOptionTemplate temp, int param) {
             this.optionTemplate = temp;
             this.param = param;
         }
@@ -88,15 +94,15 @@ public class Item {
         public String getOptionString() {
             return Util.replace(this.optionTemplate.name, "#", String.valueOf(this.param));
         }
-        
-        public void dispose(){
+
+        public void dispose() {
             this.optionTemplate = null;
         }
     }
     public boolean isSKH() {
-        for (ItemOption itemOption:itemOptions
-             ) {
-            if(itemOption.optionTemplate.id >= 127 && itemOption.optionTemplate.id <= 135 ){
+        for (ItemOption itemOption : itemOptions
+        ) {
+            if (itemOption.optionTemplate.id >= 127 && itemOption.optionTemplate.id <= 135) {
                 return true;
             }
         }
@@ -104,9 +110,19 @@ public class Item {
     }
 
     public boolean isDTS() {
-        for (ItemOption itemOption:itemOptions
+        for (ItemOption itemOption : itemOptions
         ) {
-            if(itemOption.optionTemplate.id >= 21 && itemOption.param ==120 ){
+            if (itemOption.optionTemplate.id >= 21 && itemOption.param == 120) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isDTL() {
+        for (ItemOption itemOption : itemOptions
+        ) {
+            if (itemOption.optionTemplate.id >= 555 && itemOption.optionTemplate.id <= 567) {
                 return true;
             }
         }

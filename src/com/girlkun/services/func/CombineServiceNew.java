@@ -2,19 +2,18 @@ package com.girlkun.services.func;
 
 import com.girlkun.consts.ConstNpc;
 import com.girlkun.models.item.Item;
+import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.npc.Npc;
 import com.girlkun.models.npc.NpcManager;
 import com.girlkun.models.player.Player;
+import com.girlkun.server.Manager;
 import com.girlkun.server.ServerNotify;
 import com.girlkun.network.io.Message;
 import com.girlkun.services.*;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -633,7 +632,7 @@ public class CombineServiceNew {
             Service.getInstance().sendThongBao(player, "Thiếu đồ thiên sứ");
             return;
         }
-        if (player.combineNew.itemsCombine.stream().filter(item -> item .isNotNullItem() && item.isSKH()).count() != 2) {
+        if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isSKH()).count() != 2) {
             Service.getInstance().sendThongBao(player, "Thiếu đồ kích hoạt");
             return;
         }
@@ -646,26 +645,43 @@ public class CombineServiceNew {
             sendEffectSuccessCombine(player);
             Item itemTS = player.combineNew.itemsCombine.stream().filter(Item::isDTS).findFirst().get();
             List<Item> itemSKH = player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isSKH()).collect(Collectors.toList());
-            List<short[][]> a;
-
-
-            short[][] itemIDSKH = {{0}, {1}, {2}}; // thứ tự td - 0,nm - 1, xd - 2
-
-            Item itemSKHVIP = ItemService.gI().DoThienSu(itemIDSKH[itemTS.template.gender > 2 ? player.gender : itemTS.template.gender][itemTS.template.type], itemTS.template.gender);
-            InventoryServiceNew.gI().addItemBag(player, itemSKHVIP);
-
+            short itemId;
+            if (itemTS.template.gender == 3) {
+                itemId = Manager.radaSKHVip[Util.nextInt(0, 5)];
+                if (Util.isTrue(1, 100)) {
+                    itemId = Manager.radaSKHVip[6];
+                }
+            } else {
+                itemId = Manager.doSKHVip[itemTS.template.gender][itemTS.template.type][Util.nextInt(0, 5)];
+                if (Util.isTrue(1, 100)) {
+                    itemId = Manager.doSKHVip[itemTS.template.gender][itemTS.template.type][6];
+                }
+            }
+            //random set kh
+            int skhId = ItemService.gI().randomSKHId(itemTS.template.gender);
+            Item item = null;
+            if (new Item(itemId).isDTL()) {
+                ItemMap i = Util.ratiItem(null, itemId, 1, 0, 0, 0);
+                item = ItemService.gI().createItemSetKichHoat(itemId, 1);
+                item.itemOptions.addAll(i.options);
+                item.itemOptions.add(new Item.ItemOption(skhId, 1));
+                item.itemOptions.add(new Item.ItemOption(ItemService.gI().optionIdSKH(skhId), 1));
+                item.itemOptions.add(new Item.ItemOption(30, 1));
+            } else {
+                item = ItemService.gI().itemSKH(itemId, skhId);
+            }
+            InventoryServiceNew.gI().addItemBag(player, item);
             InventoryServiceNew.gI().subQuantityItemsBag(player, itemTS, 1);
-            itemSKH.forEach(item -> InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1));
+            itemSKH.forEach(i -> InventoryServiceNew.gI().subQuantityItemsBag(player, i, 1));
             InventoryServiceNew.gI().sendItemBags(player);
             Service.getInstance().sendMoney(player);
-            Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + itemSKHVIP.template.name);
+            Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + item.template.name);
             player.combineNew.itemsCombine.clear();
             reOpenItemCombine(player);
         } else {
             Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 1 ô trống hành trang");
         }
     }
-
 
     private void dapDoKichHoat(Player player) {
         if (player.combineNew.itemsCombine.size() == 1 || player.combineNew.itemsCombine.size() == 2) {
@@ -953,7 +969,8 @@ public class CombineServiceNew {
                         }
                         sendEffectFailCombine(player);
                     }
-                    if (player.combineNew.itemsCombine.size() == 3) InventoryServiceNew.gI().subQuantityItemsBag(player, itemDBV, countDaBaoVe);
+                    if (player.combineNew.itemsCombine.size() == 3)
+                        InventoryServiceNew.gI().subQuantityItemsBag(player, itemDBV, countDaBaoVe);
                     InventoryServiceNew.gI().subQuantityItemsBag(player, itemDNC, player.combineNew.countDaNangCap);
                     InventoryServiceNew.gI().sendItemBags(player);
                     Service.getInstance().sendMoney(player);

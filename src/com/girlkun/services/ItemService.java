@@ -213,6 +213,24 @@ public class ItemService {
         }
     }
 
+    public int randomSKHId(byte gender) {
+        if (gender == 3) gender = 2;
+        int[][] options = {{128, 129, 127}, {130, 131, 132}, {133, 135, 134}};
+        int skhv1 = 25;
+        int skhv2 = 35;
+        int skhc = 40;
+        int skhId = -1;
+        int rd = Util.nextInt(1, 100);
+        if (rd <= skhv1) {
+            skhId = 0;
+        } else if (rd <= skhv1 + skhv2) {
+            skhId = 1;
+        } else if (rd <= skhv1 + skhv2 + skhc) {
+            skhId = 2;
+        }
+        return options[gender][skhId];
+    }
+
     public void OpenDHD(Player player, int itemUseId, int select) throws Exception {
         if (select < 0 || select > 4) return;
         Item itemUse = InventoryServiceNew.gI().findItem(player.inventory.itemsBag, itemUseId);
@@ -289,7 +307,7 @@ public class ItemService {
     public Item itemSKH(int itemId, int skhId) {
         Item item = createItemSetKichHoat(itemId, 1);
         if (item != null) {
-            item.itemOptions.add(new Item.ItemOption(optionItemSKH(item.template.type), pagramItemSKH(item.template.type)));
+            item.itemOptions.addAll(ItemService.gI().getListOptionItemShop((short) itemId));
             item.itemOptions.add(new Item.ItemOption(skhId, 1));
             item.itemOptions.add(new Item.ItemOption(optionIdSKH(skhId), 1));
             item.itemOptions.add(new Item.ItemOption(30, 1));

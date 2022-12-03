@@ -945,5 +945,21 @@ public class Manager {
             return 0;
         }
     }
+    public static final short[] aotd = {137, 138, 139, 230, 231, 232, 233, 555};
+    public static final short[] quantd = {141, 142, 143, 242, 243, 244, 245, 556};
+    public static final short[] gangtd = {145, 146, 147, 254, 255, 256, 257, 562};
+    public static final short[] giaytd = {149, 150, 151, 266, 267, 268, 269, 563};
+    public static final short[] aoxd = {169, 170, 171, 238, 239, 240, 241, 559};
+    public static final short[] quanxd = {173, 174, 175, 250, 251, 252, 253, 560};
+    public static final short[] gangxd = {177, 178, 179, 262, 263, 264, 265, 566};
+    public static final short[] giayxd = {181, 182, 183, 274, 275, 276, 277, 567};
+    public static final short[] aonm = {153, 154, 155, 234, 235, 236, 237, 557};
+    public static final short[] quannm = {157, 158, 159, 246, 247, 248, 249, 558};
+    public static final short[] gangnm = {161, 162, 163, 258, 259, 260, 261, 564};
+    public static final short[] giaynm = {165, 166, 167, 270, 271, 272, 273, 565};
+    public static final short[] radaSKHVip = {185, 186, 187, 278, 279, 280, 281, 561};
+
+    public static final short[][][] doSKHVip = {{aotd, quantd, gangtd, giaytd}, {aonm, quannm, gangnm, giaynm}, {aoxd, quanxd, gangxd, giayxd}};
+        //doSKHVip[gender][typeDo][randomLVDo]
 
 }
