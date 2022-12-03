@@ -1,6 +1,9 @@
 package com.girlkun.models.boss.list_boss.Broly;
 
-import com.girlkun.models.boss.*;
+import com.girlkun.models.boss.Boss;
+import com.girlkun.models.boss.BossID;
+import com.girlkun.models.boss.BossStatus;
+import com.girlkun.models.boss.BossesData;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
 import com.girlkun.services.Service;
@@ -12,7 +15,7 @@ public class Broly extends Boss {
 
     public Broly() throws Exception {
         super(BossID.BROLY , BossesData.BROLY_1, 
-                BossesData.BROLY_2, BossesData.BROLY_3, BossesData.BROLY_4);
+                BossesData.BROLY_2, BossesData.BROLY_3);
     }
      @Override
     public void reward(Player plKill) {

@@ -22,7 +22,7 @@ public class Black extends Boss {
     public void reward(Player plKill) {
         byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length);
-        if (Util.isTrue(1, 100)) {
+        if (Util.isTrue(5, 100)) {
             if (Util.isTrue(1, 20)) {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 561, 1, this.location.x, this.location.y, plKill.id));
             } else {
@@ -35,7 +35,7 @@ public class Black extends Boss {
       @Override
     public void active() {
         super.active(); //To change body of generated methods, choose Tools | Templates.
-        if(Util.canDoWithTime(st,900000)){
+        if(Util.canDoWithTime(st,400000)){
             this.changeStatus(BossStatus.LEAVE_MAP);
         }
     }

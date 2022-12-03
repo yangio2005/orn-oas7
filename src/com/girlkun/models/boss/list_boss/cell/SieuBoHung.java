@@ -16,14 +16,14 @@ import java.util.Random;
 public class SieuBoHung extends Boss {
 
     public SieuBoHung() throws Exception {
-        super(BossID.SIEU_BO_HUNG, BossesData.SIEU_BO_HUNG_1, BossesData.SIEU_BO_HUNG_2, BossesData.SIEU_BO_HUNG_3);
+        super(Util.randomBossId(),BossesData.SIEU_BO_HUNG_3);
     }
 
     @Override
     public void reward(Player plKill) {
         byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length);
-        if (Util.isTrue(1, 100)) {
+        if (Util.isTrue(5, 100)) {
             if (Util.isTrue(1, 10)) {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 561, 1, this.location.x, this.location.y, plKill.id));
             } else {

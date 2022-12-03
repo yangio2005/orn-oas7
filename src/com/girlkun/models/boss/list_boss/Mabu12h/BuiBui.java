@@ -1,6 +1,7 @@
 package com.girlkun.models.boss.list_boss.Mabu12h;
 
 import com.girlkun.models.boss.Boss;
+import com.girlkun.models.boss.BossStatus;
 import com.girlkun.models.boss.BossesData;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
@@ -20,7 +21,7 @@ public class BuiBui extends Boss {
     public void reward(Player plKill) {
         byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length);
-        if (Util.isTrue(3, 100)) {
+        if (Util.isTrue(5, 100)) {
             if (Util.isTrue(1, 10)) {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 561, 1, this.location.x, this.location.y, plKill.id));
             } else {
@@ -31,5 +32,20 @@ public class BuiBui extends Boss {
         }
         plKill.fightMabu.changePoint((byte) 20);
     }
+    @Override
+    public void active() {
+        super.active(); //To change body of generated methods, choose Tools | Templates.
+        if (Util.canDoWithTime(st, 300000)) {
+            this.changeStatus(BossStatus.LEAVE_MAP);
+        }
+    }
+
+    @Override
+    public void joinMap() {
+        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
+        st = System.currentTimeMillis();
+    }
+    private long st;
+
 }
 

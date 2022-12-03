@@ -1227,7 +1227,6 @@ public class CombineServiceNew {
                 return 100000000;
             case 7:
                 return 250000000;
-//                return 1;
         }
         return 0;
     }

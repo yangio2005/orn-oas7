@@ -538,7 +538,7 @@ public class BossesData {
                     "|-1|Lại thêm một tên ngốc nữa chán sống!"
             }, //text chat 2
             new String[]{"|-2|Khốn kiếp, Pic.. hắn bị Cell hấp thu rồi!!"}, //text chat 3
-            REST_5_M
+            REST_15_M
     );
 
     public static final BossData XEN_BO_HUNG_2 = new BossData(
@@ -636,7 +636,7 @@ public class BossesData {
                     "|-1|Nếu không còn ai tham dự trò chơi của Cell,.. thì toàn bộ cư dân trái đất sẽ bị tiêu diệt!"
             }, //text chat 2
             new String[]{"|-1|Hô hô hô, đây sẽ là kết thúc của lũ ngu ngốc các ngươi!! Ta sẽ chết nhưng sẽ kéo theo cái hành tinh này luôn"}, //text chat 3
-            REST_10_M
+            REST_5_M
     );
 
     public static final BossData SIEU_BO_HUNG_2 = new BossData(
@@ -667,7 +667,7 @@ public class BossesData {
                     {Skill.QUA_CAU_KENH_KHI, 7, 10000},
                     {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
                     {Skill.KHIEN_NANG_LUONG, 7, 100000},
-                    {Skill.TAI_TAO_NANG_LUONG, 7, 50000},
+                    {Skill.TAI_TAO_NANG_LUONG, 7, 110000},
                     {Skill.THOI_MIEN, 7, 100000}},
             //skill
             new String[]{"|-2|Tại sao!? Sao ngươi vẫn còn sống vậy!?",
@@ -691,7 +691,8 @@ public class BossesData {
                     "|-1|Không thể nào... Điều này không thể nào xảy ra...",
                     "|-1|Ta không tin...",
                     "|-1|Ta là bấ...",}, //text chat 3
-            TypeAppear.ANOTHER_LEVEL
+//            TypeAppear.ANOTHER_LEVEL
+            REST_10_M
     );
     //**************************************************************************Boss doanh trại
     public static final BossData TRUNG_UY_TRANG = new BossData(
@@ -943,14 +944,10 @@ public class BossesData {
             "Black Goku", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{550, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            250000, //dame
+            80000, //dame
             new int[]{777000000}, //hp
             new int[]{0,1,2,3,4,5,6,27,28,29}, //map join
-            new int[][]{
-                    {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
-                    {Skill.KAMEJOKO, 7, 10000},
-                    {Skill.TAI_TAO_NANG_LUONG, 1, 40000}},
-            //skill
+            (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO), //skill
             new String[]{"|-1|Ta là Sôn Gô Ku",
                     "|-1|Cơ thể này,sức mạnh này",
                     "|-1|Ta khá thích việc loại bỏ các ngươi",
@@ -1001,7 +998,7 @@ public class BossesData {
             new int[]{1000000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
             new int[][]{
-                    {Skill.DICH_CHUYEN_TUC_THOI, 7, 5000},
+                    {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
                     {Skill.KAMEJOKO, 7, 10000},
                     {Skill.ANTOMIC, 7, 10000}},
             //skill
@@ -1023,9 +1020,10 @@ public class BossesData {
             "Super Black Goku Rose", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{553, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            680000, //dame
-            new int[]{1000000000}, //hp
+            68000, //dame
+            new int[]{100000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
+//            new int[]{14}, //map join
             new int[][]{
                     {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
                     {Skill.KAMEJOKO, 7, 1000},
@@ -1041,7 +1039,7 @@ public class BossesData {
 
             new String[]{"|-1|Hẹn gặp lại",
                     "|-2|Không tiễn"}, //text chat 3
-            REST_5_M, //second rest
+            REST_10_M, //second rest
             new int[]{BossID.ZAMASZIN}
     );
 
@@ -1052,11 +1050,13 @@ public class BossesData {
             455050, //dame
             new int[]{450000000}, //hp
             new int[]{102, 92, 93, 94, 96, 97, 98, 99, 100}, //map join
+//            new int[]{14}, //map join
+
             new int[][]{
                     {Skill.GALICK, 7, 1000},
                     {Skill.DICH_CHUYEN_TUC_THOI, 7, 10000},
                     {Skill.TAI_TAO_NANG_LUONG, 4, 5000},
-                    {Skill.THOI_MIEN, 7, 30000}}, //skill
+                    {Skill.KAMEJOKO, 7, 30000}}, //skill
             new String[]{"|-1|Kia là một con người sao?",
                     "|-3|Ủa tên kia là ai vậy?",
                     "|-2|Lẽ nào đúng như chúng ta đã nghĩ",
@@ -1234,61 +1234,105 @@ public class BossesData {
     );
 
     //************************************************************************** Boss hủy diệt
-//    public static final BossData THIEN_SU_WHIS = new BossData(
-//            "Thiên sứ Whis", //name
-//            ConstPlayer.NAMEC, //gender
-//            new short[]{505, 506, 507, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-//            120000, //dame
-//            new int[]{150000000}, //hp
-//            new int[]{14}, //map join
-//            new int[][]{
-//                    {Skill.DICH_CHUYEN_TUC_THOI, 1, 1000},
-//                    {Skill.TRI_THUONG, 7, 5000},},//skill
-////skill
-//            new String[]{"|-2|Kia là ai thế",
-//                    "|-1|Xin chào! Chúng tôi tới đây để tìm người!",
-//                    "|-1|Ngài Berrus! Có vẻ hắn ta không có ở đây",
-//                    "|-1|Ta có thể hỏi các ngươi",
-//                    "|-2|Chuyện gì vậy?",
-//                    "|-1|Các ngươi có biết tên Super Sayan God ở đâu không?",
-//                    "|-2|Super Sayan God? đó là gì vậy?",
-//                    "|-1|Có vẻ giấc mơ của ngài Berrus là bịp rồi! Hô Hô",
-//                    "|0|Nếu các ngươi không biết hắn ở đâu",
-//                    "|0|Chắc ta phải phá hủy hành tinh này vậy"
-//            }, //text chat 1
-//            new String[]{"|-1|Ta có thể ngồi ăn một chút được rồi!",
-//                    "|-1|Ngài Berrus vẫn như mọi khi",
-//                    "|0|Thật là bực mình!",
-//                    "|-2|Hắn ta quá mạnh",
-//                    "|-1|Hô Hô",
-//                    "|-1|Các ngươi không đánh bại được ngài berrus đâu!",
-//                    "|-2|Khốn khiếp!",
-//                    "|-2|Tại sao lại vậy chứ !",}, //text chat 2
-//            new String[]{"|-1|Ta đi về đây!Cảm ơn vì món ăn"}, //text chat 3
-//            REST_10_S, //second rest
-//            new int[]{BossID.THAN_HUY_DIET}
-//    );
-//
-//    public static final BossData THAN_HUY_DIET = new BossData(
-//            "Thần Hủy Diệt Berrus", //name
-//            ConstPlayer.TRAI_DAT, //gender
-//            new short[]{508, 509, 510, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-//            12200000, //dame
-//            new int[]{100000000}, //hp
-//            new int[]{14}, //map join
-//            new int[][]{
-//                    {Skill.MASENKO, 3, 400},
-//                    {Skill.MASENKO, 2, 300},},//skill//skill
-//            new String[]{}, //text chat 1
-//            new String[]{"|-1|Các ngươi thật là yếu ớt",
-//                    "|-1|Ta sẽ phá hủy hành tinh này",
-//                    "|-1|Chán quá!",
-//                    "|-1|Không có ai đủ mạnh để đấu với ta sao?",
-//                    "|-2|Hắn ta không cần phòng thủ luôn!",}, //text chat 2
-//            new String[]{"|-1|Ta buồn ngủ quá!"}, //text chat 3
-//            TypeAppear.APPEAR_WITH_ANOTHER
-//    );
-
+    public static final BossData THIEN_SU_WHIS = new BossData(
+            "Thiên sứ Whis", //name
+            ConstPlayer.NAMEC, //gender
+            new short[]{838,839,840, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            100000000, //dame
+            new int[]{1000}, //hp
+            new int[]{146,147,148}, //map join
+            new int[][]{
+                    {Skill.DICH_CHUYEN_TUC_THOI, 7, 50000},},//skill
+            new String[]{"|-2|Kia là ai thế",
+                    "|-1|Xin chào! Chúng tôi tới đây để tìm người!",
+                    "|-1|Ngài Berrus! Có vẻ hắn ta không có ở đây",
+                    "|-1|Ta có thể hỏi các ngươi",
+                    "|-2|Chuyện gì vậy?",
+                    "|-1|Các ngươi có biết tên Super Sayan God ở đâu không?",
+                    "|-2|Super Sayan God? đó là gì vậy?",
+                    "|-1|Có vẻ giấc mơ của ngài Berrus là bịp rồi! Hô Hô",
+                    "|0|Nếu các ngươi không biết hắn ở đâu",
+                    "|0|Chắc ta phải phá hủy hành tinh này vậy"
+            }, //text chat 1
+            new String[]{"|-1|Ta có thể ngồi ăn một chút được rồi!",
+                    "|-1|Các ngươi vẫn yếu vẫn như mọi khi",
+                    "|0|Thật là bực mình!",
+                    "|-2|Đây là sức mạnh của một thiên sứ sao?",
+                    "|-1|Hô Hô",
+                    "|-1|Các ngươi không đánh bại được ta đâu!",
+                    "|-2|Không thể nào",
+                    "|-2|Tại sao lại vậy chứ !",}, //text chat 2
+            new String[]{"|-1|Ta đi về đây!Cảm ơn vì món ăn"}, //text chat 3
+            REST_10_M, //second rest
+            new int[]{BossID.THAN_HUY_DIET}
+    );
+    public static final BossData THAN_HUY_DIET = new BossData(
+            "Thần Hủy Diệt Berrus", //name
+            ConstPlayer.TRAI_DAT, //gender
+            new short[]{508, 509, 510, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            100000, //dame
+            new int[]{2000000000}, //hp
+            new int[]{146,147,148}, //map join
+            new int[][]{
+                    {Skill.MASENKO, 3, 400},
+                    {Skill.MASENKO, 2, 300},},//skill//skill
+            new String[]{}, //text chat 1
+            new String[]{"|-1|Các ngươi thật là yếu ớt",
+                    "|-1|Ta sẽ phá hủy hành tinh này",
+                    "|-1|Chán quá!",
+                    "|-1|Không có ai đủ mạnh để đấu với ta sao?",
+                    "|-2|Hắn ta không cần phòng thủ luôn!",}, //text chat 2
+            new String[]{"|-1|Ta buồn ngủ quá!"}, //text chat 3
+            TypeAppear.APPEAR_WITH_ANOTHER
+    );
+    public static final BossData THIEN_SU_VADOS = new BossData(
+            "Thiên sứ Vados", //name
+            ConstPlayer.NAMEC, //gender
+            new short[]{530,531,532, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            100000000, //dame
+            new int[]{1000}, //hp
+            new int[]{146,147,148}, //map join
+            new int[][]{
+                    {Skill.DICH_CHUYEN_TUC_THOI, 7, 50000},},//skill
+            new String[]{"|-2|Kia là ai thế",
+                    "|-1|Ta là Vados",
+                    "|-1|Ta tới đây để kiếm một thứ",
+                    "|-1|Đó chính là Ngọc Rồng Siêu Cấp",
+                    "|0|Bọn này ta cho 1 búng là bay !"
+            }, //text chat 1
+            new String[]{"|-1|Ồ",
+                    "|-1|Ta làm vậy có hơi quá không?",
+                    "|0|Thật là bực mình!",
+                    "|-2|Sao ông ta lại mạnh tới vậy ?",
+                    "|-1|Hô Hô",
+                    "|-1|Các ngươi muốn đánh bại một Thiên Sứ sao?",
+                    "|-2|Khốn khiếp!",
+                    "|-2|Tại sao lại vậy chứ !",}, //text chat 2
+            new String[]{"|-1|Hẹn gặp lại,ta rất hài lòng về cuộc chiến"}, //text chat 3
+            REST_10_M, //second rest
+            new int[]{BossID.THAN_HUY_DIET_CHAMPA}
+    );
+    public static final BossData THAN_HUY_DIET_CHAMPA = new BossData(
+            "Thần Hủy Diệt Champa", //name
+            ConstPlayer.TRAI_DAT, //gender
+            new short[]{511,512,513, -1, -1, 77}, //outfit {head, body, leg, bag, aura, eff}
+            100000, //dame
+            new int[]{2000000000}, //hp
+            new int[]{146,147,148}, //map join
+            new int[][]{
+                    {Skill.MASENKO, 3, 400},
+                    {Skill.MASENKO, 2, 300},},//skill//skill
+            new String[]{"|-1|Các ngươi có biết",
+                    "|-1|Ngọc Rồng Siêu Cấp đang ở đâu hay không?",
+                    "|-2|Ai mà biết được",}, //text chat 1
+            new String[]{"|-1|Một lũ yếu ớt",
+                    "|-1|Ta sẽ phá hủy hành tinh này",
+                    "|-1|Chán quá!",
+                    "|-1|Không có ai đủ mạnh để đấu với ta sao?",
+                    "|-2|Hắn ta không cần phòng thủ luôn!",}, //text chat 2
+            new String[]{"|-1|Chết tiệt!"}, //text chat 3
+            TypeAppear.APPEAR_WITH_ANOTHER
+    );
     //**************************************************************************
     //************************************************************************** Boss goku
     public static final BossData SONGOKU_TA_AC = new BossData(
@@ -1493,14 +1537,14 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_1_M
+            REST_20_S
     );
     public static final BossData DRABURA = new BossData(
-            "Ma Vương Drabura",
+            "Ma Vương Dabura",
             ConstPlayer.XAYDA,
             new short[]{418, 419, 420, -1, -1, -1},
             100000,
-            new int[]{500000000},
+            new int[]{50000000},
             new int[]{114},
             new int[][]{
                     {Skill.KAMEJOKO, 3, 5000},
@@ -1510,14 +1554,14 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_1_M
+            REST_20_S
     );
     public static final BossData DRABURA_2 = new BossData(
-            "Ma Vương Drabura",
+            "Ma Vương Dabura",
             ConstPlayer.XAYDA,
             new short[]{418, 419, 420, -1, -1, -1},
             200000,
-            new int[]{500000000},
+            new int[]{50000000},
             new int[]{115},
             new int[][]{
                     {Skill.KAMEJOKO, 3, 5000},
@@ -1527,14 +1571,14 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_1_M
+            REST_20_S
     );
     public static final BossData BUI_BUI = new BossData(
             "Bui Bui",
             ConstPlayer.XAYDA,
             new short[]{451, 452, 453, -1, -1, -1},
             200000,
-            new int[]{500000000},
+            new int[]{300000000},
             new int[]{117},
             new int[][]{
                     {Skill.KAMEJOKO, 3, 5000},
@@ -1544,7 +1588,7 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_1_M
+            REST_20_S
     );
 
     public static final BossData BUI_BUI_2 = new BossData(
@@ -1562,7 +1606,7 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_1_M
+            REST_20_S
     );
     public static final BossData YACON = new BossData(
             "Yacôn",
@@ -1579,7 +1623,48 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_1_M
+            REST_20_S
+    );
+
+
+
+    public static final BossData COOLER_1 = new BossData(
+            "Cooler", //name
+            ConstPlayer.TRAI_DAT, //gender
+            new short[]{508, 509, 510, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            1, //dame
+            new int[]{1000000}, //hp
+            new int[]{14}, //map join
+            new int[][]{
+                    {Skill.MASENKO, 1, 400},
+                    {Skill.MASENKO, 2, 300},},//skill//skill
+            new String[]{}, //text chat 1
+            new String[]{"|-1|Các ngươi thật là yếu ớt",
+                    "|-1|Chán quá!",
+                    "|-1|Không có ai đủ mạnh để đấu với ta sao?",
+                    "|-1|Ta sẽ cho ngươi cái nịt!",
+            }, //text chat 2
+            new String[]{"|-1|Biến hình !!!!!!!!!!!!"}, //text chat 3
+            REST_10_S
+    );
+    public static final BossData COOLER_2 = new BossData(
+            "Cooler 2", //name
+            ConstPlayer.TRAI_DAT, //gender
+            new short[]{508, 509, 510, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            1, //dame
+            new int[]{1000000}, //hp
+            new int[]{14}, //map join
+            new int[][]{
+                    {Skill.MASENKO, 1, 400},
+                    {Skill.MASENKO, 2, 300},},//skill//skill
+            new String[]{}, //text chat 1
+            new String[]{"|-1|Các ngươi thật là yếu ớt",
+                    "|-1|Ta sẽ phá hủy hành tinh này",
+                    "|-1|Chán quá!",
+                    "|-1|Không có ai đủ mạnh để đấu với ta sao?",
+                    "|-1|Ta nghèo lắm!Đừng săn ta nữa",}, //text chat 2
+            new String[]{"|-1|Đen lắm em trai !"}, //text chat 3
+            TypeAppear.APPEAR_WITH_ANOTHER
     );
 
 }

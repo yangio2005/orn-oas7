@@ -391,7 +391,6 @@ public class ItemService {
                 return 143;
             case 132: //Set God Summon
                 return 144;
-
             case 133: //Set God Galick
                 return 136;
             case 134: //Set God Monkey
