@@ -244,8 +244,8 @@ public class Util {
         if (ntl == tempId) {
             it.options.add(new Item.ItemOption(14, new Random().nextInt(3) + 15));
         }
+        it.options.add(new Item.ItemOption(209, 1));
         it.options.add(new Item.ItemOption(21, 15));
-//        it.options.add(new Item.ItemOption(107, new Random().nextInt(7) + 0)); //sao pha le
         return it;
     }
 
