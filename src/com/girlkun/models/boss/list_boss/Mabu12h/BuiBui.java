@@ -28,24 +28,24 @@ public class BuiBui extends Boss {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x, this.location.y, plKill.id));
             }
         } else {
-            Service.getInstance().dropItemMap(this.zone, new ItemMap(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+            Service.getInstance().dropItemMap(this.zone, new ItemMap(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x, this.location.y, plKill.id));
         }
         plKill.fightMabu.changePoint((byte) 20);
     }
-    @Override
-    public void active() {
-        super.active(); //To change body of generated methods, choose Tools | Templates.
-        if (Util.canDoWithTime(st, 300000)) {
-            this.changeStatus(BossStatus.LEAVE_MAP);
-        }
-    }
-
-    @Override
-    public void joinMap() {
-        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
-        st = System.currentTimeMillis();
-    }
-    private long st;
+//    @Override
+//    public void active() {
+//        super.active(); //To change body of generated methods, choose Tools | Templates.
+//        if (Util.canDoWithTime(st, 300000)) {
+//            this.changeStatus(BossStatus.LEAVE_MAP);
+//        }
+//    }
+//
+//    @Override
+//    public void joinMap() {
+//        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
+//        st = System.currentTimeMillis();
+//    }
+//    private long st;
 
 }
 

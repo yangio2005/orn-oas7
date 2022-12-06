@@ -291,6 +291,10 @@ public class MapService {
         return mapId >= 53 && mapId <= 62;
     }
 
+    public boolean isMapHuyDiet(int mapId) {
+        return mapId >= 146 && mapId <= 148;
+    }
+
     public boolean isMapBanDoKhoBau(int mapId) {
         return mapId >= 135 && mapId <= 138;
     }

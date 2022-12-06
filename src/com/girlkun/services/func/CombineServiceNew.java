@@ -23,6 +23,8 @@ public class CombineServiceNew {
     private static final int COST_DAP_DO_KICH_HOAT = 500000000;
     private static final int COST_DOI_MANH_KICH_HOAT = 500000000;
 
+    private static final int COST = 500000000;
+
     private static final int TIME_COMBINE = 1500;
 
     private static final byte MAX_STAR_ITEM = 8;
@@ -347,26 +349,30 @@ public class CombineServiceNew {
                     this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hãy đưa ta 2 món Hủy Diệt bất kì và 1 món Thần Linh cùng loại", "Đóng");
                     return;
                 }
-                if (player.combineNew.itemsCombine.size() == 3) {
-                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.template.id >= 555 && item.template.id <= 567).count() < 1) {
+                if (player.combineNew.itemsCombine.size() == 4) {
+                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isDTL()).count() < 1) {
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Thiếu đồ thần linh", "Đóng");
                         return;
                     }
-                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.template.id >= 650 && item.template.id <= 662).count() < 2) {
+                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isDHD()).count() < 2) {
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Thiếu đồ hủy diệt", "Đóng");
+                        return;
+                    }
+                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isManhTS() && item.quantity >= 5).count() < 1) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Thiếu mảnh thiên sứ", "Đóng");
                         return;
                     }
 
                     String npcSay = "|2|Con có muốn đổi các món nguyên liệu ?\n|7|"
-                            + "Và nhận được 1 món thiên sứ tương ứng\n"
-                            + "|1|Cần " + Util.numberToMoney(500000000) + " vàng";
+                            + "Và nhận được " + player.combineNew.itemsCombine.stream().filter(Item::isManhTS).findFirst().get().typeNameManh() + " thiên sứ tương ứng\n"
+                            + "|1|Cần " + Util.numberToMoney(COST) + " vàng";
 
-                    if (player.inventory.gold < 500000000) {
+                    if (player.inventory.gold < COST) {
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hết tiền rồi\nẢo ít thôi con", "Đóng");
                         return;
                     }
                     this.baHatMit.createOtherMenu(player, ConstNpc.MENU_NANG_CAP_DO_TS,
-                            npcSay, "Nâng cấp\n" + Util.numberToMoney(500000000) + " vàng", "Từ chối");
+                            npcSay, "Nâng cấp\n" + Util.numberToMoney(COST) + " vàng", "Từ chối");
                 } else {
                     if (player.combineNew.itemsCombine.size() > 3) {
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Cất đi con ta không thèm", "Đóng");
@@ -381,25 +387,25 @@ public class CombineServiceNew {
                     return;
                 }
                 if (player.combineNew.itemsCombine.size() == 3) {
-                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item != null && item.template.id >= 1048 && item.template.id <= 1062).count() < 1) {
+                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isDTS()).count() < 1) {
                         this.npsthiensu64.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Thiếu đồ thiên sứ", "Đóng");
                         return;
                     }
-                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item != null && item.isSKH()).count() != 2) {
+                    if (player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isSKH()).count() < 2) {
                         this.npsthiensu64.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Thiếu đồ kích hoạt ", "Đóng");
                         return;
                     }
 
                     String npcSay = "|2|Con có muốn đổi các món nguyên liệu ?\n|7|"
-                            + "Và nhận được 1 món SKH VIP tương ứng\n"
-                            + "|1|Cần " + Util.numberToMoney(500000000) + " vàng";
+                            + "Và nhận được " + player.combineNew.itemsCombine.stream().filter(Item::isDTS).findFirst().get().typeName() + " kích hoạt VIP tương ứng\n"
+                            + "|1|Cần " + Util.numberToMoney(COST) + " vàng";
 
-                    if (player.inventory.gold < 500000000) {
+                    if (player.inventory.gold < COST) {
                         this.npsthiensu64.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hết tiền rồi\nẢo ít thôi con", "Đóng");
                         return;
                     }
-                    this.npsthiensu64.createOtherMenu(player, ConstNpc.MENU_NANG_CAP_DO_TS,
-                            npcSay, "Nâng cấp\n" + Util.numberToMoney(500000000) + " vàng", "Từ chối");
+                    this.npsthiensu64.createOtherMenu(player, ConstNpc.MENU_NANG_DOI_SKH_VIP,
+                            npcSay, "Nâng cấp\n" + Util.numberToMoney(COST) + " vàng", "Từ chối");
                 } else {
                     if (player.combineNew.itemsCombine.size() > 3) {
                         this.npsthiensu64.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Nguyên liệu không phù hợp", "Đóng");
@@ -584,46 +590,41 @@ public class CombineServiceNew {
     public void openDTS(Player player) {
         //check sl đồ tl, đồ hd
         // new update 2 mon huy diet + 1 mon than linh(skh theo style) +  5 manh bat ki
-        if (player.combineNew.itemsCombine.size() != 3) {
+        if (player.combineNew.itemsCombine.size() != 4) {
             Service.getInstance().sendThongBao(player, "Thiếu đồ");
             return;
         }
-        if (player.combineNew.itemsCombine.stream().filter(item -> item != null && item.template.id >= 555 && item.template.id <= 567).count() != 1) {
-            Service.getInstance().sendThongBao(player, "Thiếu đồ thần linh");
+        if (player.inventory.gold < COST) {
+            Service.getInstance().sendThongBao(player, "Ảo ít thôi con...");
             return;
         }
-        if (player.combineNew.itemsCombine.stream().filter(item -> item != null && item.template.id >= 650 && item.template.id <= 662).count() != 2) {
-            Service.getInstance().sendThongBao(player, "Thiếu đồ hủy diệt");
-            return;
-        }
-        if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
-            if (player.inventory.gold < 500000000) {
-                Service.getInstance().sendThongBao(player, "Ảo ít thôi con...");
-                return;
-            }
-            player.inventory.gold -= 500000000;
-            sendEffectSuccessCombine(player);
-            Item itemTL = player.combineNew.itemsCombine.stream().filter(item -> item.template.id >= 555 && item.template.id <= 567).findFirst().get();
-            List<Item> itemHDs = player.combineNew.itemsCombine.stream().filter(item -> item.template.id >= 650 && item.template.id <= 662).collect(Collectors.toList());
-            short[][] itemIds = {{1048, 1051, 1054, 1057, 1060}, {1049, 1052, 1055, 1058, 1061}, {1050, 1053, 1056, 1059, 1062}}; // thứ tự td - 0,nm - 1, xd - 2
-
-            Item itemTS = ItemService.gI().DoThienSu(itemIds[itemTL.template.gender > 2 ? player.gender : itemTL.template.gender][itemTL.template.type], itemTL.template.gender);
-            InventoryServiceNew.gI().addItemBag(player, itemTS);
-
-            InventoryServiceNew.gI().subQuantityItemsBag(player, itemTL, 1);
-            itemHDs.forEach(item -> InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1));
-            InventoryServiceNew.gI().sendItemBags(player);
-            Service.getInstance().sendMoney(player);
-            Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + itemTS.template.name);
-            player.combineNew.itemsCombine.clear();
-            reOpenItemCombine(player);
-        } else {
+        if (InventoryServiceNew.gI().getCountEmptyBag(player) < 1) {
             Service.getInstance().sendThongBao(player, "Bạn phải có ít nhất 1 ô trống hành trang");
+            return;
         }
+        Item itemTL = player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isDTL()).findFirst().get();
+        List<Item> itemHDs = player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isDHD()).collect(Collectors.toList());
+        Item itemManh = player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isManhTS() && item.quantity >= 5).findFirst().get();
+
+        player.inventory.gold -= COST;
+        sendEffectSuccessCombine(player);
+        short[][] itemIds = {{1048, 1051, 1054, 1057, 1060}, {1049, 1052, 1055, 1058, 1061}, {1050, 1053, 1056, 1059, 1062}}; // thứ tự td - 0,nm - 1, xd - 2
+
+        Item itemTS = ItemService.gI().DoThienSu(itemIds[itemTL.template.gender > 2 ? player.gender : itemTL.template.gender][itemManh.typeIdManh()], itemTL.template.gender);
+        InventoryServiceNew.gI().addItemBag(player, itemTS);
+
+        InventoryServiceNew.gI().subQuantityItemsBag(player, itemTL, 1);
+        InventoryServiceNew.gI().subQuantityItemsBag(player, itemManh, 5);
+        itemHDs.forEach(item -> InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1));
+        InventoryServiceNew.gI().sendItemBags(player);
+        Service.getInstance().sendMoney(player);
+        Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + itemTS.template.name);
+        player.combineNew.itemsCombine.clear();
+        reOpenItemCombine(player);
     }
 
     public void openSKHVIP(Player player) {
-        // 1 thiên sứ + 2 món kích hoạt --
+        // 1 thiên sứ + 2 món kích hoạt -- món đầu kh làm gốc
         if (player.combineNew.itemsCombine.size() != 3) {
             Service.getInstance().sendThongBao(player, "Thiếu nguyên liệu");
             return;
@@ -637,35 +638,34 @@ public class CombineServiceNew {
             return;
         }
         if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
-            if (player.inventory.gold < 500000000) {
+            if (player.inventory.gold < 1) {
                 Service.getInstance().sendThongBao(player, "Con cần thêm vàng để đổi...");
                 return;
             }
-            player.inventory.gold -= 500000000;
-            sendEffectSuccessCombine(player);
+            player.inventory.gold -= COST;
             Item itemTS = player.combineNew.itemsCombine.stream().filter(Item::isDTS).findFirst().get();
             List<Item> itemSKH = player.combineNew.itemsCombine.stream().filter(item -> item.isNotNullItem() && item.isSKH()).collect(Collectors.toList());
+            CombineServiceNew.gI().sendEffectOpenItem(player, itemTS.template.iconID, itemTS.template.iconID);
             short itemId;
-            if (itemTS.template.gender == 3) {
+            if (itemTS.template.gender == 3 || itemTS.template.type == 4) {
                 itemId = Manager.radaSKHVip[Util.nextInt(0, 5)];
-                if (Util.isTrue(1, 100)) {
+                if (player.getSession().bdPlayer > 0 && Util.isTrue(1, (int) (100 / player.getSession().bdPlayer))) {
                     itemId = Manager.radaSKHVip[6];
                 }
             } else {
                 itemId = Manager.doSKHVip[itemTS.template.gender][itemTS.template.type][Util.nextInt(0, 5)];
-                if (Util.isTrue(1, 100)) {
+                if (player.getSession().bdPlayer > 0 && Util.isTrue(1, (int) (100 / player.getSession().bdPlayer))) {
                     itemId = Manager.doSKHVip[itemTS.template.gender][itemTS.template.type][6];
                 }
             }
-            //random set kh
             int skhId = ItemService.gI().randomSKHId(itemTS.template.gender);
-            Item item = null;
+            Item item;
             if (new Item(itemId).isDTL()) {
-                ItemMap i = Util.ratiItem(null, itemId, 1, 0, 0, 0);
-                item = ItemService.gI().createItemSetKichHoat(itemId, 1);
-                item.itemOptions.addAll(i.options);
+                item = Util.ratiItemTL(itemId);
                 item.itemOptions.add(new Item.ItemOption(skhId, 1));
                 item.itemOptions.add(new Item.ItemOption(ItemService.gI().optionIdSKH(skhId), 1));
+                item.itemOptions.remove(item.itemOptions.stream().filter(itemOption -> itemOption.optionTemplate.id == 21).findFirst().get());
+                item.itemOptions.add(new Item.ItemOption(21, 15));
                 item.itemOptions.add(new Item.ItemOption(30, 1));
             } else {
                 item = ItemService.gI().itemSKH(itemId, skhId);
@@ -675,7 +675,6 @@ public class CombineServiceNew {
             itemSKH.forEach(i -> InventoryServiceNew.gI().subQuantityItemsBag(player, i, 1));
             InventoryServiceNew.gI().sendItemBags(player);
             Service.getInstance().sendMoney(player);
-            Service.getInstance().sendThongBao(player, "Bạn đã nhận được " + item.template.name);
             player.combineNew.itemsCombine.clear();
             reOpenItemCombine(player);
         } else {
@@ -1466,7 +1465,7 @@ public class CombineServiceNew {
             case NANG_CAP_DO_TS:
                 return "Ta sẽ nâng cấp \n  trang bị của người thành\n đồ thiên sứ!";
             case NANG_CAP_SKH_VIP:
-                return "Ta sẽ nâng cấp \n  trang bị của người thành\n SKH VIP!";
+                return "Thiên sứ nhờ ta nâng cấp \n  trang bị của người thành\n SKH VIP!";
             default:
                 return "";
         }

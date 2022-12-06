@@ -141,7 +141,7 @@ public class Controller implements IMessageHandler {
                     break;
                 case 6: //buy item
 
-                    if (player != null) {
+                    if (player != null && !Maintenance.isRuning) {
                         byte typeBuy = _msg.reader().readByte();
                         int tempId = _msg.reader().readShort();
                         int quantity = 0;
@@ -153,7 +153,7 @@ public class Controller implements IMessageHandler {
                     }
                     break;
                 case 7: //sell item
-                    if (player != null) {
+                    if (player != null && !Maintenance.isRuning) {
                         int action = _msg.reader().readByte();
                         if (action == 0) {
                             ShopServiceNew.gI().showConfirmSellItem(player, _msg.reader().readByte(),
@@ -654,6 +654,9 @@ public class Controller implements IMessageHandler {
         //last time use skill
         Service.getInstance().sendTimeSkill(player);
 
+        //clear vt sk
+        clearVTSK(player);
+
         if (TaskService.gI().getIdTask(player) == ConstTask.TASK_0_0) {
             NpcService.gI().createTutorial(player, -1,
                     "Chào mừng " + player.name + " đến với ngọc rồng online server NROGOD\n"
@@ -665,5 +668,15 @@ public class Controller implements IMessageHandler {
 
     private void sendThongBaoServer(Player player) {
         Service.getInstance().sendThongBaoFromAdmin(player, "Đã mở chức năng úp Capsule kì bí.\nChúc AE chơi game vui vẻ...");
+    }
+
+    private void clearVTSK(Player player) {
+        player.inventory.itemsBag.stream().filter(item -> item.isNotNullItem() && item.template.id == 610).forEach(item -> {
+            InventoryServiceNew.gI().subQuantityItemsBag(player, item, item.quantity);
+        });
+        player.inventory.itemsBox.stream().filter(item -> item.isNotNullItem() && item.template.id == 610).forEach(item -> {
+            InventoryServiceNew.gI().subQuantityItemsBox(player, item, item.quantity);
+        });
+        InventoryServiceNew.gI().sendItemBags(player);
     }
 }

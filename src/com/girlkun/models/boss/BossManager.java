@@ -74,22 +74,43 @@ public class BossManager implements Runnable {
             return;
         }
         try {
+
             this.createBoss(BossID.TDST);
             this.createBoss(BossID.TDST);
             this.createBoss(BossID.TDST);
+
             this.createBoss(BossID.PIC);
             this.createBoss(BossID.POC);
             this.createBoss(BossID.KING_KONG);
+
+            this.createBoss(BossID.XEN_BO_HUNG);
             this.createBoss(BossID.SIEU_BO_HUNG);
             this.createBoss(BossID.XEN_CON);
+            this.createBoss(BossID.XEN_CON);
+            this.createBoss(BossID.XEN_CON);
+            this.createBoss(BossID.XEN_CON);
+
+            this.createBoss(BossID.THIEN_SU_VADOS);
             this.createBoss(BossID.THIEN_SU_WHIS);
             this.createBoss(BossID.THIEN_SU_VADOS);
             this.createBoss(BossID.THIEN_SU_WHIS);
+            this.createBoss(BossID.THIEN_SU_VADOS);
+            this.createBoss(BossID.THIEN_SU_WHIS);
+
+            this.createBoss(BossID.ZAMASZIN);
+            this.createBoss(BossID.BLACK2);
+            this.createBoss(BossID.ZAMASMAX);
+
+            this.createBoss(BossID.KUKU);
             this.createBoss(BossID.MAP_DAU_DINH);
             this.createBoss(BossID.RAMBO);
+
             this.createBoss(BossID.FIDE);
+
             this.createBoss(BossID.DR_KORE);
+
             this.createBoss(BossID.ANDROID_14);
+
             this.createBoss(BossID.MABU);
         } catch (Exception ex) {
             ex.printStackTrace();

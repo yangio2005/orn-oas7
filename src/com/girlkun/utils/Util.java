@@ -223,24 +223,9 @@ public class Util {
         return arr0;
     }
 
-
-
-
-
-
     public static ItemMap manhTS(Zone zone, int tempId, int quantity, int x, int y, long playerId) {
-        ItemMap it = new ItemMap(zone, tempId, quantity, x, zone.map.yPhysicInTop(x, y - 24), playerId);
-        List<Integer> manhthuong = Arrays.asList(1066,1067,1068);
-        List<Integer> manhhiem = Arrays.asList(1069,1070);
-        if (manhthuong.contains(tempId)) {
-//            it.options.add(new Item.ItemOption(30, 1));
-        }
-        if (manhhiem.contains(tempId)) {
-//            it.options.add(new Item.ItemOption(30, 1));
-        }
-        return it;
+        return new ItemMap(zone, tempId, quantity, x, zone.map.yPhysicInTop(x, y - 24), playerId);
     }
-
 
     public static ItemMap ratiDTL(Zone zone, int tempId, int quantity, int x, int y, long playerId) {
         ItemMap it = new ItemMap(zone, tempId, quantity, x, zone.map.yPhysicInTop(x, y - 24), playerId);
@@ -313,7 +298,31 @@ public class Util {
 
 
 
-
+    public static Item ratiItemTL(int tempId) {
+        Item it = ItemService.gI().createItemSetKichHoat(tempId,1);
+        List<Integer> ao = Arrays.asList(555, 557, 559);
+        List<Integer> quan = Arrays.asList(556, 558, 560);
+        List<Integer> gang = Arrays.asList(562, 564, 566);
+        List<Integer> giay = Arrays.asList(563, 565, 567);
+        int ntl = 561;
+        if (ao.contains(tempId)) {
+            it.itemOptions.add(new Item.ItemOption(47, highlightsItem(it.template.gender == 2, new Random().nextInt(501) + 1000)));
+        }
+        if (quan.contains(tempId)) {
+            it.itemOptions.add(new Item.ItemOption(22, highlightsItem(it.template.gender == 0, new Random().nextInt(11) + 45)));
+        }
+        if (gang.contains(tempId)) {
+            it.itemOptions.add(new Item.ItemOption(0, highlightsItem(it.template.gender == 2, new Random().nextInt(1001) + 3500)));
+        }
+        if (giay.contains(tempId)) {
+            it.itemOptions.add(new Item.ItemOption(23, highlightsItem(it.template.gender == 1, new Random().nextInt(11) + 35)));
+        }
+        if (ntl == tempId) {
+            it.itemOptions.add(new Item.ItemOption(14, new Random().nextInt(3) + 15));
+        }
+        it.itemOptions.add(new Item.ItemOption(21, 15));
+        return it;
+    }
 
 
     public static ItemMap ratiItem(Zone zone, int tempId, int quantity, int x, int y, long playerId) {

@@ -4,13 +4,10 @@ import com.girlkun.models.Template;
 import com.girlkun.models.Template.ItemOptionTemplate;
 import com.girlkun.models.item.Item;
 import com.girlkun.models.map.ItemMap;
-import com.girlkun.models.map.Zone;
 import com.girlkun.models.player.Player;
 import com.girlkun.models.shop.ItemShop;
-import com.girlkun.models.skill.Skill;
 import com.girlkun.server.Manager;
 import com.girlkun.services.func.CombineServiceNew;
-import com.girlkun.utils.SkillUtil;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
 
@@ -477,7 +474,7 @@ public class ItemService {
     }
 
     public Item randomRac() {
-        short[] racs = {20, 19, 18, 17, 610};
+        short[] racs = {20, 19, 18, 17};
         Item item = createItemSetKichHoat(racs[Util.nextInt(racs.length - 1)], 1);
         if (optionRac(item.template.id) != 0) {
             item.itemOptions.add(new Item.ItemOption(optionRac(item.template.id), 1));
@@ -667,7 +664,7 @@ public class ItemService {
     public List<Item.ItemOption> getListOptionItemShop(short id) {
         List<Item.ItemOption> list = new ArrayList<>();
         Manager.SHOPS.forEach(shop -> shop.tabShops.forEach(tabShop -> tabShop.itemShops.forEach(itemShop -> {
-            if (itemShop.temp.id == id) {
+            if (itemShop.temp.id == id && list.size() == 0) {
                 list.addAll(itemShop.options);
             }
         })));

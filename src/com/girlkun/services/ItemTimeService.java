@@ -52,6 +52,9 @@ public class ItemTimeService {
         if (player.itemTime.isEatMeal) {
             sendItemTime(player, player.itemTime.iconMeal, (int) ((TIME_EAT_MEAL - (System.currentTimeMillis() - player.itemTime.lastTimeEatMeal)) / 1000));
         }
+        if (player.itemTime.isUseTDLT) {
+            sendItemTime(player, 4387,player.itemTime.timeTDLT / 1000);
+        }
     }
 
     //bật tđlt
@@ -77,7 +80,7 @@ public class ItemTimeService {
         player.itemTime.isUseTDLT = false;
         for (Item.ItemOption io : item.itemOptions) {
             if (io.optionTemplate.id == 1) {
-                io.param = (short) ((player.itemTime.timeTDLT - (System.currentTimeMillis() - player.itemTime.lastTimeUseTDLT)) / 60 / 1000);
+                io.param += (short) ((player.itemTime.timeTDLT - (System.currentTimeMillis() - player.itemTime.lastTimeUseTDLT)) / 60 / 1000);
                 break;
             }
         }

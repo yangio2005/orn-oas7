@@ -13,7 +13,6 @@ import com.girlkun.utils.Util;
 import java.util.Random;
 
 
-
 public class ThanHuyDiet extends Boss {
     private long lasttimehakai;
     private int timehakai;
@@ -35,7 +34,7 @@ public class ThanHuyDiet extends Boss {
             }
             Service.getInstance().dropItemMap(this.zone, Util.ratiDTL(zone, itemDos[randomDo], 1, this.location.x, this.location.y, plKill.id));
         } else {
-            Service.getInstance().dropItemMap(this.zone, new ItemMap(zone, NRs[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
+            Service.getInstance().dropItemMap(this.zone, new ItemMap(zone, NRs[randomNR], 1, this.location.x, this.location.y, plKill.id));
         }
     }
     @Override
@@ -91,15 +90,15 @@ public class ThanHuyDiet extends Boss {
         this.nPoint.calPoint();
         PlayerService.gI().hoiPhuc(this, pl.nPoint.hp, 0);
         pl.injured(null, pl.nPoint.hpMax, true, false);
-        Service.getInstance().sendThongBao(pl, "Bạn đã bị hủy diệt bởi " + this.name);
+        Service.getInstance().sendThongBao(pl, "Bạn vừa bị " + this.name + " cho bay màu");
         this.chat(2, "Hắn ta mạnh quá,coi chừng " + pl.name + ",tên " + this.name + " hắn không giống như những kẻ thù trước đây");
         this.chat("Thật là yếu ớt " + pl.name);
         this.lasttimehakai = System.currentTimeMillis();
-        this.timehakai = Util.nextInt(10000, 20000);
+        this.timehakai = Util.nextInt(20000, 30000);
 
 
         super.active(); //To change body of generated methods, choose Tools | Templates.
-        if (Util.canDoWithTime(st, 300000)) {
+        if (Util.canDoWithTime(st, 900000)) {
             this.changeStatus(BossStatus.LEAVE_MAP);
         }
     }

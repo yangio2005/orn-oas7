@@ -1,17 +1,11 @@
 package com.girlkun.models.boss.list_boss.HuyDiet;
 
-import com.girlkun.consts.ConstPlayer;
 import com.girlkun.models.boss.Boss;
-import com.girlkun.models.boss.BossID;
 import com.girlkun.models.boss.BossStatus;
 import com.girlkun.models.boss.BossesData;
-import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
-import com.girlkun.models.skill.Skill;
 import com.girlkun.services.EffectSkillService;
-import com.girlkun.services.PlayerService;
 import com.girlkun.services.Service;
-import com.girlkun.services.TaskService;
 import com.girlkun.utils.Util;
 import java.util.Random;
 
@@ -23,15 +17,12 @@ public class ThienSuWhis extends Boss {
 
     @Override
     public void reward(Player plKill) {
-        int[] manhthuong = new int[]{1066,1067,1068};
-        int[] manhhiem = new int[]{1069,1070};
+        int[] manhthuong = new int[]{1066, 1070};
+        int[] manhhiem = new int[]{1069, 1067, 1068};
+
         int randomAWJ = new Random().nextInt(manhthuong.length);
         int randomGR = new Random().nextInt(manhhiem.length);
-        if (Util.isTrue(90, 100)) {
-            if (Util.isTrue(1, 5)) {
-                Service.getInstance().dropItemMap(this.zone, Util.manhTS(zone, 1069, 1, this.location.x, this.location.y, plKill.id));
-                return;
-            }
+        if (Util.isTrue(70, 100)) {
             Service.getInstance().dropItemMap(this.zone, Util.manhTS(zone, manhthuong[randomAWJ], 1, this.location.x, this.location.y, plKill.id));
         } else {
             Service.getInstance().dropItemMap(this.zone, Util.manhTS(zone, manhhiem[randomGR], 1, this.location.x, this.location.y, plKill.id));
@@ -40,17 +31,16 @@ public class ThienSuWhis extends Boss {
 
     @Override
     public int injured(Player plAtt, int damage, boolean piercing, boolean isMobAttack) {
-        if (Util.isTrue(1, 100) && plAtt != null) {//tỉ lệ hụt của thiên sứ
+        if (Util.isTrue(25, 100) && plAtt != null) {//tỉ lệ hụt của thiên sứ
             Util.isTrue(this.nPoint.tlNeDon, 100000);
-            if (Util.isTrue(88, 100)) {
+            if (Util.isTrue(3, 100)) {
                 this.chat("Hãy để bản năng tự vận động");
                 this.chat("Tránh các động tác thừa");
-            }else
-            if (Util.isTrue(4, 100)) {
+            } else if (Util.isTrue(4, 100)) {
                 this.chat("Chậm lại,các ngươi quá nhanh rồi");
                 this.chat("Chỉ cần hoàn thiện nó!");
                 this.chat("Các ngươi sẽ tránh được mọi nguy hiểm");
-            }else if (Util.isTrue(3,100)){
+            } else if (Util.isTrue(3, 100)) {
                 this.chat("Đây chính là bản năng vô cực");
             }
             damage = 0;

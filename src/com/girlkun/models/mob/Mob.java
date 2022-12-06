@@ -16,6 +16,7 @@ import com.girlkun.models.reward.ItemMobReward;
 import com.girlkun.models.reward.MobReward;
 import com.girlkun.network.io.Message;
 import com.girlkun.server.Manager;
+import com.girlkun.server.ServerManager;
 import com.girlkun.services.*;
 import com.girlkun.utils.Util;
 
@@ -146,7 +147,7 @@ public class Mob {
             }
         }
 
-        if (this.isDie()) {
+        if (this.isDie()&& !ServerManager.isRunning) {
             switch (zone.map.type) {
                 case ConstMap.MAP_DOANH_TRAI:
                     break;
@@ -346,9 +347,9 @@ public class Mob {
         if (player.itemTime.isUseMayDo && Util.isTrue(15, 100) && this.tempId > 57 && this.tempId < 66) {
             list.add(new ItemMap(zone, 380, 1, x, player.location.y, player.id));
         }
-        if (!player.isPet && player.getSession().actived && Util.isTrue(15, 100)) {
-            list.add(new ItemMap(zone, 610, 1, x, player.location.y, player.id));
-        }
+//        if (!player.isPet && player.getSession().actived && Util.isTrue(15, 100)) {
+//            list.add(new ItemMap(zone, 610, 1, x, player.location.y, player.id));
+//        }
         return list;
     }
 

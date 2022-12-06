@@ -1240,7 +1240,7 @@ public class BossesData {
             new short[]{838,839,840, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             100000000, //dame
             new int[]{1000}, //hp
-            new int[]{146,147,148}, //map join
+            new int[]{147,148}, //map join
             new int[][]{
                     {Skill.DICH_CHUYEN_TUC_THOI, 7, 50000},},//skill
             new String[]{"|-2|Kia là ai thế",
@@ -1263,16 +1263,16 @@ public class BossesData {
                     "|-2|Không thể nào",
                     "|-2|Tại sao lại vậy chứ !",}, //text chat 2
             new String[]{"|-1|Ta đi về đây!Cảm ơn vì món ăn"}, //text chat 3
-            REST_10_M, //second rest
+            REST_5_M, //second rest
             new int[]{BossID.THAN_HUY_DIET}
     );
     public static final BossData THAN_HUY_DIET = new BossData(
             "Thần Hủy Diệt Berrus", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{508, 509, 510, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            100000, //dame
+            1, //dame
             new int[]{2000000000}, //hp
-            new int[]{146,147,148}, //map join
+            new int[]{147,148}, //map join
             new int[][]{
                     {Skill.MASENKO, 3, 400},
                     {Skill.MASENKO, 2, 300},},//skill//skill
@@ -1280,7 +1280,7 @@ public class BossesData {
             new String[]{"|-1|Các ngươi thật là yếu ớt",
                     "|-1|Ta sẽ phá hủy hành tinh này",
                     "|-1|Chán quá!",
-                    "|-1|Không có ai đủ mạnh để đấu với ta sao?",
+                    "|-1|Ta vẫn chưa dùng hết sức đâu!",
                     "|-2|Hắn ta không cần phòng thủ luôn!",}, //text chat 2
             new String[]{"|-1|Ta buồn ngủ quá!"}, //text chat 3
             TypeAppear.APPEAR_WITH_ANOTHER
@@ -1291,7 +1291,7 @@ public class BossesData {
             new short[]{530,531,532, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             100000000, //dame
             new int[]{1000}, //hp
-            new int[]{146,147,148}, //map join
+            new int[]{146,148}, //map join
             new int[][]{
                     {Skill.DICH_CHUYEN_TUC_THOI, 7, 50000},},//skill
             new String[]{"|-2|Kia là ai thế",
@@ -1309,16 +1309,16 @@ public class BossesData {
                     "|-2|Khốn khiếp!",
                     "|-2|Tại sao lại vậy chứ !",}, //text chat 2
             new String[]{"|-1|Hẹn gặp lại,ta rất hài lòng về cuộc chiến"}, //text chat 3
-            REST_10_M, //second rest
+            REST_5_M, //second rest
             new int[]{BossID.THAN_HUY_DIET_CHAMPA}
     );
     public static final BossData THAN_HUY_DIET_CHAMPA = new BossData(
             "Thần Hủy Diệt Champa", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{511,512,513, -1, -1, 77}, //outfit {head, body, leg, bag, aura, eff}
-            100000, //dame
+            1, //dame
             new int[]{2000000000}, //hp
-            new int[]{146,147,148}, //map join
+            new int[]{146,148}, //map join
             new int[][]{
                     {Skill.MASENKO, 3, 400},
                     {Skill.MASENKO, 2, 300},},//skill//skill
@@ -1554,7 +1554,7 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_20_S
+            REST_1_M
     );
     public static final BossData DRABURA_2 = new BossData(
             "Ma Vương Dabura",
@@ -1571,7 +1571,7 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_20_S
+            REST_1_M
     );
     public static final BossData BUI_BUI = new BossData(
             "Bui Bui",
@@ -1588,7 +1588,7 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_20_S
+            REST_1_M
     );
 
     public static final BossData BUI_BUI_2 = new BossData(
@@ -1606,7 +1606,7 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_20_S
+            REST_1_M
     );
     public static final BossData YACON = new BossData(
             "Yacôn",
@@ -1623,7 +1623,7 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                     "|-1|Tobe continue.."}, //text chat 3
-            REST_20_S
+            REST_1_M
     );
 
 

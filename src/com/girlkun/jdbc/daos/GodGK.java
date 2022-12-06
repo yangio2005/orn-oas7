@@ -1,7 +1,6 @@
 package com.girlkun.jdbc.daos;
 
 import com.girlkun.database.GirlkunDB;
-import com.girlkun.models.matches.TOP;
 import com.girlkun.result.GirlkunResultSet;
 import com.girlkun.consts.ConstPlayer;
 import com.girlkun.data.DataGame;
@@ -51,7 +50,7 @@ import org.json.simple.JSONValue;
 
 public class GodGK {
 
-    public static Player login(MySession session, AntiLogin al) {
+    public static synchronized Player login(MySession session, AntiLogin al) {
         Player player = null;
         GirlkunResultSet rs = null;
         try {
@@ -62,6 +61,7 @@ public class GodGK {
                 session.lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
                 session.actived = rs.getBoolean("active");
                 session.goldBar = rs.getInt("account.thoi_vang");
+                session.bdPlayer = rs.getDouble("account.bd_player");
                 long lastTimeLogin = rs.getTimestamp("last_time_login").getTime();
                 int secondsPass1 = (int) ((System.currentTimeMillis() - lastTimeLogin) / 1000);
                 long lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
@@ -82,17 +82,21 @@ public class GodGK {
                     Service.getInstance().sendThongBaoOK(session, "Vui lòng chờ " + (Manager.SECOND_WAIT_LOGIN - secondsPass1) + "s");
                     return null;
                 } else if (rs.getTimestamp("last_time_login").getTime() > session.lastTimeLogout) {
-//                    Player plInGame = Client.gI().getPlayerByUser(session.userId);
-//                    if (plInGame != null) {
-//                        Client.gI().kickSession(plInGame.getSession());
-//                        Service.getInstance().sendThongBaoOK(session, "Máy chủ tắt hoặc mất sóng");
-//                    } else {
-//                    }
-                    Service.getInstance().sendThongBaoOK(session, "Tài khoản đang được đăng nhập tại máy chủ khác");
+                    Player plInGame = Client.gI().getPlayerByUser(session.userId);
+                    if (plInGame != null) {
+                        Client.gI().kickSession(plInGame.getSession());
+                        Service.getInstance().sendThongBaoOK(session, "Máy chủ tắt hoặc mất sóng");
+                    } else {
+                    }
+//                    Service.getInstance().sendThongBaoOK(session, "Tài khoản đang được đăng nhập tại máy chủ khác");
                 } else {
                     if (secondsPass < Manager.SECOND_WAIT_LOGIN) {
                         Service.getInstance().sendThongBaoOK(session, "Vui lòng chờ " + (Manager.SECOND_WAIT_LOGIN - secondsPass) + "s");
                     } else {//set time logout trước rồi đọc data player
+                        Player plInGame = Client.gI().getPlayerByUser(session.userId);
+                        if (plInGame != null) {
+                            Client.gI().kickSession(plInGame.getSession());
+                        }
                         rs = GirlkunDB.executeQuery("select * from player where account_id = ? limit 1", session.userId);
                         if (!rs.first()) {
                             //-28 -4 version data game
@@ -101,6 +105,7 @@ public class GodGK {
                             DataGame.sendDataItemBG(session);
                             Service.getInstance().switchToCreateChar(session);
                         } else {
+                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
                             int plHp = 200000000;
                             int plMp = 200000000;
                             JSONValue jv = new JSONValue();
@@ -140,7 +145,7 @@ public class GodGK {
                             } else {
                                 player.inventory.coupon = 0;
                             }
-                            if (dataArray.size() >= 5) {
+                            if (dataArray.size() >= 5 && false) {
                                 player.inventory.event = Integer.parseInt(String.valueOf(dataArray.get(4)));
                             } else {
                                 player.inventory.event = 0;
@@ -361,6 +366,10 @@ public class GodGK {
                             int timeMayDo = Integer.parseInt(String.valueOf(dataArray.get(6)));
                             int timeMeal = Integer.parseInt(String.valueOf(dataArray.get(7)));
                             int iconMeal = Integer.parseInt(String.valueOf(dataArray.get(8)));
+                            int timeUseTDLT = 0;
+                            if (dataArray.size() == 10) {
+                                timeUseTDLT = Integer.parseInt(String.valueOf(dataArray.get(9)));
+                            }
 
                             player.itemTime.lastTimeBoHuyet = System.currentTimeMillis() - (ItemTime.TIME_ITEM - timeBoHuyet);
                             player.itemTime.lastTimeBoKhi = System.currentTimeMillis() - (ItemTime.TIME_ITEM - timeBoKhi);
@@ -370,6 +379,9 @@ public class GodGK {
                             player.itemTime.lastTimeOpenPower = System.currentTimeMillis() - (ItemTime.TIME_OPEN_POWER - timeOpenPower);
                             player.itemTime.lastTimeUseMayDo = System.currentTimeMillis() - (ItemTime.TIME_MAY_DO - timeMayDo);
                             player.itemTime.lastTimeEatMeal = System.currentTimeMillis() - (ItemTime.TIME_EAT_MEAL - timeMeal);
+                            player.itemTime.timeTDLT = timeUseTDLT * 60 * 1000;
+                            player.itemTime.lastTimeUseTDLT = System.currentTimeMillis();
+
                             player.itemTime.iconMeal = iconMeal;
                             player.itemTime.isUseBoHuyet = timeBoHuyet != 0;
                             player.itemTime.isUseBoKhi = timeBoKhi != 0;
@@ -379,6 +391,7 @@ public class GodGK {
                             player.itemTime.isOpenPower = timeOpenPower != 0;
                             player.itemTime.isUseMayDo = timeMayDo != 0;
                             player.itemTime.isEatMeal = timeMeal != 0;
+                            player.itemTime.isUseTDLT = timeUseTDLT != 0;
                             dataArray.clear();
 
                             //data nhiệm vụ
@@ -542,7 +555,6 @@ public class GodGK {
                             player.nPoint.hp = plHp;
                             player.nPoint.mp = plMp;
                             player.iDMark.setLoadedAllDataPlayer(true);
-                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
                         }
                     }
                 }
@@ -552,6 +564,13 @@ public class GodGK {
                 al.wrong();
             }
         } catch (Exception e) {
+            try {
+                if (!player.iDMark.isLoadedAllDataPlayer()) {
+                    GirlkunDB.executeUpdate("update account set last_time_logout = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
+                }
+            } catch (Exception e1) {
+                Logger.error("Lỗi login");
+            }
             e.printStackTrace();
             Logger.error(session.uu);
             player.dispose();

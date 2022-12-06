@@ -44,7 +44,7 @@ public final class MobMe extends Mob {
         Message msg;
         try {
             if (pl != null) {
-                if (pl.nPoint.hp > this.point.dame) {
+                if (pl.nPoint.hp > this.point.dame && pl.nPoint.hp > pl.nPoint.hpMax * 0.05) {
                     int dameHit = pl.injured(null, this.point.dame, true, true);
                     msg = new Message(-95);
                     msg.writer().writeByte(2);
