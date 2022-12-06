@@ -1787,7 +1787,7 @@ public class NpcFactory {
                             if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > COST_HD) {
                                 player.inventory.gold -= COST_HD;
                                 Service.getInstance().sendMoney(player);
-                                ChangeMapService.gI().changeMapBySpaceShip(player, 146, -1, 168);
+                                ChangeMapService.gI().changeMapBySpaceShip(player, 148, -1, 168);
                             } else {
                                 this.npcChat(player, "Bạn chưa đủ điều kiện để vào");
                             }
@@ -1800,7 +1800,7 @@ public class NpcFactory {
                             if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > COST_HD) {
                                 player.inventory.gold -= COST_HD;
                                 Service.getInstance().sendMoney(player);
-                                ChangeMapService.gI().changeMapBySpaceShip(player, 146, -1, 168);
+                                ChangeMapService.gI().changeMapBySpaceShip(player, 147, -1, 168);
                             } else {
                                 this.npcChat(player, "Bạn chưa đủ điều kiện để vào");
                             }
