@@ -1737,15 +1737,15 @@ public class NpcFactory {
             public void openBaseMenu(Player player) {
                 if (this.mapId == 14) {
                     this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta sẽ dẫn cậu tới hành tinh Berrus với điều kiện\n1.Cậu phải là thành viên god(active)\n 2. đạt 80 tỷ sức mạnh " +
-                            "\n 3. chi phí vào cổng  200 triệu vàng", "Tới ngay", "Từ chối");
+                            "\n 3. chi phí vào cổng  50 triệu vàng", "Tới ngay", "Từ chối");
                 }
                 if (this.mapId == 7) {
                     this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta sẽ dẫn cậu tới hành tinh Berrus với điều kiện\n1.Cậu phải là thành viên god(active)\n 2. đạt 80 tỷ sức mạnh " +
-                            "\n 3. chi phí vào cổng  200 triệu vàng", "Tới ngay", "Từ chối");
+                            "\n 3. chi phí vào cổng  50 triệu vàng", "Tới ngay", "Từ chối");
                 }
                 if (this.mapId == 0) {
                     this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta sẽ dẫn cậu tới hành tinh Berrus với điều kiện\n1.Cậu phải là thành viên god(active)\n 2. đạt 80 tỷ sức mạnh " +
-                            "\n 3. chi phí vào cổng  200 triệu vàng", "Tới ngay", "Từ chối");
+                            "\n 3. chi phí vào cổng  50 triệu vàng", "Tới ngay", "Từ chối");
                 }
                 if (this.mapId == 146) {
                     this.createOtherMenu(player, ConstNpc.BASE_MENU, "Cậu không chịu nổi khi ở đây sao?\nCậu sẽ khó mà mạnh lên được", "Trốn về", "Ở lại");
