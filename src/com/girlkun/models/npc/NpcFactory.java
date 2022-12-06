@@ -51,6 +51,8 @@ import com.girlkun.utils.Util;
 
 public class NpcFactory {
 
+    private static final int COST_HD = 50000000;
+
     private static boolean nhanVang = false;
     private static boolean nhanDeTu = false;
 
@@ -1764,8 +1766,8 @@ public class NpcFactory {
                 if (canOpenNpc(player)) {
                     if (player.iDMark.isBaseMenu() && this.mapId == 7) {
                         if (select == 0) {
-                            if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > 200000000) {
-                                player.inventory.gold -= 200000000;
+                            if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > COST_HD) {
+                                player.inventory.gold -= COST_HD;
                                 Service.getInstance().sendMoney(player);
                                 ChangeMapService.gI().changeMapBySpaceShip(player, 146, -1, 168);
                             } else {
@@ -1777,8 +1779,8 @@ public class NpcFactory {
                     }
                     if (player.iDMark.isBaseMenu() && this.mapId == 14) {
                         if (select == 0) {
-                            if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > 200000000) {
-                                player.inventory.gold -= 200000000;
+                            if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > COST_HD) {
+                                player.inventory.gold -= COST_HD;
                                 Service.getInstance().sendMoney(player);
                                 ChangeMapService.gI().changeMapBySpaceShip(player, 146, -1, 168);
                             } else {
@@ -1790,8 +1792,8 @@ public class NpcFactory {
                     }
                     if (player.iDMark.isBaseMenu() && this.mapId == 0) {
                         if (select == 0) {
-                            if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > 200000000) {
-                                player.inventory.gold -= 200000000;
+                            if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > COST_HD) {
+                                player.inventory.gold -= COST_HD;
                                 Service.getInstance().sendMoney(player);
                                 ChangeMapService.gI().changeMapBySpaceShip(player, 146, -1, 168);
                             } else {
