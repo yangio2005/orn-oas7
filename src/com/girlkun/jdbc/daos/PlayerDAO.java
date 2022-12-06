@@ -9,6 +9,8 @@ import com.girlkun.models.player.Inventory;
 import com.girlkun.models.player.Player;
 import com.girlkun.models.skill.Skill;
 import com.girlkun.server.Manager;
+import com.girlkun.services.InventoryServiceNew;
+import com.girlkun.services.ItemTimeService;
 import com.girlkun.services.MapService;
 import com.girlkun.utils.Logger;
 
@@ -497,6 +499,7 @@ public class PlayerDAO {
                 dataArray.add((player.itemTime.isUseMayDo ? (ItemTime.TIME_MAY_DO - (System.currentTimeMillis() - player.itemTime.lastTimeUseMayDo)) : 0));
                 dataArray.add((player.itemTime.isEatMeal ? (ItemTime.TIME_EAT_MEAL - (System.currentTimeMillis() - player.itemTime.lastTimeEatMeal)) : 0));
                 dataArray.add(player.itemTime.iconMeal);
+                dataArray.add((player.itemTime.isUseTDLT ? ((player.itemTime.timeTDLT - (System.currentTimeMillis() - player.itemTime.lastTimeUseTDLT)) / 60 / 1000) : 0));
                 String itemTime = dataArray.toJSONString();
                 dataArray.clear();
 
@@ -653,7 +656,7 @@ public class PlayerDAO {
                 }
                 String dataBlackBall = dataArray.toJSONString();
                 dataArray.clear();
-                String query = "update player set head = ?, have_tennis_space_ship = ?,"
+                String query = " update player set head = ?, have_tennis_space_ship = ?,"
                         + "clan_id_sv" + Manager.SERVER + " = ?, data_inventory = ?, data_location = ?, data_point = ?, data_magic_tree = ?,"
                         + "items_body = ?, items_bag = ?, items_box = ?, items_box_lucky_round = ?, friends = ?,"
                         + "enemies = ?, data_intrinsic = ?, data_item_time = ?, data_task = ?, data_mabu_egg = ?, pet = ?,"

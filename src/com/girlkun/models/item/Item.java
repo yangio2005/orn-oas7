@@ -34,6 +34,12 @@ public class Item {
         this.createTime = System.currentTimeMillis();
     }
 
+    public Item(short itemId) {
+        this.template = ItemService.gI().getTemplate(itemId);
+        this.itemOptions = new ArrayList<>();
+        this.createTime = System.currentTimeMillis();
+    }
+
     public String getInfo() {
         String strInfo = "";
         for (ItemOption itemOption : itemOptions) {
@@ -79,8 +85,8 @@ public class Item {
             this.optionTemplate = ItemService.gI().getItemOptionTemplate(tempId);
             this.param = param;
         }
-        
-        public ItemOption(Template.ItemOptionTemplate temp, int param){
+
+        public ItemOption(Template.ItemOptionTemplate temp, int param) {
             this.optionTemplate = temp;
             this.param = param;
         }
@@ -88,10 +94,98 @@ public class Item {
         public String getOptionString() {
             return Util.replace(this.optionTemplate.name, "#", String.valueOf(this.param));
         }
-        
-        public void dispose(){
+
+        public void dispose() {
             this.optionTemplate = null;
         }
     }
+    public boolean isSKH() {
+        for (ItemOption itemOption : itemOptions
+        ) {
+            if (itemOption.optionTemplate.id >= 127 && itemOption.optionTemplate.id <= 135) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public boolean isDTS() {
+        if (this.template.id >= 1048 && this.template.id <= 1062) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isDTL() {
+        if (this.template.id >= 555 && this.template.id <= 567) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isDHD() {
+        if (this.template.id >= 650 && this.template.id <= 662) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isManhTS() {
+        if (this.template.id >= 1066 && this.template.id <= 1070) {
+            return true;
+        }
+        return false;
+    }
+
+    public String typeName() {
+        switch (this.template.type) {
+            case 0:
+                return "Áo";
+            case 1:
+                return "Quần";
+            case 2:
+                return "Găng";
+            case 3:
+                return "Giày";
+            case 4:
+                return "Rada";
+            default:
+                return "";
+        }
+    }
+
+    public byte typeIdManh() {
+        if (!isManhTS()) return -1;
+        switch (this.template.id) {
+            case 1066:
+                return 0;
+            case 1067:
+                return 1;
+            case 1070:
+                return 2;
+            case 1068:
+                return 3;
+            case 1069:
+                return 4;
+            default:
+                return -1;
+        }
+    }
+
+    public String typeNameManh() {
+        switch (this.template.id) {
+            case 1066:
+                return "Áo";
+            case 1067:
+                return "Quần";
+            case 1070:
+                return "Găng";
+            case 1068:
+                return "Giày";
+            case 1069:
+                return "Nhẫn";
+            default:
+                return "";
+        }
+    }
 }

@@ -93,8 +93,7 @@ public class BossID {
     public static final int BUI_BUI_2 = -238;
 
 
-    public static final int THAN_HUY_DIET = -239;
-    public static final int THIEN_SU_WHIS = -240;
+
 
 
     public static final int BLACK = -203;
@@ -102,6 +101,15 @@ public class BossID {
     public static final int BLACK2 = -242;
     public static final int ZAMASMAX = -243;
     public static final int ZAMASZIN = -244;
+
+    public static final int THAN_HUY_DIET = -239;
+    public static final int THIEN_SU_WHIS = -240;
+    public static final int THAN_HUY_DIET_CHAMPA = -245;
+    public static final int THIEN_SU_VADOS = -246;
+
+
+
+
 
     
 

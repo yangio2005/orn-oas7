@@ -25,8 +25,7 @@ public class XenBoHung extends Boss {
 
     @Override
     public void reward(Player plKill) {
-        ItemMap it = new ItemMap(this.zone, 16, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
-                this.location.y - 24), plKill.id);
+        ItemMap it = new ItemMap(this.zone, 16, 1, this.location.x, this.location.y, plKill.id);
         Service.getInstance().dropItemMap(this.zone, it);
         TaskService.gI().checkDoneTaskKillBoss(plKill, this);
     }

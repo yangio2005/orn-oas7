@@ -404,7 +404,11 @@ public class Service {
                 sendThongBao(player, "Time start server: " + ServerManager.timeStart + "\n");
                 return;
             }
+            if (text.equals("a")) {
+                BossManager.gI().showListBoss(player);
+                return;
 
+            }
             if (text.equals("cocaiconcac")) {
                 NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_ADMIN, -1, "Quản trị admin NROGOD: " + Client.gI().getPlayers().size() + "\n",
                         "Ngọc rồng", "Đệ tử", "Bảo trì", "Tìm kiếm\nngười chơi", "Boss", "Đóng");
@@ -1222,10 +1226,12 @@ public class Service {
     }
 
     public void chooseFlag(Player pl, int index) {
+        if (MapService.gI().isMapBlackBallWar(pl.zone.map.mapId) || MapService.gI().isMapMaBu(pl.zone.map.mapId)) {
+            sendThongBao(pl, "Không thể đổi cờ lúc này!");
+            return;
+        }
         if (Util.canDoWithTime(pl.iDMark.getLastTimeChangeFlag(), 60000)) {
-            if (!MapService.gI().isMapBlackBallWar(pl.zone.map.mapId)) {
-                changeFlag(pl, index);
-            }
+            changeFlag(pl, index);
         } else {
             sendThongBao(pl, "Không thể đổi cờ lúc này! Vui lòng đợi " + TimeUtil.getTimeLeft(pl.iDMark.getLastTimeChangeFlag(), 60) + " nữa!");
         }
@@ -1573,7 +1579,8 @@ public class Service {
         }
         DataGame.sendLinkIP(session);
     }
-    public void DropVeTinh (Player pl, Item item, Zone map, int x, int y) {
+
+    public void DropVeTinh(Player pl, Item item, Zone map, int x, int y) {
         ItemMap itemMap = new ItemMap(map, item.template, item.quantity, x, y, pl.id);
         itemMap.options = item.itemOptions;
         map.addItem(itemMap);

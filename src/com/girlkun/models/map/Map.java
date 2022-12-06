@@ -122,7 +122,7 @@ public class Map implements Runnable {
             }
         }
     }
-// a bao tri 1 phut nha baotri
+
     public void initMob(byte[] mobTemp, byte[] mobLevel, int[] mobHp, short[] mobX, short[] mobY) {
         for (int i = 0; i < mobTemp.length; i++) {
             int mobTempId = mobTemp[i];

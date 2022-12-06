@@ -30,11 +30,11 @@ import java.util.List;
 
 public class DataGame {
 
-    public static byte vsData = 78;
-    public static byte vsMap = 77;
-    public static byte vsSkill = 5;
-    public static byte vsItem = 79;
-    public static int vsRes = 752009;
+    public static byte vsData = 80;
+    public static byte vsMap = 80;
+    public static byte vsSkill = 6;
+    public static byte vsItem = 80;
+    public static int vsRes = 752011;
 
     public static String LINK_IP_PORT = "Girlkun75-1:localhost:14445:0";
     private static final String MOUNT_NUM = "733:1,734:2,735:3,743:4,744:5,746:6,795:7,849:8,897:9,920:10";

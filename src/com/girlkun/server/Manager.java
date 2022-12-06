@@ -105,6 +105,23 @@ public class Manager {
     public static final short[] itemIds_TL = {555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567, 561};
     public static final byte[] itemIds_NR_SB = {15, 16};
 
+    public static final short[] aotd = {138, 139, 230, 231, 232, 233, 555};
+    public static final short[] quantd = {142, 143, 242, 243, 244, 245, 556};
+    public static final short[] gangtd = {146, 147, 254, 255, 256, 257, 562};
+    public static final short[] giaytd = {150, 151, 266, 267, 268, 269, 563};
+    public static final short[] aoxd = {170, 171, 238, 239, 240, 241, 559};
+    public static final short[] quanxd = {174, 175, 250, 251, 252, 253, 560};
+    public static final short[] gangxd = {178, 179, 262, 263, 264, 265, 566};
+    public static final short[] giayxd = {182, 183, 274, 275, 276, 277, 567};
+    public static final short[] aonm = {154, 155, 234, 235, 236, 237, 557};
+    public static final short[] quannm = {158, 159, 246, 247, 248, 249, 558};
+    public static final short[] gangnm = {162, 163, 258, 259, 260, 261, 564};
+    public static final short[] giaynm = {166, 167, 270, 271, 272, 273, 565};
+    public static final short[] radaSKHVip = {186, 187, 278, 279, 280, 281, 561};
+
+    public static final short[][][] doSKHVip = {{aotd, quantd, gangtd, giaytd}, {aonm, quannm, gangnm, giaynm}, {aoxd, quanxd, gangxd, giayxd}};
+    //doSKHVip[gender][typeDo][randomLVDo]
+
     public static Manager gI() {
         if (i == null) {
             i = new Manager();
@@ -579,6 +596,11 @@ public class Manager {
                         if (item.getTemp().type == 14) { //14 đá nâng cấp
                             item.setRatio(new int[]{20, Integer.parseInt(ratio[1])});
                         }
+                        if (item.getTemp().type < 5) {
+                            item.setRatio(new int[]{Integer.parseInt(ratio[0]), Integer.parseInt(ratio[1]) / 2});
+                        }
+
+//
 //                        System.out.println(mobReward.getMobId());
 //                        System.out.println(item.getTemp().name);
 //                        System.out.println(item.getTemp().type);
@@ -945,5 +967,6 @@ public class Manager {
             return 0;
         }
     }
+
 
 }

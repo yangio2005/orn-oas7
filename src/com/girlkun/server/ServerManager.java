@@ -178,7 +178,7 @@ public class ServerManager {
             while (true) {
                 String line = sc.nextLine();
                 if (line.equals("baotri")) {
-                    Maintenance.gI().start(15);
+                    Maintenance.gI().start(60 * 2);
                 } else if (line.equals("athread")) {
                     ServerNotify.gI().notify("NROGOD debug server: " + Thread.activeCount());
                 } else if (line.equals("nplayer")) {

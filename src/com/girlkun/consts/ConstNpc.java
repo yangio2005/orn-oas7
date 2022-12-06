@@ -32,6 +32,11 @@ public class ConstNpc {
             + "Lưu ý khi vào map sẽ chia làm 2 phe riêng biệt\n"
             + "Cố gắng tồn tại và chiến đấu đến Boss cuối cùng\n"
             + "Càng vào sâu trong map sẽ có những vật phẩm đặc biệt";
+    public static final String HUONG_DAN_DOI_SKH_VIP = "Nguyên liệu cần để làm SKH VIP là :\n"
+            + "1 món Thiên Sứ và 2 món SKH thường\n"
+            + "Lưu ý SKH VIP sẽ tạo ra dưa vào món Thiên Sứ\n"
+            + "Ví dụ nguyên liệu gồm : Quần Xayda Thiên Tứ + 2 món SKH thường ngẫu nhiên\n"
+            + "Bạn sẽ nhận lại được Quần Xayda với chỉ số SKH VIP";
 
     //npcid
     public static final byte ONG_GOHAN = 0;
@@ -132,6 +137,9 @@ public class ConstNpc {
     public static final int MENU_OPTION_SHOP_BUA = 502;
     public static final int MENU_START_COMBINE = 503;
     public static final int MENU_PHAN_RA_DO_THAN_LINH = 504;
+    public static final int MENU_NANG_CAP_DO_TS = 505;
+    public static final int MENU_NANG_DOI_SKH_VIP = 506;
+
 
 
     //index menu linh canh

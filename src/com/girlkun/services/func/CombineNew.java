@@ -21,7 +21,7 @@ public class CombineNew {
     public int gemCombine;
     public float ratioCombine;
     public int countDaNangCap;
-    public int countDaBaoVe;
+    public short countDaBaoVe;
 
     public CombineNew() {
         this.itemsCombine = new ArrayList<>();
@@ -40,6 +40,8 @@ public class CombineNew {
         this.gemCombine = 0;
         this.ratioCombine = 0;
         this.countDaNangCap = 0;
+        this.countDaBaoVe = 0;
+
     }
     
     public void dispose(){

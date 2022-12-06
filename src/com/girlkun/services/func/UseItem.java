@@ -537,7 +537,10 @@ public class UseItem {
         Zone zoneChose = pl.mapCapsule.get(index);
         //Kiểm tra số lượng người trong khu
 
-        if (zoneChose.getNumOfPlayers() > 25 || MapService.gI().isMapDoanhTrai(zoneChose.map.mapId) || MapService.gI().isMapMaBu(zoneChose.map.mapId)) {
+        if (zoneChose.getNumOfPlayers() > 25 ||
+                MapService.gI().isMapDoanhTrai(zoneChose.map.mapId) ||
+                MapService.gI().isMapMaBu(zoneChose.map.mapId) ||
+                MapService.gI().isMapHuyDiet(zoneChose.map.mapId)) {
             Service.getInstance().sendThongBao(pl, "Hiện tại không thể vào được khu!");
             return;
         }

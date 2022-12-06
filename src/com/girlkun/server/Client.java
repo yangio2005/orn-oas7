@@ -93,16 +93,16 @@ public class Client implements Runnable {
             if (player.clan != null) {
                 player.clan.removeMemberOnline(null, player);
             }
-            if (player.itemTime != null && player.itemTime.isUseTDLT) {
-                Item tdlt = null;
-                try {
-                    tdlt = InventoryServiceNew.gI().findItemBag(player, 521);
-                } catch (Exception ex) {
-                }
-                if (tdlt != null) {
-                    ItemTimeService.gI().turnOffTDLT(player, tdlt);
-                }
-            }
+//            if (player.itemTime != null && player.itemTime.isUseTDLT) {
+//                Item tdlt = null;
+//                try {
+//                    tdlt = InventoryServiceNew.gI().findItemBag(player, 521);
+//                } catch (Exception ex) {
+//                }
+//                if (tdlt != null) {
+//                    ItemTimeService.gI().turnOffTDLT(player, tdlt);
+//                }
+//            }
             if (SummonDragon.gI().playerSummonShenron != null
                     && SummonDragon.gI().playerSummonShenron.id == player.id) {
                 SummonDragon.gI().isPlayerDisconnect = true;

@@ -27,7 +27,7 @@ public class BlackBallWar {
     public static final int COST_X5 = 300000000;
     public static final int COST_X7 = 500000000;
 
-    public static final byte HOUR_OPEN = 20;
+    public static final byte HOUR_OPEN = 2;
     public static final byte MIN_OPEN = 0;
     public static final byte SECOND_OPEN = 0;
 

@@ -2,6 +2,7 @@ package com.girlkun.models.npc;
 
 import com.girlkun.consts.ConstMap;
 import com.girlkun.models.boss.list_boss.nappa.Kuku;
+import com.girlkun.server.ServerManager;
 import com.girlkun.server.io.MySession;
 import com.girlkun.services.*;
 import com.girlkun.consts.ConstNpc;
@@ -50,6 +51,8 @@ import com.girlkun.utils.Util;
 
 public class NpcFactory {
 
+    private static final int COST_HD = 50000000;
+
     private static boolean nhanVang = false;
     private static boolean nhanDeTu = false;
 
@@ -81,9 +84,7 @@ public class NpcFactory {
                     if (player.iDMark.isBaseMenu()) {
                         switch (select) {
                             case 0:
-                                NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_EVENT, -1, "Hãy mang bông về cho ta, với 100 bông ta sẽ đổi cho con 1 hộp quà\n " +
-                                                "mỗi lần mở hộp quà con sẽ nhận được 1 điểm\n với 3000 điểm sự kiện con sẽ đổi được 1 HỘP QUÀ VIP ",
-                                        "Điểm sự kiện", "Bảng xếp hạng sự kiện", "Giao bông", "Đổi Thưởng");
+                                Service.getInstance().sendThongBao(player, "Hết sự kiện...");
                                 break;
                             case 1:
                                 Clan clan = player.clan;
@@ -202,6 +203,7 @@ public class NpcFactory {
                                 }
                                 break;
                             case 2:
+                                if (Maintenance.isRuning) break;
                                 if (player.getSession().goldBar > 0) {
                                     if (InventoryServiceNew.gI().getCountEmptyBag(player) > 0) {
                                         int quantity = player.getSession().goldBar;
@@ -724,7 +726,7 @@ public class NpcFactory {
                                 "Ngươi tìm ta có việc gì?",
                                 "Cửa hàng\nBùa", "Nâng cấp\nVật phẩm",
                                 "Nâng cấp\nBông tai\nPorata", "Làm phép\nNhập đá",
-                                "Nhập\nNgọc Rồng", "Phân Rã\nĐồ Thần Linh");
+                                "Nhập\nNgọc Rồng", "Phân Rã\nĐồ Thần Linh", "Nâng Cấp \nĐồ Thiên Sứ");
                     }
                 }
             }
@@ -785,8 +787,10 @@ public class NpcFactory {
                                     break;
                                 case 5: //phân rã đồ thần linh
                                     CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.PHAN_RA_DO_THAN_LINH);
-
-
+                                    break;
+                                case 6:
+                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_CAP_DO_TS);
+                                    break;
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_OPTION_SHOP_BUA) {
                             switch (select) {
@@ -807,12 +811,18 @@ public class NpcFactory {
                                 case CombineServiceNew.LAM_PHEP_NHAP_DA:
                                 case CombineServiceNew.NHAP_NGOC_RONG:
                                 case CombineServiceNew.PHAN_RA_DO_THAN_LINH:
+                                case CombineServiceNew.NANG_CAP_DO_TS:
+                                case CombineServiceNew.NANG_CAP_SKH_VIP:
                                     if (select == 0) {
                                         CombineServiceNew.gI().startCombine(player);
                                     }
                                     break;
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_PHAN_RA_DO_THAN_LINH) {
+                            if (select == 0) {
+                                CombineServiceNew.gI().startCombine(player);
+                            }
+                        } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_NANG_CAP_DO_TS) {
                             if (select == 0) {
                                 CombineServiceNew.gI().startCombine(player);
                             }
@@ -1655,6 +1665,11 @@ public class NpcFactory {
                             ChangeMapService.gI().changeMapBySpaceShip(player, player.gender + 21, -1, 250);
                         } else if (select == 2) {
                             try {
+                                if (BossManager.gI().existBossOnPlayer(player) ||
+                                        player.zone.items.stream().anyMatch(itemMap -> ItemMapService.gI().isBlackBall(itemMap.itemTemplate.id)) ||
+                                        player.zone.getPlayers().stream().anyMatch(p -> p.iDMark.isHoldBlackBall())) {
+                                    return;
+                                }
                                 Boss k = null;
                                 switch (mapId) {
                                     case 85:
@@ -1720,21 +1735,112 @@ public class NpcFactory {
         return new Npc(mapId, status, cx, cy, tempId, avartar) {
             @Override
             public void openBaseMenu(Player player) {
-                if (canOpenNpc(player)) {
-                    createOtherMenu(player, ConstNpc.BASE_MENU, "Ta cảm nhận được những luồng sức mạnh khủng khiếp ở hành tinh này\n thật đáng sợ",
-                            "Top\nSức Mạnh", "Top\nNhiệm Vụ", "Đóng");
+                if (this.mapId == 14) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta sẽ dẫn cậu tới hành tinh Berrus với điều kiện\n1.Cậu phải là thành viên god(active)\n 2. đạt 80 tỷ sức mạnh " +
+                            "\n 3. chi phí vào cổng  200 triệu vàng", "Tới ngay", "Từ chối");
+                }
+                if (this.mapId == 7) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta sẽ dẫn cậu tới hành tinh Berrus với điều kiện\n1.Cậu phải là thành viên god(active)\n 2. đạt 80 tỷ sức mạnh " +
+                            "\n 3. chi phí vào cổng  200 triệu vàng", "Tới ngay", "Từ chối");
+                }
+                if (this.mapId == 0) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Ta sẽ dẫn cậu tới hành tinh Berrus với điều kiện\n1.Cậu phải là thành viên god(active)\n 2. đạt 80 tỷ sức mạnh " +
+                            "\n 3. chi phí vào cổng  200 triệu vàng", "Tới ngay", "Từ chối");
+                }
+                if (this.mapId == 146) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Cậu không chịu nổi khi ở đây sao?\nCậu sẽ khó mà mạnh lên được", "Trốn về", "Ở lại");
+                }
+                if (this.mapId == 147) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Cậu không chịu nổi khi ở đây sao?\nCậu sẽ khó mà mạnh lên được", "Trốn về", "Ở lại");
+                }
+                if (this.mapId == 148) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Cậu không chịu nổi khi ở đây sao?\nCậu sẽ khó mà mạnh lên được", "Trốn về", "Ở lại");
+                }
+                if (this.mapId == 48) {
+                    this.createOtherMenu(player, ConstNpc.BASE_MENU, "Đã tìm đủ nguyên liệu cho tôi chưa?\n Tôi sẽ giúp cậu mạnh lên kha khá đấy!", "Hướng Dẫn",
+                            "Đổi SKH VIP", "Từ Chối");
                 }
             }
 
+            //if (player.inventory.gold < 500000000) {
+//                this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Hết tiền rồi\nẢo ít thôi con", "Đóng");
+//                return;
+//            }
             @Override
             public void confirmMenu(Player player, int select) {
                 if (canOpenNpc(player)) {
-                    if (player.iDMark.isBaseMenu()) {
+                    if (player.iDMark.isBaseMenu() && this.mapId == 7) {
                         if (select == 0) {
-                            Util.showListTop(player, (byte) select);
+                            if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > COST_HD) {
+                                player.inventory.gold -= COST_HD;
+                                Service.getInstance().sendMoney(player);
+                                ChangeMapService.gI().changeMapBySpaceShip(player, 146, -1, 168);
+                            } else {
+                                this.npcChat(player, "Bạn chưa đủ điều kiện để vào");
+                            }
                         }
                         if (select == 1) {
-                            Util.showListTop(player, (byte) select);
+                        }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 14) {
+                        if (select == 0) {
+                            if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > COST_HD) {
+                                player.inventory.gold -= COST_HD;
+                                Service.getInstance().sendMoney(player);
+                                ChangeMapService.gI().changeMapBySpaceShip(player, 146, -1, 168);
+                            } else {
+                                this.npcChat(player, "Bạn chưa đủ điều kiện để vào");
+                            }
+                        }
+                        if (select == 1) {
+                        }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 0) {
+                        if (select == 0) {
+                            if (player.getSession().actived && player.nPoint.power >= 80000000000L && player.inventory.gold > COST_HD) {
+                                player.inventory.gold -= COST_HD;
+                                Service.getInstance().sendMoney(player);
+                                ChangeMapService.gI().changeMapBySpaceShip(player, 146, -1, 168);
+                            } else {
+                                this.npcChat(player, "Bạn chưa đủ điều kiện để vào");
+                            }
+                        }
+                        if (select == 1) {
+                        }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 147) {
+                        if (select == 0) {
+                            ChangeMapService.gI().changeMapBySpaceShip(player, 0, -1, 450);
+                        }
+                        if (select == 1) {
+                        }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 148) {
+                        if (select == 0) {
+                            ChangeMapService.gI().changeMapBySpaceShip(player, 14, -1, 450);
+                        }
+                        if (select == 1) {
+                        }
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 146) {
+                        if (select == 0) {
+                            ChangeMapService.gI().changeMapBySpaceShip(player, 7, -1, 450);
+                        }
+                        if (select == 1) {
+                        }
+
+                    }
+                    if (player.iDMark.isBaseMenu() && this.mapId == 48) {
+                        if (select == 0) {
+                            NpcService.gI().createTutorial(player, this.avartar, ConstNpc.HUONG_DAN_DOI_SKH_VIP);
+                        }
+                        if (select == 1) {
+                            CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_CAP_SKH_VIP);
+                        }
+
+                    } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_NANG_DOI_SKH_VIP) {
+                        if (select == 0) {
+                            CombineServiceNew.gI().startCombine(player);
                         }
                     }
                 }
@@ -2121,6 +2227,9 @@ public class NpcFactory {
                         break;
                     case ConstNpc.MAKE_MATCH_PVP:
                         if (player.getSession().actived) {
+                            if (Maintenance.isRuning) {
+                                break;
+                            }
                             PVPService.gI().sendInvitePVP(player, (byte) select);
                             break;
                         } else {

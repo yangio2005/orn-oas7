@@ -6,7 +6,7 @@ import com.girlkun.models.Template.SkillTemplate;
 
 public class Skill {
     
-    public static final int RANGE_ATTACK_CHIEU_DAM = 50;
+    public static final int RANGE_ATTACK_CHIEU_DAM = 100;
     public static final int RANGE_ATTACK_CHIEU_CHUONG = 300;
 
     public static final byte DEMON = 2;
