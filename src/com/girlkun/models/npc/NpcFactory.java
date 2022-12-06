@@ -1053,7 +1053,11 @@ public class NpcFactory {
                                     ShopServiceNew.gI().opendShop(player, "ITEMS_LUCKY_ROUND", true);
                                     break;
                                 case 0:
-                                    LuckyRound.gI().openCrackBallUI(player, LuckyRound.USING_GOLD);
+                                    if (player.getSession().actived) {
+                                        LuckyRound.gI().openCrackBallUI(player, LuckyRound.USING_GOLD);
+                                    } else {
+                                        Service.getInstance().sendThongBao(player, "Vui lòng kích hoạt tài khoản để sử dụng chức năng này");
+                                    }
                                     break;
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_CHOOSE_LUCKY_ROUND) {
@@ -1074,6 +1078,7 @@ public class NpcFactory {
                             }
                         }
                     }
+
                 }
             }
         };
@@ -2442,12 +2447,14 @@ public class NpcFactory {
                                 Util.showListTop(player, (byte) 2);
                                 break;
                             case 2:
-                                NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_GIAO_BONG, -1, "Người muốn giao bao nhiêu bông...",
-                                        "100 bông", "1000 bông", "10000 bông");
+                                Service.getInstance().sendThongBao(player, "Sự kiện đã kết thúc...");
+//                                NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_GIAO_BONG, -1, "Người muốn giao bao nhiêu bông...",
+//                                        "100 bông", "1000 bông", "10000 bông");
                                 break;
                             case 3:
-                                NpcService.gI().createMenuConMeo(player, ConstNpc.CONFIRM_DOI_THUONG_SU_KIEN, -1, "Con có thực sự muốn đổi thưởng?\nPhải giao cho ta 3000 điểm sự kiện đấy... ",
-                                        "Đồng ý", "Từ chối");
+                                Service.getInstance().sendThongBao(player, "Sự kiện đã kết thúc...");
+//                                NpcService.gI().createMenuConMeo(player, ConstNpc.CONFIRM_DOI_THUONG_SU_KIEN, -1, "Con có thực sự muốn đổi thưởng?\nPhải giao cho ta 3000 điểm sự kiện đấy... ",
+//                                        "Đồng ý", "Từ chối");
                                 break;
 
                         }

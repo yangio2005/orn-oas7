@@ -197,7 +197,7 @@ public class Player {
                             trap.doPlayer(this);
                         }
                     }
-                    if (location.lastTimeplayerMove < System.currentTimeMillis() - 10 * 60 * 1000) {
+                    if (location.lastTimeplayerMove < System.currentTimeMillis() - 30 * 60 * 1000) {
                         Client.gI().kickSession(getSession());
                     }
                 } else {

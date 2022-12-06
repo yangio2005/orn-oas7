@@ -60,19 +60,4 @@ public class Drabura extends Boss {
             return 0;
         }
     }
-//    @Override
-//    public void active() {
-//        super.active(); //To change body of generated methods, choose Tools | Templates.
-//        if (Util.canDoWithTime(st, 300000)) {
-//            this.changeStatus(BossStatus.LEAVE_MAP);
-//        }
-//    }
-//
-//    @Override
-//    public void joinMap() {
-//        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
-//        st = System.currentTimeMillis();
-//    }
-//    private long st;
-
 }
