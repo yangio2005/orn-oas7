@@ -267,7 +267,7 @@ public class UseItem {
                             ItemService.gI().OpenItem736(pl, item);
                             break;
                         case 987:
-                            Service.getInstance().sendThongBao(pl, "Chức năng đang phát triển..."); //đá bảo vệ
+                            Service.getInstance().sendThongBao(pl, "Bảo vệ trang bị không bị rớt cấp"); //đá bảo vệ
                             break;
                     }
                     break;
