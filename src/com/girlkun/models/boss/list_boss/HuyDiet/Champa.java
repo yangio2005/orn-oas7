@@ -2,10 +2,11 @@ package com.girlkun.models.boss.list_boss.HuyDiet;
 
 import com.girlkun.consts.ConstPlayer;
 import com.girlkun.models.boss.Boss;
-import com.girlkun.models.boss.BossStatus;
 import com.girlkun.models.boss.BossesData;
+import com.girlkun.models.item.Item;
 import com.girlkun.models.map.ItemMap;
 import com.girlkun.models.player.Player;
+import com.girlkun.server.Manager;
 import com.girlkun.services.EffectSkillService;
 import com.girlkun.services.PlayerService;
 import com.girlkun.services.Service;
@@ -24,19 +25,20 @@ public class Champa extends Boss {
 
     @Override
     public void reward(Player plKill) {
-        int[] itemDos = new int[]{555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567};
-        int[] NRs = new int[]{15, 16};
-        int randomDo = new Random().nextInt(itemDos.length);
-        int randomNR = new Random().nextInt(NRs.length);
-        if (Util.isTrue(20, 100)) {
-            if (Util.isTrue(1, 5)) {
-                Service.getInstance().dropItemMap(this.zone, Util.ratiDTL(zone, 561, 1, this.location.x, this.location.y, plKill.id));
-                return;
+        byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
+        byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length);
+        ItemMap itemMap;
+        if (Util.isTrue(5, 100)) {
+            if (Util.isTrue(1, 20)) {
+                itemMap = Util.ratiItem(zone, 561, 1, this.location.x, this.location.y, plKill.id);
+            } else {
+                itemMap = Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x, this.location.y, plKill.id);
             }
-            Service.getInstance().dropItemMap(this.zone, Util.ratiDTL(zone, itemDos[randomDo], 1, this.location.x, this.location.y, plKill.id));
         } else {
-            Service.getInstance().dropItemMap(this.zone, new ItemMap(zone, NRs[randomNR], 1, this.location.x, this.location.y, plKill.id));
+            itemMap = Util.ratiItem(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x, this.location.y, plKill.id);
         }
+        itemMap.options.add(new Item.ItemOption(30, 1));
+        Service.getInstance().dropItemMap(this.zone, itemMap);
     }
 
     @Override
@@ -97,21 +99,7 @@ public class Champa extends Boss {
         this.chat("Thật là yếu ớt " + pl.name);
         this.lasttimehakai = System.currentTimeMillis();
         this.timehakai = Util.nextInt(20000, 30000);
-
-
-        super.active(); //To change body of generated methods, choose Tools | Templates.
-        if (Util.canDoWithTime(st, 900000)) {
-            this.changeStatus(BossStatus.LEAVE_MAP);
-        }
     }
-
-    @Override
-    public void joinMap() {
-        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
-        st = System.currentTimeMillis();
-    }
-
-    private long st;
 
 }
 

@@ -1,6 +1,8 @@
 package com.girlkun.services;
 
 import com.girlkun.consts.ConstPlayer;
+import com.girlkun.models.boss.Boss;
+import com.girlkun.models.boss.BossID;
 import com.girlkun.models.intrinsic.Intrinsic;
 import com.girlkun.models.mob.Mob;
 import com.girlkun.models.mob.MobMe;
@@ -259,6 +261,14 @@ public class SkillService {
                     mobTarget.effectSkill.setTroi(System.currentTimeMillis(), timeHold);
                 }
                 affterUseSkill(player, player.playerSkill.skillSelect.template.id);
+                if (plTarget != null &&
+                        plTarget.isBoss &&
+                        MapService.gI().isMapHuyDiet(player.zone.map.mapId) &&
+                        Util.isTrue(40, 100)) {
+                    EffectSkillService.gI().removeUseTroi(player);
+                    EffectSkillService.gI().removeAnTroi(plTarget);
+                    Service.getInstance().chat(plTarget, "Chiêu đó không có tác dụng đâu kaka");
+                }
                 break;
         }
         if (!player.isBoss) {
@@ -283,7 +293,7 @@ public class SkillService {
                         if (pl != null && !player.equals(pl) && !pl.nPoint.khangTDHS) {
                             if (Util.getDistance(player, pl) <= SkillUtil.getRangeStun(player.playerSkill.skillSelect.point)
                                     && canAttackPlayer(player, pl) //                                        && (!pl.playerSkill.prepareQCKK && !pl.playerSkill.prepareLaze && !pl.playerSkill.prepareTuSat)
-                                    ) {
+                            ) {
                                 if (player.isPet && ((Pet) player).master.equals(pl)) {
                                     continue;
                                 }
@@ -450,7 +460,7 @@ public class SkillService {
                             PlayerService.gI().sendInfoHpMp(pl);
                         }
                     }
-                    int hpHoiMe = player.nPoint.hp * percentTriThuong / 100;;
+                    int hpHoiMe = player.nPoint.hp * percentTriThuong / 100;
                     player.nPoint.addHp(hpHoiMe);
                     PlayerService.gI().sendInfoHp(player);
                 }
@@ -533,8 +543,8 @@ public class SkillService {
                 msg.cleanup();
             }
             Service.getInstance().addSMTN(plInjure, (byte) 2, 1, false);
-            if(plInjure.isDie() && !plAtt.isBoss){
-               plAtt.fightMabu.changePoint((byte) 5);
+            if (plInjure.isDie() && !plAtt.isBoss) {
+                plAtt.fightMabu.changePoint((byte) 5);
             }
         } catch (Exception e) {
             Logger.logException(SkillService.class, e);

@@ -946,7 +946,7 @@ public class BossesData {
             new short[]{550, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             80000, //dame
             new int[]{777000000}, //hp
-            new int[]{0,1,2,3,4,5,6,27,28,29}, //map join
+            new int[]{0, 1, 2, 3, 4, 5, 6, 27, 28, 29}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO), //skill
             new String[]{"|-1|Ta là Sôn Gô Ku",
                     "|-1|Cơ thể này,sức mạnh này",
@@ -1108,18 +1108,6 @@ public class BossesData {
     //**************************************************************************
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     public static final BossData MABU = new BossData(
             "Mabư",
             ConstPlayer.XAYDA,
@@ -1237,10 +1225,10 @@ public class BossesData {
     public static final BossData THIEN_SU_WHIS = new BossData(
             "Thiên sứ Whis", //name
             ConstPlayer.NAMEC, //gender
-            new short[]{838,839,840, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            new short[]{838, 839, 840, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             100000000, //dame
             new int[]{1000}, //hp
-            new int[]{147,148}, //map join
+            new int[]{146, 147, 148}, //map join
             new int[][]{
                     {Skill.DICH_CHUYEN_TUC_THOI, 7, 50000},},//skill
             new String[]{"|-2|Kia là ai thế",
@@ -1270,9 +1258,9 @@ public class BossesData {
             "Thần Hủy Diệt Berrus", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{508, 509, 510, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            50000, //dame
+            200000, //dame
             new int[]{2000000000}, //hp
-            new int[]{147,148}, //map join
+            new int[]{146, 147, 148}, //map join
             new int[][]{
                     {Skill.MASENKO, 3, 400},
                     {Skill.MASENKO, 2, 300},},//skill//skill
@@ -1288,10 +1276,10 @@ public class BossesData {
     public static final BossData THIEN_SU_VADOS = new BossData(
             "Thiên sứ Vados", //name
             ConstPlayer.NAMEC, //gender
-            new short[]{530,531,532, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            new short[]{530, 531, 532, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             100000000, //dame
             new int[]{1000}, //hp
-            new int[]{146,148}, //map join
+            new int[]{146, 147, 148}, //map join
             new int[][]{
                     {Skill.DICH_CHUYEN_TUC_THOI, 7, 50000},},//skill
             new String[]{"|-2|Kia là ai thế",
@@ -1315,10 +1303,10 @@ public class BossesData {
     public static final BossData THAN_HUY_DIET_CHAMPA = new BossData(
             "Thần Hủy Diệt Champa", //name
             ConstPlayer.TRAI_DAT, //gender
-            new short[]{511,512,513, -1, -1, 77}, //outfit {head, body, leg, bag, aura, eff}
-            50000, //dame
+            new short[]{511, 512, 513, -1, -1, 77}, //outfit {head, body, leg, bag, aura, eff}
+            200000, //dame
             new int[]{2000000000}, //hp
-            new int[]{146,148}, //map join
+            new int[]{146, 147, 148}, //map join
             new int[][]{
                     {Skill.MASENKO, 3, 400},
                     {Skill.MASENKO, 2, 300},},//skill//skill
@@ -1625,7 +1613,6 @@ public class BossesData {
                     "|-1|Tobe continue.."}, //text chat 3
             REST_1_M
     );
-
 
 
     public static final BossData COOLER_1 = new BossData(

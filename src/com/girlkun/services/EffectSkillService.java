@@ -104,7 +104,7 @@ public class EffectSkillService {
     }
 
     //hết thời gian bị trói
-    private void removeAnTroi(Player player) {
+    public void removeAnTroi(Player player) {
         if (player != null && player.effectSkill != null) {
             player.effectSkill.anTroi = false;
             player.effectSkill.plTroi = null;

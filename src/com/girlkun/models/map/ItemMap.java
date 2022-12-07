@@ -97,13 +97,13 @@ public class ItemMap {
             return;
         }
 
-        if (Util.canDoWithTime(createTime, 15000)) {
+        if (Util.canDoWithTime(createTime, 20000)) {
             if (this.zone.map.mapId != 21 && this.zone.map.mapId != 22
                     && this.zone.map.mapId != 23 && this.itemTemplate.id != 78) {
                 ItemMapService.gI().removeItemMapAndSendClient(this);
             }
         }
-        if (Util.canDoWithTime(createTime, 10000)) {
+        if (Util.canDoWithTime(createTime, 15000)) {
             this.playerId = -1;
         }
     }
@@ -115,8 +115,8 @@ public class ItemMap {
         ItemMapService.gI().sendItemMapDisappear(this);
         Service.getInstance().dropItemMap(this.zone, this);
     }
-    
-    public void dispose(){
+
+    public void dispose() {
         this.zone = null;
         this.itemTemplate = null;
         this.options = null;
