@@ -42,16 +42,16 @@ public class ServerNotify extends Thread {
                 while (!notifies.isEmpty()) {
                     sendThongBaoBenDuoi(notifies.remove(0));
                 }
-                if (Util.canDoWithTime(this.lastTimeGK, 60000)) {
+                if (Util.canDoWithTime(this.lastTimeGK, 120000)) {
                     sendThongBaoBenDuoi("NRO GOD nhà cái đến từ bé khoa");
                     this.lastTimeGK = System.currentTimeMillis();
                 }
-            } catch (Exception e) {
+            } catch (Exception ignored) {
 
             }
             try {
                 Thread.sleep(1000);
-            } catch (InterruptedException ex) {
+            } catch (InterruptedException ignored) {
             }
         }
     }
@@ -84,7 +84,7 @@ public class ServerNotify extends Thread {
             }
             player.sendMessage(msg);
             msg.cleanup();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 }

@@ -295,9 +295,6 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
                 ChangeMapService.gI().changeMap(this, this.zone, this.location.x, this.location.y);
             }
             Service.getInstance().sendFlagBag(this);
-            if (this.id >= -22 && this.id <= -20) return;
-            if (MapService.gI().isMapMaBu(this.zone.map.mapId) || MapService.gI().isMapBlackBallWar(this.zone.map.mapId))
-                return;
             this.notifyJoinMap();
         }
     }
@@ -318,10 +315,10 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     }
 
     protected void notifyJoinMap() {
-        ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName
-//                + " ở khu vực nào thì mọi người tự tìm nhé!"
-//                + this.zone.zoneId + " (" + this.zone.map.mapId + ")"
-                + "");
+        if (this.id >= -22 && this.id <= -20) return;
+        if (MapService.gI().isMapMaBu(this.zone.map.mapId) || MapService.gI().isMapBlackBallWar(this.zone.map.mapId))
+            return;
+        ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName);
     }
 
     @Override
@@ -561,11 +558,9 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
 
     @Override
     public void wakeupAnotherBossWhenAppear() {
-//        System.out.println("wake up boss when appear");
-        System.out.println("BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName
-                + " khu vực "
-                + this.zone.zoneId + "(" + this.zone.map.mapId + ")"
-                + "");
+        if (!MapService.gI().isMapMaBu(this.zone.map.mapId) && MapService.gI().isMapBlackBallWar(this.zone.map.mapId)) {
+            System.out.println("BOSS " + this.name + " : " + this.zone.map.mapName + " khu vực " + this.zone.zoneId + "(" + this.zone.map.mapId + ")");
+        }
         if (this.bossAppearTogether == null || this.bossAppearTogether[this.currentLevel] == null) {
             return;
         }
@@ -591,7 +586,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     @Override
     public void wakeupAnotherBossWhenDisappear() {
 //        System.out.println("wake up boss when disappear");
-        System.out.println("Boss " + this.name +" vừa bị tiêu diệt");
+        System.out.println("Boss " + this.name + " vừa bị tiêu diệt");
     }
 
 }
