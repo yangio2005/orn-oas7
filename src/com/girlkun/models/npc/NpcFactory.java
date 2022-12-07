@@ -1664,47 +1664,9 @@ public class NpcFactory {
                         if (select == 0) {
                             ChangeMapService.gI().changeMapBySpaceShip(player, player.gender + 21, -1, 250);
                         } else if (select == 2) {
-                            try {
-                                if (BossManager.gI().existBossOnPlayer(player) ||
-                                        player.zone.items.stream().anyMatch(itemMap -> ItemMapService.gI().isBlackBall(itemMap.itemTemplate.id)) ||
-                                        player.zone.getPlayers().stream().anyMatch(p -> p.iDMark.isHoldBlackBall())) {
-                                    return;
-                                }
-                                Boss k = null;
-                                switch (mapId) {
-                                    case 85:
-                                        k = BossManager.gI().createBoss(BossID.Rong_1Sao);
-                                        break;
-                                    case 86:
-                                        k = BossManager.gI().createBoss(BossID.Rong_2Sao);
-                                        break;
-                                    case 87:
-                                        k = BossManager.gI().createBoss(BossID.Rong_3Sao);
-                                        break;
-                                    case 88:
-                                        k = BossManager.gI().createBoss(BossID.Rong_4Sao);
-                                        break;
-                                    case 89:
-                                        k = BossManager.gI().createBoss(BossID.Rong_5Sao);
-                                        break;
-                                    case 90:
-                                        k = BossManager.gI().createBoss(BossID.Rong_6Sao);
-                                        break;
-                                    case 91:
-                                        k = BossManager.gI().createBoss(BossID.Rong_7Sao);
-                                        break;
-                                }
-                                if (k != null) {
-                                    k.currentLevel = 0;
-                                    k.joinMapByZone(player);
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                            BossManager.gI().callBoss(player,mapId);
                         } else if (select == 1) {
                             this.npcChat(player, "Để ta xem ngươi trụ được bao lâu");
-
-
                         }
                     } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_OPTION_PHU_HP) {
                         if (player.effectSkin.xHPKI > 1) {

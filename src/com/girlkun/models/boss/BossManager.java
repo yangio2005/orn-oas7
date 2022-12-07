@@ -42,6 +42,7 @@ import com.girlkun.models.boss.list_boss.nappa.*;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
 import com.girlkun.server.ServerManager;
+import com.girlkun.services.ItemMapService;
 import com.girlkun.services.MapService;
 
 import java.util.ArrayList;
@@ -269,6 +270,46 @@ public class BossManager implements Runnable {
             }
             player.sendMessage(msg);
             msg.cleanup();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void callBoss(Player player, int mapId) {
+        try {
+            if (BossManager.gI().existBossOnPlayer(player) ||
+                    player.zone.items.stream().anyMatch(itemMap -> ItemMapService.gI().isBlackBall(itemMap.itemTemplate.id)) ||
+                    player.zone.getPlayers().stream().anyMatch(p -> p.iDMark.isHoldBlackBall())) {
+                return;
+            }
+            Boss k = null;
+            switch (mapId) {
+                case 85:
+                    k = BossManager.gI().createBoss(BossID.Rong_1Sao);
+                    break;
+                case 86:
+                    k = BossManager.gI().createBoss(BossID.Rong_2Sao);
+                    break;
+                case 87:
+                    k = BossManager.gI().createBoss(BossID.Rong_3Sao);
+                    break;
+                case 88:
+                    k = BossManager.gI().createBoss(BossID.Rong_4Sao);
+                    break;
+                case 89:
+                    k = BossManager.gI().createBoss(BossID.Rong_5Sao);
+                    break;
+                case 90:
+                    k = BossManager.gI().createBoss(BossID.Rong_6Sao);
+                    break;
+                case 91:
+                    k = BossManager.gI().createBoss(BossID.Rong_7Sao);
+                    break;
+            }
+            if (k != null) {
+                k.currentLevel = 0;
+                k.joinMapByZone(player);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

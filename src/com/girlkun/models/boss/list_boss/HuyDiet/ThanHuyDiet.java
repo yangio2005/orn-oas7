@@ -98,7 +98,7 @@ public class ThanHuyDiet extends Boss {
 
 
         super.active(); //To change body of generated methods, choose Tools | Templates.
-        if (Util.canDoWithTime(st, 900000)) {
+        if (Util.canDoWithTime(st, 60000)) {
             this.changeStatus(BossStatus.LEAVE_MAP);
         }
     }

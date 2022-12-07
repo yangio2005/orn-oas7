@@ -18,8 +18,8 @@ import java.util.List;
 
 public class Trade {
 
-    private static final int TIME_TRADE = 180000;
-    private static final int QUANLITY_MAX = 20000;
+    public static final int TIME_TRADE = 180000;
+    public static final int QUANLITY_MAX = 20000;
 
     private Player player1;
     private Player player2;
@@ -80,11 +80,6 @@ public class Trade {
     }
 
     public void addItemTrade(Player pl, byte index, int quantity) {
-        if (quantity > QUANLITY_MAX) {
-            removeItemTrade2(pl, index);
-            Service.getInstance().sendThongBao(pl, "Đã quá giới hạn giao dịch...");
-            return;
-        }
         if (pl.getSession().actived) {
             if (index == -1) {
                 if (pl.equals(this.player1)) {
@@ -147,9 +142,10 @@ public class Trade {
                 }
             }
         } else {
-            Service.getInstance().sendThongBaoFromAdmin(pl,
+            Service.getInstance().sendThongBao(pl,
                     "|5|VUI LÒNG KÍCH HOẠT TÀI KHOẢN TẠI\n|7|NROGOD.COM\n|5|ĐỂ MỞ KHÓA TÍNH NĂNG");
-            removeItemTrade(pl, index);
+            closeTab();
+            dispose();
         }
     }
 

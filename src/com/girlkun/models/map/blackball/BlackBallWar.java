@@ -82,7 +82,7 @@ public class BlackBallWar {
         }
     }
 
-    public void dropBlackBall(Player player) {
+    public synchronized void dropBlackBall(Player player) {
         if (player.iDMark.isHoldBlackBall()) {
             player.iDMark.setHoldBlackBall(false);
             ItemMap itemMap = new ItemMap(player.zone,

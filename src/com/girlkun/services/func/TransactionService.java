@@ -6,7 +6,6 @@ import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
 import com.girlkun.server.Client;
 import com.girlkun.server.Maintenance;
-import com.girlkun.server.ServerManager;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
@@ -44,10 +43,6 @@ public class TransactionService implements Runnable {
     }
 
     public void controller(Player pl, Message msg) {
-//        if (true) {
-//            Service.getInstance().sendThongBao(pl, "Chức năng tạm thời đóng");
-//            return;
-//        }
         try {
             byte action = msg.reader().readByte();
             int playerId = -1;
@@ -107,6 +102,11 @@ public class TransactionService implements Runnable {
                         int quantity = msg.reader().readInt();
                         if (quantity == 0) {//do
                             quantity = 1;
+                        }
+                        if (index != -1 && quantity > Trade.QUANLITY_MAX) {
+                            Service.getInstance().sendThongBao(pl, "Đã quá giới hạn giao dịch...");
+                            trade.cancelTrade();
+                            break;
                         }
                         trade.addItemTrade(pl, index, quantity);
                     }
