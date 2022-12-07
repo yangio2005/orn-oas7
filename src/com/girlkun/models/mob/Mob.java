@@ -15,6 +15,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.models.reward.ItemMobReward;
 import com.girlkun.models.reward.MobReward;
 import com.girlkun.network.io.Message;
+import com.girlkun.server.Maintenance;
 import com.girlkun.server.Manager;
 import com.girlkun.server.ServerManager;
 import com.girlkun.services.*;
@@ -147,7 +148,7 @@ public class Mob {
             }
         }
 
-        if (this.isDie()&& !ServerManager.isRunning) {
+        if (this.isDie()&& !Maintenance.isRuning) {
             switch (zone.map.type) {
                 case ConstMap.MAP_DOANH_TRAI:
                     break;

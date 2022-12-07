@@ -1270,7 +1270,7 @@ public class BossesData {
             "Thần Hủy Diệt Berrus", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{508, 509, 510, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-            1, //dame
+            50000, //dame
             new int[]{2000000000}, //hp
             new int[]{147,148}, //map join
             new int[][]{
@@ -1316,7 +1316,7 @@ public class BossesData {
             "Thần Hủy Diệt Champa", //name
             ConstPlayer.TRAI_DAT, //gender
             new short[]{511,512,513, -1, -1, 77}, //outfit {head, body, leg, bag, aura, eff}
-            1, //dame
+            50000, //dame
             new int[]{2000000000}, //hp
             new int[]{146,148}, //map join
             new int[][]{

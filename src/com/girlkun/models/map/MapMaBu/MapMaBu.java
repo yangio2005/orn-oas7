@@ -12,7 +12,7 @@ import java.util.List;
 public class MapMaBu {
 
 
-    public static final byte HOUR_OPEN_MAP_MABU = 1;
+    public static final byte HOUR_OPEN_MAP_MABU = 12;
     public static final byte MIN_OPEN_MAP_MABU = 0;
     public static final byte SECOND_OPEN_MAP_MABU = 0;
 
