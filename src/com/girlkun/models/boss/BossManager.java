@@ -51,7 +51,7 @@ import java.util.List;
 public class BossManager implements Runnable {
 
     private static BossManager I;
-    public final byte ratioReward = 2;
+    public static final byte ratioReward = 2;
 
     public static BossManager gI() {
         if (BossManager.I == null) {
