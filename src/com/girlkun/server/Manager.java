@@ -104,6 +104,8 @@ public class Manager {
     public static long timeRealTop = 0;
     public static final short[] itemIds_TL = {555, 557, 559, 556, 558, 560, 562, 564, 566, 563, 565, 567, 561};
     public static final byte[] itemIds_NR_SB = {15, 16};
+    public static final short[] itemDC12 = {233, 237, 241,245, 249, 253,257, 261, 265,269, 273, 277};
+
 
     public static final short[] aotd = {138, 139, 230, 231, 232, 233, 555};
     public static final short[] quantd = {142, 143, 242, 243, 244, 245, 556};
@@ -597,10 +599,10 @@ public class Manager {
                             item.setRatio(new int[]{20, Integer.parseInt(ratio[1])});
                         }
                         if (item.getTemp().type < 5) {
-                            item.setRatio(new int[]{Integer.parseInt(ratio[0]), Integer.parseInt(ratio[1]) / 2});
+                            item.setRatio(new int[]{Integer.parseInt(ratio[0]), Integer.parseInt(ratio[1]) / 4 * 3});
                         }
 
-//
+
 //                        System.out.println(mobReward.getMobId());
 //                        System.out.println(item.getTemp().name);
 //                        System.out.println(item.getTemp().type);

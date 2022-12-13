@@ -243,6 +243,7 @@ public class PlayerDAO {
             for (int i = 1; i <= 7; i++) {
                 blackBall.add(0);
                 blackBall.add(0);
+                blackBall.add(0);
                 dataArray.add(blackBall.toJSONString());
                 blackBall.clear();
             }

@@ -169,7 +169,7 @@ public class UseItem {
                     break;
             }
         } catch (Exception e) {
-            Logger.logException(UseItem.class, e);
+//            Logger.logException(UseItem.class, e);
         }
     }
 

@@ -51,6 +51,7 @@ import java.util.List;
 public class BossManager implements Runnable {
 
     private static BossManager I;
+    public final byte ratioReward = 2;
 
     public static BossManager gI() {
         if (BossManager.I == null) {
@@ -77,8 +78,6 @@ public class BossManager implements Runnable {
         try {
 
             this.createBoss(BossID.TDST);
-            this.createBoss(BossID.TDST);
-            this.createBoss(BossID.TDST);
 
             this.createBoss(BossID.PIC);
             this.createBoss(BossID.POC);
@@ -91,6 +90,8 @@ public class BossManager implements Runnable {
             this.createBoss(BossID.XEN_CON);
             this.createBoss(BossID.XEN_CON);
 
+            this.createBoss(BossID.THIEN_SU_VADOS);
+            this.createBoss(BossID.THIEN_SU_WHIS);
             this.createBoss(BossID.THIEN_SU_VADOS);
             this.createBoss(BossID.THIEN_SU_WHIS);
             this.createBoss(BossID.THIEN_SU_VADOS);

@@ -16,7 +16,7 @@ public class ThachDau extends PVP {
     public ThachDau(Player p1, Player p2, int goldThachDau) {
         super(TYPE_PVP.THACH_DAU, p1, p2);
         this.goldThachDau = goldThachDau;
-        this.goldReward = goldThachDau / 100 * 90 * 2;
+        this.goldReward = goldThachDau / 100 * 80;
     }
 
     @Override

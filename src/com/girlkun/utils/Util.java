@@ -224,7 +224,7 @@ public class Util {
     }
 
     public static ItemMap manhTS(Zone zone, int tempId, int quantity, int x, int y, long playerId) {
-        return new ItemMap(zone, tempId, quantity, x, zone.map.yPhysicInTop(x, y - 24), playerId);
+        return new ItemMap(zone, tempId, quantity, x, y, playerId);
     }
 
     public static ItemMap ratiDTL(Zone zone, int tempId, int quantity, int x, int y, long playerId) {
@@ -264,7 +264,7 @@ public class Util {
 
 
     public static ItemMap RaitiDoc12(Zone zone, int tempId, int quantity, int x, int y, long playerId) {
-        ItemMap it = new ItemMap(zone, tempId, quantity, x, zone.map.yPhysicInTop(x, y - 24), playerId);
+        ItemMap it = new ItemMap(zone, tempId, quantity, x,y, playerId);
         List<Integer> ao = Arrays.asList(233, 237, 241);
         List<Integer> quan = Arrays.asList(245, 249, 253);
         List<Integer> gang = Arrays.asList(257, 261, 265);
@@ -287,11 +287,11 @@ public class Util {
         }
         it.options.add(new Item.ItemOption(209, 1));//đồ rơi từ boss
         if (Util.isTrue(90, 100)) {// tỉ lệ ra spl 1-3 sao 90%
-            it.options.add(new Item.ItemOption(107, new Random().nextInt(3) + 1));
+            it.options.add(new Item.ItemOption(107, new Random().nextInt(1) + 3));
         }else  if (Util.isTrue(4, 100)) {// tỉ lệ ra spl 5-7 sao 4%
             it.options.add(new Item.ItemOption(107, new Random().nextInt(3) + 5));
         }else {// tỉ lệ ra spl 1-5 sao 6%
-            it.options.add(new Item.ItemOption(107, new Random().nextInt(5) + 1));
+            it.options.add(new Item.ItemOption(107, new Random().nextInt(2) + 3));
         }
         return it;
     }
@@ -326,7 +326,7 @@ public class Util {
 
 
     public static ItemMap ratiItem(Zone zone, int tempId, int quantity, int x, int y, long playerId) {
-        ItemMap it = new ItemMap(zone, tempId, quantity, x, zone.map.yPhysicInTop(x, y - 24), playerId);
+        ItemMap it = new ItemMap(zone, tempId, quantity, x, y, playerId);
         List<Integer> ao = Arrays.asList(555, 557, 559);
         List<Integer> quan = Arrays.asList(556, 558, 560);
         List<Integer> gang = Arrays.asList(562, 564, 566);
