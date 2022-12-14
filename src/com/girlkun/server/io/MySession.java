@@ -1,6 +1,7 @@
 package com.girlkun.server.io;
 
 import java.net.Socket;
+
 import com.girlkun.models.player.Player;
 import com.girlkun.server.Controller;
 import com.girlkun.data.DataGame;
@@ -130,7 +131,10 @@ public class MySession extends Session {
             Service.getInstance().sendThongBaoOK(this, al.getNotifyCannotLogin());
             return;
         }
-
+        if (Manager.LOCAL) {
+            Service.getInstance().sendThongBaoOK(this, "Server này chỉ để lưu dữ liệu\nVui lòng qua server khác");
+            return;
+        }
         if (Maintenance.isRuning) {
             Service.getInstance().sendThongBaoOK(this, "Server đang trong thời gian bảo trì, vui lòng quay lại sau");
             return;

@@ -153,7 +153,6 @@ public class Service {
         msg.cleanup();
 
     }
-
     public void Send_Info_NV(Player pl) {
         Message msg;
         try {

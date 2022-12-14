@@ -61,6 +61,7 @@ public class Manager {
     public static byte MAX_PER_IP = 2;
     public static int MAX_PLAYER = 2000;
     public static byte RATE_EXP_SERVER = 2;
+    public static boolean LOCAL = false;
 //    public static byte RATE_EXP_SERVER = 1;// sau khi chinh
 
     public static MapTemplate[] MAP_TEMPLATES;
@@ -876,6 +877,9 @@ public class Manager {
         }
         if ((value = properties.get("server.girlkun.expserver")) != null) {
             RATE_EXP_SERVER = Byte.parseByte(String.valueOf(value));
+        }
+        if ((value = properties.get("server.girlkun.local")) != null) {
+            LOCAL = String.valueOf(value).toLowerCase().equals("true");
         }
     }
 
