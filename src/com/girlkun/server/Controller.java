@@ -459,6 +459,7 @@ public class Controller implements IMessageHandler {
                 switch (cmd) {
                     case 0:
                         session.login(msg.reader().readUTF(), msg.reader().readUTF());
+                        if (Manager.LOCAL) break;
                         System.out.println("version: " + msg.readUTF());
                         break;
                     case 2:
