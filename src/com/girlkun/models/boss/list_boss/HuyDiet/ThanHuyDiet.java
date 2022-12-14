@@ -78,17 +78,17 @@ public class ThanHuyDiet extends Boss {
         }
         this.huydiet();
         this.attack();
-        super.active(); //To change body of generated methods, choose Tools | Templates.
-        if (Util.canDoWithTime(st, 1000000)) {
-            this.changeStatus(BossStatus.LEAVE_MAP);
+//        super.active(); //To change body of generated methods, choose Tools | Templates.
+//        if (Util.canDoWithTime(st, 1000000)) {
+//            this.changeStatus(BossStatus.LEAVE_MAP);
         }
 
-    }   @Override
-    public void joinMap() {
-        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
-        st = System.currentTimeMillis();
-    }
-    private long st;
+//    }   @Override
+//    public void joinMap() {
+//        super.joinMap(); //To change body of generated methods, choose Tools | Templates.
+//        st = System.currentTimeMillis();
+//    }
+//    private long st;
 
     private void huydiet() {
         if (!Util.canDoWithTime(this.lasttimehakai, this.timehakai) || !Util.isTrue(1, 100)) {

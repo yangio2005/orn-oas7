@@ -93,10 +93,6 @@ public class GodGK {
                     if (secondsPass < Manager.SECOND_WAIT_LOGIN) {
                         Service.getInstance().sendThongBaoOK(session, "Vui lòng chờ " + (Manager.SECOND_WAIT_LOGIN - secondsPass) + "s");
                     } else {//set time logout trước rồi đọc data player
-                        Player plInGame = Client.gI().getPlayerByUser(session.userId);
-                        if (plInGame != null) {
-                            Client.gI().kickSession(plInGame.getSession());
-                        }
                         rs = GirlkunDB.executeQuery("select * from player where account_id = ? limit 1", session.userId);
                         if (!rs.first()) {
                             //-28 -4 version data game
@@ -105,7 +101,10 @@ public class GodGK {
                             DataGame.sendDataItemBG(session);
                             Service.getInstance().switchToCreateChar(session);
                         } else {
-                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
+                            Player plInGame = Client.gI().getPlayerByUser(session.userId);
+                            if (plInGame != null) {
+                                Client.gI().kickSession(plInGame.getSession());
+                            }
                             int plHp = 200000000;
                             int plMp = 200000000;
                             JSONValue jv = new JSONValue();
@@ -555,6 +554,7 @@ public class GodGK {
                             player.nPoint.hp = plHp;
                             player.nPoint.mp = plMp;
                             player.iDMark.setLoadedAllDataPlayer(true);
+                            GirlkunDB.executeUpdate("update account set last_time_login = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
                         }
                     }
                 }
@@ -564,13 +564,6 @@ public class GodGK {
                 al.wrong();
             }
         } catch (Exception e) {
-            try {
-                if (!player.iDMark.isLoadedAllDataPlayer()) {
-                    GirlkunDB.executeUpdate("update account set last_time_logout = '" + new Timestamp(System.currentTimeMillis()) + "', ip_address = '" + session.ipAddress + "' where id = " + session.userId);
-                }
-            } catch (Exception e1) {
-                Logger.error("Lỗi login");
-            }
             e.printStackTrace();
             Logger.error(session.uu);
             player.dispose();

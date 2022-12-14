@@ -145,7 +145,6 @@ public class MySession extends Session {
         } else {
             Player player = null;
             try {
-                Thread.sleep(Util.nextInt(0, 1000));
                 long st = System.currentTimeMillis();
                 this.uu = username;
                 this.pp = password;

@@ -278,20 +278,25 @@ public class Map implements Runnable {
         }
         return null;
     }
+
     //--------------------------------------------------------------------------
     public int yPhysicInTop(int x, int y) {
-        int rX = (int) x / SIZE;
-        int rY = 0;
-        if (isTileTop(tileMap[y / SIZE][rX])) {
+        try {
+            int rX = (int) x / SIZE;
+            int rY = 0;
+            if (isTileTop(tileMap[y / SIZE][rX])) {
+                return y;
+            }
+            for (int i = y / SIZE; i < tileMap.length; i++) {
+                if (isTileTop(tileMap[i][rX])) {
+                    rY = i * SIZE;
+                    break;
+                }
+            }
+            return rY;
+        } catch (Exception e) {
             return y;
         }
-        for (int i = y / SIZE; i < tileMap.length; i++) {
-            if (isTileTop(tileMap[i][rX])) {
-                rY = i * SIZE;
-                break;
-            }
-        }
-        return rY;
     }
 
     private boolean isTileTop(int tileMap) {
