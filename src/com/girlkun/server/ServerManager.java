@@ -45,6 +45,7 @@ public class ServerManager {
     public void init() {
         Manager.gI();
         try {
+            if (Manager.LOCAL) return;
             GirlkunDB.executeUpdate("update account set last_time_login = '2000-01-01', "
                     + "last_time_logout = '2001-01-01'");
         } catch (Exception e) {
