@@ -8,6 +8,7 @@
     pkgs.nodejs_20
     pkgs.python3
     pkgs.openssh
+    pkgs.dotnet-aspnetcore
   ];
   # Sets environment variables in the workspace
   env = {};

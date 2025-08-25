@@ -1,6 +1,6 @@
 # Tổng quan dự án
 
-Đây là một dự án game server được viết bằng C#, có vẻ như là một game online đa người chơi (MMORPG) dựa trên cấu trúc file và tên các lớp (class).
+Đây là một dự án game server được viết bằng C#, có vẻ như là một game online đa người chơi (MMORPG) dựa trên cấu trúc file và tên các lớp (class). Projrct được làm việc trên firebase studio vì nó là một môi trường phát triển dựa trên đám mây (cloud IDE). Terminal mà bạn đang sử dụng không nằm trên máy tính của bạn mà là trên một máy chủ từ xa của Google.
 
 ## Công nghệ chính (Phiên bản C# gốc)
 
@@ -17,9 +17,19 @@
 *   `SERVER/database`: Chứa các file script SQL để khởi tạo cơ sở dữ liệu.
 *   `index.html`, `README.md`: Có vẻ như là file mặc định hoặc không còn phù hợp với dự án C# hiện tại.
 
+## Quy ước với Gemini: ghi lại thông tin cần thiết về logic của server c#
+
 ## Xây dựng và Chạy dự án (Phiên bản C#)
 
 *   **TODO:** Cần xác định cách build và chạy dự án C# này. Thông thường sẽ sử dụng Visual Studio hoặc .NET Core CLI. Cần tìm file project (`.csproj`) hoặc solution (`.sln`) để có thông tin chi tiết.
+
+### Hạn chế trong môi trường hiện tại
+
+Trong môi trường Firebase Studio (máy chủ từ xa của Google), việc chạy server C# gặp phải hạn chế:
+
+*   **Yêu cầu .NET Runtime 5.0:** Server C# được biên dịch để chạy trên .NET 5.0. Tuy nhiên, môi trường hiện tại chỉ có .NET Runtime 6.0.
+*   **Không thể cài đặt Runtime:** Tôi không có khả năng cài đặt hoặc cập nhật .NET Runtime 5.0 trên máy chủ từ xa này. Do đó, server C# không thể khởi động được.
+*   **Ảnh hưởng đến việc cấu hình IP/Port:** Mặc dù server C# có thể được cấu hình IP và Port thông qua các file như `config.json` hoặc trong cơ sở dữ liệu, nhưng việc này không thể thực hiện được nếu server không thể chạy.
 
 ## Quy ước phát triển
 
