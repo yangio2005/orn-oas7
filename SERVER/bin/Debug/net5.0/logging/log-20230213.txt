@@ -1,0 +1,140 @@
+2023-02-13 18:26:47.122 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_0.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:47.161 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_0
+2023-02-13 18:26:47.191 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_sau_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:47.192 +07:00 [ERR] Error SendImgByName by Name: hat_sau_27075
+2023-02-13 18:26:47.218 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_truoc_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:47.219 +07:00 [ERR] Error SendImgByName by Name: hat_truoc_27075
+2023-02-13 18:26:47.265 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_1.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:47.266 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_1
+2023-02-13 18:26:52.814 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_0.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:52.815 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_0
+2023-02-13 18:26:52.823 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_sau_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:52.826 +07:00 [ERR] Error SendImgByName by Name: hat_sau_27075
+2023-02-13 18:26:52.838 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_truoc_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:52.843 +07:00 [ERR] Error SendImgByName by Name: hat_truoc_27075
+2023-02-13 18:26:52.868 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_1.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:52.870 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_1
+2023-02-13 18:26:58.805 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_0.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:58.807 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_0
+2023-02-13 18:26:58.834 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_sau_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:58.836 +07:00 [ERR] Error SendImgByName by Name: hat_sau_27075
+2023-02-13 18:26:58.849 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_truoc_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:58.851 +07:00 [ERR] Error SendImgByName by Name: hat_truoc_27075
+2023-02-13 18:26:58.880 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_1.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 18:26:58.882 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_1
+2023-02-13 19:06:40.467 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_0.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 19:06:40.546 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_0
+2023-02-13 19:06:40.571 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_sau_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 19:06:40.572 +07:00 [ERR] Error SendImgByName by Name: hat_sau_27075
+2023-02-13 19:06:40.617 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_truoc_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 19:06:40.619 +07:00 [ERR] Error SendImgByName by Name: hat_truoc_27075
+2023-02-13 19:06:40.679 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_1.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 19:06:40.680 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_1
+2023-02-13 19:06:45.885 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_0.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 19:06:45.887 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_0
+2023-02-13 19:06:45.910 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_sau_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 19:06:45.911 +07:00 [ERR] Error SendImgByName by Name: hat_sau_27075
+2023-02-13 19:06:45.926 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\hat_truoc_27075.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 19:06:45.928 +07:00 [ERR] Error SendImgByName by Name: hat_truoc_27075
+2023-02-13 19:06:45.940 +07:00 [ERR] Error Read File Bytes in ServerUtils.cs: Could not find file 'C:\Users\sumin\OneDrive\Máy tính\C#\dragon\RES\mount\x2\set_eff_71_1.png'.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.File.ReadAllBytes(String path)
+   at NRO_Server.Application.IO.ServerUtils.ReadFileBytes(String path) in C:\Users\sumin\OneDrive\Máy tính\C#\dragon\Sources\Application\IO\ServerUtils.cs:line 92
+2023-02-13 19:06:45.942 +07:00 [ERR] Error SendImgByName by Name: set_eff_71_1

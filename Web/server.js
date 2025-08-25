@@ -10,7 +10,7 @@ const io = new Server(server);
 const PORT = 3000;
 
 // Serve các file tĩnh từ thư mục 'public'
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
