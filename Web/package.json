@@ -1,18 +1,16 @@
 {
-  "name": "web",
+  "name": "web-proxy-server",
   "version": "1.0.0",
+  "description": "A Node.js proxy server for the NRO game",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0",
-    "socket.io": "^4.8.1"
-  },
-  "devDependencies": {},
-  "description": ""
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0"
+  }
 }

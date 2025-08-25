@@ -36,40 +36,19 @@ Trong môi trường Firebase Studio (máy chủ từ xa của Google), việc c
 *   **Ngôn ngữ:** Mã nguồn sử dụng tiếng Anh và tiếng Việt (trong các chuỗi string và comment).
 *   **Testing:** Không tìm thấy các file test trong dự án.
 
-# Đề xuất chuyển đổi sang phiên bản Web (Cho 5-10 người chơi)
+# Kế hoạch mới: Chuyển đổi sang Game Server Node.js
 
-Với nhu cầu chuyển game Ngọc Rồng Online (NRO) thành phiên bản web cho 5-10 người chơi mà không cần mở rộng, giải pháp tốt nhất là sử dụng một bộ công nghệ đơn giản và hiệu quả.
+Với mục tiêu thay thế hoàn toàn game server C# hiện tại, chúng ta sẽ phát triển một game server mới bằng Node.js. Client sẽ sử dụng bản Java hiện có (từ `DragonBoy246.jar.src`).
 
 ## Công nghệ đề xuất
 
-Bạn nên chọn **JavaScript** cho cả frontend và backend.
+*   **Ngôn ngữ:** JavaScript (Node.js)
+*   **Cơ sở dữ liệu:** (Cần xác định, có thể tiếp tục sử dụng MySQL hoặc xem xét các lựa chọn khác phù hợp với Node.js)
+*   **Kiến trúc:** Client-Server (với client Java hiện có)
 
-### **Frontend (Phía người chơi)**
+## Thách thức
 
-You sẽ dùng **JavaScript** kết hợp với **Phaser.js**.
-
-*   **Phaser.js** là một **game engine 2D** miễn phí và mã nguồn mở. Nó được thiết kế riêng để làm game trên web và cung cấp tất cả các công cụ bạn cần:
-    *   **Quản lý tài nguyên:** Dễ dàng tải và hiển thị các hình ảnh nhân vật, quái vật, và bản đồ mà bạn đã có.
-    *   **Vật lý và va chạm:** Giúp nhân vật di chuyển, nhảy và tương tác với các vật thể trong game một cách mượt mà.
-    *   **Hoạt ảnh:** Tạo các chuyển động cho nhân vật (đi bộ, tấn công, đứng yên) một cách đơn giản.
-    *   **Xử lý sự kiện:** Dễ dàng nhận các lệnh từ người chơi như nhấn phím di chuyển, tấn công.
-
-Vì game của bạn không cần mở rộng, việc dùng Phaser.js sẽ giúp bạn tập trung vào việc tạo ra các tính năng cốt lõi mà không phải lo lắng về việc xây dựng một hệ thống phức tạp từ đầu.
-
-### **Backend (Phía máy chủ)**
-
-You sẽ dùng **Node.js** kết hợp với **Express.js** và **Socket.IO**.
-
-*   **Node.js** là một môi trường chạy JavaScript rất phù hợp cho các ứng dụng thời gian thực như game online.
-*   **Express.js** là một framework tối giản cho Node.js, giúp bạn dễ dàng thiết lập một máy chủ web để lưu trữ và phục vụ các file game (HTML, CSS, JS) cho người chơi.
-*   **Socket.IO** là thư viện quan trọng nhất cho phần này. Nó cho phép máy chủ và người chơi giao tiếp liên tục theo thời gian thực.
-    *   Khi một người chơi di chuyển, Socket.IO sẽ nhanh chóng gửi tọa độ của họ lên máy chủ.
-    *   Máy chủ nhận thông tin đó và gửi lại cho tất cả những người chơi khác, giúp họ thấy vị trí của nhau được cập nhật ngay lập tức.
-    *   Điều này cực kỳ hiệu quả để đồng bộ hóa trạng thái game giữa 5-10 người chơi của bạn.
-
-### **Kết luận**
-
-Với bộ công nghệ này, bạn có thể hoàn thành dự án một cách nhanh chóng vì chúng được thiết kế để làm việc hiệu quả với nhau và không yêu cầu quá nhiều kiến thức phức tạp. Bạn có thể tập trung vào việc tạo ra những trải nghiệm vui vẻ cho nhóm bạn của mình thay vì phải tốn thời gian xây dựng các hệ thống phức tạp.
+Thách thức lớn nhất là tái tạo giao thức giao tiếp của server C# hiện tại để client Java có thể kết nối và tương tác được với server Node.js mới. Điều này đòi hỏi phân tích sâu mã nguồn C# để hiểu rõ cách dữ liệu được gửi và nhận.
 
 # Cơ chế hoạt động của Game Server (C#)
 
