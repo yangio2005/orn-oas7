@@ -17,7 +17,10 @@ namespace NRO_Server.Application.IO
     {
         public static string ProjectDir(string path)
         {
-            return $"{Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."))}/{path}";
+            // Get the current working directory, which should be the project root when running via 'dotnet run'
+            string currentDirectory = Directory.GetCurrentDirectory();
+            // Combine with the 'SERVER' directory and then the provided path
+            return Path.Combine(currentDirectory, "SERVER", path);
         }
         private static readonly DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 00, DateTimeKind.Utc);
 

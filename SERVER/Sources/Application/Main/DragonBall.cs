@@ -14,6 +14,8 @@ namespace NRO_Server.Application.Main
         {
             
             IServerLogger logger = new ServerLogger();
+            logger.Print($"AppDomain.CurrentDomain.BaseDirectory: {AppDomain.CurrentDomain.BaseDirectory}");
+            logger.Print($"ServerUtils.ProjectDir(\"\"): {ServerUtils.ProjectDir("" )}");
             var configBuilder = new ConfigurationBuilder().SetBasePath(ServerUtils.ProjectDir(""))
                 .AddJsonFile("config.json");
             var configurationRoot = configBuilder.Build();
