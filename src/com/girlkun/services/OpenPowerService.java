@@ -23,27 +23,9 @@ public class OpenPowerService {
         return i;
     }
 
-    public boolean openPowerBasic(Player player) {
-        byte curLimit = player.nPoint.limitPower;
-        if (curLimit < NPoint.MAX_LIMIT) {
-            if (!player.itemTime.isOpenPower && player.nPoint.canOpenPower()) {
-                player.itemTime.isOpenPower = true;
-                player.itemTime.lastTimeOpenPower = System.currentTimeMillis();
-                ItemTimeService.gI().sendAllItemTime(player);
-                return true;
-            } else {
-                Service.getInstance().sendThongBao(player, "Sức mạnh của bạn không đủ để thực hiện");
-                return false;
-            }
-        } else {
-            Service.getInstance().sendThongBao(player, "Sức mạnh của bạn đã đạt tới mức tối đa");
-            return false;
-        }
-    }
-
     public boolean openPowerSpeed(Player player) {
         if (player.nPoint.limitPower < NPoint.MAX_LIMIT) {
-//            if (player.nPoint.power >= 17900000000L) {
+            if (player.nPoint.power >= 17900000000L) {
             player.nPoint.limitPower++;
             if (player.nPoint.limitPower > NPoint.MAX_LIMIT) {
                 player.nPoint.limitPower = NPoint.MAX_LIMIT;
@@ -54,14 +36,14 @@ public class OpenPowerService {
                 Service.getInstance().sendThongBao(((Pet) player).master, "Giới hạn sức mạnh của đệ tử đã được tăng lên 1 bậc");
             }
             return true;
-//            } else {
-//                if (!player.isPet) {
-//                    Service.getInstance().sendThongBao(player, "Sức mạnh của bạn không đủ để thực hiện");
-//                } else {
-//                    Service.getInstance().sendThongBao(((Pet) player).master, "Sức mạnh của đệ tử không đủ để thực hiện");
-//                }
-//                return false;
-//            }
+            } else {
+                if (!player.isPet) {
+                    Service.getInstance().sendThongBao(player, "Sức mạnh của bạn không đủ để thực hiện");
+                } else {
+                    Service.getInstance().sendThongBao(((Pet) player).master, "Sức mạnh của đệ tử không đủ để thực hiện");
+                }
+                return false;
+            }
         } else {
             if (!player.isPet) {
                 Service.getInstance().sendThongBao(player, "Sức mạnh của bạn đã đạt tới mức tối đa");

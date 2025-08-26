@@ -15,16 +15,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class TopService {
+public class TopService implements Runnable {
 
     private static final String QUERY_TOP_POWER = "select player.id, player.name,"
             + "player.power, player.head, player.gender, player.have_tennis_space_ship,"
             + "player.clan_id_sv" + Manager.SERVER + ", player.data_inventory,"
             + "player.data_location, player.data_point, player.data_magic_tree,"
             + "player.items_body, player.items_bag, player.items_box, player.items_box_lucky_round,"
-            + "player.friends, player.enemies, player.data_intrinsic,player.data_item_time,"
-            + "player.data_task, player.data_mabu_egg, player.data_charm, player.skills,"
+            + "player.friends, player.enemies, player.data_intrinsic,player.data_item_time, player.data_item_time_sieucap,"
+            + "player.data_task, player.data_mabu_egg, player.data_dua, player.data_charm, player.skills,"
             + "player.skills_shortcut, player.pet_info, player.pet_power, player.pet_point,"
             + "player.pet_body, player.pet_skill, player.data_black_ball from player join "
             + "account on player.account_id = account.id where account.is_admin = 0 order by "
@@ -46,6 +45,31 @@ public class TopService {
             i = new TopService();
         }
         return i;
+    }
+
+    public static String getTopNap() {
+        StringBuffer sb = new StringBuffer("");
+
+        String SELECT_TOP_POWER = "SELECT name, vnd FROM player ORDER BY vnd DESC LIMIT 10;";
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            Connection conn = GirlkunDB.getConnection();
+            ps = conn.prepareStatement(SELECT_TOP_POWER);
+            conn.setAutoCommit(false);
+
+            rs = ps.executeQuery();
+            byte i = 1;
+//            while(rs.next()) {
+//                sb.append(i).append(".").append(rs.getString("name")).append(": ").append(rs.getString("vnd")).append("\b");
+//                i++;
+//            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("12345");
+        }
+
+        return sb.toString();
     }
 
     public void showTopPower(Player player) {
@@ -77,17 +101,50 @@ public class TopService {
         }
     }
 
-    public void updateTop() {
-        if (Manager.timeRealTop + (30 * 60 * 1000) < System.currentTimeMillis()) {
-            Manager.timeRealTop = System.currentTimeMillis();
-            try (Connection con = GirlkunDB.getConnection()) {
-                Manager.topNV = Manager.realTop(Manager.queryTopNV, con);
-                Manager.topSM = Manager.realTop(Manager.queryTopSM, con);
-                Manager.topSK = Manager.realTop(Manager.queryTopSK, con);
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                if (Manager.timeRealTop + (30 * 60 * 1000) < System.currentTimeMillis()) {
+                    Manager.timeRealTop = System.currentTimeMillis();
+                    try (Connection con = GirlkunDB.getConnection()) {
+                        Manager.topNV = Manager.realTop(Manager.queryTopNV, con);
+                        Manager.topSM = Manager.realTop(Manager.queryTopSM, con);
+                        Manager.topSB = Manager.realTop(Manager.querytopSB, con);
+                        Manager.topSK = Manager.realTop(Manager.querytopSK, con);
+//                Manager.topPVP = Manager.realTop(Manager.queryTopPVP, con);
+//                Manager.topNHS = Manager.realTop(Manager.queryTopNHS, con);
+                        Manager.topVND = Manager.realTop(Manager.queryTopVND, con);
+                        Manager.topHP = Manager.realTop(Manager.queryTopHP, con);
+                        Manager.topKI = Manager.realTop(Manager.queryTopKI, con);
+                        Manager.topSD = Manager.realTop(Manager.queryTopSD, con);
+                    } catch (Exception ignored) {
+                        Logger.error("Lỗi đọc top");
+                    }
+                }
+                Thread.sleep(1000);
             } catch (Exception ignored) {
-                Logger.error("Lỗi đọc top");
             }
         }
     }
 
+//    public void updateTop() {
+//        if (Manager.timeRealTop + (30 * 60 * 1000) < System.currentTimeMillis()) {
+//            Manager.timeRealTop = System.currentTimeMillis();
+//            try (Connection con = GirlkunDB.getConnection()) {
+//               Manager.topNV = Manager.realTop(Manager.queryTopNV, con);
+//                Manager.topSM = Manager.realTop(Manager.queryTopSM, con);
+//                Manager.topSB = Manager.realTop(Manager.querytopSB, con);
+//                Manager.topSK = Manager.realTop(Manager.querytopSK, con);
+////                Manager.topPVP = Manager.realTop(Manager.queryTopPVP, con);
+////                Manager.topNHS = Manager.realTop(Manager.queryTopNHS, con);
+//                Manager.topVND = Manager.realTop(Manager.queryTopVND, con);
+//                Manager.topHP = Manager.realTop(Manager.queryTopHP, con);
+//                Manager.topKI = Manager.realTop(Manager.queryTopKI, con);
+//                Manager.topSD = Manager.realTop(Manager.queryTopSD, con);
+//            } catch (Exception ignored) {
+//                Logger.error("Lỗi đọc top");
+//            }
+//        }
+//    }
 }

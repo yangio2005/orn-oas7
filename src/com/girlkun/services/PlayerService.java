@@ -23,7 +23,7 @@ public class PlayerService {
         return i;
     }
 
-    public void sendTNSM(Player player, byte type, long param) {
+    public void sendTNSM(Player player, byte type, double param) {
         if (param > 0) {
             Message msg;
             try {
@@ -57,10 +57,13 @@ public class PlayerService {
     }
 
     public void sendInfoHp(Player player) {
+        if(player == null || player.nPoint == null){
+            return;
+        }
         Message msg;
         try {
             msg = Service.getInstance().messageSubCommand((byte) 5);
-            msg.writer().writeInt(player.nPoint.hp);
+            msg.writer().writeInt(Util.DoubleGioihan(player.nPoint.hp));
             player.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
@@ -69,10 +72,13 @@ public class PlayerService {
     }
 
     public void sendInfoMp(Player player) {
+        if(player == null || player.nPoint == null){
+            return;
+        }
         Message msg;
         try {
             msg = Service.getInstance().messageSubCommand((byte) 6);
-            msg.writer().writeInt(player.nPoint.mp);
+            msg.writer().writeInt(Util.DoubleGioihan(player.nPoint.mp));
             player.sendMessage(msg);
             msg.cleanup();
         } catch (Exception e) {
@@ -85,12 +91,12 @@ public class PlayerService {
         sendInfoMp(player);
     }
 
-    public void hoiPhuc(Player player, int hp, int mp) {
+    public void hoiPhuc(Player player, double hp, double mp) {
         if (!player.isDie()) {
             player.nPoint.addHp(hp);
             player.nPoint.addMp(mp);
             Service.getInstance().Send_Info_NV(player);
-            if (!player.isPet) {
+            if (!player.isPet && !player.isNewPet && !player.isTrieuhoipet) {
                 PlayerService.gI().sendInfoHpMp(player);
             }
         }
@@ -110,8 +116,8 @@ public class PlayerService {
                 msg.writer().writeInt((int) player.inventory.gold);
             }
             msg.writer().writeInt(player.inventory.gem);//luong
-            msg.writer().writeInt(player.nPoint.hp);//chp
-            msg.writer().writeInt(player.nPoint.mp);//cmp
+            msg.writer().writeInt(Util.DoubleGioihan(player.nPoint.hp));//chp
+            msg.writer().writeInt(Util.DoubleGioihan(player.nPoint.mp));//cmp
             msg.writer().writeInt(player.inventory.ruby);//ruby
             player.sendMessage(msg);
         } catch (Exception e) {
@@ -141,7 +147,7 @@ public class PlayerService {
                 case 89:
                 case 90:
                 case 91:
-                    if (!player.isBoss && !player.isPet) {
+                    if (!player.isBoss && !player.isPet && !player.isTrieuhoipet) {
                         if (x < 24 || x > player.zone.map.mapWidth - 24 || y < 0 || y > player.zone.map.mapHeight - 24) {
                             if (MapService.gI().getWaypointPlayerIn(player) == null) {
                                 ChangeMapService.gI().changeMap(player, 21 + player.gender, 0, 200, 336);
@@ -158,6 +164,12 @@ public class PlayerService {
             }
             if (player.pet != null) {
                 player.pet.followMaster();
+            }
+            if (player.newpet != null) {
+                player.newpet.followMaster();
+            }
+            if (player.TrieuHoipet != null) {
+                player.TrieuHoipet.followMaster();
             }
             MapService.gI().sendPlayerMove(player);
             TaskService.gI().checkDoneTaskGoToMap(player, player.zone);
@@ -250,6 +262,7 @@ public class PlayerService {
             if (canHs) {
                 Service.getInstance().sendMoney(player);
                 Service.getInstance().hsChar(player, player.nPoint.hpMax, player.nPoint.mpMax);
+//                player.achievement.plusCount(13);
             }
         }
     }

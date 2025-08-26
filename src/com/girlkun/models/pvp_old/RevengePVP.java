@@ -8,8 +8,7 @@
 //
 ///**
 // *
-// * @author 💖 Trần Lại 💖
-// * @copyright 💖 GirlkuN 💖
+// * @Stole By Hoàng Việt 💖
 // *
 // */
 //public class RevengePVP extends PVP {

@@ -12,6 +12,8 @@ public class PlayerSkill {
     private Player player;
     public List<Skill> skills;
     public Skill skillSelect;
+    
+    public static final int TIME_MUTIL_CHUONG = 60000;
 
     public PlayerSkill(Player player) {
         this.player = player;

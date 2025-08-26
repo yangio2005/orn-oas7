@@ -38,6 +38,10 @@ public class BlackBallWar {
     public static final byte HOUR_CLOSE = 21;
     public static final byte MIN_CLOSE = 0;
     public static final byte SECOND_CLOSE = 0;
+    
+//    public static final byte HOUR_RS = 21;
+//    public static final byte MIN_RS = 0;
+//    public static final byte SECOND_RS = 1;
 
     //    public static final byte HOUR_OPEN = 20;
 //    public static final byte MIN_OPEN = 0;
@@ -57,10 +61,13 @@ public class BlackBallWar {
     private static BlackBallWar i;
 
     public static long TIME_OPEN;
-    private static long TIME_CAN_PICK_DB;
+    public static long TIME_CAN_PICK_DB;
     public static long TIME_CLOSE;
+//    public static long TIME_RS;
 
     private int day = -1;
+    public long lastTimeReinit;
+    public boolean isReinit;
 
     public static BlackBallWar gI() {
         if (i == null) {
@@ -77,10 +84,16 @@ public class BlackBallWar {
                 this.TIME_OPEN = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_OPEN + ":" + MIN_OPEN + ":" + SECOND_OPEN, "dd/MM/yyyy HH:mm:ss");
                 this.TIME_CAN_PICK_DB = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_CAN_PICK_DB + ":" + MIN_CAN_PICK_DB + ":" + SECOND_CAN_PICK_DB, "dd/MM/yyyy HH:mm:ss");
                 this.TIME_CLOSE = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_CLOSE + ":" + MIN_CLOSE + ":" + SECOND_CLOSE, "dd/MM/yyyy HH:mm:ss");
+//                this.TIME_RS = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_RS + ":" + MIN_RS + ":" + SECOND_RS, "dd/MM/yyyy HH:mm:ss");
             } catch (Exception e) {
+                System.out.println("loi ne nrsd 1 ");
             }
         }
     }
+//    public void reInitNrd() {
+//        lastTimeReinit = TIME_CAN_PICK_DB;
+//        isReinit = true;
+//    }
 
     public synchronized void dropBlackBall(Player player) {
         if (player.iDMark.isHoldBlackBall()) {
@@ -133,7 +146,12 @@ public class BlackBallWar {
                     kickOutOfMap(player);
                 }
             }
+//            if ((now > TIME_CLOSE && now < TIME_RS)) {
+//                lastTimeReinit += 86400000;
+//                Thread.sleep(1000);
+//            }
         } catch (Exception ex) {
+                System.out.println("        loi update map blackball");
         }
     }
 
@@ -188,6 +206,7 @@ public class BlackBallWar {
                 Service.getInstance().hideWaitDialog(player);
             }
         } catch (Exception ex) {
+                System.out.println("loi ne nrsd 2 ");
         }
     }
 
@@ -243,6 +262,7 @@ public class BlackBallWar {
                 }
             }
         } catch (Exception ex) {
+                System.out.println("loi ne nrsd 3 ");
             return false;
         }
     }
@@ -266,8 +286,8 @@ public class BlackBallWar {
             player.effectSkin.lastTimeXHPKI = System.currentTimeMillis();
             player.effectSkin.xHPKI = x;
             player.nPoint.calPoint();
-            player.nPoint.setHp((long) player.nPoint.hp * x);
-            player.nPoint.setMp((long) player.nPoint.mp * x);
+            player.nPoint.setHp((double) player.nPoint.hp * x);
+            player.nPoint.setMp((double) player.nPoint.mp * x);
             PlayerService.gI().sendInfoHpMp(player);
             Service.getInstance().point(player);
         } else {

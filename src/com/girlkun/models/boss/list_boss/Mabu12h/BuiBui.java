@@ -19,6 +19,7 @@ public class BuiBui extends Boss {
 
     @Override
     public void reward(Player plKill) {
+        plKill.achievement.plusCount(3);
         byte randomDo = (byte) new Random().nextInt(Manager.itemIds_TL.length - 1);
         byte randomNR = (byte) new Random().nextInt(Manager.itemIds_NR_SB.length);
         byte randomc12 = (byte) new Random().nextInt(Manager.itemDC12.length -1);
@@ -30,7 +31,7 @@ public class BuiBui extends Boss {
             }
             Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, Manager.itemIds_TL[randomDo], 1, this.location.x, this.location.y, plKill.id));
         } else
-        if (Util.isTrue(20, 100)) {
+        if (Util.isTrue(40, 100)) {
             Service.getInstance().dropItemMap(this.zone,new ItemMap (Util.RaitiDoc12(zone, Manager.itemDC12[randomc12], 1, this.location.x, this.location.y, plKill.id)));
             return;
         }

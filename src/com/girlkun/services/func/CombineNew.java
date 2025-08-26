@@ -6,8 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN  💖
+ * @Stole By Hoàng Việt 💖
  *
  */
 public class CombineNew {
@@ -22,6 +21,10 @@ public class CombineNew {
     public float ratioCombine;
     public int countDaNangCap;
     public short countDaBaoVe;
+    
+    public int DiemNangcap;
+    public int DaNangcap;
+    public float TileNangcap;
 
     public CombineNew() {
         this.itemsCombine = new ArrayList<>();

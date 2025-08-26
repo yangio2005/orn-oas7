@@ -5,8 +5,7 @@
 //
 ///**
 // *
-// * @author 💖 Trần Lại 💖
-// * @copyright 💖 GirlkuN 💖
+// * @Stole By Hoàng Việt💖
 // *
 // */
 //public class martialCongressPVP extends PVP {

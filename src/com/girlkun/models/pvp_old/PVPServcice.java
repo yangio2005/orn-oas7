@@ -20,8 +20,7 @@
 //
 ///**
 // *
-// * @author 💖 Trần Lại 💖
-// * @copyright 💖 GirlkuN 💖
+// * @Stole By Hoàng Việt 💖
 // *
 // */
 //public class PVPServcice implements Runnable {

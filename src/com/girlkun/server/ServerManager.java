@@ -4,29 +4,36 @@ import com.girlkun.database.GirlkunDB;
 
 import java.net.ServerSocket;
 
-import com.girlkun.jdbc.daos.GodGK;
 import com.girlkun.jdbc.daos.HistoryTransactionDAO;
 import com.girlkun.models.boss.BossManager;
 import com.girlkun.models.item.Item;
+import com.girlkun.models.matches.pvp.DaiHoiVoThuat;
+import com.girlkun.models.map.challenge.MartialCongressManager;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.session.ISession;
 import com.girlkun.network.example.MessageSendCollect;
 import com.girlkun.network.server.GirlkunServer;
-import com.girlkun.network.server.GirlkunSessionManager;
 import com.girlkun.network.server.IServerClose;
 import com.girlkun.network.server.ISessionAcceptHandler;
 import com.girlkun.server.io.MyKeyHandler;
 import com.girlkun.server.io.MySession;
+import com.girlkun.models.kygui.ShopKyGuiManager;
 import com.girlkun.services.ClanService;
 import com.girlkun.services.InventoryServiceNew;
+import com.girlkun.services.NgocRongNamecService;
 import com.girlkun.services.Service;
+import com.girlkun.services.func.ChonAiDay;
+import com.girlkun.services.func.TaiXiu;
+import com.girlkun.services.func.TopService;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
 
 import java.util.*;
 import java.util.logging.Level;
-import java.util.stream.Collectors;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class ServerManager {
 
@@ -41,11 +48,14 @@ public class ServerManager {
 
     public static ServerSocket listenSocket;
     public static boolean isRunning;
+    public static long delaylogin;
 
     public void init() {
         Manager.gI();
         try {
-            if (Manager.LOCAL) return;
+            if (Manager.LOCAL) {
+                return;
+            }
             GirlkunDB.executeUpdate("update account set last_time_login = '2000-01-01', "
                     + "last_time_logout = '2001-01-01'");
         } catch (Exception e) {
@@ -67,10 +77,51 @@ public class ServerManager {
     }
 
     public void run() {
+        long delay = 500;
+        delaylogin = System.currentTimeMillis();
         isRunning = true;
+        JFrame frame = new JFrame("Ngọc rồng Tabi");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ImageIcon icon = new ImageIcon("C:\\Users\\vt220\\Desktop\\CBRO Potara\\data\\girlkun\\icon\\icon.png");
+        frame.setIconImage(icon.getImage());
+        JPanel panel = new panel();
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);
         activeCommandLine();
         activeGame();
         activeServerSocket();
+        Logger.log(Logger.PURPLE_BOLD_BRIGHT,"░░░░░░░░░░░░▄▄\n░░░░░░░░░░░█░░█\n░░░░░░░░░░░█░░█\n░░░░░░░░░░█░░░█\n░░░░░░░░░█░░░░█\n███████▄▄█░░░░░██████▄\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█████░░░░░░░░░█\n██████▀░░░░▀▀██████▀");
+//        MaQuaTangManager.gI().init();
+        new Thread(DaiHoiVoThuat.gI() , "Thread DHVT").start();
+        
+//        ChonAiDay.gI().lastTimeEnd = System.currentTimeMillis() + 300000;
+//        new Thread(ChonAiDay.gI() , "Thread ChonAiDay").start();
+        
+        TaiXiu.gI().lastTimeEnd = System.currentTimeMillis() + 50000;
+        new Thread(TaiXiu.gI() , "Thread TaiXiu").start();
+        
+        NgocRongNamecService.gI().initNgocRongNamec((byte)0);
+        
+        new Thread(NgocRongNamecService.gI() , "Thread NRNM").start();
+        
+        new Thread(TopService.gI() , "Thread TOP").start();
+
+        new Thread(() -> {
+            while (isRunning) {
+                try {
+                    long start = System.currentTimeMillis();
+                    MartialCongressManager.gI().update();
+                    ShopKyGuiManager.gI().save();
+                    long timeUpdate = System.currentTimeMillis() - start;
+                    if (timeUpdate < delay) {
+                        Thread.sleep(delay - timeUpdate);
+                    }
+                } catch (Exception e) {
+                    System.out.println("qwert");
+                }
+            }
+        }, "Update dai hoi vo thuat").start();
         try {
             Thread.sleep(1000);
             BossManager.gI().loadBoss();
@@ -85,6 +136,7 @@ public class ServerManager {
         GirlkunServer.gI().init().setAcceptHandler(new ISessionAcceptHandler() {
             @Override
             public void sessionInit(ISession is) {
+//                antiddos girlkun
                 if (!canConnectWithIp(is.getIP())) {
                     is.disconnect();
                     return;
@@ -113,6 +165,7 @@ public class ServerManager {
     }
 
     private void activeServerSocket() {
+        Logger.log(Logger.PURPLE, "Start server......... Current thread: " + Thread.activeCount() + "\n");
         if (true) {
             try {
                 this.act();
@@ -181,7 +234,7 @@ public class ServerManager {
                 if (line.equals("baotri")) {
                     Maintenance.gI().start(60 * 2);
                 } else if (line.equals("athread")) {
-                    ServerNotify.gI().notify("NROGOD debug server: " + Thread.activeCount());
+                    ServerNotify.gI().notify("Tabi debug server: " + Thread.activeCount());
                 } else if (line.equals("nplayer")) {
                     Logger.error("Player in game: " + Client.gI().getPlayers().size() + "\n");
                 } else if (line.equals("admin")) {
@@ -201,9 +254,8 @@ public class ServerManager {
                     String a = line.replace("a ", "");
                     Service.getInstance().sendThongBaoAllPlayer(a);
                 } else if (line.startsWith("qua")) {
-//                    =1-1-1-1=1-1-1-1=
-//                     =playerId-quantily-itemId-sql=optioneId-pagram=
-
+//                    qua=1-1-1-1=1-1-1-1=
+//                     qua=playerId - soluong - itemId - so_saophale = optioneId - param=
                     try {
                         List<Item.ItemOption> ios = new ArrayList<>();
                         String[] pagram1 = line.split("=")[1].split("-");
@@ -226,6 +278,9 @@ public class ServerManager {
                     } catch (Exception e) {
                         System.out.println("Lỗi quà");
                     }
+                } else if (line.equals("clean")) {
+                    System.gc();
+                    System.err.println("Clean.........");
                 }
             }
         }, "Active line").start();
@@ -243,6 +298,7 @@ public class ServerManager {
         } catch (Exception e) {
             Logger.error("Lỗi save clan!...................................\n");
         }
+        ShopKyGuiManager.gI().save();
         Client.gI().close();
         Logger.success("SUCCESSFULLY MAINTENANCE!...................................\n");
         System.exit(0);

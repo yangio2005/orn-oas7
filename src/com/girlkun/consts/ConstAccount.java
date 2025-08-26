@@ -2,8 +2,7 @@ package com.girlkun.consts;
 
 /**
  *
- * @author 💖 Trần Lại 💖
- * @copyright 💖 GirlkuN  💖
+ * @Stole By Hoàng Việt
  *
  */
 public class ConstAccount {

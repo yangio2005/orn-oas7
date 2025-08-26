@@ -33,6 +33,7 @@ public class RadaService {
             }
         } catch (IOException ex) {
             ex.printStackTrace();
+                System.out.println("loi ne   32532     ClassCastException ");
         }
     }
 

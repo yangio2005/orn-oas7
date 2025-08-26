@@ -3,16 +3,18 @@ package com.girlkun.models.player;
 import java.util.ArrayList;
 import java.util.List;
 import com.girlkun.models.item.Item;
+import com.girlkun.models.item.Item.ItemOption;
+import com.girlkun.services.GiftService;
 
 
 public class Inventory {
 
-    public static final int LIMIT_GOLD = 2000000000;
-    public static final int MAX_ITEMS_BAG = 40;
-    public static final int MAX_ITEMS_BOX = 40;
+  public static final long LIMIT_GOLD = 1000000000000L;
+    public static final int MAX_ITEMS_BAG = 60;
+    public static final int MAX_ITEMS_BOX = 60;
 
     public Item trainArmor;
-
+    public List<String> giftCode;
     public List<Item> itemsBody;
     public List<Item> itemsBag;
     public List<Item> itemsBox;
@@ -30,10 +32,28 @@ public class Inventory {
         itemsBag = new ArrayList<>();
         itemsBox = new ArrayList<>();
         itemsBoxCrackBall = new ArrayList<>();
+        giftCode = new ArrayList<>();
     }
 
     public int getGemAndRuby() {
         return this.gem + this.ruby;
+    }
+    
+    public int getParam(Item it , int id){
+        for(ItemOption op : it.itemOptions){
+            if(op!=null&&op.optionTemplate.id ==id){
+                return op.param;
+            }
+        }
+        return 0;
+    }
+    
+    public boolean haveOption(List<Item> l , int index , int id){
+        Item it = l.get(index);
+        if(it != null && it.isNotNullItem()){
+            return it.itemOptions.stream().anyMatch(op -> op != null && op.optionTemplate.id == id);
+        }
+        return false;
     }
 
     public void subGemAndRuby(int num) {
@@ -48,6 +68,12 @@ public class Inventory {
         this.gold += gold;
         if (this.gold > LIMIT_GOLD) {
             this.gold = LIMIT_GOLD;
+        }
+    }
+    public void addRuby(int ruby) {
+        this.ruby += ruby;
+        if (this.ruby > 2000000000) {
+            this.ruby = 2000000000;
         }
     }
 

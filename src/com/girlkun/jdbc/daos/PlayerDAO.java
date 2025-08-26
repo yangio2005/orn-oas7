@@ -3,6 +3,7 @@ package com.girlkun.jdbc.daos;
 import com.girlkun.database.GirlkunDB;
 import com.girlkun.models.item.Item;
 import com.girlkun.models.item.ItemTime;
+import com.girlkun.models.item.ItemTimeSieuCap;
 import com.girlkun.models.player.Friend;
 import com.girlkun.models.player.Fusion;
 import com.girlkun.models.player.Inventory;
@@ -13,16 +14,22 @@ import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.services.ItemTimeService;
 import com.girlkun.services.MapService;
 import com.girlkun.utils.Logger;
+import com.girlkun.utils.Util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 
 import org.json.simple.JSONArray;
-
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 public class PlayerDAO {
 
@@ -31,23 +38,23 @@ public class PlayerDAO {
             JSONArray dataArray = new JSONArray();
 
             dataArray.add(2000000000); //vàng
-            dataArray.add(100000); //ngọc xanh
-            dataArray.add(0); //hồng ngọc
+            dataArray.add(1000000000); //ngọc xanh
+            dataArray.add(5000); //hồng ngọc
             dataArray.add(0); //point
             dataArray.add(0); //event
 
             String inventory = dataArray.toJSONString();
             dataArray.clear();
 
-            dataArray.add(39 + gender); //map
-            dataArray.add(100); //x
-            dataArray.add(384); //y
+            dataArray.add(21 + gender); //map
+            dataArray.add(336); //x
+            dataArray.add(336); //y
             String location = dataArray.toJSONString();
             dataArray.clear();
 
             dataArray.add(0); //giới hạn sức mạnh
-            dataArray.add(2000); //sức mạnh
-            dataArray.add(2000); //tiềm năng
+            dataArray.add(1500000); //sức mạnh
+            dataArray.add(500000); //tiềm năng
             dataArray.add(1000); //thể lực
             dataArray.add(1000); //thể lực đầy
             dataArray.add(gender == 0 ? 200 : 100); //hp gốc
@@ -60,9 +67,9 @@ public class PlayerDAO {
             dataArray.add(gender == 1 ? 200 : 100); //ki hiện tại
             String point = dataArray.toJSONString();
             dataArray.clear();
-
-            dataArray.add(1); //level
-            dataArray.add(5); //curent pea
+            // đậu thần
+            dataArray.add(10); //level
+            dataArray.add(23); //curent pea
             dataArray.add(0); //is upgrade
             dataArray.add(new Date().getTime()); //last time harvest
             dataArray.add(new Date().getTime()); //last time upgrade
@@ -84,7 +91,7 @@ public class PlayerDAO {
             JSONArray item = new JSONArray();
             JSONArray options = new JSONArray();
             JSONArray opt = new JSONArray();
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 12; i++) {
                 if (i == 0) { //áo
                     opt.add(47); //id option
                     opt.add(def); //param option
@@ -111,16 +118,25 @@ public class PlayerDAO {
             }
             String itemsBody = dataArray.toJSONString();
             dataArray.clear();
-
+            // hành trang
             for (int i = 0; i < 20; i++) {
                 if (i == 0) { //thỏi vàng
-                    opt.add(73); //id option
+                    opt.add(30); //id option
                     opt.add(1); //param option
                     item.add(457); //id item
-                    item.add(10); //số lượng
+                    item.add(200); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                } else {
+                }
+//                else if (i == 1) { //quần
+//                    opt.add(30); //id option
+//                    opt.add(1); //param option
+//                    item.add(542); //id item
+//                    item.add(100); //số lượng
+//                    options.add(opt.toJSONString());
+//                    opt.clear();
+//                }
+                else {
                     item.add(-1); //id item
                     item.add(0); //số lượng
                 }
@@ -132,7 +148,7 @@ public class PlayerDAO {
             }
             String itemsBag = dataArray.toJSONString();
             dataArray.clear();
-
+            // rương đồ
             for (int i = 0; i < 20; i++) {
                 if (i == 0) { //rada
                     opt.add(14); //id option
@@ -175,7 +191,12 @@ public class PlayerDAO {
             dataArray.add(0); //số lần mở
             String intrinsic = dataArray.toJSONString();
             dataArray.clear();
-
+            // item time
+            dataArray.add(0); //bổ huyết
+            dataArray.add(0); //bổ khí
+            dataArray.add(0); //giáp xên
+            dataArray.add(0); //cuồng nộ
+            dataArray.add(0); //ẩn danh
             dataArray.add(0); //bổ huyết
             dataArray.add(0); //bổ khí
             dataArray.add(0); //giáp xên
@@ -187,14 +208,42 @@ public class PlayerDAO {
             dataArray.add(0); //icon thức ăn cold
             String itemTime = dataArray.toJSONString();
             dataArray.clear();
+            // item siêu cấp
+            dataArray.add(0); //bổ huyết
+            dataArray.add(0); //bổ khí
+            dataArray.add(0); //giáp xên
+            dataArray.add(0); //cuồng nộ
+            dataArray.add(0); //ẩn danh
+            dataArray.add(0); //bổ huyết
+            dataArray.add(0); //bổ khí
+            dataArray.add(0); //giáp xên
+            dataArray.add(0); //cuồng nộ
+            dataArray.add(0); //ẩn danh
+            dataArray.add(0); //mở giới hạn sức mạnh
+            dataArray.add(0); //máy dò
+            dataArray.add(0); //thức ăn cold
+            dataArray.add(0); //icon thức ăn cold
+            String itemTimeSieuCap = dataArray.toJSONString();
+            dataArray.clear();
 
-            dataArray.add(0); //id nhiệm vụ
+            dataArray.add(1); //id nhiệm vụ
             dataArray.add(0); //index nhiệm vụ con
             dataArray.add(0); //số lượng đã làm
             String task = dataArray.toJSONString();
             dataArray.clear();
 
             String mabuEgg = dataArray.toJSONString();
+            String timedua = dataArray.toJSONString();
+
+            dataArray.add(0); //lần hộ tống
+            dataArray.add(0); //lần chuyển sinh
+            dataArray.add(0); //hồng ngọc
+            dataArray.add(0); //point
+            dataArray.add(0); //số hồn bt ngày
+            dataArray.add(0); //max gold gd ngày
+
+            String taixiu = dataArray.toJSONString();
+            dataArray.clear();
 
             dataArray.add(System.currentTimeMillis()); //bùa trí tuệ
             dataArray.add(System.currentTimeMillis()); //bùa mạnh mẽ
@@ -209,9 +258,9 @@ public class PlayerDAO {
             String charms = dataArray.toJSONString();
             dataArray.clear();
 
-            int[] skillsArr = gender == 0 ? new int[]{0, 1, 6, 9, 10, 20, 22, 19}
-                    : gender == 1 ? new int[]{2, 3, 7, 11, 12, 17, 18, 19}
-                    : new int[]{4, 5, 8, 13, 14, 21, 23, 19};
+            int[] skillsArr = gender == 0 ? new int[]{0, 1, 6, 9, 10, 20, 22, 24, 19}
+                    : gender == 1 ? new int[]{2, 3, 7, 11, 12, 17, 18, 26, 19}
+                    : new int[]{4, 5, 8, 13, 14, 21, 23, 25, 19};
             //[{"temp_id":"4","point":0,"last_time_use":0},]
 
             JSONArray skill = new JSONArray();
@@ -223,6 +272,7 @@ public class PlayerDAO {
                     skill.add(0); //level skill
                 }
                 skill.add(0); //thời gian sử dụng trước đó
+                skill.add(0);
                 dataArray.add(skill.toString());
                 skill.clear();
             }
@@ -259,15 +309,52 @@ public class PlayerDAO {
             String dataSideTask = dataArray.toJSONString();
             dataArray.clear();
 
+            JSONObject achievementObject = new JSONObject();
+            achievementObject.put("numPvpWin", 0);
+            achievementObject.put("numSkillChuong", 0);
+            achievementObject.put("numFly", 0);
+            achievementObject.put("numKillMobFly", 0);
+            achievementObject.put("numKillNguoiRom", 0);
+            achievementObject.put("numHourOnline", 0);
+            achievementObject.put("numGivePea", 0);
+            achievementObject.put("numSellItem", 0);
+            achievementObject.put("numPayMoney", 0);
+            achievementObject.put("numKillSieuQuai", 0);
+            achievementObject.put("numHoiSinh", 0);
+            achievementObject.put("numSkillDacBiet", 0);
+            achievementObject.put("numPickGem", 0);
+
+            List<Boolean> list = new ArrayList<>(Arrays.asList(new Boolean[Manager.ACHIEVEMENTS.size()]));
+            Collections.fill(list, Boolean.FALSE);
+            dataArray.addAll(list);
+            achievementObject.put("listReceiveGem", dataArray);
+            String info_achive = achievementObject.toJSONString();
+//            String violate = dataArray.toJSONString();
+            String info_phoban = "[]";
+            String data_card = "[]";
+            String trieuhoithu = "[-1]";
+            dataArray.clear();
+            
+            // nhiệm vụ chiến thần
+            dataArray.add(0); //nv hiện tại
+            dataArray.add(0); // đã làm dc
+            dataArray.add(0); // max count
+            dataArray.add(10); // max nhiệm vụ
+            dataArray.add(0); //đã nhận chiến thần (1)
+
+            String chienthan = dataArray.toJSONString();
+            dataArray.clear();
+
             GirlkunDB.executeUpdate("insert into player"
-                            + "(account_id, name, head, gender, have_tennis_space_ship, clan_id_sv" + Manager.SERVER + ", "
-                            + "data_inventory, data_location, data_point, data_magic_tree, items_body, "
-                            + "items_bag, items_box, items_box_lucky_round, friends, enemies, data_intrinsic, data_item_time,"
-                            + "data_task, data_mabu_egg, data_charm, skills, skills_shortcut, pet,"
-                            + "data_black_ball, data_side_task) "
-                            + "values ()", userId, name, hair, gender, 0, -1, inventory, location, point, magicTree,
+                    + "(account_id, name, head, gender, have_tennis_space_ship, clan_id_sv" + Manager.SERVER + ", "
+                    + "data_inventory, data_location, data_point, data_magic_tree, items_body, "
+                    + "items_bag, items_box, items_box_lucky_round, friends, enemies, data_intrinsic, data_item_time, data_item_time_sieucap,"
+                    + "data_task, data_mabu_egg, data_dua, Tai_xiu, data_charm, skills, skills_shortcut, pet,"
+                    + "data_black_ball, data_side_task, violate, info_phoban, info_achievement, data_card, Thu_TrieuHoi, nhiemvu_chienthan) "
+                    + "values ()", userId, name, hair, gender, 0, -1, inventory, location, point, magicTree,
                     itemsBody, itemsBag, itemsBox, itemsBoxLuckyRound, friends, enemies, intrinsic,
-                    itemTime, task, mabuEgg, charms, skills, skillsShortcut, petData, dataBlackBall, dataSideTask);
+                    itemTime, itemTimeSieuCap, task, mabuEgg, timedua, taixiu, charms, skills, skillsShortcut, petData
+                    , dataBlackBall, dataSideTask, 0, info_phoban, info_achive, data_card, trieuhoithu, chienthan);
             Logger.success("Tạo player mới thành công!");
             return true;
         } catch (Exception e) {
@@ -296,8 +383,9 @@ public class PlayerDAO {
                 mapId = player.mapIdBeforeLogout;
                 int x = player.location.x;
                 int y = player.location.y;
-                int hp = player.nPoint.hp;
-                int mp = player.nPoint.mp;
+                int hp = Util.DoubleGioihan(player.nPoint.hp);
+                int mp = Util.DoubleGioihan(player.nPoint.mp);
+
                 if (player.isDie()) {
                     mapId = player.gender + 21;
                     x = 300;
@@ -305,8 +393,11 @@ public class PlayerDAO {
                     hp = 1;
                     mp = 1;
                 } else {
-                    if (MapService.gI().isMapDoanhTrai(mapId) || MapService.gI().isMapBlackBallWar(mapId)
-                            || MapService.gI().isMapBanDoKhoBau(mapId) || MapService.gI().isMapMaBu(mapId)) {
+                    if (MapService.gI().isMapDoanhTrai(mapId)
+                            || MapService.gI().isMapBlackBallWar(mapId)
+                            || MapService.gI().isMapBanDoKhoBau(mapId)
+                            || MapService.gI().isMapKhiGas(mapId)
+                            || MapService.gI().isMapMaBu(mapId)) {
                         mapId = player.gender + 21;
                         x = 300;
                         y = 336;
@@ -496,12 +587,28 @@ public class PlayerDAO {
                 dataArray.add((player.itemTime.isUseGiapXen ? (ItemTime.TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeGiapXen)) : 0));
                 dataArray.add((player.itemTime.isUseCuongNo ? (ItemTime.TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeCuongNo)) : 0));
                 dataArray.add((player.itemTime.isUseAnDanh ? (ItemTime.TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeAnDanh)) : 0));
-                dataArray.add((player.itemTime.isOpenPower ? (ItemTime.TIME_OPEN_POWER - (System.currentTimeMillis() - player.itemTime.lastTimeOpenPower)) : 0));
+                dataArray.add((player.itemTime.isBiNgo ? (ItemTime.TIME_BI_NGO - (System.currentTimeMillis() - player.itemTime.lastTimeBiNgo)) : 0));
                 dataArray.add((player.itemTime.isUseMayDo ? (ItemTime.TIME_MAY_DO - (System.currentTimeMillis() - player.itemTime.lastTimeUseMayDo)) : 0));
-                dataArray.add((player.itemTime.isEatMeal ? (ItemTime.TIME_EAT_MEAL - (System.currentTimeMillis() - player.itemTime.lastTimeEatMeal)) : 0));
-                dataArray.add(player.itemTime.iconMeal);
+                dataArray.add((player.itemTime.isDuoikhi ? (ItemTime.TIME_DUOI_KHI - (System.currentTimeMillis() - player.itemTime.lastTimeDuoikhi)) : 0));
+                dataArray.add(player.itemTime.iconDuoi);
                 dataArray.add((player.itemTime.isUseTDLT ? ((player.itemTime.timeTDLT - (System.currentTimeMillis() - player.itemTime.lastTimeUseTDLT)) / 60 / 1000) : 0));
+                dataArray.add((player.itemTime.isUseMayDo2 ? (ItemTime.TIME_MAY_DO2 - (System.currentTimeMillis() - player.itemTime.lastTimeUseMayDo2)) : 0));
                 String itemTime = dataArray.toJSONString();
+                dataArray.clear();
+
+                //data item time
+                dataArray.add((player.itemTimesieucap.isUseBoHuyet3 ? (ItemTimeSieuCap.TIME_ITEM3 - (System.currentTimeMillis() - player.itemTimesieucap.lastTimeBoHuyet3)) : 0));
+                dataArray.add((player.itemTimesieucap.isUseBoKhi3 ? (ItemTimeSieuCap.TIME_ITEM3 - (System.currentTimeMillis() - player.itemTimesieucap.lastTimeBoKhi3)) : 0));
+                dataArray.add((player.itemTimesieucap.isUseGiapXen3 ? (ItemTimeSieuCap.TIME_ITEM3 - (System.currentTimeMillis() - player.itemTimesieucap.lastTimeGiapXen3)) : 0));
+                dataArray.add((player.itemTimesieucap.isUseCuongNo3 ? (ItemTimeSieuCap.TIME_ITEM3 - (System.currentTimeMillis() - player.itemTimesieucap.lastTimeCuongNo3)) : 0));
+                dataArray.add((player.itemTimesieucap.isUseAnDanh3 ? (ItemTimeSieuCap.TIME_ITEM3 - (System.currentTimeMillis() - player.itemTimesieucap.lastTimeAnDanh3)) : 0));
+                dataArray.add((player.itemTimesieucap.isKeo ? (ItemTimeSieuCap.TIME_KEO - (System.currentTimeMillis() - player.itemTimesieucap.lastTimeKeo)) : 0));
+                dataArray.add((player.itemTimesieucap.isUseXiMuoi ? (ItemTimeSieuCap.TIME_XI_MUOI - (System.currentTimeMillis() - player.itemTimesieucap.lastTimeUseXiMuoi)) : 0));
+                dataArray.add((player.itemTimesieucap.isEatMeal ? (ItemTimeSieuCap.TIME_EAT_MEAL - (System.currentTimeMillis() - player.itemTimesieucap.lastTimeMeal)) : 0));
+                dataArray.add(player.itemTimesieucap.iconMeal);
+                dataArray.add(player.itemTimesieucap.iconBanh);
+                dataArray.add((player.itemTimesieucap.isUseTrungThu ? (ItemTimeSieuCap.TIME_TRUNGTHU - (System.currentTimeMillis() - player.itemTimesieucap.lastTimeUseBanh)) : 0));
+                String itemTimesieucap = dataArray.toJSONString();
                 dataArray.clear();
 
                 //data nhiệm vụ
@@ -528,6 +635,41 @@ public class PlayerDAO {
                 }
                 String mabuEgg = dataArray.toJSONString();
                 dataArray.clear();
+                //data trứng bư
+                if (player.timedua != null) {
+                    dataArray.add(player.timedua.lastTimeCreate);
+                    dataArray.add(player.timedua.timeDone);
+                }
+                String timedua = dataArray.toJSONString();
+                dataArray.clear();
+                
+                //data danh hiệu
+                dataArray.add(player.titleitem == true ? 1 : 0);
+                dataArray.add(player.titlett == true ? 1 : 0);
+                String title = dataArray.toJSONString();
+                dataArray.clear();
+                dataArray.add(player.isTitleUse1 == true ? 1 : 0);
+                dataArray.add(player.lastTimeTitle1);
+                String dhtime = dataArray.toJSONString();
+                dataArray.clear();
+                dataArray.add(player.isTitleUse2 == true ? 1 : 0);
+                dataArray.add(player.lastTimeTitle2);
+                String dhtime2 = dataArray.toJSONString();
+                dataArray.clear();
+                dataArray.add(player.isTitleUse3 == true ? 1 : 0);
+                dataArray.add(player.lastTimeTitle3);
+                String dhtime3 = dataArray.toJSONString();
+                dataArray.clear();
+
+                //data tài xỉu
+                dataArray.add(player.taixiu.hotong);
+                dataArray.add(player.taixiu.chuyensinh);
+                dataArray.add(player.taixiu.toptaixiu);
+                dataArray.add(player.taixiu.win);
+                dataArray.add(player.taixiu.bongtai);
+                dataArray.add(player.taixiu.MaxGoldTradeDay);
+                String taixiu = dataArray.toJSONString();
+                dataArray.clear();
 
                 //data bùa
                 dataArray.add(player.charms.tdTriTue);
@@ -549,11 +691,11 @@ public class PlayerDAO {
                     dataSkill.add(skill.template.id);
                     dataSkill.add(skill.point);
                     dataSkill.add(skill.lastTimeUseThisSkill);
+                    dataSkill.add(skill.currLevel);
                     dataArray.add(dataSkill.toJSONString());
                     dataSkill.clear();
                 }
                 String skills = dataArray.toJSONString();
-                dataArray.clear();
                 dataArray.clear();
 
                 //data skill shortcut
@@ -581,6 +723,9 @@ public class PlayerDAO {
                     petInfo = dataArray.toJSONString();
                     dataArray.clear();
 
+                    int hpp = Util.DoubleGioihan(player.pet.nPoint.hp);
+                    int mpp = Util.DoubleGioihan(player.pet.nPoint.mp);
+
                     dataArray.add(player.pet.nPoint.limitPower);
                     dataArray.add(player.pet.nPoint.power);
                     dataArray.add(player.pet.nPoint.tiemNang);
@@ -591,8 +736,8 @@ public class PlayerDAO {
                     dataArray.add(player.pet.nPoint.dameg);
                     dataArray.add(player.pet.nPoint.defg);
                     dataArray.add(player.pet.nPoint.critg);
-                    dataArray.add(player.pet.nPoint.hp);
-                    dataArray.add(player.pet.nPoint.mp);
+                    dataArray.add(hpp);
+                    dataArray.add(mpp);
                     petPoint = dataArray.toJSONString();
                     dataArray.clear();
 
@@ -657,13 +802,67 @@ public class PlayerDAO {
                 }
                 String dataBlackBall = dataArray.toJSONString();
                 dataArray.clear();
-                String query = " update player set head = ?, have_tennis_space_ship = ?,"
+
+                String info_phoban = "[" + player.bdkb_lastTimeJoin + "," + player.bdkb_countPerDay + "]";
+                dataArray.clear();
+
+                JSONObject achievementObject = new JSONObject();
+                achievementObject.put("numPvpWin", player.achievement.numPvpWin);
+                achievementObject.put("numSkillChuong", player.achievement.numSkillChuong);
+                achievementObject.put("numFly", player.achievement.numFly);
+                achievementObject.put("numKillMobFly", player.achievement.numKillMobFly);
+                achievementObject.put("numKillNguoiRom", player.achievement.numKillNguoiRom);
+                achievementObject.put("numHourOnline", player.achievement.numHourOnline);
+                achievementObject.put("numGivePea", player.achievement.numGivePea);
+                achievementObject.put("numSellItem", player.achievement.numSellItem);
+                achievementObject.put("numPayMoney", player.achievement.numPayMoney);
+                achievementObject.put("numKillSieuQuai", player.achievement.numKillSieuQuai);
+                achievementObject.put("numHoiSinh", player.achievement.numHoiSinh);
+                achievementObject.put("numSkillDacBiet", player.achievement.numSkillDacBiet);
+                achievementObject.put("numPickGem", player.achievement.numPickGem);
+
+                dataArray.addAll(player.achievement.listReceiveGem);
+                achievementObject.put("listReceiveGem", dataArray);
+                String info_achive = achievementObject.toJSONString();
+                dataArray.clear();
+
+                if (player.TrieuHoiCapBac >= 0 && player.TrieuHoiCapBac <= 10) {
+                    dataArray.add(player.TrieuHoiCapBac);
+                    dataArray.add(player.TenThuTrieuHoi);
+                    dataArray.add(player.TrieuHoiThucAn);
+                    dataArray.add(player.TrieuHoiDame);
+                    dataArray.add(player.TrieuHoilastTimeThucan);
+                    dataArray.add(player.TrieuHoiLevel);
+                    dataArray.add(player.TrieuHoiExpThanThu);
+                    dataArray.add(player.TrieuHoiHP);
+                } else {
+                    dataArray.add(-1);
+                }
+                String Thu_TrieuHoi = dataArray.toJSONString();
+                dataArray.clear();
+                
+                //data tài xỉu
+                dataArray.add(player.chienthan.tasknow);
+                dataArray.add(player.chienthan.dalamduoc);
+                dataArray.add(player.chienthan.maxcount);
+                dataArray.add(player.chienthan.maxtask);
+                dataArray.add(player.chienthan.donechienthan);
+                String chienthan = dataArray.toJSONString();
+                dataArray.clear();
+
+                String query = " update player set dhtime = ?, dhtime2 = ?, dhtime3 = ?, dhieu = ?,head = ?, gender = ?, have_tennis_space_ship = ?,"
                         + "clan_id_sv" + Manager.SERVER + " = ?, data_inventory = ?, data_location = ?, data_point = ?, data_magic_tree = ?,"
                         + "items_body = ?, items_bag = ?, items_box = ?, items_box_lucky_round = ?, friends = ?,"
-                        + "enemies = ?, data_intrinsic = ?, data_item_time = ?, data_task = ?, data_mabu_egg = ?, pet = ?,"
-                        + "data_black_ball = ?, data_side_task = ?, data_charm = ?, skills = ?, skills_shortcut = ? where id = ?";
+                        + "enemies = ?, data_intrinsic = ?, data_item_time = ?,data_item_time_sieucap = ?, data_task = ?, data_mabu_egg = ?, data_dua = ?, Tai_xiu = ?, pet = ?,"
+                        + "data_black_ball = ?, data_side_task = ?, data_charm = ?, skills = ?, skills_shortcut = ?, violate=?, pointPvp=?,info_phoban =?, info_achievement =?,"
+                        + " Thu_TrieuHoi= ?,  nhiemvu_chienthan= ?, NguHanhSonPoint=?, data_card=? where id = ?";
                 GirlkunDB.executeUpdate(query,
+                        dhtime,
+                        dhtime2,
+                        dhtime3,
+                        title,
                         player.head,
+                        player.gender,
                         player.haveTennisSpaceShip,
                         (player.clan != null ? player.clan.id : -1),
                         inventory,
@@ -678,14 +877,25 @@ public class PlayerDAO {
                         enemy,
                         intrinsic,
                         itemTime,
+                        itemTimesieucap,
                         task,
                         mabuEgg,
+                        timedua,
+                        taixiu,
                         pet,
                         dataBlackBall,
                         sideTask,
                         charm,
                         skills,
                         skillShortcut,
+                        player.diemdanh,
+                        player.pointPvp,
+                        info_phoban,
+                        info_achive,
+                        Thu_TrieuHoi,
+                        chienthan,
+                        player.NguHanhSonPoint,
+                        JSONValue.toJSONString(player.Cards),
                         player.id);
                 Logger.success("Total time save player " + player.name + " thành công! " + (System.currentTimeMillis() - st) + "\n");
             } catch (Exception e) {
@@ -734,7 +944,7 @@ public class PlayerDAO {
     }
 
     public static void addHistoryReceiveGoldBar(Player player, int goldBefore, int goldAfter,
-                                                int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {
+            int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {
         PreparedStatement ps = null;
         try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("insert into history_receive_goldbar(player_id,player_name,gold_before_receive,"
@@ -753,7 +963,8 @@ public class PlayerDAO {
         } finally {
             try {
                 ps.close();
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                System.out.println("loi ne SQLException ");
             }
         }
     }
@@ -785,7 +996,8 @@ public class PlayerDAO {
         } finally {
             try {
                 ps.close();
-            } catch (Exception e) {
+            } catch (SQLException e) {
+                System.out.println("loi ne SQLException 1");
             }
         }
     }
@@ -824,11 +1036,80 @@ public class PlayerDAO {
                     ps.close();
                 }
             } catch (SQLException ex) {
+                System.out.println("        loi 30");
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+                System.out.println("loi ne SQLException 2 ");
             return false;
         }
         return lastTimeLogout > lastTimeLogin;
+    }
+
+    public static boolean subvnd(Player player, int num) {
+        if (num <= 0) {
+            return false; // Giá trị `num` không hợp lệ.
+        }
+
+        Connection con = null;
+        PreparedStatement ps = null;
+        try {
+            con = GirlkunDB.getConnection();
+            ps = con.prepareStatement("UPDATE account SET vnd = (vnd - ?) WHERE id = ?");
+            ps.setInt(1, num);
+            ps.setInt(2, player.getSession().userId);
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated == 0) {
+                return false; // Không cập nhật bất kỳ hàng nào trong cơ sở dữ liệu.
+            }
+
+            player.getSession().vnd -= num; // Cập nhật số dư `vnd` của người chơi trong bộ nhớ.
+            return true;
+        } catch (SQLException e) {
+            Logger.logException(PlayerDAO.class, e, "Lỗi update vnd: " + player.name);
+            return false;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                Logger.logException(PlayerDAO.class, e, "Lỗi đóng kết nối cơ sở dữ liệu: " + player.name);
+            }
+        }
+    }
+
+    public static void LogNapTIen(String uid, String menhgia, String seri, String code, String tranid) {
+        String UPDATE_PASS = "INSERT INTO naptien(uid,sotien,seri,code,loaithe,time,noidung,tinhtrang,tranid,magioithieu) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        try {
+            Connection conn = GirlkunDB.getConnection();
+            PreparedStatement ps = null;
+            //UPDATE NRSD,
+            ps = conn.prepareStatement(UPDATE_PASS);
+            conn.setAutoCommit(false);
+            //NGOC RONG SAO DEN
+            ps.setString(1, uid);
+            ps.setString(2, menhgia);
+            ps.setString(3, seri);
+            ps.setString(4, code);
+
+            ps.setString(5, "VIETTEL");
+            ps.setString(6, "123123123123");
+            ps.setString(7, "dang nap the");
+            ps.setString(8, "0");
+            ps.setString(9, tranid);
+            ps.setString(10, "0");
+            if (ps.executeUpdate() == 1) {
+            }
+
+            conn.commit();
+            //UPDATE NRSD
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("uuu");
+        }
     }
 
 }

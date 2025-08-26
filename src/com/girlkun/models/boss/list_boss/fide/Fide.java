@@ -28,7 +28,7 @@ public class Fide extends Boss {
       @Override
     public void active() {
         super.active(); //To change body of generated methods, choose Tools | Templates.
-        if(Util.canDoWithTime(st,900000)){
+        if(Util.canDoWithTime(st,1500000)){
             this.changeStatus(BossStatus.LEAVE_MAP);
         }
     }

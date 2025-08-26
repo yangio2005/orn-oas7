@@ -45,6 +45,7 @@ public class MapMaBu {
                 TIME_OPEN_MABU = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_OPEN_MAP_MABU + ":" + MIN_OPEN_MAP_MABU + ":" + SECOND_OPEN_MAP_MABU, "dd/MM/yyyy HH:mm:ss");
                 TIME_CLOSE_MABU = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + HOUR_CLOSE_MAP_MABU + ":" + MIN_CLOSE_MAP_MABU + ":" + SECOND_CLOSE_MAP_MABU, "dd/MM/yyyy HH:mm:ss");
             } catch (Exception ignored) {
+                System.out.println("        loi map mabu");
             }
         }
     }
@@ -84,15 +85,17 @@ public class MapMaBu {
     }
 
     public void update(Player player) {
-        if (player.zone == null || !MapService.gI().isMapBlackBallWar(player.zone.map.mapId)) {
+        if (player.zone == null || !MapService.gI().isMapMaBu(player.zone.map.mapId)) {
+            return;
+        }
             try {
                 long now = System.currentTimeMillis();
-                if (now < TIME_OPEN_MABU || now > TIME_CLOSE_MABU) {
-                    ketthucmabu(player);
-                }
+//                if (now < TIME_OPEN_MABU || now > TIME_CLOSE_MABU) {
+//                    ketthucmabu(player);
+//                }
             } catch (Exception ignored) {
+                System.out.println("        loi update map mabu");
             }
-        }
 
     }
 }

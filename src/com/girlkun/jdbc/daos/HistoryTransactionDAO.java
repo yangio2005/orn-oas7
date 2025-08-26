@@ -86,6 +86,7 @@ public class HistoryTransactionDAO {
                     itemPlayer1, itemPlayer2, beforeTran1, beforeTran2, afterTran1, afterTran2, new Timestamp(System.currentTimeMillis()));
         } catch (Exception ex) {
             ex.printStackTrace();
+                System.out.println("loi ne  11      ClassCastException ");
         }
     }
 

@@ -39,6 +39,7 @@ public class MenuController {
         TransactionService.gI().cancelTrade(player);
         switch (npcId) {
             case ConstNpc.RONG_THIENG:
+            case ConstNpc.RONG_XUONG:
             case ConstNpc.CON_MEO:
                 NpcManager.getNpc((byte) npcId).confirmMenu(player, select);
                 break;

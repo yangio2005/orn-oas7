@@ -78,10 +78,28 @@ public class IntrinsicService {
                 "Nội tại là một kỹ năng bị động hỗ trợ đặc biệt\nBạn có muốn mở hoặc thay đổi nội tại không?",
                 "Xem\ntất cả\nNội Tại", "Mở\nNội Tại", "Mở VIP", "Từ chối");
     }
+    
+    public void sattd(Player player) {
+        NpcService.gI().createMenuConMeo(player, ConstNpc.menutd, -1,
+                                "chọn lẹ đi để tau đi chơi với ny", "Set\nKaioken", "Set\nGenki", "Set\nKamejoko", "Từ chối");
+                    
+            }
+    
+    public void satnm(Player player) {
+        NpcService.gI().createMenuConMeo(player, ConstNpc.menunm, -1,
+                                "chọn lẹ đi để tau đi chơi với ny", "Set\nGod KI", "Set\nLiên hoàn", "Set\nTrứng", "Từ chối");
+                    
+            }
+    
+    public void setxd(Player player) {
+        NpcService.gI().createMenuConMeo(player, ConstNpc.menuxd, -1,
+                                "chọn lẹ đi để tau đi chơi với ny", "Set\ngod Galick", "Set\nMonkey", "Set\nGod HP", "Từ chối");
+                    
+            }
 
     public void showConfirmOpen(Player player) {
         NpcService.gI().createMenuConMeo(player, ConstNpc.CONFIRM_OPEN_INTRINSIC, -1, "Bạn muốn đổi Nội Tại khác\nvới giá là "
-                + COST_OPEN[player.playerIntrinsic.countOpen] + " Tr vàng ?", "Mở\nNội Tại", "Từ chối");
+                + COST_OPEN[player.playerIntrinsic.countOpen > 7 ? 7:player.playerIntrinsic.countOpen] + " Tr vàng ?", "Mở\nNội Tại", "Từ chối");
     }
 
     public void showConfirmOpenVip(Player player) {
@@ -100,7 +118,7 @@ public class IntrinsicService {
 
     public void open(Player player) {
         if (player.nPoint.power >= 10000000000L) {
-            int goldRequire = COST_OPEN[player.playerIntrinsic.countOpen] * 1000000;
+            int goldRequire = COST_OPEN[player.playerIntrinsic.countOpen > 7 ? 7:player.playerIntrinsic.countOpen] * 1000000;
             if (player.inventory.gold >= goldRequire) {
                 player.inventory.gold -= goldRequire;
                 PlayerService.gI().sendInfoHpMpMoney(player);

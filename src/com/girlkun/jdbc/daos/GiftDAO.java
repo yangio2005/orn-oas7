@@ -18,6 +18,7 @@ public class GiftDAO {
             ps.close();
         } catch (Exception e) {
             Logger.logException(GiftDAO.class, e);
+                System.out.println("        loi 22");
         }
     }
 
@@ -38,6 +39,7 @@ public class GiftDAO {
             ps.close();
         } catch (Exception e) {
             Logger.logException(GiftDAO.class, e);
+                System.out.println("        loi 23");
         } finally{
             
             try {
@@ -62,6 +64,7 @@ public class GiftDAO {
             ps.close();
         } catch (Exception e) {
             Logger.logException(GiftDAO.class, e);
+                System.out.println("        loi 24");
         }
     }
 

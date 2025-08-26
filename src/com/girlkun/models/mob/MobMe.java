@@ -7,7 +7,6 @@ import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
 import com.girlkun.network.io.Message;
 
-
 public final class MobMe extends Mob {
 
     private Player player;
@@ -45,14 +44,14 @@ public final class MobMe extends Mob {
         try {
             if (pl != null) {
                 if (pl.nPoint.hp > this.point.dame && pl.nPoint.hp > pl.nPoint.hpMax * 0.05) {
-                    int dameHit = pl.injured(null, this.point.dame, true, true);
+                    double dameHit = pl.injured(null, this.point.dame, true, true);
                     msg = new Message(-95);
                     msg.writer().writeByte(2);
 
                     msg.writer().writeInt(this.id);
                     msg.writer().writeInt((int) pl.id);
-                    msg.writer().writeInt(dameHit);
-                    msg.writer().writeInt(pl.nPoint.hp);
+                    msg.writer().writeInt(1);
+                    msg.writer().writeInt(Util.DoubleGioihan(pl.nPoint.hp));
 
                     Service.getInstance().sendMessAllPlayerInMap(this.zone, msg);
                     msg.cleanup();
@@ -60,21 +59,48 @@ public final class MobMe extends Mob {
             }
 
             if (mob != null) {
-                if (mob.point.gethp() > this.point.dame) {
-                    long tnsm = mob.getTiemNangForPlayer(this.player, this.point.dame);
-                    msg = new Message(-95);
-                    msg.writer().writeByte(3);
-                    msg.writer().writeInt(this.id);
-                    msg.writer().writeInt((int) mob.id);
-                    mob.point.sethp(mob.point.gethp() - this.point.dame);
-                    msg.writer().writeInt(mob.point.gethp());
-                    msg.writer().writeInt(this.point.dame);
-                    Service.getInstance().sendMessAllPlayerInMap(this.zone, msg);
-                    msg.cleanup();
-                    Service.getInstance().addSMTN(player, (byte) 2, tnsm, true);
-                }
+                    if (!mob.isMobMe) {
+                        double dame = this.point.dame;
+                        if (mob.isSieuQuai()) {
+                            if (dame > mob.point.maxHp / 10) {
+                                dame = mob.point.maxHp / 10;
+                            }
+                        }
+
+                        if (this.point.hp == this.point.maxHp && dame >= this.point.hp) {
+                            dame = this.point.hp - 1;
+                        }
+                        if (mob.point.hp <= 1) {
+                            dame = 1;
+                        }
+
+                        long tnsm = mob.getTiemNangForPlayer(this.player, dame);
+
+                        msg = new Message(-95);
+                        msg.writer().writeByte(3);
+                        msg.writer().writeInt(this.id);
+                        msg.writer().writeInt((int) mob.id);
+
+                        if (mob.tempId == 0) {
+                            tnsm = 1;
+                            mob.point.sethp(mob.point.gethp() - 10);
+                            msg.writer().writeInt(Util.DoubleGioihan(mob.point.gethp()));
+                            msg.writer().writeInt(10);
+                        } else {
+                            mob.point.sethp((int) (mob.point.gethp() - dame));
+                            msg.writer().writeInt(Util.DoubleGioihan(mob.point.gethp()));
+                            msg.writer().writeInt((int) dame);
+                        }
+                        Service.getInstance().sendMessAllPlayerInMap(this.zone, msg);
+                        msg.cleanup();
+                        Service.getInstance().addSMTN(player, (byte) 2, tnsm, true);
+                        if (mob.isDie()) {
+                            mob.sendMobDieAfterMobMeAttacked(player, (int) dame);
+                        }
+                    }
             }
         } catch (Exception e) {
+            System.out.println("loi ne mob me 1 ");
         }
     }
 
@@ -86,11 +112,11 @@ public final class MobMe extends Mob {
             msg.writer().writeByte(0);//type
             msg.writer().writeInt((int) player.id);
             msg.writer().writeShort(this.tempId);
-            msg.writer().writeInt(this.point.hp);// hp mob
+            msg.writer().writeInt(Util.DoubleGioihan(this.point.hp));// hp mob
             Service.getInstance().sendMessAllPlayerInMap(this.zone, msg);
             msg.cleanup();
         } catch (Exception e) {
-
+            System.out.println("loi ne mob me 2 ");
         }
     }
 
@@ -111,6 +137,7 @@ public final class MobMe extends Mob {
             Service.getInstance().sendMessAllPlayerInMap(this.zone, msg);
             msg.cleanup();
         } catch (Exception e) {
+            System.out.println("loi ne mob me 3 ");
         }
     }
 
@@ -123,6 +150,7 @@ public final class MobMe extends Mob {
             Service.getInstance().sendMessAllPlayerInMap(this.zone, msg);
             msg.cleanup();
         } catch (Exception e) {
+            System.out.println("loi ne mob me 4 ");
         }
     }
 

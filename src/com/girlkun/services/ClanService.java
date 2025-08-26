@@ -20,6 +20,7 @@ import com.girlkun.utils.Util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -135,7 +136,7 @@ public class ClanService {
                     break;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("asdfg");
 
         }
     }
@@ -185,6 +186,7 @@ public class ClanService {
                                 Service.getInstance().sendThongBao(plReceive, plGive.name + " đã cho bạn " + peaCopy.template.name);
                                 cmg.receiveDonate++;
                                 clan.sendMessageClan(cmg);
+                                plGive.achievement.plusCount(9);
                             } else {
                                 Service.getInstance().sendThongBao(plGive, "Không tìm thấy đậu trong rương");
                             }
@@ -551,6 +553,7 @@ public class ClanService {
                     for (ClanMember cm : clan.getMembers()) {
                         msg.writer().writeInt((int) cm.id);
                         msg.writer().writeShort(cm.head);
+                        msg.writer().writeShort(-1);
                         msg.writer().writeShort(cm.leg);
                         msg.writer().writeShort(cm.body);
                         msg.writer().writeUTF(cm.name);
@@ -594,6 +597,7 @@ public class ClanService {
                 for (ClanMember cm : player.clan.getMembers()) {
                     msg.writer().writeInt(cm.id);
                     msg.writer().writeShort(cm.head);
+                    msg.writer().writeShort(-1);
                     msg.writer().writeShort(cm.leg);
                     msg.writer().writeShort(cm.body);
                     msg.writer().writeUTF(cm.name);
@@ -917,12 +921,12 @@ public class ClanService {
         }
     }
 
-    public void close() {
+    public void closes() {
         PreparedStatement ps = null;
         try (Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update clan_sv" + Manager.SERVER
                     + " set slogan = ?, img_id = ?, power_point = ?, max_member = ?, clan_point = ?, "
-                    + "level = ?, members = ? where id = ? limit 1");
+                    + "level = ?, members = ? , doanh_trai = ? where id = ? limit 1");
             for (Clan clan : Manager.CLANS) {
                 JSONArray dataArray = new JSONArray();
                 JSONObject dataObject = new JSONObject();
@@ -952,6 +956,12 @@ public class ClanService {
                 ps.setInt(6, clan.level);
                 ps.setString(7, member);
                 ps.setInt(8, clan.id);
+
+                String doanhtrai = "[";
+                doanhtrai += clan.doanhTrai_lastTimeOpen + ",";
+                doanhtrai += "\"" + clan.doanhTrai_playerOpen + "\"]";
+                ps.setString(9, doanhtrai);
+
                 ps.addBatch();
                 Logger.error("SAVE CLAN: " + clan.name + " (" + clan.id + ")\n");
             }
@@ -963,6 +973,58 @@ public class ClanService {
             try {
                 ps.close();
             } catch (Exception e) {
+            }
+        }
+    }
+
+    public void close() {
+        for (Clan clan : Manager.CLANS) {
+            JSONArray dataArray = new JSONArray();
+            JSONObject dataObject = new JSONObject();
+            for (ClanMember cm : clan.members) {
+                dataObject.put("id", cm.id);
+                dataObject.put("power", cm.powerPoint);
+                dataObject.put("name", cm.name);
+                dataObject.put("head", cm.head);
+                dataObject.put("body", cm.body);
+                dataObject.put("leg", cm.leg);
+                dataObject.put("role", cm.role);
+                dataObject.put("donate", cm.donate);
+                dataObject.put("receive_donate", cm.receiveDonate);
+                dataObject.put("member_point", cm.memberPoint);
+                dataObject.put("clan_point", cm.clanPoint);
+                dataObject.put("join_time", cm.joinTime);
+                dataObject.put("ask_pea_time", cm.timeAskPea);
+                dataArray.add(dataObject.toJSONString());
+                dataObject.clear();
+            }
+            String clanmem = dataArray.toJSONString();
+
+//            long timeDoanhtrai = clan.doanhTrai_lastTimeOpen;
+//            long timebandokhobau = clan.banDoKhoBau_lastTimeOpen;
+
+            String doanhtrai = "[";
+            doanhtrai += clan.doanhTrai_lastTimeOpen + ",";
+            doanhtrai += "\"" + clan.doanhTrai_playerOpen + "\"]";
+//            String bandokhobau = "[" + (timebandokhobau == 0 ? System.currentTimeMillis() : timebandokhobau) + ",";
+//            bandokhobau += "\"" + clan.banDoKhoBau_playerOpen + "\"]";
+            String query = " update clan_sv" + Manager.SERVER
+                    + " set slogan = ?, img_id = ?, power_point = ?, max_member = ?, clan_point = ?,"
+                    + "level = ?, members = ? ,doanh_trai = ?  where id = ?";
+            try {
+                GirlkunDB.executeUpdate(query,
+                        clan.slogan,
+                        clan.imgId,
+                        clan.powerPoint,
+                        clan.maxMember,
+                        clan.capsuleClan,
+                        clan.level,
+                        clanmem,
+                        doanhtrai,
+                        clan.id);
+                Logger.error("DONE SAVE CLAN: " + clan.name + " (" + clan.id + ")");
+            } catch (Exception ex) {
+                java.util.logging.Logger.getLogger(ClanService.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
