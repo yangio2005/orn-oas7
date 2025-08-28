@@ -47,22 +47,24 @@ public class SuperBroly extends Boss {
                     {Skill.KAMEJOKO, 7, 1000},},
                 new String[]{"|-1|Ta đang giữ trứng Mabu đây"}, //text chat 1
                 new String[]{"|-1|Nhóc con. Giỏi thì lấy mạng ta này"}, //text chat 2
-                new String[]{"|-1|Giết ta sẽ nhận được trứng Mabu. Giỏi thì đến đây"}, //text chat 3
+                new String[]{"|-1|Giết ta, ngươi sẽ có cơ hội nhận được đệ tử và vật phẩm quý hiếm (trứng ma bư tỉ lệ 2%)!"}, //text chat 3
                 60
         ));
         this.zone = zone;
     }
     @Override
     public void reward(Player plKill) {
-//        if (plKill.pet == null) {
-//            PetService.gI().createNormalPet(plKill);
-//            Service.getInstance().sendThongBao(plKill, "Bạn vừa nhận được đệ tử");
-//        } else {
-//            Service.getInstance().sendThongBao(plKill, "Bạn có đệ tử rồi mà!!!!");
-//        }
-        ItemMap it = new ItemMap(this.zone, 568, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
-                this.location.y - 24), plKill.id);
-        Service.getInstance().dropItemMap(this.zone, it);
+        if (plKill.pet == null) {
+            PetService.gI().createNormalPet(plKill);
+            Service.getInstance().sendThongBao(plKill, "Bạn vừa nhận được đệ tử");
+        } else {
+            Service.getInstance().sendThongBao(plKill, "Bạn có đệ tử rồi mà!!!!");
+        }
+        if (Util.isTrue(2, 100)) { // 2% chance for item drop
+            ItemMap it = new ItemMap(this.zone, 568, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
+                    this.location.y - 24), plKill.id);
+            Service.getInstance().dropItemMap(this.zone, it);
+        }
     }
     @Override
     public void active() {

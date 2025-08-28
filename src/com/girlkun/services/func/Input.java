@@ -517,7 +517,7 @@ public class Input {
                     int goldTrade = Integer.parseInt(text[0]);
                     if (Manager.KHUYEN_MAI_NAP != 1) {
                         if (goldTrade % 1000 == 0) {
-                            if (goldTrade <= 0 || goldTrade >= 1000001) {
+                            if (goldTrade <= 0 || goldTrade >= 100000001) {
                                 Service.getInstance().sendThongBao(player, "|7|Quá giới hạn mỗi lần tối đa 1.000.000");
                             } else if (player.getSession().vnd >= goldTrade) {//* coinGold
                                 if (goldTrade >= 500000) {
@@ -554,7 +554,7 @@ public class Input {
                                     GirlkunDB.executeUpdate("update player set vnd = (vnd + " + goldTrade //* coinGold
                                             + ") where id = " + player.id);
                                 }
-                                if (Manager.SUKIEN == 1) {
+                                                                if (Manager.SUKIEN == 1) {
                                     player.NguHanhSonPoint += goldTrade / 1000; //Skien trung thu
                                     Service.getInstance().sendThongBao(player, "|4|Bạn nhận được " + Util.format(goldTrade / 1000)//* ratioGold * 2
                                             + " Điểm sự kiện Trung thu");
@@ -605,11 +605,11 @@ public class Input {
                                     GirlkunDB.executeUpdate("update player set vnd = (vnd + " + goldTrade //* coinGold
                                             + ") where id = " + player.id);
                                 }
-//                                if (Manager.SUKIEN == 1) {
-//                                    player.NguHanhSonPoint += goldTrade / 1000; //Skien trung thu
-//                                    Service.getInstance().sendThongBao(player, "|4|Bạn nhận được " + Util.format(goldTrade / 1000)//* ratioGold * 2
-//                                            + " Điểm sự kiện Trung thu");
-//                                }
+                               if (Manager.SUKIEN == 1) {
+                                   player.NguHanhSonPoint += goldTrade / 1000; //Skien trung thu
+                                    Service.getInstance().sendThongBao(player, "|4|Bạn nhận được " + Util.format(goldTrade / 1000)//* ratioGold * 2
+                                            + " Điểm sự kiện Trung thu");
+                                }
                             } else {
                                 Service.getInstance().sendThongBao(player, "|7|Số tiền của bạn là " + player.getSession().vnd + " không đủ để quy "
                                         + " đổi " + goldTrade + " Hồng ngọc " + " " + "bạn cần thêm " + (player.getSession().vnd - goldTrade));
@@ -661,11 +661,11 @@ public class Input {
                                     GirlkunDB.executeUpdate("update player set vnd = (vnd + " + goldTrade1 //* coinGold
                                             + ") where id = " + player.id);
                                 }
-//                                if (Manager.SUKIEN == 1) {
-//                                    player.NguHanhSonPoint += goldTrade1 / 1000; //Skien trung thu
-//                                    Service.getInstance().sendThongBao(player, "|4|Bạn nhận được " + Util.format(goldTrade1 / 1000)//* ratioGold * 2
-//                                            + " Điểm sự kiện Trung thu");
-//                                }
+                               if (Manager.SUKIEN == 1) {
+                                   player.NguHanhSonPoint += goldTrade1 / 1000; //Skien trung thu
+                                    Service.getInstance().sendThongBao(player, "|4|Bạn nhận được " + Util.format(goldTrade1 / 1000)//* ratioGold * 2
+                                            + " Điểm sự kiện Trung thu");
+                                }
                             } else {
                                 Service.getInstance().sendThongBao(player, "|7|Số tiền của bạn là " + player.getSession().vnd + " không đủ để quy "
                                         + " đổi " + goldTrade1 / 1000 + " Thỏi vàng" + " " + "bạn cần thêm " + (player.getSession().vnd - goldTrade1));
@@ -712,11 +712,11 @@ public class Input {
                                     GirlkunDB.executeUpdate("update player set vnd = (vnd + " + goldTrade1 //* coinGold
                                             + ") where id = " + player.id);
                                 }
-//                                if (Manager.SUKIEN == 1) {
-//                                    player.NguHanhSonPoint += goldTrade1 / 1000; //Skien trung thu
-//                                    Service.getInstance().sendThongBao(player, "|4|Bạn nhận được " + Util.format(goldTrade1 / 1000)//* ratioGold * 2
-//                                            + " Điểm sự kiện Trung thu");
-//                                }
+                               if (Manager.SUKIEN == 1) {
+                                   player.NguHanhSonPoint += goldTrade1 / 1000; //Skien trung thu
+                                   Service.getInstance().sendThongBao(player, "|4|Bạn nhận được " + Util.format(goldTrade1 / 1000)//* ratioGold * 2
+                                           + " Điểm sự kiện Trung thu");
+                               }
                             } else {
                                 Service.getInstance().sendThongBao(player, "|7|Số tiền của bạn là " + player.getSession().vnd + " không đủ để quy "
                                         + " đổi " + goldTrade1 / 1000 + " Thỏi vàng" + " " + "bạn cần thêm " + (player.getSession().vnd - goldTrade1));

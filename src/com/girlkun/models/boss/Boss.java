@@ -16,6 +16,7 @@ import com.girlkun.services.PlayerService;
 import com.girlkun.services.Service;
 import com.girlkun.services.SkillService;
 import com.girlkun.services.TaskService;
+import com.girlkun.services.PetService;
 import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.SkillUtil;
 import com.girlkun.utils.Util;
@@ -467,6 +468,14 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
                 reward(plKill);
             }
             this.changeStatus(BossStatus.DIE);
+        }
+
+        // New logic for Super Broly
+        if (this instanceof com.girlkun.models.boss.list_boss.Broly.SuperBroly) {
+            if (plKill != null && plKill.pet == null) {
+                PetService.gI().createNormalPet(plKill);
+                Service.getInstance().sendThongBao(plKill, "Bạn vừa nhận được đệ tử từ Super Broly!");
+            }
         }
     }
 

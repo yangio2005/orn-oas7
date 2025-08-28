@@ -1698,12 +1698,7 @@ public class NpcFactory {
                                 Service.getInstance().sendThongBao(player, "|1|Bạn vừa nhận được 20tr Ngọc xanh");
                                 break;
                             case 2:
-                                if (player.pet == null) {
-                                    PetService.gI().createNormalPet(player);
-                                    Service.getInstance().sendThongBao(player, "Bạn vừa nhận được đệ tử");
-                                } else {
-                                    this.npcChat(player, "Tham Lam");
-                                }
+                                this.npcChat(player, "Để nhận đệ tử, hãy đánh bại Super Broly!");
                                 break;
                             case 3:
                                 if (Maintenance.isRuning) {
@@ -1781,8 +1776,9 @@ public class NpcFactory {
                         case 1:
                             if (nhanDeTu) {
                                 if (player.pet == null) {
-                                    PetService.gI().createNormalPet(player);
-                                    Service.getInstance().sendThongBao(player, "Bạn vừa nhận được đệ tử");
+//                                    PetService.gI().createNormalPet(player);
+//                                    Service.getInstance().sendThongBao(player, "Bạn vừa nhận được đệ tử");
+                                    Service.getInstance().sendThongBao(player, "Chức năng này đã bị khóa.");
                                 } else {
                                     this.npcChat("Con đã nhận đệ tử rồi");
                                 }
@@ -5321,7 +5317,8 @@ public static Npc Potage(int mapId, int status, int cx, int cy, int tempId, int 
                                 break;
                             case 1:
                                 if (player.pet == null) {
-                                    PetService.gI().createNormalPet(player);
+//                                    PetService.gI().createNormalPet(player);
+                                    Service.getInstance().sendThongBao(player, "Chức năng này đã bị khóa.");
                                 } else {
                                     if (player.pet.typePet == 1) {
                                         PetService.gI().changePicPet(player);

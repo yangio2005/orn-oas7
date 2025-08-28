@@ -2436,17 +2436,17 @@ public class CombineServiceNew {
             case 1:
                 return 80;
             case 2:
-                return 50;
+                return 100;
             case 3:
-                return 40;
+                return 100;
             case 4:
-                return 20;
+                return 100;
             case 5:
-                return 10;
+                return 100;
             case 6:
-                return 4;
+                return 100;
             case 7:
-                return 2;
+                return 100;
 //            case 8:
 //                return 40;
 //            case 9:
