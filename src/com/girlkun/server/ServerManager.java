@@ -5,6 +5,7 @@ import com.girlkun.database.GirlkunDB;
 import java.net.ServerSocket;
 
 import com.girlkun.jdbc.daos.HistoryTransactionDAO;
+import com.girlkun.jdbc.daos.PanelSettingDAO;
 import com.girlkun.models.boss.BossManager;
 import com.girlkun.models.item.Item;
 import com.girlkun.models.matches.pvp.DaiHoiVoThuat;
@@ -28,6 +29,7 @@ import com.girlkun.services.func.TopService;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
+import com.girlkun.server.websocket.BossNotificationWebSocketServer; // Thêm dòng này
 
 import java.util.*;
 import java.util.logging.Level;
@@ -61,6 +63,19 @@ public class ServerManager {
         } catch (Exception e) {
         }
         HistoryTransactionDAO.deleteHistory();
+        // Load server settings from DB
+        Manager.serverSettings = PanelSettingDAO.loadAllSettings();
+
+        // Apply loaded settings to Manager's static fields
+        String expRate = Manager.serverSettings.get("RATE_EXP_SERVER");
+        if (expRate != null) {
+            try {
+                Manager.RATE_EXP_SERVER = Byte.parseByte(expRate);
+                Logger.success("Loaded RATE_EXP_SERVER from DB: " + Manager.RATE_EXP_SERVER + "\n");
+            } catch (NumberFormatException e) {
+                Logger.logException(ServerManager.class, e, "Invalid RATE_EXP_SERVER value in DB: " + expRate);
+            }
+        }
     }
 
     public static ServerManager gI() {
@@ -126,11 +141,17 @@ public class ServerManager {
             Thread.sleep(1000);
             BossManager.gI().loadBoss();
             Manager.MAPS.forEach(com.girlkun.models.map.Map::initBoss);
+            // Khởi động WebSocket Server
+            int websocketPort = 8887; // Chọn một cổng khác với cổng game của bạn
+            BossNotificationWebSocketServer wsServer = BossNotificationWebSocketServer.getInstance(websocketPort);
+            wsServer.start();
+            System.out.println("Đã khởi động WebSocket Server trên cổng " + websocketPort);
         } catch (InterruptedException ex) {
             java.util.logging.Logger.getLogger(BossManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+
 
     private void act() throws Exception {
         GirlkunServer.gI().init().setAcceptHandler(new ISessionAcceptHandler() {

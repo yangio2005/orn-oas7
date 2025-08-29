@@ -145,11 +145,7 @@ public class MiNuong extends Boss {
 
     @Override
     public void joinMap() {
-        if (zoneFinal != null) {
-            joinMapByZone(zoneFinal);
-            this.notifyJoinMap();
-            return;
-        }
+        
         if (this.zone == null) {
             if (this.parentBoss != null) {
                 this.zone = parentBoss.zone;

@@ -558,12 +558,12 @@ public class Zone {
 //        Service.gI().sendFlagPlayerToMe(plInfo, plReceive);
         if (!plInfo.isBoss && !plInfo.isPet &&!plInfo.isNewPet &&!plInfo.isTrieuhoipet && !(plInfo instanceof BossDHVT) && !(plInfo instanceof Referee) & !(plInfo instanceof Referee1) & !(plInfo instanceof TestDame)) {
             Service.getInstance().sendPetFollowToMe(plReceive, plInfo);
-            if (plInfo.inventory.itemsBody.get(11).isNotNullItem()) {
+            if (plInfo.inventory.itemsBody.size() > 11 && plInfo.inventory.itemsBody.get(11).isNotNullItem()) {
                 Service.getInstance().sendFootRv(plInfo, plReceive, (short) plInfo.inventory.itemsBody.get(11).template.id);
             }
         }
         if (plInfo.isPl() && plInfo.name.compareTo("TABI") != 0 && plInfo.name.compareTo("TEST DAME") != 0) {
-        if (plInfo.inventory.itemsBody.get(5).isNotNullItem()) {
+        if (plInfo.inventory.itemsBody.size() > 5 && plInfo.inventory.itemsBody.get(5).isNotNullItem()) {
                 Service.getInstance().sendTitleRv(plInfo, plReceive, (short) plInfo.inventory.itemsBody.get(5).template.id);
             }
         }

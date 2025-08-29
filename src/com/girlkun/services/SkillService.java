@@ -920,6 +920,7 @@ public class SkillService {
         }
         } catch (Exception e) {
             System.err.println("   loi skillalone");
+            e.printStackTrace();
         }
     }
 

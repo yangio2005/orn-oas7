@@ -31,8 +31,8 @@ public class RobotVeSi extends Boss {
         super(id, new BossData(
                 "RoBot Vệ Sĩ", //name
                 ConstPlayer.TRAI_DAT, //gender
-                new short[]{138, 139, 140, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-                ((hp/5)), //dame
+                                new short[]{138, 139, 140, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+                (int) ((hp/5)), //dame
                 new double[]{((dame * 400 ))}, //hp
                 new int[]{57}, //map join
                 new int[][]{

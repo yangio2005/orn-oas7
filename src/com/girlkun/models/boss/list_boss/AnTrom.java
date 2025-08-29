@@ -50,7 +50,7 @@ public class AnTrom extends Boss {
 
     @Override
     public Zone getMapJoin() {
-        int mapId = this.data[this.currentLevel].getMapJoin()[Util.nextInt(0, this.data[this.currentLevel].getMapJoin().length - 1)];
+        int mapId = this.data[this.currentLevel].mapJoin[Util.nextInt(0, this.data[this.currentLevel].mapJoin.length - 1)];
         return MapService.gI().getMapById(mapId).zones.get(0);
     }
 
@@ -153,7 +153,7 @@ public class AnTrom extends Boss {
 //                    System.err.println("Ăn Trộm Đã Tìm Thấy: " + this.zone.getPlayers().size() + " Player");
                         ChangeMapService.gI().spaceShipArrive(this, (byte) 2, ChangeMapService.DEFAULT_SPACE_SHIP);
                         ChangeMapService.gI().exitMap(this);
-                        this.zoneFinal = null;
+                        
                         this.lastZone = null;
                         this.zone = ramdonPlayer.zone;
                         this.location.x = Util.nextInt(100, zone.map.mapWidth - 100);

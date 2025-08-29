@@ -23,7 +23,7 @@ public class TrungUyTrang extends Boss {
                 "Trung Uý Trắng", //name
                 ConstPlayer.TRAI_DAT, //gender
                 new short[]{141, 142, 143, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-                ((hp / 10)), //dame
+                (int) (hp / 10), //dame
                 new double[]{((200 * dame))}, //hp
                 new int[]{62}, //map join
                 new int[][]{
@@ -140,7 +140,7 @@ public class TrungUyTrang extends Boss {
             this.playerTarger = null;
             this.bossAppearTogether = null;
             this.parentBoss = null;
-            this.zoneFinal = null;
+
             this.dispose();
         }
     }

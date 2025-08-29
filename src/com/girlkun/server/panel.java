@@ -1,5 +1,6 @@
 package com.girlkun.server;
 
+import com.girlkun.jdbc.daos.PanelSettingDAO;
 import com.girlkun.server.Maintenance;
 import com.girlkun.server.Manager;
 import com.girlkun.services.Service;
@@ -19,6 +20,8 @@ import java.util.logging.Level;
 public class panel extends JPanel implements ActionListener {
 
     private JButton baotri, thaydoiexp, thaydoisk, chatserver, kickplayer, doitien;
+    private JTextField bossSpawnTimeField;
+    private JButton saveBossSpawnTimeButton;
 
     public panel() {
         setLayout(new GridBagLayout());
@@ -58,6 +61,32 @@ public class panel extends JPanel implements ActionListener {
         gbc.gridx = 1;
         gbc.gridy = 2;
         add(doitien, gbc);
+
+        // New elements for Boss Spawn Time
+        JLabel bossSpawnTimeLabel = new JLabel("Thời gian Boss Spawn (giây):");
+        bossSpawnTimeLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        bossSpawnTimeLabel.setForeground(Color.CYAN);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 1; // Reset gridwidth
+        add(bossSpawnTimeLabel, gbc);
+
+        bossSpawnTimeField = new JTextField(10);
+        bossSpawnTimeField.setFont(new Font("Arial", Font.PLAIN, 14));
+        bossSpawnTimeField.setBackground(Color.DARK_GRAY);
+        bossSpawnTimeField.setForeground(Color.GREEN);
+        // Load initial value from settings
+        String currentBossSpawnTime = Manager.serverSettings.getOrDefault("BOSS_SPAWN_TIME", "300"); // Default to 300 seconds (5 minutes)
+        bossSpawnTimeField.setText(currentBossSpawnTime);
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        add(bossSpawnTimeField, gbc);
+
+        saveBossSpawnTimeButton = createButton("Lưu thời gian Boss Spawn");
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 2; // Span across two columns
+        add(saveBossSpawnTimeButton, gbc);
     }
 
     private JButton createButton(String text) {
@@ -76,11 +105,19 @@ public class panel extends JPanel implements ActionListener {
             Maintenance.gI().start(30);
             Logger.error("Tiến Hành Bảo Trì !\n");
         } else if (e.getSource() == thaydoiexp) {
-            String exp = JOptionPane.showInputDialog(this, "Bảng Exp Server\n"
+            String exp = JOptionPane.showInputDialog(this, "Bảng Exp Server\n" 
                     + "Exp Server hiện tại: " + Manager.RATE_EXP_SERVER);
             if (exp != null) {
-                Manager.RATE_EXP_SERVER = Byte.parseByte(exp);
-                Logger.error("Exp hiện tại là: " + exp + "\n");
+                try {
+                    byte newExpRate = Byte.parseByte(exp);
+                    Manager.RATE_EXP_SERVER = newExpRate;
+                    // Save to DB
+                    PanelSettingDAO.saveSetting("RATE_EXP_SERVER", String.valueOf(newExpRate), "Tỷ lệ EXP Server");
+                    JOptionPane.showMessageDialog(this, "Đã lưu tỷ lệ EXP Server thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    Logger.error("Exp hiện tại là: " + newExpRate + "\n");
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Tỷ lệ EXP không hợp lệ! Vui lòng nhập số.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } else if (e.getSource() == thaydoisk) {
             String sk = JOptionPane.showInputDialog(this, "Bảng Sự Kiện\n"
@@ -118,11 +155,25 @@ public class panel extends JPanel implements ActionListener {
                 Client.gI().close();
             }).start();
         } else if (e.getSource() == doitien) {
-            String naptien = JOptionPane.showInputDialog(this, "Giá trị quy đổi Vàng và Ngọc\n"
-                    + "Hiện tại:  x" + Manager.KHUYEN_MAI_NAP + " Đổi tiền");
+            String naptien = JOptionPane.showInputDialog(this, "Giá trị quy đổi Vàng và Ngọc\n" + "Hiện tại:  x" + Manager.KHUYEN_MAI_NAP + " Đổi tiền");
             if (naptien != null) {
                 Manager.KHUYEN_MAI_NAP = Byte.parseByte(naptien);
                 Logger.error("Giá trị Khuyến mãi hiện tại là: " + naptien + "\n");
+            }
+        } else if (e.getSource() == saveBossSpawnTimeButton) {
+            String newSpawnTime = bossSpawnTimeField.getText();
+            try {
+                int spawnTime = Integer.parseInt(newSpawnTime);
+                if (spawnTime <= 0) {
+                    JOptionPane.showMessageDialog(this, "Thời gian spawn phải lớn hơn 0!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                Manager.serverSettings.put("BOSS_SPAWN_TIME", newSpawnTime);
+                PanelSettingDAO.saveSetting("BOSS_SPAWN_TIME", newSpawnTime, "Thời gian boss spawn (giây)");
+                JOptionPane.showMessageDialog(this, "Đã lưu thời gian boss spawn thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                Logger.error("Thời gian Boss Spawn đã được cập nhật thành: " + newSpawnTime + " giây\n");
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Thời gian spawn không hợp lệ! Vui lòng nhập số.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

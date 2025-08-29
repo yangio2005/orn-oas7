@@ -49,6 +49,9 @@ public class Inventory {
     }
     
     public boolean haveOption(List<Item> l , int index , int id){
+        if (l == null || index < 0 || index >= l.size()) {
+            return false;
+        }
         Item it = l.get(index);
         if(it != null && it.isNotNullItem()){
             return it.itemOptions.stream().anyMatch(op -> op != null && op.optionTemplate.id == id);

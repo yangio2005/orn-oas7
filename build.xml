@@ -69,5 +69,14 @@
     properties which you can use, check the target you are overriding in the
     nbproject/build-impl.xml file. 
 
-    -->
+    <path id="lombok.classpath">
+        <fileset dir="C:/Users/aczaa/Downloads/vps/VIP/NRO TABI/lib" includes="lombok.jar"/>
+    </path>
+
+    <target name="-pre-compile">
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" classpathref="project.classpath">
+            <compilerarg line="-processorpath ${lombok.classpath}"/>
+            <compilerarg value="-Xbootclasspath/p:${lombok.classpath}"/>
+        </javac>
+    </target>
 </project>

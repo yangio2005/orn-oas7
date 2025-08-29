@@ -13,6 +13,8 @@ import com.girlkun.utils.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +22,7 @@ import java.util.List;
  */
 public class NgocRongNamecService implements Runnable{
     private static NgocRongNamecService instance;
+    private static final Logger LOGGER = Logger.getLogger(NgocRongNamecService.class.getName());
 
     public static NgocRongNamecService gI() {
         if (instance == null) {
@@ -46,6 +49,8 @@ public class NgocRongNamecService implements Runnable{
     public static final byte TIME_DL_MIN = 0;
     public static final byte TIME_DL_SECOND = 1;
     private int day = -1;
+    public static final byte DRAGON_BALL_COUNT = 7;
+    private static final Integer[] STT_MAP = {8,9,11,12,13,31,32,33,34};
     
         public void setTimeopenNRNM() {
         if (NgocRongNamecService.instance.day == -1 || NgocRongNamecService.instance.day != TimeUtil.getCurrDay()) {
@@ -55,26 +60,28 @@ public class NgocRongNamecService implements Runnable{
                 TIME_BL = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + TIME_BL_HOUR + ":" + TIME_BL_MIN + ":" + TIME_BL_SECOND, "dd/MM/yyyy HH:mm:ss");
                 TIME_DELAY = TimeUtil.getTime(TimeUtil.getTimeNow("dd/MM/yyyy") + " " + TIME_DL_HOUR + ":" + TIME_DL_MIN + ":" + TIME_DL_SECOND, "dd/MM/yyyy HH:mm:ss");
 
-            } catch (Exception ignored) {
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, null, e);
             }
         }
     }
     
-    public int mapNrNamec[] = {-1,-1,-1,-1,-1,-1,-1};
-    public String nameNrNamec[] = {"","","","","","",""};
-    public byte zoneNrNamec[] = {-1,-1,-1,-1,-1,-1,-1};
-    public String pNrNamec[] = {"","","","","","",""};
-    public int idpNrNamec[] = {-1,-1,-1,-1,-1,-1,-1};
+    public int[] mapNrNamec = {-1,-1,-1,-1,-1,-1,-1};
+    public String[] nameNrNamec = {"","","","","","",""};
+    public byte[] zoneNrNamec = {-1,-1,-1,-1,-1,-1,-1};
+    public String[] pNrNamec = {"","","","","","",""};
+    public int[] idpNrNamec = {-1,-1,-1,-1,-1,-1,-1};
     public long timeNrNamec = 0;
     public boolean firstNrNamec = true;
-    public long tOpenNrNamec = 0;
+    
     public long lastTimeReinit;
     public boolean isReinit;
+    
     public void initNgocRongNamec(byte type) { //type 0:INIT NGOC RONG, type 1: INIT HOA THACH NGOC RONG
         ArrayList<Integer> listMap = new ArrayList<>();
         listMap.add(8);listMap.add(9);listMap.add(10);listMap.add(11);listMap.add(12);
         listMap.add(13);listMap.add(31);listMap.add(32);listMap.add(33);listMap.add(34);
-        for(byte i = 0; i < (byte)7; i++) {
+        for(byte i = 0; i < DRAGON_BALL_COUNT; i++) {
             int index = Util.nextInt(0, listMap.size() - 1);
             int idZone = Util.nextInt(0, Manager.MAPS.get(listMap.get(index)).zones.size() - 1);
             mapNrNamec[i] = listMap.get(index);
@@ -83,7 +90,7 @@ public class NgocRongNamecService implements Runnable{
             Zone zone = Manager.MAPS.get(listMap.get(index)).zones.get(idZone);
             int x = 0;
             int y = 0;
-            if(null != listMap.get(index)) switch (listMap.get(index)) {
+            switch (listMap.get(index)) {
                 case 8:
                     x = (short)553;
                     y = (short)288;
@@ -124,17 +131,14 @@ public class NgocRongNamecService implements Runnable{
                     x = (short)643;
                     y = (short)432;
                     break;
-                case 7:
-                    x = (short)643;
-                    y = (short)432;
-                    break;
+                
                 default:
                     break;
             }
             if(type == (byte)0) {
                 ItemMap itemMap = new ItemMap(zone, i + 353, 1, x, y, -1);
                 Service.getInstance().dropItemMap(zone, itemMap);
-                System.out.println(itemMap.itemTemplate.name+"[" + zone.map.mapId+ "-" + zone.zoneId+"]");
+                
             } else {
                 ItemMap itemMap = new ItemMap(zone, 362, 1, x, y, -1);
                 Service.getInstance().dropItemMap(zone, itemMap);
@@ -144,10 +148,10 @@ public class NgocRongNamecService implements Runnable{
     }
     
     public void removeStoneNrNamec() {
-        for(byte i = 0; i < (byte)7; i++) {
+        for(byte i = 0; i < DRAGON_BALL_COUNT; i++) {
             Zone zone = Manager.MAPS.get(mapNrNamec[i]).zones.get(zoneNrNamec[i]);
-            int idItem = (int)(i + 353);
-            for(byte j = 0; j < zone.items.size(); j++) {
+            int idItem = i + 353;
+            for(int j = zone.items.size() - 1; j >= 0; j--) {
                 if(zone.items.get(j).itemTemplate.id == idItem) {
                     ItemMapService.gI().removeItemMap(zone.items.remove(j));
                 }
@@ -156,7 +160,7 @@ public class NgocRongNamecService implements Runnable{
     }
     
     public void doneDragonNamec() {
-        for(int i = 0; i < 7; i++) {
+        for(int i = 0; i < DRAGON_BALL_COUNT; i++) {
             Player p = Client.gI().getPlayer(idpNrNamec[i]);
             if(p != null) {
                 p.idNRNM = -1;
@@ -174,7 +178,7 @@ public class NgocRongNamecService implements Runnable{
     }
     
     public boolean isSameMapNrNamec() {
-        return (mapNrNamec[0] == 7) && (mapNrNamec[1] == 7) && (mapNrNamec[2] == 7) && (mapNrNamec[3] == 7) && (mapNrNamec[4] == 7) && (mapNrNamec[5] == 7) && (mapNrNamec[6] == 7); 
+        return (mapNrNamec[0] == DRAGON_BALL_COUNT) && (mapNrNamec[1] == DRAGON_BALL_COUNT) && (mapNrNamec[2] == DRAGON_BALL_COUNT) && (mapNrNamec[3] == DRAGON_BALL_COUNT) && (mapNrNamec[4] == DRAGON_BALL_COUNT) && (mapNrNamec[5] == DRAGON_BALL_COUNT) && (mapNrNamec[6] == DRAGON_BALL_COUNT); 
     }
     public boolean isSameZoneNrNamec() {
         return (zoneNrNamec[0] == zoneNrNamec[1]) && (zoneNrNamec[2] == zoneNrNamec[0]) && (zoneNrNamec[3] == zoneNrNamec[0]) && (zoneNrNamec[4] == zoneNrNamec[0]) && (zoneNrNamec[5] == zoneNrNamec[0]) && (zoneNrNamec[6] == zoneNrNamec[0]); 
@@ -191,7 +195,7 @@ public class NgocRongNamecService implements Runnable{
                         }
                     }
                 }
-                if(count == (byte)7) {
+                if(count == DRAGON_BALL_COUNT) {
                     return true;
                 }
             }
@@ -217,7 +221,7 @@ public class NgocRongNamecService implements Runnable{
         try{
             int idMAP = mapNrNamec[id];
             int idZone = zoneNrNamec[id];
-            Integer[] sttMap = {8,9,11,12,13,31,32,33,34};
+            Integer[] sttMap = STT_MAP;
             Zone z = Manager.MAPS.get(idMAP).zones.get(idZone);
             if(z != null && !z.items.isEmpty()){
                 ItemMap it = z.getItemMapByTempId(temp);
@@ -242,12 +246,13 @@ public class NgocRongNamecService implements Runnable{
                 }
             }
         }catch(Exception e){
+            LOGGER.log(Level.SEVERE, null, e);
         }
         return "?";
     }
     
     public byte findIndex(int id){
-        Integer[] sttMap = {8,9,11,12,13,31,32,33,34};
+        Integer[] sttMap = STT_MAP;
         for(byte i = 0 ; i < sttMap.length;i++){
             if(sttMap[i] == id){
                 return i;
@@ -258,7 +263,7 @@ public class NgocRongNamecService implements Runnable{
     
     public List<Integer> findIndex(int start,int stop){
         List<Integer> a = new ArrayList<>();
-        Integer[] sttMap = {8,9,11,12,13,31,32,33,34};
+        Integer[] sttMap = STT_MAP;
         if(start < stop){
             for(int i = start ; i < stop ;i++){
                 a.add(sttMap[i]);
@@ -282,6 +287,7 @@ public class NgocRongNamecService implements Runnable{
                 }
                 Thread.sleep(500);
             }catch(Exception e){
+                LOGGER.log(Level.SEVERE, null, e);
             }
         }
     }

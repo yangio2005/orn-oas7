@@ -21,7 +21,7 @@ public class TrungUyXanhLo extends Boss {
                 "Trung Uý Xanh Lơ", //name
                 ConstPlayer.TRAI_DAT, //gender
                 new short[]{135, 136, 137, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-                ((hp/8 )), //dame
+                ((int) (hp/8 )), //dame
                 new double[]{((dame * 250 ))}, //hp
                 new int[]{62}, //map join
                 new int[][]{

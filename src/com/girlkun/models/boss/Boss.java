@@ -21,57 +21,53 @@ import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.SkillUtil;
 import com.girlkun.utils.Util;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Boss extends Player implements IBossNew, IBossOutfit {
 
-    public int currentLevel = -1;
+    private static final Logger LOGGER = Logger.getLogger(Boss.class.getName());
+
     public final BossData[] data;
-
+    public int currentLevel;
     public BossStatus bossStatus;
-
-    protected Zone lastZone;
-
-    protected long lastTimeRest;
-    protected int secondsRest;
-
-    public int mapHoTong;
-
     protected long lastTimeChatS;
     protected int timeChatS;
-    protected byte indexChatS;
-
-    protected long lastTimeChatE;
-    protected int timeChatE;
-    protected byte indexChatE;
-
+    protected int indexChatS;
     protected long lastTimeChatM;
     protected int timeChatM;
-
+    protected int indexChatM;
+    protected long lastTimeChatE;
+    protected int timeChatE;
+    protected int indexChatE;
+    protected long lastTimeRest;
     protected long lastTimeTargetPlayer;
     protected int timeTargetPlayer;
-    public Player playerTarger;
-
+    protected Player playerTarger;
+    protected Zone lastZone;
     protected Boss parentBoss;
     public Boss[][] bossAppearTogether;
 
-    public Zone zoneFinal = null;
+    private long lastTimeRespawnNotify;
+    private boolean preSpawnNotified;
+    private static final long RESPAWN_NOTIFY_INTERVAL = 60 * 1000; // 1 minute
+    private static final long INITIAL_NOTIFY_THRESHOLD = 5 * 60 * 1000; // 5 minutes
 
     public Boss(int id, BossData... data) throws Exception {
-        this.id = id;
-        this.isBoss = true;
+        super();
         if (data == null || data.length == 0) {
             throw new Exception("Dữ liệu boss không hợp lệ");
         }
         this.data = data;
-        this.secondsRest = this.data[0].getSecondsRest();
+        this.currentLevel = 0;
         this.bossStatus = BossStatus.REST;
         BossManager.gI().addBoss(this);
-
         this.bossAppearTogether = new Boss[this.data.length][];
         for (int i = 0; i < this.bossAppearTogether.length; i++) {
-            if (this.data[i].getBossesAppearTogether() != null) {
-                this.bossAppearTogether[i] = new Boss[this.data[i].getBossesAppearTogether().length];
-                for (int j = 0; j < this.data[i].getBossesAppearTogether().length; j++) {
-                    Boss boss = BossManager.gI().createBoss(this.data[i].getBossesAppearTogether()[j]);
+            if (this.data[i].bossJoinMapTogether != null) {
+                this.bossAppearTogether[i] = new Boss[this.data[i].bossJoinMapTogether.length];
+                for (int j = 0; j < this.data[i].bossJoinMapTogether.length; j++) {
+                    Boss boss = BossManager.gI().createBoss(this.data[i].bossJoinMapTogether[j]);
                     if (boss != null) {
                         boss.parentBoss = this;
                         this.bossAppearTogether[i][j] = boss;
@@ -79,16 +75,17 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
                 }
             }
         }
+        this.preSpawnNotified = false; // Initialize to false
     }
 
     @Override
     public void initBase() {
         BossData data = this.data[this.currentLevel];
-        this.name = String.format(data.getName(), Util.nextInt(0, 100));
-        this.gender = data.getGender();
+        this.name = data.name + " " + Util.nextInt(0, 100);
+        this.gender = data.gender;
         this.nPoint.mpg = 7_5_2002;
-        this.nPoint.dameg = (long) data.getDame();
-        this.nPoint.hpg = (long) data.getHp()[Util.nextInt(0, data.getHp().length - 1)];
+        this.nPoint.dameg = (long) data.dame;
+        this.nPoint.hpg = (long) data.hp[Util.nextInt(0, data.hp.length - 1)];
         this.nPoint.hp = nPoint.hpg;
         this.nPoint.calPoint();
         this.initSkill();
@@ -101,7 +98,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         }
         this.playerSkill.skills.clear();
         this.playerSkill.skillSelect = null;
-        int[][] skillTemp = data[this.currentLevel].getSkillTemp();
+        int[][] skillTemp = data[this.currentLevel].skill;
         for (int i = 0; i < skillTemp.length; i++) {
             Skill skill = SkillUtil.createSkill(skillTemp[i][0], skillTemp[i][1]);
             if (skillTemp[i].length == 3) {
@@ -126,7 +123,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         if (effectSkill != null && effectSkill.isMonkey) {
             return (short) ConstPlayer.HEADMONKEY[effectSkill.levelMonkey - 1];
         }
-        return this.data[this.currentLevel].getOutfit()[0];
+        return this.data[this.currentLevel].outfit[0];
     }
 
     @Override
@@ -134,7 +131,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         if (effectSkill != null && effectSkill.isMonkey) {
             return 193;
         }
-        return this.data[this.currentLevel].getOutfit()[1];
+        return this.data[this.currentLevel].outfit[1];
     }
 
     @Override
@@ -142,27 +139,27 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         if (effectSkill != null && effectSkill.isMonkey) {
             return 194;
         }
-        return this.data[this.currentLevel].getOutfit()[2];
+        return this.data[this.currentLevel].outfit[2];
 
     }
 
     @Override
     public short getFlagBag() {
-        return this.data[this.currentLevel].getOutfit()[3];
+        return this.data[this.currentLevel].outfit[3];
     }
 
     @Override
     public byte getAura() {
-        return (byte) this.data[this.currentLevel].getOutfit()[4];
+        return (byte) this.data[this.currentLevel].outfit[4];
     }
 
     @Override
     public byte getEffFront() {
-        return (byte) this.data[this.currentLevel].getOutfit()[5];
+        return (byte) this.data[this.currentLevel].outfit[5];
     }
 
     public Zone getMapJoin() {
-        int mapId = this.data[this.currentLevel].getMapJoin()[Util.nextInt(0, this.data[this.currentLevel].getMapJoin().length - 1)];
+        int mapId = this.data[this.currentLevel].mapJoin[Util.nextInt(0, this.data[this.currentLevel].mapJoin.length - 1)];
         Zone map = MapService.gI().getMapWithRandZone(mapId);
         //to do: check boss in map
 
@@ -198,6 +195,15 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         return this.playerTarger;
     }
 
+    public void setPlayerTarger(Player playerTarger) {
+        this.playerTarger = playerTarger;
+    }
+
+    @Override
+    public boolean isAdmin() {
+        return false;
+    }
+
     @Override
     public void changeToTypePK() {
         PlayerService.gI().changeAndSendTypePK(this, ConstPlayer.PK_ALL);
@@ -221,8 +227,30 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
                 this.rest();
                 break;
             case RESPAWN:
-                this.respawn();
-                this.changeStatus(BossStatus.JOIN_MAP);
+                long timeSinceRest = System.currentTimeMillis() - this.lastTimeRest;
+                long totalRestTime = (long) this.data[this.currentLevel].secondsRest * 1000;
+                long remainingRespawnTime = totalRestTime - timeSinceRest;
+
+                if (remainingRespawnTime > 0) {
+                    if (!this.preSpawnNotified && remainingRespawnTime <= INITIAL_NOTIFY_THRESHOLD) {
+                        // Initial notification (e.g., 5 minutes before)
+                        int minutes = (int) Math.ceil((double) remainingRespawnTime / (60 * 1000));
+                        ServerNotify.gI().notify("BOSS " + this.name + " sẽ xuất hiện trong " + minutes + " phút tại " + this.zone.map.mapName + " khu " + this.zone.zoneId);
+                        this.preSpawnNotified = true;
+                        this.lastTimeRespawnNotify = System.currentTimeMillis();
+                    } else if (this.preSpawnNotified && Util.canDoWithTime(this.lastTimeRespawnNotify, RESPAWN_NOTIFY_INTERVAL)) {
+                        // Periodic notifications
+                        int minutes = (int) Math.ceil((double) remainingRespawnTime / (60 * 1000));
+                        if (minutes > 0) { // Only send if there's still time remaining
+                            ServerNotify.gI().notify("BOSS " + this.name + " sẽ xuất hiện trong " + minutes + " phút tại " + this.zone.map.mapName + " khu " + this.zone.zoneId);
+                        }
+                        this.lastTimeRespawnNotify = System.currentTimeMillis();
+                    }
+                } else {
+                    // Respawn is complete, proceed to join map
+                    this.respawn();
+                    this.changeStatus(BossStatus.JOIN_MAP);
+                }
                 break;
             case JOIN_MAP:
                 this.joinMap();
@@ -265,8 +293,8 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         if (nextLevel >= this.data.length) {
             nextLevel = 0;
         }
-        if (this.data[nextLevel].getTypeAppear() == TypeAppear.DEFAULT_APPEAR
-                && Util.canDoWithTime(lastTimeRest, secondsRest * 1000)) {
+        if (this.data[nextLevel].typeAppear == (byte) TypeAppear.DEFAULT_APPEAR.ordinal()
+                && Util.canDoWithTime(lastTimeRest, (long) this.data[this.currentLevel].secondsRest * 1000)) {
             this.changeStatus(BossStatus.RESPAWN);
         }
     }
@@ -283,11 +311,6 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
 
     @Override
     public void joinMap() {
-        if (zoneFinal != null) {
-            joinMapByZone(zoneFinal);
-            this.notifyJoinMap();
-            return;
-        }
         if (this.zone == null) {
             if (this.parentBoss != null) {
                 this.zone = parentBoss.zone;
@@ -340,16 +363,16 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
                 || this instanceof AnTrom) {
             return;
         }
-        ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName);
+        ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName + " khu " + this.zone.zoneId);
     }
 
     @Override
     public boolean chatS() {
         if (Util.canDoWithTime(lastTimeChatS, timeChatS)) {
-            if (this.indexChatS == this.data[this.currentLevel].getTextS().length) {
+            if (this.indexChatS == this.data[this.currentLevel].textChat1.length) {
                 return true;
             }
-            String textChat = this.data[this.currentLevel].getTextS()[this.indexChatS];
+            String textChat = this.data[this.currentLevel].textChat1[this.indexChatS];
             int prefix = Integer.parseInt(textChat.substring(1, textChat.lastIndexOf("|")));
             textChat = textChat.substring(textChat.lastIndexOf("|") + 1);
             if (!this.chat(prefix, textChat)) {
@@ -375,13 +398,13 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         if (this.typePk == ConstPlayer.NON_PK) {
             return;
         }
-        if (this.data[this.currentLevel].getTextM().length == 0) {
+        if (this.data[this.currentLevel].textChat2.length == 0) {
             return;
         }
         if (!Util.canDoWithTime(this.lastTimeChatM, this.timeChatM)) {
             return;
         }
-        String textChat = this.data[this.currentLevel].getTextM()[Util.nextInt(0, this.data[this.currentLevel].getTextM().length - 1)];
+        String textChat = this.data[this.currentLevel].textChat2[Util.nextInt(0, this.data[this.currentLevel].textChat2.length - 1)];
         int prefix = Integer.parseInt(textChat.substring(1, textChat.lastIndexOf("|")));
         textChat = textChat.substring(textChat.lastIndexOf("|") + 1);
         this.chat(prefix, textChat);
@@ -487,10 +510,10 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     @Override
     public boolean chatE() {
         if (Util.canDoWithTime(lastTimeChatE, timeChatE)) {
-            if (this.indexChatE == this.data[this.currentLevel].getTextE().length) {
+            if (this.indexChatE == this.data[this.currentLevel].textChat3.length) {
                 return true;
             }
-            String textChat = this.data[this.currentLevel].getTextE()[this.indexChatE];
+            String textChat = this.data[this.currentLevel].textChat3[this.indexChatE];
             int prefix = Integer.parseInt(textChat.substring(1, textChat.lastIndexOf("|")));
             textChat = textChat.substring(textChat.lastIndexOf("|") + 1);
             if (!this.chat(prefix, textChat)) {
@@ -529,6 +552,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
             this.lastZone = null;
             this.lastTimeRest = System.currentTimeMillis();
             this.changeStatus(BossStatus.REST);
+            this.preSpawnNotified = false; // Reset for next respawn cycle
         }
         this.wakeupAnotherBossWhenDisappear();
     }
@@ -642,12 +666,12 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
             if (nextLevelBoss >= boss.data.length) {
                 nextLevelBoss = 0;
             }
-            if (boss.data[nextLevelBoss].getTypeAppear() == TypeAppear.CALL_BY_ANOTHER) {
+            if (boss.data[nextLevelBoss].getTypeAppear() == (byte) TypeAppear.CALL_BY_ANOTHER.ordinal()) {
                 if (boss.zone != null) {
                     boss.leaveMap();
                 }
             }
-            if (boss.data[nextLevelBoss].getTypeAppear() == TypeAppear.APPEAR_WITH_ANOTHER) {
+            if (boss.data[nextLevelBoss].getTypeAppear() == (byte) TypeAppear.APPEAR_WITH_ANOTHER.ordinal()) {
                 if (boss.zone != null) {
                     boss.leaveMap();
                 }

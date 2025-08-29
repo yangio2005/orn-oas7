@@ -57,9 +57,11 @@ import com.girlkun.models.boss.list_boss.nappa.*;
 import com.girlkun.models.map.Zone;
 import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
+import com.girlkun.server.Manager;
 import com.girlkun.server.ServerManager;
 import com.girlkun.services.ItemMapService;
 import com.girlkun.services.MapService;
+import com.girlkun.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -324,33 +326,33 @@ public class BossManager implements Runnable {
             msg.writer().writeByte(0);
             msg.writer().writeUTF("Boss");
             msg.writer().writeByte((int) bosses.stream().filter(boss ->
-                    !MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapNhanBan(boss.data[0].getMapJoin()[0])
+                    !MapService.gI().isMapMaBu(boss.data[0].mapJoin[0])
+                    && !MapService.gI().isMapDoanhTrai(boss.data[0].mapJoin[0])
+                    && !MapService.gI().isMapBanDoKhoBau(boss.data[0].mapJoin[0])
+                    && !MapService.gI().isMapKhiGas(boss.data[0].mapJoin[0])
+                    && !MapService.gI().isMapNhanBan(boss.data[0].mapJoin[0])
                     && !(boss instanceof MiNuong)
-                    && !MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])).count());
+                    && !MapService.gI().isMapBlackBallWar(boss.data[0].mapJoin[0])).count());
             for (int i = 0; i < bosses.size(); i++) {
                 Boss boss = this.bosses.get(i);
-                if (MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0]) 
+                if (MapService.gI().isMapMaBu(boss.data[0].mapJoin[0]) 
                         || boss instanceof MiNuong 
-                        || MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])
-                        || MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0]) 
-                        || MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])  
-                        || MapService.gI().isMapNhanBan(boss.data[0].getMapJoin()[0]) 
-                        || MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])) {
+                        || MapService.gI().isMapBlackBallWar(boss.data[0].mapJoin[0])
+                        || MapService.gI().isMapBanDoKhoBau(boss.data[0].mapJoin[0]) 
+                        || MapService.gI().isMapKhiGas(boss.data[0].mapJoin[0])  
+                        || MapService.gI().isMapNhanBan(boss.data[0].mapJoin[0]) 
+                        || MapService.gI().isMapDoanhTrai(boss.data[0].mapJoin[0])) {
                     continue;
                 }
                 msg.writer().writeInt((int) boss.id);
                 msg.writer().writeInt((int) boss.id);
-                msg.writer().writeShort(boss.data[0].getOutfit()[0]);
+                msg.writer().writeShort(boss.data[0].outfit[0]);
                 if (player.getSession().version > 214) {
                     msg.writer().writeShort(-1);
                 }
-                msg.writer().writeShort(boss.data[0].getOutfit()[1]);
-                msg.writer().writeShort(boss.data[0].getOutfit()[2]);
-                msg.writer().writeUTF(boss.data[0].getName());
+                msg.writer().writeShort(boss.data[0].outfit[1]);
+                msg.writer().writeShort(boss.data[0].outfit[2]);
+                msg.writer().writeUTF(boss.data[0].name);
                 if (boss.zone != null) {
                     msg.writer().writeUTF("Sống");
                     msg.writer().writeUTF(boss.zone.map.mapName + "(" + boss.zone.map.mapId + ") khu " + boss.zone.zoneId + "");
@@ -373,37 +375,37 @@ public class BossManager implements Runnable {
             msg = new Message(-96);
             msg.writer().writeByte(0);
             msg.writer().writeUTF("Boss");
-            msg.writer().writeByte((int) bosses.stream().filter(boss -> !MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapTienMon(boss.data[0].getMapJoin()[0])
+            msg.writer().writeByte((int) bosses.stream().filter(boss -> !MapService.gI().isMapMaBu(boss.data[0].mapJoin[0])
+                    && !MapService.gI().isMapDoanhTrai(boss.data[0].mapJoin[0])
+                    && !MapService.gI().isMapTienMon(boss.data[0].mapJoin[0])
                     && !(boss instanceof MiNuong)
                     && !(boss instanceof AnTrom)
-                    && !MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapNhanBan(boss.data[0].getMapJoin()[0])
-                    && !MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])).count());
+                    && !MapService.gI().isMapBanDoKhoBau(boss.data[0].mapJoin[0])
+                    && !MapService.gI().isMapKhiGas(boss.data[0].mapJoin[0])
+                    && !MapService.gI().isMapNhanBan(boss.data[0].mapJoin[0])
+                    && !MapService.gI().isMapBlackBallWar(boss.data[0].mapJoin[0])).count());
             for (int i = 0; i < bosses.size(); i++) {
                 Boss boss = this.bosses.get(i);
-                if (MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0]) 
+                if (MapService.gI().isMapMaBu(boss.data[0].mapJoin[0]) 
                         || boss instanceof MiNuong 
                         || boss instanceof AnTrom 
-                        || MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0]) 
-                        || MapService.gI().isMapDoanhTrai(boss.data[0].getMapJoin()[0]) 
-                        || MapService.gI().isMapBanDoKhoBau(boss.data[0].getMapJoin()[0]) 
-                        || MapService.gI().isMapKhiGas(boss.data[0].getMapJoin()[0])  
-                        || MapService.gI().isMapNhanBan(boss.data[0].getMapJoin()[0]) 
-                        || MapService.gI().isMapTienMon(boss.data[0].getMapJoin()[0])) {
+                        || MapService.gI().isMapBlackBallWar(boss.data[0].mapJoin[0]) 
+                        || MapService.gI().isMapDoanhTrai(boss.data[0].mapJoin[0]) 
+                        || MapService.gI().isMapBanDoKhoBau(boss.data[0].mapJoin[0]) 
+                        || MapService.gI().isMapKhiGas(boss.data[0].mapJoin[0])  
+                        || MapService.gI().isMapNhanBan(boss.data[0].mapJoin[0]) 
+                        || MapService.gI().isMapTienMon(boss.data[0].mapJoin[0])) {
                     continue;
                 }
                 msg.writer().writeInt((int) boss.id);
                 msg.writer().writeInt((int) boss.id);
-                msg.writer().writeShort(boss.data[0].getOutfit()[0]);
+                msg.writer().writeShort(boss.data[0].outfit[0]);
                 if (player.getSession().version > 214) {
                     msg.writer().writeShort(-1);
                 }
-                msg.writer().writeShort(boss.data[0].getOutfit()[1]);
-                msg.writer().writeShort(boss.data[0].getOutfit()[2]);
-                msg.writer().writeUTF(boss.data[0].getName());
+                msg.writer().writeShort(boss.data[0].outfit[1]);
+                msg.writer().writeShort(boss.data[0].outfit[2]);
+                msg.writer().writeUTF(boss.data[0].name);
                 if (boss.zone != null) {
                     msg.writer().writeUTF("Sống");
                     msg.writer().writeUTF("Dịch chuyển");

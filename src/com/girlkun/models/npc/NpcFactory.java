@@ -1371,7 +1371,7 @@ public class NpcFactory {
                                                 "Nhân Bản" + player.name,
                                                 player.gender,
                                                 new short[]{player.getHead(), player.getBody(), player.getLeg(), player.getFlagBag(), player.getAura(), player.getEffFront()},
-                                                player.nPoint.dame,
+                                                (int) player.nPoint.dame,
                                                 new double[]{player.nPoint.hpMax},
                                                 new int[]{140},
                                                 skillTemp,
@@ -3069,7 +3069,7 @@ public static Npc Potage(int mapId, int status, int cx, int cy, int tempId, int 
                                             );
                                             try {
                                                 MiNuong dt = new MiNuong(Util.createIdDuongTank((int) player.id), bossDataClone, player.zone, player.location.x - 20, player.location.y);
-                                                dt.playerTarger = player;
+                                                dt.setPlayerTarger(player);
                                                 int[] mapcuoi = {6, 29, 30, 4, 5, 27, 28};
                                                 dt.mapHoTong = mapcuoi[Util.nextInt(mapcuoi.length)];
                                                 player.haveBeQuynh = true;

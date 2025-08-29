@@ -484,6 +484,9 @@ public class Service {
     }
 
     public void sendPetFollowToMe(Player me, Player pl) {
+        if (pl.inventory.itemsBody.size() <= 10) {
+            return;
+        }
         Item linhThu = pl.inventory.itemsBody.get(10);
         if (!linhThu.isNotNullItem()) {
             return;

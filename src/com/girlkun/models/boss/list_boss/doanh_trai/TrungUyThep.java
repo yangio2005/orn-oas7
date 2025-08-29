@@ -34,7 +34,7 @@ public class TrungUyThep extends Boss {
                 "Trung Uý Thép", //name
                 ConstPlayer.TRAI_DAT, //gender
                 new short[]{129, 130, 131, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
-                ((hp/6 )), //dame
+                (int) ((hp/6 )), //dame
                 new double[]{((dame * 300 ))}, //hp
                 new int[]{55}, //map join
                 new int[][]{
@@ -179,10 +179,3 @@ public class TrungUyThep extends Boss {
     
     
 }
-
-
-
-
-
-
-

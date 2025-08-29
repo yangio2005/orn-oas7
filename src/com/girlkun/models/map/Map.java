@@ -270,7 +270,7 @@ public class Map implements Runnable {
             }
             if (bossId != -1) {
                 Boss boss = BossManager.gI().createBoss(bossId);
-                boss.zoneFinal = zone;
+
                 boss.joinMapByZone(zone);
             }
         }

@@ -1,1 +1,1 @@
-java -jar dist/Arriety.jar
+java -jar out/artifacts/CBRO_jar/CBRO.jar

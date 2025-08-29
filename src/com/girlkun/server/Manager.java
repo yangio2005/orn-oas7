@@ -105,6 +105,7 @@ public class Manager {
     public static final List<String> NOTIFY = new ArrayList<>();
     public static final ArrayList<DaiHoiVoThuat> LIST_DHVT = new ArrayList<>();
     public static final List<Item> RUBY_REWARDS = new ArrayList<>();
+    public static Map<String, String> serverSettings;
     public static final String queryTopSM = "SELECT id, \n"
             + "       CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_point, ',', 2), ',', -1) AS UNSIGNED) AS sm\n"
             + "FROM player WHERE id NOT IN (SELECT id FROM account WHERE is_admin = 1)\n"
@@ -191,6 +192,7 @@ public class Manager {
     }
 
     private Manager() {
+        serverSettings = new HashMap<>();
         try {
             loadProperties();
         } catch (IOException ex) {

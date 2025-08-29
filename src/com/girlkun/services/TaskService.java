@@ -1341,6 +1341,9 @@ public class TaskService {
     }
 
     private boolean isCurrentTask(Player player, int idTaskCustom) {
+        if (player == null || player.playerTask == null || player.playerTask.taskMain == null) {
+            return false;
+        }
         return idTaskCustom == (player.playerTask.taskMain.id << 10) + player.playerTask.taskMain.index << 1;
     }
 

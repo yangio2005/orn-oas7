@@ -5,8 +5,10 @@ import com.girlkun.models.player.GiftcodeViet;
 import com.girlkun.network.io.Message;
 import com.girlkun.services.Service;
 import com.girlkun.utils.Util;
+import com.girlkun.utils.Logger;
 import java.util.ArrayList;
 import java.util.List;
+import com.girlkun.jdbc.daos.BossNotificationDAO;
 
 
 public class ServerNotify extends Thread {
@@ -64,7 +66,7 @@ public class ServerNotify extends Thread {
                     sendThongBaoBenDuoi(notifies.remove(0));
                 }
                 if (Util.canDoWithTime(this.lastTimeGK, 15000)) {
-                    sendThongBaoBenDuoi("Mọi Thông Tin Về Game Liên Hệ Zalo Or Fanpage!!!");
+                    sendThongBaoBenDuoi("Mọi Thông Tin Về GameLiên Hệ Zalo Or Fanpage!!!");
                     this.lastTimeGK = System.currentTimeMillis();
                 }
             } catch (Exception ignored) {
@@ -90,6 +92,64 @@ public class ServerNotify extends Thread {
 
     public void notify(String text) {
         this.notifies.add(text);
+        // Gửi thông báo qua WebSocket
+        // if (BossNotificationWebSocketServer.getInstance(8887) != null) { // Sử dụng cùng cổng đã khởi tạo
+        //     BossNotificationWebSocketServer.getInstance(8887).broadcast(text);
+        // }
+
+        String bossName = "Unknown";
+        String mapName = "Unknown";
+        String status = "UNKNOWN";
+        String details = text; // Store the original message as details
+
+        if (text.contains("sẽ xuất hiện")) {
+            status = "SPAWN_SOON";
+            // Example: "BOSS Broly sẽ xuất hiện trong 5 phút tại Rừng Kame khu 1"
+            try {
+                String[] parts = text.split("sẽ xuất hiện trong");
+                if (parts.length > 0) {
+                    String bossPart = parts[0].replace("BOSS ", "").trim();
+                    bossName = bossPart;
+                }
+                String[] mapParts = text.split("tại ");
+                if (mapParts.length > 1) {
+                    String mapZonePart = mapParts[1].trim();
+                    // "Rừng Kame khu 1" -> "Rừng Kame"
+                    mapName = mapZonePart.substring(0, mapZonePart.lastIndexOf(" khu"));
+                }
+            } catch (Exception e) {
+                Logger.logException(ServerNotify.class, e, "Lỗi phân tích cú pháp thông báo BOSS sẽ xuất hiện");
+            }
+        } else if (text.contains("vừa xuất hiện")) {
+            status = "SPAWNED";
+            // Example: "BOSS Broly vừa xuất hiện tại Rừng Kame khu 1"
+            try {
+                String[] parts = text.split("vừa xuất hiện tại");
+                if (parts.length > 0) {
+                    String bossPart = parts[0].replace("BOSS ", "").trim();
+                    bossName = bossPart;
+                }
+                String mapZonePart = parts[1].trim();
+                mapName = mapZonePart.substring(0, mapZonePart.lastIndexOf(" khu"));
+            } catch (Exception e) {
+                Logger.logException(ServerNotify.class, e, "Lỗi phân tích cú pháp thông báo BOSS vừa xuất hiện");
+            }
+        } else if (text.contains("vừa tiêu diệt được")) {
+            status = "DEFEATED";
+            // Example: "player1 vừa tiêu diệt được Broly, ghê chưa ghê chưa.."
+            try {
+                String[] parts = text.split("vừa tiêu diệt được");
+                if (parts.length > 1) {
+                    String bossPart = parts[1].split(",")[0].trim();
+                    bossName = bossPart;
+                }
+                // Map name is not directly available in this message, so it remains "Unknown"
+            } catch (Exception e) {
+                Logger.logException(ServerNotify.class, e, "Lỗi phân tích cú pháp thông báo BOSS bị tiêu diệt");
+            }
+        }
+
+        BossNotificationDAO.insertBossNotification(bossName, mapName, status, details);
     }
 
     public void sendNotifyTab(Player player) {
