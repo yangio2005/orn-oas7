@@ -1,0 +1,16 @@
+[2026-01-28 03:25:02] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 03:25:03] [ERROR]: Database connection failed:
+[2026-01-28 03:25:53] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 03:25:53] [ERROR]: Database connection failed:
+[2026-01-28 03:26:12] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 03:26:12] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 03:26:12] [INFO]: Server started successfully!
+[2026-01-28 03:26:12] [INFO]: Server is listening on port 14445
+[2026-01-28 03:39:09] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 03:39:09] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 03:39:09] [INFO]: Server started successfully!
+[2026-01-28 03:39:09] [INFO]: Server is listening on port 14445
+[2026-01-28 03:39:23] [INFO]: New connection from ::ffff:127.0.0.1:50351
+[2026-01-28 03:39:48] [INFO]: Session 0 disconnected.
+[2026-01-28 03:39:58] [INFO]: New connection from ::ffff:127.0.0.1:50355
+[2026-01-28 03:40:09] [INFO]: Session 0 disconnected.

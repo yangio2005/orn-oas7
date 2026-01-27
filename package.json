@@ -1,0 +1,33 @@
+{
+  "name": "nro-tabi",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangio2005/orn-oas7.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yangio2005/orn-oas7/issues"
+  },
+  "homepage": "https://github.com/yangio2005/orn-oas7#readme",
+  "dependencies": {
+    "@types/node": "^25.0.10",
+    "dotenv": "^17.2.3",
+    "mysql2": "^3.16.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "winston": "^3.19.0"
+  }
+}
