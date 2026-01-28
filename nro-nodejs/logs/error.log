@@ -2,3 +2,22 @@
 [2026-01-28 03:25:53] [ERROR]: Database connection failed:
 [2026-01-28 03:26:12] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
 [2026-01-28 03:39:09] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 03:51:31] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 03:58:48] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 04:07:26] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 04:07:26] [ERROR]: ✗ Database connection failed:
+[2026-01-28 04:07:26] [ERROR]: ✗ Account query failed:
+[2026-01-28 04:07:26] [ERROR]: ✗ PlayerDAO test failed:
+[2026-01-28 04:18:30] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 04:19:00] [ERROR]: Failed to connect to MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-01-28 04:25:43] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 04:25:43] [ERROR]: Failed to connect to MongoDB: mongodb+srv URI cannot have port number
+[2026-01-28 04:26:21] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 04:41:11] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 05:11:58] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 05:11:58] [ERROR]: ❌ Import failed:
+[2026-01-28 05:12:19] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-28 05:12:19] [ERROR]: ❌ Connection test failed:
+[2026-01-28 05:30:52] [ERROR]: Server error: listen EADDRINUSE: address already in use :::14445
+[2026-01-28 05:32:22] [ERROR]: Server error: listen EADDRINUSE: address already in use :::14445
+[2026-01-28 06:04:07] [ERROR]: Server error: listen EADDRINUSE: address already in use :::14445
