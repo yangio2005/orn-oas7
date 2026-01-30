@@ -42,7 +42,7 @@ export interface NpcPosition {
     status: number;
     x: number;
     y: number;
-    npcId: number; // id from npc_template? Or just npc type
+    npcId: number;
 }
 
 export interface MobTemplate {
@@ -55,4 +55,79 @@ export interface MobTemplate {
     dartType: number;
     percentDame: number;
     percentTiemNang: number;
+}
+
+// Player related interfaces
+export interface Player {
+    id: number;
+    name: string;
+    gender: number;
+    head: number;
+    body: number;
+    leg: number;
+    flagBag: number;
+    x: number;
+    y: number;
+    mapId: number;
+    zoneId: number;
+    typePk: number;
+    status: number; // 0: alive, 1: die
+    nPoint: NPoint;
+    inventory: Inventory;
+    skills: Skill[];
+    taskId: number;
+    clan?: Clan;
+}
+
+export interface NPoint {
+    hp: number;
+    hpMax: number;
+    mp: number;
+    mpMax: number;
+    dame: number;
+    def: number;
+    crit: number;
+    speed: number;
+    power: number;
+    tiemNang: number;
+    stamina: number;
+    maxStamina: number;
+}
+
+export interface Inventory {
+    gold: number;
+    gem: number;
+    ruby: number;
+    itemsBody: Item[];
+    itemsBag: Item[];
+    itemsBox: Item[];
+}
+
+export interface Item {
+    id: number;
+    templateId: number;
+    quantity: number;
+    info: string;
+    content: string;
+    options: ItemOption[];
+}
+
+export interface ItemOption {
+    optionTemplateId: number;
+    param: number;
+}
+
+export interface Skill {
+    templateId: number;
+    point: number;
+    level: number;
+    coolDown: number;
+    lastTimeUseThisSkill: number;
+}
+
+export interface Clan {
+    id: number;
+    name: string;
+    imgId: number;
+    slogan: string;
 }

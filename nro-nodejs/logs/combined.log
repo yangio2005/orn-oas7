@@ -1908,3 +1908,353 @@
 [2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
 [2026-01-30 10:03:26] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
 [2026-01-30 10:03:26] [INFO]: Player admin logged in successfully
+[2026-01-30 10:03:52] [INFO]: Initializing NRO Node.js Server...
+[2026-01-30 10:03:52] [INFO]: Connecting to MySQL...
+[2026-01-30 10:03:53] [INFO]: Connected to MySQL Database successfully.
+[2026-01-30 10:03:53] [INFO]: ✅ MySQL connected successfully
+
+[2026-01-30 10:03:53] [INFO]: Loading game data from files...
+[2026-01-30 10:03:53] [INFO]: 📦 Loading game data...
+
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 10 maps
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-30 10:03:53] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-30 10:03:53] [INFO]: 
+✅ All game data loaded successfully!
+[2026-01-30 10:03:53] [INFO]: 
+📊 Game Data Summary:
+[2026-01-30 10:03:53] [INFO]:    Maps: 10
+[2026-01-30 10:03:53] [INFO]:    NPCs: 31
+[2026-01-30 10:03:53] [INFO]:    Mobs: 80
+[2026-01-30 10:03:53] [INFO]:    Items: 2046
+[2026-01-30 10:03:53] [INFO]:    Classes: 3
+[2026-01-30 10:03:53] [INFO]:    Tasks: 33
+[2026-01-30 10:03:53] [INFO]:    TileSetInfo: Loaded
+[2026-01-30 10:03:53] [INFO]:    ItemBgData: Loaded
+[2026-01-30 10:03:53] [INFO]: 
+✅ Server started successfully!
+[2026-01-30 10:03:53] [INFO]:    MySQL: Connected
+[2026-01-30 10:03:53] [INFO]:    Game Data: Loaded
+[2026-01-30 10:03:53] [INFO]:    Server Port: 14445
+
+[2026-01-30 10:03:53] [INFO]: WebSocket Server is listening on port 14446
+[2026-01-30 10:03:53] [INFO]: TCP Server is listening on port 14445
+[2026-01-30 10:03:53] [INFO]: New WS connection from ::1
+[2026-01-30 10:03:53] [DEBUG]: [NETWORK] Received 4 bytes from ::1
+[2026-01-30 10:03:53] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 4, Hex: e5000101
+[2026-01-30 10:03:53] [DEBUG]: 📨 Received CMD: -27, DataLen: 1
+[2026-01-30 10:03:53] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-30 10:03:53] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-30 10:03:53] [DEBUG]: Sent version res to client
+[2026-01-30 10:03:58] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:03:58] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:03:58] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:03:58] [INFO]: Authenticating user: admin
+[2026-01-30 10:03:58] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:03:58] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:03:58] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:03:58] [INFO]: ✅ Initialized 9 maps
+[2026-01-30 10:03:58] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:03:58] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:03:58] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:03:58] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:03:58] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:03:58] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:03:58] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:03:58] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:03:58] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:03:58] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:03:58] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:03:58] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:03:58] [INFO]: Player admin logged in successfully
+[2026-01-30 10:04:02] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:04:02] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:04:02] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:04:02] [INFO]: Authenticating user: admin
+[2026-01-30 10:04:02] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:04:02] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:04:02] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:04:02] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:04:02] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:04:02] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:04:02] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:04:02] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:04:02] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:04:03] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:04:03] [INFO]: Player admin logged in successfully
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:04:03] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:04:03] [INFO]: Authenticating user: admin
+[2026-01-30 10:04:03] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:04:03] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:04:03] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:04:03] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:04:03] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:04:03] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:04:03] [INFO]: Player admin logged in successfully
+[2026-01-30 10:04:14] [DEBUG]: [NETWORK] Received 38 bytes from ::1
+[2026-01-30 10:04:14] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 38, Hex: e3002300
+[2026-01-30 10:04:14] [DEBUG]: 📨 Received CMD: -29, DataLen: 35
+[2026-01-30 10:04:14] [INFO]: Authenticating user: mtrungtin45
+[2026-01-30 10:04:14] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'mtrungtin45'...
+[2026-01-30 10:04:14] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:04:14] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:04:14] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:04:14] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:04:14] [DEBUG]: [NETWORK] Sending CMD: 215, Len: 546, Encrypted: true
+[2026-01-30 10:04:14] [DEBUG]: [NETWORK] Sending CMD: 2, Len: 0, Encrypted: true
+[2026-01-30 10:04:22] [DEBUG]: [NETWORK] Received 11 bytes from ::1
+[2026-01-30 10:04:22] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 11, Hex: e4000802
+[2026-01-30 10:04:22] [DEBUG]: 📨 Received CMD: -28, DataLen: 8
+[2026-01-30 10:04:22] [INFO]: Creating character: Als, gender: 0, head: 0
+[2026-01-30 10:04:22] [INFO]: Created new player: Als (ID: 561)
+[2026-01-30 10:04:22] [DEBUG]: Loaded player Als (ID: 561)
+[2026-01-30 10:04:22] [INFO]: ✅ Created character: Als for account 683
+[2026-01-30 10:04:22] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:04:22] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:04:22] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:04:22] [DEBUG]: [NETWORK] Sending CMD: 13, Len: 33, Encrypted: true
+[2026-01-30 10:04:22] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:04:22] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:04:22] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:04:22] [INFO]: Player Als logged in successfully
+[2026-01-30 10:08:47] [INFO]: New WS connection from ::1
+[2026-01-30 10:08:47] [DEBUG]: [NETWORK] Received 4 bytes from ::1
+[2026-01-30 10:08:47] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 4, Hex: e5000101
+[2026-01-30 10:08:47] [DEBUG]: 📨 Received CMD: -27, DataLen: 1
+[2026-01-30 10:08:47] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-30 10:08:47] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-30 10:08:47] [DEBUG]: Sent version res to client
+[2026-01-30 10:08:47] [INFO]: Session disconnected.
+[2026-01-30 10:08:51] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:08:51] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:08:51] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:08:51] [INFO]: Authenticating user: admin
+[2026-01-30 10:08:51] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:08:52] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:08:52] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:08:52] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:08:52] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:08:52] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:08:52] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:08:52] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:08:52] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:08:52] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:08:52] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:08:52] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:08:52] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:08:52] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:08:52] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:08:52] [INFO]: Player admin logged in successfully
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:09:02] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:09:02] [INFO]: Authenticating user: admin
+[2026-01-30 10:09:02] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:09:02] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:09:02] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:09:02] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:09:02] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:09:02] [INFO]: Player admin logged in successfully
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:09:02] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:09:02] [INFO]: Authenticating user: admin
+[2026-01-30 10:09:02] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:09:02] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:09:02] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:09:02] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:09:02] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:09:02] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:09:02] [INFO]: Player admin logged in successfully
+[2026-01-30 10:12:35] [INFO]: Session disconnected.
+[2026-01-30 10:12:38] [INFO]: New WS connection from ::1
+[2026-01-30 10:12:38] [DEBUG]: [NETWORK] Received 4 bytes from ::1
+[2026-01-30 10:12:38] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 4, Hex: e5000101
+[2026-01-30 10:12:38] [DEBUG]: 📨 Received CMD: -27, DataLen: 1
+[2026-01-30 10:12:38] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-30 10:12:38] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-30 10:12:38] [DEBUG]: Sent version res to client
+[2026-01-30 10:12:39] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:12:39] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:12:39] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:12:39] [INFO]: Authenticating user: admin
+[2026-01-30 10:12:39] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:12:39] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:12:39] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:12:39] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:12:39] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:12:39] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:12:39] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:12:39] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:12:39] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:12:39] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:12:39] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:12:39] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:12:39] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:12:39] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:12:39] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:12:39] [INFO]: Player admin logged in successfully
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:12:42] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:12:42] [INFO]: Authenticating user: admin
+[2026-01-30 10:12:42] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:12:42] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:12:42] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:12:42] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:12:42] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:12:42] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:12:42] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:12:42] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:12:42] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:12:42] [INFO]: Player admin logged in successfully
+[2026-01-30 10:15:39] [INFO]: Initializing NRO Node.js Server...
+[2026-01-30 10:15:39] [INFO]: Connecting to MySQL...
+[2026-01-30 10:15:39] [INFO]: Connected to MySQL Database successfully.
+[2026-01-30 10:15:39] [INFO]: ✅ MySQL connected successfully
+
+[2026-01-30 10:15:39] [INFO]: Loading game data from files...
+[2026-01-30 10:15:39] [INFO]: 📦 Loading game data...
+
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 10 maps
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-30 10:15:39] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-30 10:15:39] [INFO]: 
+✅ All game data loaded successfully!
+[2026-01-30 10:15:39] [INFO]: 
+📊 Game Data Summary:
+[2026-01-30 10:15:39] [INFO]:    Maps: 10
+[2026-01-30 10:15:39] [INFO]:    NPCs: 31
+[2026-01-30 10:15:39] [INFO]:    Mobs: 80
+[2026-01-30 10:15:39] [INFO]:    Items: 2046
+[2026-01-30 10:15:39] [INFO]:    Classes: 3
+[2026-01-30 10:15:39] [INFO]:    Tasks: 33
+[2026-01-30 10:15:39] [INFO]:    TileSetInfo: Loaded
+[2026-01-30 10:15:39] [INFO]:    ItemBgData: Loaded
+[2026-01-30 10:15:39] [INFO]: 
+✅ Server started successfully!
+[2026-01-30 10:15:39] [INFO]:    MySQL: Connected
+[2026-01-30 10:15:39] [INFO]:    Game Data: Loaded
+[2026-01-30 10:15:39] [INFO]:    Server Port: 14445
+
+[2026-01-30 10:15:39] [INFO]: WebSocket Server is listening on port 14446
+[2026-01-30 10:15:39] [INFO]: TCP Server is listening on port 14445
+[2026-01-30 10:19:53] [INFO]: New WS connection from ::1
+[2026-01-30 10:19:53] [DEBUG]: [NETWORK] Received 4 bytes from ::1
+[2026-01-30 10:19:53] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 4, Hex: e5000101
+[2026-01-30 10:19:53] [DEBUG]: 📨 Received CMD: -27, DataLen: 1
+[2026-01-30 10:19:53] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-30 10:19:53] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-30 10:19:53] [DEBUG]: Sent version res to client
+[2026-01-30 10:19:54] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:19:54] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:19:54] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:19:54] [INFO]: Authenticating user: admin
+[2026-01-30 10:19:54] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:19:54] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:19:54] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:19:54] [INFO]: ✅ Initialized 9 maps
+[2026-01-30 10:19:54] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:19:54] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:19:54] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:19:54] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:19:54] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:19:54] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:19:54] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:19:54] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:19:54] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:19:54] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:19:54] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:19:54] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:19:54] [INFO]: Player admin logged in successfully
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:19:55] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:19:55] [INFO]: Authenticating user: admin
+[2026-01-30 10:19:55] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:19:55] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:19:55] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:19:55] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:19:55] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:19:55] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:19:55] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:19:55] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:19:55] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:19:55] [INFO]: Player admin logged in successfully

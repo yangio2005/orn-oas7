@@ -120,7 +120,7 @@ export class Service {
             msg.writer.writeInt(player.id);
             msg.writer.writeByte(player.taskPlayer?.taskMain?.id || 0);
             msg.writer.writeByte(player.gender);
-            msg.writer.writeShort(player.head);
+            msg.writer.writeShort(player.getHead());
             msg.writer.writeUTF(player.name);
             msg.writer.writeByte(0); // cPK
             msg.writer.writeByte(player.typePk || 0);

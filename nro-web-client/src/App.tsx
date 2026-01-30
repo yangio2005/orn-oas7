@@ -1,8 +1,7 @@
-```typescript
 import { useState, useEffect } from 'react';
 import { GameManager } from './game/GameManager';
 import { NetworkClient } from './network/NetworkClient';
-import { Message } from './network/Message'; // Assuming Message type is available
+import { Message } from './network/Message';
 import CreateChar from './game/CreateChar';
 import GameScreen from './game/GameScreen';
 import './App.css';
@@ -29,16 +28,16 @@ function App() {
             setIsInGame(false);
         };
         const onHandshake = () => setIsHandshakeDone(true);
-        
+
         // Message handler
         const onMessage = (msg: Message) => {
             const cmd = msg.getCommand();
             // Reduce log spam for game loop messages
             if (cmd !== -28) {
-                 setLogs(prev => [`CMD: ${ cmd } Size: ${ msg.getData().length } `, ...prev.slice(0, 19)]);
+                setLogs(prev => [`CMD: ${cmd} Size: ${msg.getData().length} `, ...prev.slice(0, 19)]);
             }
-            
-            switch(cmd) {
+
+            switch (cmd) {
                 case -28: // NOT_MAP
                     // This command usually contains map info or data updates.
                     // Assuming receives map info -> Enter Game
@@ -46,8 +45,8 @@ function App() {
                     // For now, if we get -28 (and not sub 2 CREATE_CHAR), we assume game data load started.
                     // Actually server sends -28 sub 4 (VersionGame) -> Login Success sequence starts.
                     if (!isInGame && !showCreateChar) {
-                         // Very naive check: If we receive data not_map, we are likely logging in.
-                         setIsInGame(true);
+                        // Very naive check: If we receive data not_map, we are likely logging in.
+                        setIsInGame(true);
                     }
                     break;
                 case 2: // CREATE_PLAYER (sub command of NOT_MAP passed as separate CMD by my logic? No, check logic)
@@ -62,7 +61,7 @@ function App() {
             }
         };
 
-        const onError = (err: Event) => setLogs(prev => [`Error: ${ err } `, ...prev.slice(0, 19)]);
+        const onError = (err: Event) => setLogs(prev => [`Error: ${err} `, ...prev.slice(0, 19)]);
 
         client.on('connected', onConnected);
         client.on('disconnected', onDisconnected);
