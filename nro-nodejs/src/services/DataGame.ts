@@ -17,7 +17,8 @@ export class DataGame {
     public static vsItem = 80;
     public static vsRes = 752011;
 
-    public static LINK_IP_PORT = "Girlkun75-1:14.225.209.71:14445:0";
+    public static DATA_PATH = path.join(process.cwd(), '../data/girlkun');
+    public static LINK_IP_PORT = "NRO-NodeJS:127.0.0.1:14445:0";
 
     /**
      * Send version game info to client
@@ -49,6 +50,8 @@ export class DataGame {
             Logger.error("Error sending version game: " + e);
         }
     }
+
+
 
     /**
      * Send data item background to client
@@ -140,14 +143,13 @@ export class DataGame {
         const msg = new Message(-77);
         try {
             const zoomLevel = (session as any).zoomLevel || 1;
-            const filePath = path.join(process.cwd(), `data/girlkun/data_img_version/x${zoomLevel}/img_version`);
+            const filePath = path.join(DataGame.DATA_PATH, `data_img_version/x${zoomLevel}/img_version`);
 
             if (fs.existsSync(filePath)) {
                 const data = fs.readFileSync(filePath);
                 msg.writer.writeBytes(data);
+                session.sendMessage(msg);
             }
-
-            session.sendMessage(msg);
             msg.cleanup();
         } catch (e) {
             Logger.error("Error sending small version: " + e);
@@ -161,17 +163,15 @@ export class DataGame {
     public static sendMapTemp(session: Session, id: number): void {
         const msg = new Message(-28);
         try {
-            if (id !== 167 && id !== 168) {
-                msg.writer.writeByte(10);
-            }
-
-            const filePath = path.join(process.cwd(), `data/girlkun/map/tile_map_data/${id}`);
+            const filePath = path.join(DataGame.DATA_PATH, `map/tile_map_data/${id}`);
             if (fs.existsSync(filePath)) {
+                if (id !== 167 && id !== 168) {
+                    msg.writer.writeByte(10);
+                }
                 const data = fs.readFileSync(filePath);
                 msg.writer.writeBytes(data);
+                session.sendMessage(msg);
             }
-
-            session.sendMessage(msg);
             msg.cleanup();
         } catch (e) {
             Logger.error(`Error sending map temp ${id}: ` + e);
@@ -186,22 +186,22 @@ export class DataGame {
         const msg = new Message(11);
         try {
             const zoomLevel = (session as any).zoomLevel || 1;
-            const filePath = path.join(process.cwd(), `data/girlkun/mob/x${zoomLevel}/${id}`);
-
-            if (id !== 88 && id !== 89 && id !== 85 && id !== 94) {
-                msg.writer.writeByte(id);
-            }
-
-            if (id === 95) {
-                msg.writer.writeByte(0);
-            }
+            const filePath = path.join(DataGame.DATA_PATH, `mob/x${zoomLevel}/${id}`);
 
             if (fs.existsSync(filePath)) {
+                if (id !== 88 && id !== 89 && id !== 85 && id !== 94) {
+                    msg.writer.writeByte(id);
+                }
+
+                if (id === 95) {
+                    msg.writer.writeByte(0);
+                }
+
                 const data = fs.readFileSync(filePath);
                 msg.writer.writeBytes(data);
+                session.sendMessage(msg);
             }
 
-            session.sendMessage(msg);
             msg.cleanup();
         } catch (e) {
             Logger.error(`Error sending mob template ${id}: ` + e);
@@ -216,16 +216,16 @@ export class DataGame {
         const msg = new Message(-67);
         try {
             const zoomLevel = (session as any).zoomLevel || 1;
-            const filePath = path.join(process.cwd(), `data/girlkun/icon/x${zoomLevel}/${id}.png`);
+            const filePath = path.join(DataGame.DATA_PATH, `icon/x${zoomLevel}/${id}.png`);
 
             if (fs.existsSync(filePath)) {
                 const icon = fs.readFileSync(filePath);
                 msg.writer.writeInt(id);
                 msg.writer.writeInt(icon.length);
                 msg.writer.writeBytes(icon);
+                session.sendMessage(msg);
             }
 
-            session.sendMessage(msg);
             msg.cleanup();
         } catch (e) {
             Logger.error(`Error sending icon ${id}: ` + e);
@@ -242,8 +242,8 @@ export class DataGame {
             const zoomLevel = (session as any).zoomLevel || 1;
             const idT = idTemp || id;
 
-            const effDataPath = path.join(process.cwd(), `data/girlkun/effect/x${zoomLevel}/data/DataEffect_${idT}`);
-            const effImgPath = path.join(process.cwd(), `data/girlkun/effect/x${zoomLevel}/img/ImgEffect_${idT}.png`);
+            const effDataPath = path.join(DataGame.DATA_PATH, `effect/x${zoomLevel}/data/DataEffect_${idT}`);
+            const effImgPath = path.join(DataGame.DATA_PATH, `effect/x${zoomLevel}/img/ImgEffect_${idT}.png`);
 
             if (fs.existsSync(effDataPath) && fs.existsSync(effImgPath)) {
                 const effData = fs.readFileSync(effDataPath);
@@ -272,16 +272,15 @@ export class DataGame {
         const msg = new Message(-32);
         try {
             const zoomLevel = (session as any).zoomLevel || 1;
-            const filePath = path.join(process.cwd(), `data/girlkun/item_bg_temp/x${zoomLevel}/${id}.png`);
+            const filePath = path.join(DataGame.DATA_PATH, `item_bg_temp/x${zoomLevel}/${id}.png`);
 
             if (fs.existsSync(filePath)) {
                 const bgTemp = fs.readFileSync(filePath);
                 msg.writer.writeShort(id);
                 msg.writer.writeInt(bgTemp.length);
                 msg.writer.writeBytes(bgTemp);
+                session.sendMessage(msg);
             }
-
-            session.sendMessage(msg);
             msg.cleanup();
         } catch (e) {
             Logger.error(`Error sending item bg template ${id}: ` + e);
@@ -296,20 +295,20 @@ export class DataGame {
         const msg = new Message(66);
         try {
             const zoomLevel = (session as any).zoomLevel || 1;
-            const filePath = path.join(process.cwd(), `data/girlkun/img_by_name/x${zoomLevel}/${imgName}.png`);
-
-            msg.writer.writeUTF(imgName);
-            msg.writer.writeByte(1); // nFrame - default 1
+            const filePath = path.join(DataGame.DATA_PATH, `img_by_name/x${zoomLevel}/${imgName}.png`);
 
             if (fs.existsSync(filePath)) {
+                msg.writer.writeUTF(imgName);
+                msg.writer.writeByte(1); // nFrame - default 1
                 const data = fs.readFileSync(filePath);
                 msg.writer.writeInt(data.length);
                 msg.writer.writeBytes(data);
+                session.sendMessage(msg);
             } else {
-                msg.writer.writeInt(0);
+                // For img_by_name, if missing maybe better to ignore or send empty? 
+                // Java writes: ds.writeUTF(imgName); ds.writeByte(nFrame); ds.writeInt(data.length); ds.write(data);
+                // If not found, it doesn't send.
             }
-
-            session.sendMessage(msg);
             msg.cleanup();
         } catch (e) {
             Logger.error(`Error sending image by name ${imgName}: ` + e);
@@ -324,14 +323,13 @@ export class DataGame {
         const msg = new Message(-111);
         try {
             const zoomLevel = (session as any).zoomLevel || 1;
-            const filePath = path.join(process.cwd(), `data/girlkun/data_img_version/x${zoomLevel}/img_version`);
+            const filePath = path.join(DataGame.DATA_PATH, `data_img_version/x${zoomLevel}/img_version`);
 
             if (fs.existsSync(filePath)) {
                 const data = fs.readFileSync(filePath);
                 msg.writer.writeBytes(data);
+                session.sendMessage(msg);
             }
-
-            session.sendMessage(msg);
             msg.cleanup();
         } catch (e) {
             Logger.error("Error sending data image version: " + e);
@@ -346,7 +344,7 @@ export class DataGame {
         const msg = new Message(-74);
         try {
             const zoomLevel = (session as any).zoomLevel || 1;
-            const dirPath = path.join(process.cwd(), `data/girlkun/res/x${zoomLevel}`);
+            const dirPath = path.join(DataGame.DATA_PATH, `res/x${zoomLevel}`);
 
             msg.writer.writeByte(1);
 
@@ -371,7 +369,7 @@ export class DataGame {
     public static async sendRes(session: Session): Promise<void> {
         try {
             const zoomLevel = (session as any).zoomLevel || 1;
-            const dirPath = path.join(process.cwd(), `data/girlkun/res/x${zoomLevel}`);
+            const dirPath = path.join(DataGame.DATA_PATH, `res/x${zoomLevel}`);
 
             if (!fs.existsSync(dirPath)) {
                 Logger.warn(`Res directory not found: ${dirPath}`);
@@ -418,40 +416,34 @@ export class DataGame {
             msg.writer.writeByte(DataGame.vsMap);
 
             const gameData = GameDataLoader.getInstance();
-
-            // Send map templates
-            // TODO: Implement when GameDataLoader has getAllMaps
-            // const maps = gameData.getAllMaps();
-            const maps: any[] = [];
+            const maps = gameData.maps;
             msg.writer.writeByte(maps.length);
             for (const map of maps) {
                 msg.writer.writeUTF(map.name || "");
             }
 
-            // Send NPC templates
-            // TODO: Implement when GameDataLoader has getAllNPCs
-            // const npcs = gameData.getAllNPCs();
-            const npcs: any[] = [];
+            const npcs = gameData.npcs;
             msg.writer.writeByte(npcs.length);
             for (const npc of npcs) {
-                msg.writer.writeUTF(npc.name || "");
-                msg.writer.writeShort(npc.head || 0);
-                msg.writer.writeShort(npc.body || 0);
-                msg.writer.writeShort(npc.leg || 0);
-                msg.writer.writeByte(0);
+                // Parse NPC data from menunpc.txt line: name \t head \t body \t leg
+                const parts = (npc.data || "").split('\t');
+                msg.writer.writeUTF(parts[0] || "NPC");
+                msg.writer.writeShort(parseInt(parts[1]) || 0);
+                msg.writer.writeShort(parseInt(parts[2]) || 0);
+                msg.writer.writeShort(parseInt(parts[3]) || 0);
+                msg.writer.writeByte(0); // unknown
             }
 
-            // Send mob templates
-            // TODO: Implement when GameDataLoader has getAllMobs
-            // const mobs = gameData.getAllMobs();
-            const mobs: any[] = [];
+            const mobs = gameData.mobs;
             msg.writer.writeByte(mobs.length);
             for (const mob of mobs) {
+                // For mobs, we might need more data from a mob_template table in DB
+                // but for now send what we have
                 msg.writer.writeByte(mob.type || 0);
-                msg.writer.writeUTF(mob.name || "");
-                msg.writer.writeInt(mob.hp || 0);
-                msg.writer.writeByte(mob.rangeMove || 0);
-                msg.writer.writeByte(mob.speed || 0);
+                msg.writer.writeUTF(mob.name || "Mob");
+                msg.writer.writeInt(mob.hp || 100);
+                msg.writer.writeByte(mob.rangeMove || 5);
+                msg.writer.writeByte(mob.speed || 5);
                 msg.writer.writeByte(mob.dartType || 0);
             }
 
@@ -468,7 +460,86 @@ export class DataGame {
      * TODO: Implement when skill data is available
      */
     public static updateSkill(session: Session): void {
-        Logger.warn("updateSkill not implemented yet");
+        const msg = new Message(-28);
+        try {
+            msg.writer.writeByte(7); // Sub command UPDATE_SKILL
+            msg.writer.writeByte(DataGame.vsSkill);
+            msg.writer.writeByte(0); // count skill option
+
+            const gameData = GameDataLoader.getInstance();
+            // Java iterates NCLASS
+            msg.writer.writeByte(gameData.nClasses.length);
+            for (const nClass of gameData.nClasses) {
+                msg.writer.writeUTF(nClass.name);
+
+                msg.writer.writeByte(nClass.skillTemplates.length);
+                for (const temp of nClass.skillTemplates) {
+                    msg.writer.writeByte(temp.id);
+                    msg.writer.writeUTF(temp.name);
+                    msg.writer.writeByte(temp.maxPoint);
+                    msg.writer.writeByte(temp.manaUseType);
+                    msg.writer.writeByte(temp.type);
+                    msg.writer.writeShort(temp.iconId);
+                    msg.writer.writeUTF(temp.damInfo || "");
+                    msg.writer.writeUTF("Tabi"); // "Tabi" as seen in Java
+
+                    const skills = temp.skills || [];
+
+                    if (temp.id !== 0) {
+                        msg.writer.writeByte(skills.length);
+                        for (const skill of skills) {
+                            msg.writer.writeShort(skill.skillId);
+                            msg.writer.writeByte(skill.point);
+                            msg.writer.writeLong(skill.powRequire);
+                            msg.writer.writeShort(skill.manaUse);
+                            msg.writer.writeInt(skill.coolDown);
+                            msg.writer.writeShort(skill.dx);
+                            msg.writer.writeShort(skill.dy);
+                            msg.writer.writeShort(skill.maxFight);
+                            msg.writer.writeShort(skill.damage);
+                            msg.writer.writeShort(skill.price);
+                            msg.writer.writeUTF(skill.moreInfo || "");
+                        }
+                    } else {
+                        // Special case for id 0: Add 2 extra empty skills (105, 106)
+                        msg.writer.writeByte(skills.length + 2);
+                        for (const skill of skills) {
+                            msg.writer.writeShort(skill.skillId);
+                            msg.writer.writeByte(skill.point);
+                            msg.writer.writeLong(skill.powRequire);
+                            msg.writer.writeShort(skill.manaUse);
+                            msg.writer.writeInt(skill.coolDown);
+                            msg.writer.writeShort(skill.dx);
+                            msg.writer.writeShort(skill.dy);
+                            msg.writer.writeShort(skill.maxFight);
+                            msg.writer.writeShort(skill.damage);
+                            msg.writer.writeShort(skill.price);
+                            msg.writer.writeUTF(skill.moreInfo || "");
+                        }
+
+                        // Add skill 105 and 106
+                        for (let i = 105; i <= 106; i++) {
+                            msg.writer.writeShort(i);
+                            msg.writer.writeByte(0);
+                            msg.writer.writeLong(0);
+                            msg.writer.writeShort(0);
+                            msg.writer.writeInt(0);
+                            msg.writer.writeShort(0);
+                            msg.writer.writeShort(0);
+                            msg.writer.writeByte(0);
+                            msg.writer.writeShort(0);
+                            msg.writer.writeShort(0);
+                            msg.writer.writeUTF("");
+                        }
+                    }
+                }
+            }
+            session.sendMessage(msg);
+            msg.cleanup();
+            Logger.debug("Sent updateSkill");
+        } catch (e) {
+            Logger.error("Error updating skill: " + e);
+        }
     }
 
     /**
@@ -477,7 +548,89 @@ export class DataGame {
      * TODO: Implement when update data files are available
      */
     public static updateData(session: Session): void {
-        Logger.warn("updateData not implemented yet");
+        const msg = new Message(-87);
+        try {
+            msg.writer.writeByte(DataGame.vsData);
+
+            // Read files from data/girlkun/update_data
+            const updateDataPath = path.join(DataGame.DATA_PATH, 'update_data');
+
+            const readFile = (filename: string): Buffer => {
+                try {
+                    return fs.readFileSync(path.join(updateDataPath, filename));
+                } catch (e) {
+                    Logger.error(`Error reading ${filename}: ` + e);
+                    return Buffer.alloc(0);
+                }
+            };
+
+            const dart = readFile('dart');
+            const arrow = readFile('arrow');
+            const effect = readFile('effect');
+            const image = readFile('image');
+            const part = readFile('part');
+            const skill = readFile('skill');
+
+            // Write length (int) + data (bytes)
+            msg.writer.writeInt(dart.length);
+            msg.writer.writeBytes(dart);
+
+            msg.writer.writeInt(arrow.length);
+            msg.writer.writeBytes(arrow);
+
+            msg.writer.writeInt(effect.length);
+            msg.writer.writeBytes(effect);
+
+            msg.writer.writeInt(image.length);
+            msg.writer.writeBytes(image);
+
+            msg.writer.writeInt(part.length);
+            msg.writer.writeBytes(part);
+
+            msg.writer.writeInt(skill.length);
+            msg.writer.writeBytes(skill);
+
+            session.sendMessage(msg);
+            msg.cleanup();
+            Logger.debug("Sent updateData (loaded from files)");
+        } catch (e) {
+            Logger.error("Error updating data: " + e);
+        }
+    }
+
+    /**
+     * Update item data
+     * Java: DataGame.updateItem
+     */
+    public static updateItem(session: Session): void {
+        const msg = new Message(-28);
+        try {
+            msg.writer.writeByte(8); // Sub command UPDATE_ITEM
+            msg.writer.writeByte(DataGame.vsItem);
+
+            const gameData = GameDataLoader.getInstance();
+            const items = gameData.itemTemplates;
+
+            msg.writer.writeShort(items.length);
+            for (const item of items) {
+                msg.writer.writeShort(item.id);
+                msg.writer.writeByte(item.type);
+                msg.writer.writeByte(item.gender);
+                msg.writer.writeUTF(item.name);
+                msg.writer.writeUTF(item.description);
+                msg.writer.writeByte(item.level || 0); // Level
+                msg.writer.writeInt(item.strRequire); // Power require in code is long, but here int? 
+                // Java code: ds.writeInt((int) itemTemplate.strRequire);
+                msg.writer.writeShort(item.iconID);
+                msg.writer.writeShort(item.part);
+                msg.writer.writeBoolean(item.isUpToUp);
+            }
+            session.sendMessage(msg);
+            msg.cleanup();
+            Logger.debug(`Sent updateItem (${items.length} items)`);
+        } catch (e) {
+            Logger.error("Error updating item: " + e);
+        }
     }
 
     /**

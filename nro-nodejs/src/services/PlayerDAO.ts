@@ -40,16 +40,41 @@ export class PlayerDAO {
             player.name = playerData.name;
             player.gender = playerData.gender;
             player.head = playerData.head;
-            player.body = playerData.body || -1;
-            player.leg = playerData.leg || -1;
-            player.role = playerData.role || 0;
+            // Removed non-existent body, leg, role columns
 
-            // Parse JSON data from MySQL columns (if exists)
-            // TODO: Parse data_inventory, data_location, data_point, etc.
-            // Example:
-            // if (playerData.data_inventory) {
-            //     player.inventory = JSON.parse(playerData.data_inventory);
-            // }
+            // Parse location from inventory or separate field?
+            // Assuming data_location is stored as { x, y, mapId }
+            try {
+                const locationData = playerData.data_location ? JSON.parse(playerData.data_location) : {};
+                player.x = locationData.x || 0;
+                player.y = locationData.y || 0;
+                player.mapId = locationData.mapId || 0;
+            } catch (e) {
+                Logger.error("Error parsing location data", e);
+            }
+
+            // Parse JSON data from MySQL columns
+            if (playerData.data_inventory) {
+                try {
+                    player.inventory = JSON.parse(playerData.data_inventory);
+                } catch (e) {
+                    Logger.error("Error parsing inventory data", e);
+                }
+            }
+
+            // Parse point
+            if (playerData.data_point) {
+                try {
+                    const point = JSON.parse(playerData.data_point);
+                    // Merge point data into nPoint
+                    // TODO: Implement cleaner merge
+                    player.nPoint.hp = point.hp;
+                    player.nPoint.mp = point.mp;
+                    player.nPoint.power = point.power;
+                } catch (e) {
+                    Logger.error("Error parsing point data", e);
+                }
+            }
 
             Logger.debug(`Loaded player ${player.name} (ID: ${player.id})`);
             return player;
@@ -75,15 +100,45 @@ export class PlayerDAO {
             // Insert into MySQL
             const [result] = await pool.query<any>(
                 `INSERT INTO player (
-                    account_id, name, gender, head, body, leg, role,
-                    data_inventory, data_location, data_point, data_magic
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                    account_id, name, gender, head, 
+                    data_inventory, data_location, data_point, 
+                    data_magic_tree, items_body, items_bag, items_box, 
+                    items_box_lucky_round, friends, enemies, data_intrinsic, 
+                    data_item_time, data_item_time_sieucap, data_task, 
+                    data_mabu_egg, data_dua, Tai_xiu, data_charm, 
+                    skills, skills_shortcut, pet, data_black_ball, 
+                    data_side_task, violate, info_phoban, info_achievement, 
+                    nhiemvu_chienthan
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                 [
-                    accountId, name, gender, head, -1, -1, 0,
-                    '[]',  // empty inventory
-                    JSON.stringify({ x: 0, y: 0, mapId: 0 }),  // starting location
-                    JSON.stringify({ hp: 100, mp: 100, power: 0 }),  // starting stats
-                    '[]'   // empty skills
+                    accountId, name, gender, head,
+                    '[]', // data_inventory
+                    JSON.stringify({ x: 0, y: 0, mapId: 0 }), // data_location
+                    JSON.stringify({ hp: 100, mp: 100, power: 0 }), // data_point
+                    '[]', // data_magic_tree
+                    '[]', // items_body
+                    '[]', // items_bag
+                    '[]', // items_box
+                    '[]', // items_box_lucky_round
+                    '[]', // friends
+                    '[]', // enemies
+                    '[]', // data_intrinsic
+                    '[]', // data_item_time
+                    '[]', // data_item_time_sieucap
+                    '[]', // data_task
+                    '[]', // data_mabu_egg
+                    '[]', // data_dua
+                    '[]', // Tai_xiu
+                    '[]', // data_charm
+                    '[]', // skills
+                    '[]', // skills_shortcut
+                    '[]', // pet
+                    '[]', // data_black_ball
+                    '[]', // data_side_task
+                    0,    // violate
+                    '[]', // info_phoban
+                    '{}', // info_achievement
+                    '[]'  // nhiemvu_chienthan
                 ]
             );
 
@@ -108,14 +163,14 @@ export class PlayerDAO {
             // Update MySQL
             await pool.query(
                 `UPDATE player SET 
-                    name = ?, gender = ?, head = ?, body = ?, leg = ?, role = ?,
+                    name = ?, gender = ?, head = ?, 
                     data_inventory = ?, data_location = ?, data_point = ?
                 WHERE id = ?`,
                 [
-                    player.name, player.gender, player.head, player.body, player.leg, player.role,
-                    JSON.stringify(player.inventory || []),
-                    JSON.stringify(player.location),
-                    JSON.stringify({ hp: player.hp, mp: player.mp, power: player.power }),
+                    player.name, player.gender, player.head,
+                    JSON.stringify(player.inventory || {}),
+                    JSON.stringify({ x: player.x, y: player.y, mapId: player.mapId }),
+                    JSON.stringify({ hp: player.nPoint.hp, mp: player.nPoint.mp, power: player.nPoint.power }),
                     player.id
                 ]
             );

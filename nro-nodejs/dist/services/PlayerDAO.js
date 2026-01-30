@@ -2,18 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PlayerDAO = void 0;
 const database_1 = require("../config/database");
-const mongodb_1 = require("../config/mongodb");
 const Player_1 = require("../models/Player");
 const Logger_1 = require("../utils/Logger");
-const PlayerGameData_1 = require("../database/schemas/PlayerGameData");
 /**
- * PlayerDAO - Hybrid Database Access
- * - MySQL: account, player metadata (id, name, gender, head)
- * - MongoDB: game data (stats, inventory, skills, location)
+ * PlayerDAO - MySQL Only Database Access
+ * Schema: solomon.sql
+ *
+ * Stores ALL player data in MySQL using JSON columns for complex data
  */
 class PlayerDAO {
     /**
-     * Load player from both MySQL (meta) and MongoDB (game data)
+     * Load player from MySQL database
      */
     static async getPlayerByAccountId(accountId) {
         try {
@@ -22,50 +21,54 @@ class PlayerDAO {
                 Logger_1.Logger.error('MySQL pool not available');
                 return null;
             }
-            // Step 1: Get player metadata from MySQL
+            // Get player from MySQL
             const [rows] = await pool.query("SELECT * FROM player WHERE account_id = ? LIMIT 1", [accountId]);
             if (rows.length === 0) {
                 return null;
             }
-            const playerMeta = rows[0];
+            const playerData = rows[0];
             const player = new Player_1.Player();
             // Basic info from MySQL
-            player.id = playerMeta.id;
-            player.name = playerMeta.name;
-            player.gender = playerMeta.gender;
-            player.head = playerMeta.head;
-            player.body = playerMeta.body || -1;
-            player.leg = playerMeta.leg || -1;
-            player.role = playerMeta.role || 0;
-            // Step 2: Get game data from MongoDB (if connected)
-            if (mongodb_1.MongoDB.isConnected()) {
+            player.id = playerData.id;
+            player.name = playerData.name;
+            player.gender = playerData.gender;
+            player.head = playerData.head;
+            // Removed non-existent body, leg, role columns
+            // Parse location from inventory or separate field?
+            // Assuming data_location is stored as { x, y, mapId }
+            try {
+                const locationData = playerData.data_location ? JSON.parse(playerData.data_location) : {};
+                player.x = locationData.x || 0;
+                player.y = locationData.y || 0;
+                player.mapId = locationData.mapId || 0;
+            }
+            catch (e) {
+                Logger_1.Logger.error("Error parsing location data", e);
+            }
+            // Parse JSON data from MySQL columns
+            if (playerData.data_inventory) {
                 try {
-                    const gameData = await PlayerGameData_1.PlayerGameDataModel.findOne({ playerId: player.id });
-                    if (gameData) {
-                        // Load stats from MongoDB
-                        player.power = gameData.power;
-                        player.tiemNang = gameData.tiemNang;
-                        player.hp = gameData.hp;
-                        player.mp = gameData.mp;
-                        player.stamina = gameData.stamina;
-                        // Load location
-                        player.location = gameData.location;
-                        // Load inventory (convert from MongoDB format to Player model)
-                        // player.inventory = gameData.inventory.map(...);
-                        Logger_1.Logger.debug(`Loaded game data for player ${player.name} from MongoDB`);
-                    }
-                    else {
-                        Logger_1.Logger.warn(`No MongoDB game data found for player ${player.id}, using defaults`);
-                    }
+                    player.inventory = JSON.parse(playerData.data_inventory);
                 }
-                catch (mongoErr) {
-                    Logger_1.Logger.error('Error loading from MongoDB:', mongoErr);
-                    // Continue with MySQL data only
+                catch (e) {
+                    Logger_1.Logger.error("Error parsing inventory data", e);
                 }
             }
-            else {
-                Logger_1.Logger.warn('MongoDB not connected, using MySQL data only');
+            // Parse point
+            if (playerData.data_point) {
+                try {
+                    const point = JSON.parse(playerData.data_point);
+                    // Merge point data into nPoint
+                    // TODO: Implement cleaner merge
+                    player.nPoint.hp = point.hp;
+                    player.nPoint.mp = point.mp;
+                    player.nPoint.power = point.power;
+                }
+                catch (e) {
+                    Logger_1.Logger.error("Error parsing point data", e);
+                }
             }
+            Logger_1.Logger.debug(`Loaded player ${player.name} (ID: ${player.id})`);
             return player;
         }
         catch (e) {
@@ -74,40 +77,55 @@ class PlayerDAO {
         }
     }
     /**
-     * Create new player in both databases
+     * Create new player in MySQL
      */
     static async createNewPlayer(accountId, name, gender, head) {
         try {
             const pool = database_1.DB.getPool();
             if (!pool)
                 return null;
-            // Step 1: Insert into MySQL (metadata)
-            const [result] = await pool.query("INSERT INTO player (account_id, name, gender, head, body, leg, role) VALUES (?, ?, ?, ?, ?, ?, ?)", [accountId, name, gender, head, -1, -1, 0]);
-            const playerId = result.insertId;
-            // Step 2: Create game data in MongoDB
-            if (mongodb_1.MongoDB.isConnected()) {
-                await PlayerGameData_1.PlayerGameDataModel.create({
-                    playerId: playerId,
-                    accountId: accountId,
-                    power: 0,
-                    tiemNang: 0,
-                    hp: 100,
-                    hpMax: 100,
-                    mp: 100,
-                    mpMax: 100,
-                    stamina: 1000,
-                    staminaMax: 1000,
-                    inventory: [],
-                    inventoryBody: [],
-                    inventoryBox: [],
-                    skills: [],
-                    location: { x: 0, y: 0, mapId: 0, zoneId: 0 },
-                    tasks: [],
-                    lastLogin: new Date(),
-                    lastSave: new Date()
-                });
-                Logger_1.Logger.info(`Created MongoDB game data for player ${playerId}`);
-            }
+            // Insert into MySQL
+            const [result] = await pool.query(`INSERT INTO player (
+                    account_id, name, gender, head, 
+                    data_inventory, data_location, data_point, 
+                    data_magic_tree, items_body, items_bag, items_box, 
+                    items_box_lucky_round, friends, enemies, data_intrinsic, 
+                    data_item_time, data_item_time_sieucap, data_task, 
+                    data_mabu_egg, data_dua, Tai_xiu, data_charm, 
+                    skills, skills_shortcut, pet, data_black_ball, 
+                    data_side_task, violate, info_phoban, info_achievement, 
+                    nhiemvu_chienthan
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [
+                accountId, name, gender, head,
+                '[]', // data_inventory
+                JSON.stringify({ x: 0, y: 0, mapId: 0 }), // data_location
+                JSON.stringify({ hp: 100, mp: 100, power: 0 }), // data_point
+                '[]', // data_magic_tree
+                '[]', // items_body
+                '[]', // items_bag
+                '[]', // items_box
+                '[]', // items_box_lucky_round
+                '[]', // friends
+                '[]', // enemies
+                '[]', // data_intrinsic
+                '[]', // data_item_time
+                '[]', // data_item_time_sieucap
+                '[]', // data_task
+                '[]', // data_mabu_egg
+                '[]', // data_dua
+                '[]', // Tai_xiu
+                '[]', // data_charm
+                '[]', // skills
+                '[]', // skills_shortcut
+                '[]', // pet
+                '[]', // data_black_ball
+                '[]', // data_side_task
+                0, // violate
+                '[]', // info_phoban
+                '{}', // info_achievement
+                '[]' // nhiemvu_chienthan
+            ]);
+            Logger_1.Logger.info(`Created new player: ${name} (ID: ${result.insertId})`);
             // Return the created player
             return await this.getPlayerByAccountId(accountId);
         }
@@ -117,29 +135,25 @@ class PlayerDAO {
         }
     }
     /**
-     * Save player data to both databases
+     * Save player data to MySQL
      */
     static async updatePlayer(player) {
         try {
             const pool = database_1.DB.getPool();
             if (!pool)
                 return false;
-            // Step 1: Update MySQL metadata (if needed)
-            await pool.query("UPDATE player SET name = ?, gender = ?, head = ?, body = ?, leg = ?, role = ? WHERE id = ?", [player.name, player.gender, player.head, player.body, player.leg, player.role, player.id]);
-            // Step 2: Update MongoDB game data
-            if (mongodb_1.MongoDB.isConnected()) {
-                await PlayerGameData_1.PlayerGameDataModel.findOneAndUpdate({ playerId: player.id }, {
-                    power: player.power,
-                    tiemNang: player.tiemNang,
-                    hp: player.hp,
-                    mp: player.mp,
-                    stamina: player.stamina,
-                    location: player.location,
-                    // inventory: player.inventory,
-                    lastSave: new Date()
-                }, { upsert: true });
-                Logger_1.Logger.debug(`Saved game data for player ${player.id} to MongoDB`);
-            }
+            // Update MySQL
+            await pool.query(`UPDATE player SET 
+                    name = ?, gender = ?, head = ?, 
+                    data_inventory = ?, data_location = ?, data_point = ?
+                WHERE id = ?`, [
+                player.name, player.gender, player.head,
+                JSON.stringify(player.inventory || {}),
+                JSON.stringify({ x: player.x, y: player.y, mapId: player.mapId }),
+                JSON.stringify({ hp: player.nPoint.hp, mp: player.nPoint.mp, power: player.nPoint.power }),
+                player.id
+            ]);
+            Logger_1.Logger.debug(`Saved player ${player.id} to MySQL`);
             return true;
         }
         catch (e) {

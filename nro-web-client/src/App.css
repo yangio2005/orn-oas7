@@ -1,0 +1,5 @@
+.container { padding: 20px; font-family: sans-serif; }
+.status { margin-bottom: 20px; font-weight: bold; }
+.success { color: green; }
+.form { display: flex; flex-direction: column; gap: 10px; max-width: 300px; }
+.logs { margin-top: 20px; border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto; background: #f0f0f0; }

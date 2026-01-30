@@ -1,5 +1,6 @@
 import { Message } from "../../network/Message";
 import { Logger } from "../../utils/Logger";
+import { Player } from "../Player";
 
 /**
  * Zone - Minimal implementation
@@ -9,7 +10,7 @@ export class Zone {
     public map: any; // Map reference
     public zoneId: number;
     public maxPlayer: number = 30;
-    public players: any[] = [];
+    public players: Player[] = [];
     public mobs: any[] = [];
     public items: any[] = [];
 
@@ -37,33 +38,7 @@ export class Zone {
         }
     }
 
-    /**
-     * Load player info to other players in zone
-     * Java: Zone.load_Me_To_Another() line 431-454
-     */
-    public load_Me_To_Another(player: any): void {
-        try {
-            // For now, just log
-            // TODO: Send player info to all other players in zone
-            Logger.debug(`Loading player ${player.name} to others in zone ${this.zoneId}`);
-        } catch (e) {
-            Logger.error("Error in load_Me_To_Another: " + e);
-        }
-    }
 
-    /**
-     * Load other players to this player
-     * Java: Zone.load_Another_To_Me() line 456-476
-     */
-    public load_Another_To_Me(player: any): void {
-        try {
-            // For now, just log
-            // TODO: Send other players info to this player
-            Logger.debug(`Loading others to player ${player.name} in zone ${this.zoneId}`);
-        } catch (e) {
-            Logger.error("Error in load_Another_To_Me: " + e);
-        }
-    }
 
     /**
      * Send map info to player
@@ -83,8 +58,8 @@ export class Zone {
             msg.writer.writeByte(this.zoneId);
 
             // Player position
-            msg.writer.writeShort(player.location?.x || 100);
-            msg.writer.writeShort(player.location?.y || 100);
+            msg.writer.writeShort(player.x || 100);
+            msg.writer.writeShort(player.y || 100);
 
             // Waypoints (empty for now)
             msg.writer.writeByte(0);
@@ -127,4 +102,93 @@ export class Zone {
     public getNumOfPlayers(): number {
         return this.players.length;
     }
+
+    /**
+     * Load player info to other players in zone
+     * Java: Zone.load_Me_To_Another() line 431-454
+     */
+    public load_Me_To_Another(player: any): void {
+        try {
+            this.players.forEach(pl => {
+                if (pl !== player) {
+                    this.infoPlayer(pl, player);
+                }
+            });
+        } catch (e) {
+            Logger.error("Error in load_Me_To_Another: " + e);
+        }
+    }
+
+    /**
+     * Load other players to this player
+     * Java: Zone.load_Another_To_Me() line 456-476
+     */
+    public load_Another_To_Me(player: any): void {
+        try {
+            this.players.forEach(pl => {
+                if (pl !== player) {
+                    this.infoPlayer(player, pl);
+                }
+            });
+        } catch (e) {
+            Logger.error("Error in load_Another_To_Me: " + e);
+        }
+    }
+
+    /**
+     * Send player info (Message -5)
+     * Java: Zone.infoPlayer() line 501
+     */
+    public infoPlayer(plReceive: any, plInfo: any): void {
+        if (!plReceive.session) return;
+
+        const msg = new Message(-5);
+        try {
+            msg.writer.writeInt(plInfo.id);
+
+            // Clan (not implemented yet)
+            msg.writer.writeInt(-1);
+
+            // Level (not implemented yet, default 0?)
+            msg.writer.writeByte(0); // Service.getCurrLevel(plInfo)
+
+            msg.writer.writeBoolean(false); // java: false
+            msg.writer.writeByte(plInfo.typePk || 0); // typePk
+            msg.writer.writeByte(plInfo.gender);
+            msg.writer.writeByte(plInfo.gender);
+            msg.writer.writeShort(plInfo.head);
+            msg.writer.writeUTF(plInfo.name);
+            msg.writer.writeInt(plInfo.hp);
+            msg.writer.writeInt(plInfo.hpMax || plInfo.hp); // hpMax
+            msg.writer.writeShort(plInfo.body);
+            msg.writer.writeShort(plInfo.leg);
+            msg.writer.writeByte(plInfo.flagBag || 0); // flagBag
+            msg.writer.writeByte(-1); // java: -1
+            msg.writer.writeShort(plInfo.x);
+            msg.writer.writeShort(plInfo.y);
+            msg.writer.writeShort(0); // java: 0
+            msg.writer.writeShort(0); // java: 0
+
+            msg.writer.writeByte(0); // java: 0
+
+            msg.writer.writeByte(0); // iDMark.getIdSpaceShip() (default 0)
+
+            msg.writer.writeByte(0); // effectSkill.isMonkey (default 0)
+            msg.writer.writeShort(-1); // mount (default -1)
+            msg.writer.writeByte(0); // cFlag (default 0)
+            msg.writer.writeByte(0); // java: 0
+
+            // Aura/Eff (java: if !pet && !boss && admin -> writeShort(-1), writeByte(-1))
+            // We'll write defaults for now
+            msg.writer.writeShort(-1);
+            msg.writer.writeByte(-1);
+
+            plReceive.session.sendMessage(msg);
+        } catch (e) {
+            Logger.error("Error in infoPlayer: " + e);
+        } finally {
+            msg.cleanup();
+        }
+    }
 }
+

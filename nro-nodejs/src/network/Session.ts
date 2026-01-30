@@ -1,5 +1,5 @@
 
-import * as net from 'net';
+import { ISocket } from './ISocket';
 import { Message } from './Message';
 import { Controller } from '../server/Controller';
 import { Logger } from '../utils/Logger';
@@ -7,7 +7,7 @@ import { Player } from '../models/Player';
 
 export class Session {
     public id: number = 0;
-    public socket: net.Socket;
+    public socket: ISocket;
     public connected: boolean = false;
     public sendKeyComplete: boolean = false;
     public userId: number = 0;
@@ -20,7 +20,12 @@ export class Session {
     public zoomLevel: number = 0;
     public version: number = 0;
 
-    constructor(socket: net.Socket) {
+    // Encryption
+    private keys: Buffer = Buffer.alloc(0);
+    private curR: number = 0;
+    private curW: number = 0;
+
+    constructor(socket: ISocket) {
         this.socket = socket;
         this.connected = true;
         this.init();
@@ -31,127 +36,183 @@ export class Session {
         this.socket.on('close', () => this.onClose());
         this.socket.on('error', (err) => this.onError(err));
 
-        // Java MySession sends session key on connect (sendSessionKey)
-        // We should implement this if the client expects it immediately.
-        // MySession.java: sendSessionKey() -> msg -27
-        this.sendSessionKey();
+        // Logic: Wait for Client to send CMD -27 first, matched with Controller.ts
     }
 
     public sendSessionKey(): void {
         const msg = new Message(-27);
-        // Keys: public static final byte[] KEYS = {0};
-        const keys = Buffer.from([0]);
+        // Using a simple 1-byte key {0} to match Java KEYS = {0}
+        const keys = Buffer.from([0]); // Java KEYS = {0}
         msg.writer.writeByte(keys.length);
         msg.writer.writeByte(keys[0]);
         for (let i = 1; i < keys.length; i++) {
             msg.writer.writeByte(keys[i] ^ keys[i - 1]);
         }
-        this.sendMessage(msg);
-        this.sendKeyComplete = true; // In Java: sentKey = true;
 
-        // Send version res (Java: Controller case -27 calls DataGame.sendVersionRes)
-        import("../services/DataGame").then(({ DataGame }) => {
-            DataGame.sendVersionRes(this);
-        });
+        // Extra fields expected by SessionReceiver.java
+        msg.writer.writeUTF("127.0.0.1"); // GameMidlet.c (IP) - Default to localhost for testing
+        msg.writer.writeInt(14445);       // GameMidlet.d (Port)
+        msg.writer.writeByte(0);          // GameMidlet.g (Boolean flag)
+
+        // Handshake message is NOT encrypted
+        this.doSendMessage(msg, false);
+
+        this.keys = keys;
+        this.sendKeyComplete = true;
     }
 
     public sendMessage(msg: Message): void {
+        this.doSendMessage(msg, this.sendKeyComplete);
+    }
+
+    private doSendMessage(msg: Message, encrypt: boolean): void {
         if (!this.connected) return;
         try {
             const data = msg.getData();
             const cmd = msg.getCommand();
 
-            // Construct packet with standard teaMobi header roughly inferred:
-            // If strict protocol is needed, we need exact header.
-            // Using a simple header [Command] [Data] or [Size] [Command] [Data]
-            // Java Session.java send(Message msg):
-            // if (size > 127) writes -128 then int size.
-            // else writes byte size.
-            // Then cmd.
-            // Then data.
-
-            const size = data.length + 1; // +1 for command byte
-
-            let header: Buffer;
-            if (size > 127) {
-                header = Buffer.alloc(5);
-                header.writeInt8(-128, 0);
-                header.writeInt32BE(size, 1);
-            } else {
-                header = Buffer.alloc(1);
-                header.writeInt8(size, 0);
+            let cmdByte = cmd;
+            if (encrypt && this.keys.length > 0) {
+                cmdByte = this.encrypt(cmd);
             }
 
-            // Packet: [Header Size] [Command] [Data]
-            // Write Cmd
             const cmdBuf = Buffer.alloc(1);
-            cmdBuf.writeInt8(cmd);
+            cmdBuf[0] = cmdByte & 0xFF;
 
-            const packet = Buffer.concat([header, cmdBuf, data]);
-            this.socket.write(packet);
+            let lenBuf: Buffer;
+            const size = data.length;
+
+            // Special 3-byte size commands from SessionReceiver.java
+            const specialCmds = [-32, -66, 11, -67, -74, -87, 66, 12];
+            if (specialCmds.includes(cmd)) {
+                lenBuf = Buffer.alloc(3);
+                const s1 = (size & 0xFF) - 128;
+                const s2 = ((size >> 8) & 0xFF) - 128;
+                const s3 = ((size >> 16) & 0xFF) - 128;
+                if (encrypt) {
+                    lenBuf[0] = this.encrypt(s1);
+                    lenBuf[1] = this.encrypt(s2);
+                    lenBuf[2] = this.encrypt(s3);
+                } else {
+                    lenBuf[0] = s1 & 0xFF;
+                    lenBuf[1] = s2 & 0xFF;
+                    lenBuf[2] = s3 & 0xFF;
+                }
+            } else {
+                lenBuf = Buffer.alloc(2);
+                if (encrypt) {
+                    lenBuf[0] = this.encrypt((size >> 8) & 0xFF);
+                    lenBuf[1] = this.encrypt(size & 0xFF);
+                } else {
+                    lenBuf[0] = (size >> 8) & 0xFF;
+                    lenBuf[1] = size & 0xFF;
+                }
+            }
+
+            let body = Buffer.from(data);
+            if (encrypt && this.keys.length > 0) {
+                for (let i = 0; i < body.length; i++) {
+                    body[i] = this.encrypt(body[i]);
+                }
+            }
+
+            const packet = Buffer.concat([cmdBuf, lenBuf, body]);
+            Logger.debug(`[NETWORK] Sending CMD: ${cmdByte}, Len: ${size}, Encrypted: ${encrypt}`);
+            this.socket.send(packet);
         } catch (e) {
             Logger.error('Error sending message', e);
         }
     }
 
+    private encrypt(b: number): number {
+        const res = (b & 0xFF) ^ (this.keys[this.curW++] & 0xFF);
+        this.curW %= this.keys.length;
+        return res & 0xFF;
+    }
+
+    private decrypt(b: number): number {
+        const res = (b & 0xFF) ^ (this.keys[this.curR++] & 0xFF);
+        this.curR %= this.keys.length;
+        return res & 0xFF;
+    }
+
     private onData(data: Buffer): void {
+        Logger.debug(`[NETWORK] Received ${data.length} bytes from ${this.socket.getRemoteAddress()}`);
         this.buffer = Buffer.concat([this.buffer, data]);
 
-        // Packet loop
         while (this.buffer.length > 0) {
-            // Need at least 1 byte for size
-            if (this.buffer.length < 1) break;
+            let command = this.buffer[0];
+            if (this.sendKeyComplete && this.keys.length > 0) {
+                const tempCurR = this.curR;
+                command = this.decrypt(command);
+                this.curR = tempCurR;
+            }
+            if (command > 127) command -= 256;
 
-            // Read size (unsigned)
-            let size = this.buffer.readUInt8(0);
-            let offset = 1;
+            Logger.debug(`[NETWORK] Peek CMD: ${command}, Current Buffer: ${this.buffer.length}, Hex: ${this.buffer.subarray(0, Math.min(this.buffer.length, 4)).toString('hex')}`);
 
-            // Handle large packet header (0x80)
-            if (size === 128) {
-                if (this.buffer.length < 5) break;
-                size = this.buffer.readInt32BE(1);
-                offset = 5;
+            let offset = 3;
+            let dataLen = 0;
+
+            if (this.buffer.length < 3) {
+                Logger.debug(`[NETWORK] Wait for header 3 bytes, current: ${this.buffer.length}`);
+                break;
             }
 
-            // If size is 0, it implies empty command? Or keep alive?
-            // If size includes Cmd, 0 is invalid.
-            // Discard to avoid infinite loop or crash if client sends 0s
-            if (size === 0) {
-                this.buffer = this.buffer.subarray(1);
-                continue;
+            if (this.sendKeyComplete && this.keys.length > 0) {
+                const tempCurR = this.curR;
+                this.decrypt(this.buffer[0]); // skip cmd
+                const s1 = this.decrypt(this.buffer[1]) & 0xFF;
+                const s2 = this.decrypt(this.buffer[2]) & 0xFF;
+                dataLen = (s1 << 8) | s2;
+                this.curR = tempCurR;
+            } else {
+                dataLen = ((this.buffer[1] & 0xFF) << 8) | (this.buffer[2] & 0xFF);
             }
 
-            // Check full packet
-            // size includes Command (1 byte) + Data
-            if (this.buffer.length < offset + size) break;
-
-            // Parse Command
-            const command = this.buffer.readInt8(offset);
-
-            // Data payload
-            const dataLen = size - 1;
-
-            // Debug: Log received command
-            Logger.debug(`📨 Received CMD: ${command}, Size: ${size}, DataLen: ${dataLen}`);
-
-            let dataPayload = Buffer.alloc(0);
-            if (dataLen > 0) {
-                // Fix type mismatch by creating a new Buffer from the subarray
-                dataPayload = Buffer.from(this.buffer.subarray(offset + 1, offset + size));
+            if (this.buffer.length < offset + dataLen) {
+                Logger.debug(`[NETWORK] Wait for body: buffer=${this.buffer.length}, needed=${offset + dataLen}`);
+                break;
             }
 
-            const msg = new Message(command, dataPayload);
+            // Consume header and body
+            let realCmd = (this.sendKeyComplete && this.keys.length > 0) ? this.decrypt(this.buffer[0]) : (this.buffer[0] > 127 ? this.buffer[0] - 256 : this.buffer[0]);
+            if (realCmd > 127) realCmd -= 256;
+
+            // Skip length bytes in decryption state
+            if (offset === 4) {
+                if (this.sendKeyComplete && this.keys.length > 0) {
+                    this.decrypt(this.buffer[1]);
+                    this.decrypt(this.buffer[2]);
+                    this.decrypt(this.buffer[3]);
+                }
+            } else {
+                if (this.sendKeyComplete && this.keys.length > 0) {
+                    this.decrypt(this.buffer[1]);
+                    this.decrypt(this.buffer[2]);
+                }
+            }
+
+            let dataPayload = this.buffer.subarray(offset, offset + dataLen);
+            if (this.sendKeyComplete && this.keys.length > 0) {
+                const decryptedData = Buffer.alloc(dataLen);
+                for (let i = 0; i < dataLen; i++) {
+                    decryptedData[i] = this.decrypt(dataPayload[i]);
+                }
+                dataPayload = decryptedData;
+            }
+
+            Logger.debug(`📨 Received CMD: ${realCmd}, DataLen: ${dataLen}`);
+            const msg = new Message(realCmd, Buffer.from(dataPayload));
             Controller.getInstance().onMessage(this, msg);
 
-            // Remove processed packet
-            this.buffer = this.buffer.subarray(offset + size);
+            this.buffer = this.buffer.subarray(offset + dataLen);
         }
     }
 
     private onClose(): void {
         this.connected = false;
         Logger.info(`Session disconnected.`);
-        // clean up player
     }
 
     private onError(err: Error): void {

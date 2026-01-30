@@ -1,455 +1,1910 @@
-[2026-01-28 03:25:02] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 03:25:03] [ERROR]: Database connection failed:
-[2026-01-28 03:25:53] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 03:25:53] [ERROR]: Database connection failed:
-[2026-01-28 03:26:12] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 03:26:12] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 03:26:12] [INFO]: Server started successfully!
-[2026-01-28 03:26:12] [INFO]: Server is listening on port 14445
-[2026-01-28 03:39:09] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 03:39:09] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 03:39:09] [INFO]: Server started successfully!
-[2026-01-28 03:39:09] [INFO]: Server is listening on port 14445
-[2026-01-28 03:39:23] [INFO]: New connection from ::ffff:127.0.0.1:50351
-[2026-01-28 03:39:48] [INFO]: Session 0 disconnected.
-[2026-01-28 03:39:58] [INFO]: New connection from ::ffff:127.0.0.1:50355
-[2026-01-28 03:40:09] [INFO]: Session 0 disconnected.
-[2026-01-28 03:51:31] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 03:51:31] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 03:51:31] [INFO]: Server started successfully!
-[2026-01-28 03:51:31] [INFO]: Server is listening on port 14445
-[2026-01-28 03:51:37] [INFO]: New connection from ::ffff:127.0.0.1:50564
-[2026-01-28 03:58:48] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 03:58:48] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 03:58:48] [INFO]: Server started successfully!
-[2026-01-28 03:58:48] [INFO]: Server is listening on port 14445
-[2026-01-28 03:58:52] [INFO]: New connection from ::ffff:127.0.0.1:50681
-[2026-01-28 03:59:02] [INFO]: Session disconnected.
-[2026-01-28 04:07:26] [INFO]: Starting NRO Node.js Server Tests
+[2026-01-28 11:29:27] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 11:29:27] [INFO]: Connecting to MySQL...
+[2026-01-28 11:29:27] [INFO]: Connected to MySQL Database successfully.
+[2026-01-28 11:29:27] [INFO]: ✅ MySQL connected successfully
 
-[2026-01-28 04:07:26] [INFO]: === Testing Database Connection ===
-[2026-01-28 04:07:26] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 04:07:26] [ERROR]: ✗ Database connection failed:
-[2026-01-28 04:07:26] [INFO]: 
-=== Testing Account Query ===
-[2026-01-28 04:07:26] [ERROR]: ✗ Account query failed:
-[2026-01-28 04:07:26] [INFO]: 
-=== Testing PlayerDAO ===
-[2026-01-28 04:07:26] [ERROR]: ✗ PlayerDAO test failed:
-[2026-01-28 04:18:30] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 04:18:30] [INFO]: Connecting to MySQL...
-[2026-01-28 04:18:30] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 04:18:30] [INFO]: Connecting to MongoDB...
-[2026-01-28 04:19:00] [ERROR]: Failed to connect to MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
-[2026-01-28 04:19:00] [WARN]: Continuing without MongoDB (some features may be limited)
-[2026-01-28 04:19:00] [INFO]: Server started successfully!
-[2026-01-28 04:19:00] [INFO]: MySQL: Connected
-[2026-01-28 04:19:00] [INFO]: MongoDB: Offline
-[2026-01-28 04:19:00] [INFO]: Server is listening on port 14445
-[2026-01-28 04:25:43] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 04:25:43] [INFO]: Connecting to MySQL...
-[2026-01-28 04:25:43] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 04:25:43] [INFO]: Connecting to MongoDB...
-[2026-01-28 04:25:43] [ERROR]: Failed to connect to MongoDB: mongodb+srv URI cannot have port number
-[2026-01-28 04:25:43] [WARN]: Continuing without MongoDB (some features may be limited)
-[2026-01-28 04:25:43] [INFO]: Server started successfully!
-[2026-01-28 04:25:43] [INFO]: MySQL: Connected
-[2026-01-28 04:25:43] [INFO]: MongoDB: Offline
-[2026-01-28 04:25:43] [INFO]: Server is listening on port 14445
-[2026-01-28 04:26:21] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 04:26:21] [INFO]: Connecting to MySQL...
-[2026-01-28 04:26:21] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 04:26:21] [INFO]: Connecting to MongoDB...
-[2026-01-28 04:26:23] [INFO]: MongoDB connected successfully
-[2026-01-28 04:26:23] [INFO]: Server started successfully!
-[2026-01-28 04:26:23] [INFO]: MySQL: Connected
-[2026-01-28 04:26:23] [INFO]: MongoDB: Connected
-[2026-01-28 04:26:23] [INFO]: Server is listening on port 14445
-[2026-01-28 04:26:32] [INFO]: New connection from ::ffff:127.0.0.1:50476
-[2026-01-28 04:26:57] [INFO]: Session disconnected.
-[2026-01-28 04:37:51] [INFO]: MongoDB connected successfully
-[2026-01-28 04:37:51] [INFO]: Creating test player...
-[2026-01-28 04:37:52] [INFO]: ✅ Test player created successfully!
-[2026-01-28 04:37:52] [INFO]: Player ID: 1
-[2026-01-28 04:37:52] [INFO]: Account ID: 1
-[2026-01-28 04:37:52] [INFO]: Power: 1000
-[2026-01-28 04:37:52] [INFO]: HP: 150/150
-[2026-01-28 04:37:52] [INFO]: MP: 120/120
-[2026-01-28 04:37:52] [INFO]: Location: Map 0, Zone 0
-[2026-01-28 04:37:52] [INFO]: Position: (100, 200)
-[2026-01-28 04:37:52] [INFO]: 
-✅ Verification: Player found in database
-[2026-01-28 04:38:54] [INFO]: MongoDB connected successfully
-[2026-01-28 04:38:54] [INFO]: Fetching player with ID: 1...
-[2026-01-28 04:38:55] [INFO]: 
-📊 Player Data:
-[2026-01-28 04:41:11] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 04:41:11] [INFO]: Connecting to MySQL...
-[2026-01-28 04:41:11] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 04:41:11] [INFO]: Connecting to MongoDB...
-[2026-01-28 04:41:13] [INFO]: MongoDB connected successfully
-[2026-01-28 04:41:13] [INFO]: Server started successfully!
-[2026-01-28 04:41:13] [INFO]: MySQL: Connected
-[2026-01-28 04:41:13] [INFO]: MongoDB: Connected
-[2026-01-28 04:41:13] [INFO]: Server is listening on port 14445
-[2026-01-28 04:41:18] [INFO]: New connection from ::ffff:127.0.0.1:51097
-[2026-01-28 04:41:51] [INFO]: Session disconnected.
-[2026-01-28 04:41:51] [INFO]: New connection from ::ffff:127.0.0.1:51107
-[2026-01-28 04:48:31] [INFO]: Session disconnected.
-[2026-01-28 04:48:31] [INFO]: New connection from ::ffff:127.0.0.1:51303
-[2026-01-28 04:58:06] [INFO]: Session disconnected.
-[2026-01-28 05:11:58] [INFO]: 🚀 Starting solomon.sql import...
+[2026-01-28 11:29:27] [INFO]: Loading game data from files...
+[2026-01-28 11:29:27] [INFO]: 📦 Loading game data...
 
-[2026-01-28 05:11:58] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 05:11:58] [INFO]: ✅ MySQL connected
-
-[2026-01-28 05:11:58] [INFO]: 📄 Reading solomon.sql...
-[2026-01-28 05:11:58] [INFO]: 📊 Parsing SQL statements...
-
-[2026-01-28 05:11:58] [INFO]: Found 95 SQL statements
-
-[2026-01-28 05:11:58] [INFO]: ⏳ Executing statements (this may take a while)...
-
-[2026-01-28 05:11:58] [WARN]: Statement 1 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 2 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 3 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 4 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 5 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 6 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 7 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 8 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 9 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 10 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 11 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 12 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 13 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 14 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 15 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 16 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 17 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 18 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 19 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 20 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 21 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 22 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 23 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 24 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 25 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 26 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 27 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 28 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 29 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 30 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 31 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 32 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 33 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 34 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 35 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 36 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 37 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 38 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 39 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 40 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 41 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 42 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 43 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 44 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 45 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 46 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 47 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 48 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 49 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 50 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 51 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 52 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 53 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 54 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 55 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 56 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 57 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 58 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 59 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 60 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 61 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 62 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 63 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 64 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 65 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 66 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 67 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 68 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 69 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 70 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 71 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 72 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 73 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 74 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 75 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 76 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 77 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 78 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 79 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 80 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 81 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 82 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 83 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 84 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 85 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 86 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 87 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 88 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 89 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 90 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 91 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 92 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 93 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 94 error: 
-[2026-01-28 05:11:58] [WARN]: Statement 95 error: 
-[2026-01-28 05:11:58] [INFO]: 
-✅ Import completed!
-[2026-01-28 05:11:58] [INFO]:    Success: 0 statements
-[2026-01-28 05:11:58] [INFO]:    Errors: 95 statements
-
-[2026-01-28 05:11:58] [INFO]: 🔍 Verifying import...
-
-[2026-01-28 05:11:58] [ERROR]: ❌ Import failed:
-[2026-01-28 05:12:19] [INFO]: 🔌 Testing MySQL connection...
-
-[2026-01-28 05:12:19] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
-[2026-01-28 05:12:19] [INFO]: ✅ MySQL connected successfully!
-
-[2026-01-28 05:12:19] [INFO]: 📊 Running test queries...
-
-[2026-01-28 05:12:19] [ERROR]: ❌ Connection test failed:
-[2026-01-28 05:25:38] [INFO]: New connection from ::ffff:127.0.0.1:52053
-[2026-01-28 05:26:14] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 05:26:14] [INFO]: Connecting to MySQL...
-[2026-01-28 05:26:14] [INFO]: Connected to MySQL Database successfully.
-[2026-01-28 05:26:14] [INFO]: ✅ MySQL connected successfully
-[2026-01-28 05:26:14] [INFO]: ✅ Server started successfully!
-[2026-01-28 05:26:14] [INFO]: Server is listening on port 14445
-[2026-01-28 05:26:20] [INFO]: New connection from ::ffff:127.0.0.1:52066
-[2026-01-28 05:26:52] [INFO]: Session disconnected.
-[2026-01-28 05:26:52] [INFO]: New connection from ::ffff:127.0.0.1:52075
-[2026-01-28 05:29:24] [INFO]: Session disconnected.
-[2026-01-28 05:29:24] [INFO]: New connection from ::ffff:127.0.0.1:52100
-[2026-01-28 05:30:52] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 05:30:52] [INFO]: Connecting to MySQL...
-[2026-01-28 05:30:52] [INFO]: Connected to MySQL Database successfully.
-[2026-01-28 05:30:52] [INFO]: ✅ MySQL connected successfully
-
-[2026-01-28 05:30:52] [INFO]: Loading game data from files...
-[2026-01-28 05:30:52] [INFO]: 📦 Loading game data from files...
-
-[2026-01-28 05:30:52] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
-[2026-01-28 05:30:52] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
-[2026-01-28 05:30:52] [INFO]: ✅ Loaded 10 maps
-[2026-01-28 05:30:52] [INFO]: ✅ Loaded 31 NPCs
-[2026-01-28 05:30:52] [INFO]: ✅ Loaded 80 mob templates
-[2026-01-28 05:30:52] [INFO]: 
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 10 maps
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-28 11:29:27] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-28 11:29:27] [INFO]: 
 ✅ All game data loaded successfully!
-[2026-01-28 05:30:52] [INFO]: 
+[2026-01-28 11:29:27] [INFO]: 
 📊 Game Data Summary:
-[2026-01-28 05:30:52] [INFO]:    Maps: 10
-[2026-01-28 05:30:52] [INFO]:    NPCs: 31
-[2026-01-28 05:30:52] [INFO]:    Mobs: 80
-[2026-01-28 05:30:52] [INFO]:    TileSetInfo: Loaded
-[2026-01-28 05:30:52] [INFO]:    ItemBgData: Loaded
-[2026-01-28 05:30:52] [INFO]: 
+[2026-01-28 11:29:27] [INFO]:    Maps: 10
+[2026-01-28 11:29:27] [INFO]:    NPCs: 31
+[2026-01-28 11:29:27] [INFO]:    Mobs: 80
+[2026-01-28 11:29:27] [INFO]:    Items: 2046
+[2026-01-28 11:29:27] [INFO]:    Classes: 3
+[2026-01-28 11:29:27] [INFO]:    Tasks: 33
+[2026-01-28 11:29:27] [INFO]:    TileSetInfo: Loaded
+[2026-01-28 11:29:27] [INFO]:    ItemBgData: Loaded
+[2026-01-28 11:29:27] [INFO]: 
 ✅ Server started successfully!
-[2026-01-28 05:30:52] [INFO]:    MySQL: Connected
-[2026-01-28 05:30:52] [INFO]:    Game Data: Loaded
-[2026-01-28 05:30:52] [INFO]:    Server Port: 14445
+[2026-01-28 11:29:27] [INFO]:    MySQL: Connected
+[2026-01-28 11:29:27] [INFO]:    Game Data: Loaded
+[2026-01-28 11:29:27] [INFO]:    Server Port: 14445
 
-[2026-01-28 05:30:52] [ERROR]: Server error: listen EADDRINUSE: address already in use :::14445
-[2026-01-28 05:32:22] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 05:32:22] [INFO]: Connecting to MySQL...
-[2026-01-28 05:32:22] [INFO]: Connected to MySQL Database successfully.
-[2026-01-28 05:32:22] [INFO]: ✅ MySQL connected successfully
+[2026-01-28 11:29:27] [INFO]: Server is listening on port 14445
+[2026-01-28 11:29:27] [INFO]: New connection from ::ffff:127.0.0.1:59995
+[2026-01-28 11:29:27] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:29:27] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:29:27] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:29:27] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:29:27] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:29:27] [DEBUG]: Sent version res to client
+[2026-01-28 11:29:27] [DEBUG]: [NETWORK] Received 40 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:29:27] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:29:27] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:29:27] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:29:27] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:29:27] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:29:33] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:29:33] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:29:33] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:29:33] [DEBUG]: [NETWORK] Received 33 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:29:33] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 35, Hex: e3002000
+[2026-01-28 11:29:33] [DEBUG]: 📨 Received CMD: -29, DataLen: 32
+[2026-01-28 11:29:33] [INFO]: Authenticating user: vũ đăng
+[2026-01-28 11:29:33] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'vũ đăng'...
+[2026-01-28 11:29:33] [DEBUG]: Query executed. Found 0 accounts.
+[2026-01-28 11:29:33] [DEBUG]: [NETWORK] Sending CMD: 13, Len: 53, Encrypted: true
+[2026-01-28 11:30:04] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:30:04] [INFO]: Session disconnected.
+[2026-01-28 11:30:12] [INFO]: New connection from ::ffff:127.0.0.1:60020
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:30:12] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:30:12] [DEBUG]: Sent version res to client
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Received 4 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 4, Hex: e3002502
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Wait for body: buffer=4, needed=40
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Received 36 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:30:12] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:30:12] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:30:12] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:30:12] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Received 6 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 6, Hex: e3002100
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Wait for body: buffer=6, needed=36
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Received 30 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 36, Hex: e3002100
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -29, DataLen: 33
+[2026-01-28 11:30:40] [INFO]: Authenticating user: mtrungtin45
+[2026-01-28 11:30:40] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'mtrungtin45'...
+[2026-01-28 11:30:40] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 2, Len: 0, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 2, Hex: a900
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Received 9 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 11, Hex: a90000e4
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -87, DataLen: 0
+[2026-01-28 11:30:40] [WARN]: updateData not implemented yet
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:30:40] [WARN]: updateSkill not implemented yet
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:30:40] [DEBUG]: Update item data - Not implemented
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Received 65 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 65, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 374883, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 60, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 18698, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 55, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 3423, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 50, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4464, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 45, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 13635, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 40, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 15882, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 35, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 26704, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 30, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 11634, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 25, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2161, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 20, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 6746, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 15, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 1423, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 10, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2680, Encrypted: true
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 5, Hex: e0000200
+[2026-01-28 11:30:40] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:30:40] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4257, Encrypted: true
+[2026-01-28 11:31:55] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:31:55] [INFO]: Session disconnected.
+[2026-01-28 11:32:04] [INFO]: New connection from ::ffff:127.0.0.1:60052
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:32:04] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:32:04] [DEBUG]: Sent version res to client
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Received 38 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:32:04] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:32:04] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:32:04] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:32:04] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:32:10] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:32:10] [DEBUG]: [NETWORK] Peek CMD: -101, Current Buffer: 2, Hex: 9b00
+[2026-01-28 11:32:10] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:32:10] [DEBUG]: [NETWORK] Received 4 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:32:10] [DEBUG]: [NETWORK] Peek CMD: -101, Current Buffer: 6, Hex: 9b000300
+[2026-01-28 11:32:10] [DEBUG]: 📨 Received CMD: -101, DataLen: 3
+[2026-01-28 11:32:56] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:32:56] [INFO]: Session disconnected.
+[2026-01-28 11:33:07] [INFO]: New connection from ::ffff:127.0.0.1:60078
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:33:07] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:33:07] [DEBUG]: Sent version res to client
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Received 5 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 5, Hex: e3002502
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Wait for body: buffer=5, needed=40
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Received 35 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:33:07] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:33:07] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:33:07] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:33:07] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Received 34 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 36, Hex: e3002100
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -29, DataLen: 33
+[2026-01-28 11:33:21] [INFO]: Authenticating user: mtrungtin45
+[2026-01-28 11:33:21] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'mtrungtin45'...
+[2026-01-28 11:33:21] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 2, Len: 0, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 1, Hex: a9
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Received 75 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 76, Hex: a90000e4
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -87, DataLen: 0
+[2026-01-28 11:33:21] [WARN]: updateData not implemented yet
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 73, Hex: e4000107
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:33:21] [WARN]: updateSkill not implemented yet
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 69, Hex: e4000108
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:33:21] [DEBUG]: Update item data - Not implemented
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 65, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 374883, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 60, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 18698, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 55, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 3423, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 50, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4464, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 45, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 13635, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 40, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 15882, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 35, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 26704, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 30, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 11634, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 25, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2161, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 20, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 6746, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 15, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 1423, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 10, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2680, Encrypted: true
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 5, Hex: e0000200
+[2026-01-28 11:33:21] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:33:21] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4257, Encrypted: true
+[2026-01-28 11:36:49] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 11:36:49] [INFO]: Connecting to MySQL...
+[2026-01-28 11:36:49] [INFO]: Connected to MySQL Database successfully.
+[2026-01-28 11:36:49] [INFO]: ✅ MySQL connected successfully
 
-[2026-01-28 05:32:22] [INFO]: Loading game data from files...
-[2026-01-28 05:32:22] [INFO]: 📦 Loading game data from files...
+[2026-01-28 11:36:49] [INFO]: Loading game data from files...
+[2026-01-28 11:36:49] [INFO]: 📦 Loading game data...
 
-[2026-01-28 05:32:22] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
-[2026-01-28 05:32:22] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
-[2026-01-28 05:32:22] [INFO]: ✅ Loaded 10 maps
-[2026-01-28 05:32:22] [INFO]: ✅ Loaded 31 NPCs
-[2026-01-28 05:32:22] [INFO]: ✅ Loaded 80 mob templates
-[2026-01-28 05:32:22] [INFO]: 
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 10 maps
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-28 11:36:49] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-28 11:36:49] [INFO]: 
 ✅ All game data loaded successfully!
-[2026-01-28 05:32:22] [INFO]: 
+[2026-01-28 11:36:49] [INFO]: 
 📊 Game Data Summary:
-[2026-01-28 05:32:22] [INFO]:    Maps: 10
-[2026-01-28 05:32:22] [INFO]:    NPCs: 31
-[2026-01-28 05:32:22] [INFO]:    Mobs: 80
-[2026-01-28 05:32:22] [INFO]:    TileSetInfo: Loaded
-[2026-01-28 05:32:22] [INFO]:    ItemBgData: Loaded
-[2026-01-28 05:32:22] [INFO]: 
+[2026-01-28 11:36:49] [INFO]:    Maps: 10
+[2026-01-28 11:36:49] [INFO]:    NPCs: 31
+[2026-01-28 11:36:49] [INFO]:    Mobs: 80
+[2026-01-28 11:36:49] [INFO]:    Items: 2046
+[2026-01-28 11:36:49] [INFO]:    Classes: 3
+[2026-01-28 11:36:49] [INFO]:    Tasks: 33
+[2026-01-28 11:36:49] [INFO]:    TileSetInfo: Loaded
+[2026-01-28 11:36:49] [INFO]:    ItemBgData: Loaded
+[2026-01-28 11:36:49] [INFO]: 
 ✅ Server started successfully!
-[2026-01-28 05:32:22] [INFO]:    MySQL: Connected
-[2026-01-28 05:32:22] [INFO]:    Game Data: Loaded
-[2026-01-28 05:32:22] [INFO]:    Server Port: 14445
+[2026-01-28 11:36:49] [INFO]:    MySQL: Connected
+[2026-01-28 11:36:49] [INFO]:    Game Data: Loaded
+[2026-01-28 11:36:49] [INFO]:    Server Port: 14445
 
-[2026-01-28 05:32:22] [ERROR]: Server error: listen EADDRINUSE: address already in use :::14445
-[2026-01-28 05:32:55] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 05:32:55] [INFO]: Connecting to MySQL...
-[2026-01-28 05:32:55] [INFO]: Connected to MySQL Database successfully.
-[2026-01-28 05:32:55] [INFO]: ✅ MySQL connected successfully
+[2026-01-28 11:36:49] [INFO]: Server is listening on port 14445
+[2026-01-28 11:36:49] [INFO]: New connection from ::ffff:127.0.0.1:60127
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:36:49] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:36:49] [DEBUG]: Sent version res to client
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Received 38 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:36:49] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:36:49] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:36:49] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:36:49] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:36:51] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:36:51] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:36:51] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:36:51] [DEBUG]: [NETWORK] Received 33 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:36:51] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 35, Hex: e3002000
+[2026-01-28 11:36:51] [DEBUG]: 📨 Received CMD: -29, DataLen: 32
+[2026-01-28 11:36:51] [INFO]: Authenticating user: vũ đăng
+[2026-01-28 11:36:51] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'vũ đăng'...
+[2026-01-28 11:36:51] [DEBUG]: Query executed. Found 0 accounts.
+[2026-01-28 11:36:51] [DEBUG]: [NETWORK] Sending CMD: 13, Len: 53, Encrypted: true
+[2026-01-28 11:36:55] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:36:55] [INFO]: Session disconnected.
+[2026-01-28 11:37:02] [INFO]: New connection from ::ffff:127.0.0.1:60140
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:37:02] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:37:02] [DEBUG]: Sent version res to client
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 3, Hex: e30025
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Wait for body: buffer=3, needed=40
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Received 37 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:37:02] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:37:02] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:37:02] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:37:02] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Received 4 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 4, Hex: e3002100
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Wait for body: buffer=4, needed=36
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Received 32 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 36, Hex: e3002100
+[2026-01-28 11:37:10] [DEBUG]: 📨 Received CMD: -29, DataLen: 33
+[2026-01-28 11:37:10] [INFO]: Authenticating user: mtrungtin45
+[2026-01-28 11:37:10] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'mtrungtin45'...
+[2026-01-28 11:37:10] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:37:10] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Sending CMD: 215, Len: 546, Encrypted: true
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Sending CMD: 2, Len: 0, Encrypted: true
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 2, Hex: a900
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Received 9 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 11, Hex: a90000e4
+[2026-01-28 11:37:10] [DEBUG]: 📨 Received CMD: -87, DataLen: 0
+[2026-01-28 11:37:10] [WARN]: updateData not implemented yet
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:37:10] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:37:10] [WARN]: updateSkill not implemented yet
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:37:10] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:37:10] [DEBUG]: Update item data - Not implemented
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Received 65 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:37:10] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 65, Hex: e0000200
+[2026-01-28 11:37:10] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 374883, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 60, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 18698, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 55, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 3423, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 50, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4464, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 45, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 13635, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 40, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 15882, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 35, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 26704, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 30, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 11634, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 25, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2161, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 20, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 6746, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 15, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 1423, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 10, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2680, Encrypted: true
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 5, Hex: e0000200
+[2026-01-28 11:37:11] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:37:11] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4257, Encrypted: true
+[2026-01-28 11:38:21] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:38:21] [INFO]: Session disconnected.
+[2026-01-28 11:38:28] [INFO]: New connection from ::ffff:127.0.0.1:60173
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:38:28] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:38:28] [DEBUG]: Sent version res to client
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 1, Hex: e3
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Received 39 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:38:28] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:38:28] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:38:28] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:38:28] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:38:45] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 11:38:45] [INFO]: Connecting to MySQL...
+[2026-01-28 11:38:45] [INFO]: Connected to MySQL Database successfully.
+[2026-01-28 11:38:45] [INFO]: ✅ MySQL connected successfully
 
-[2026-01-28 05:32:55] [INFO]: Loading game data from files...
-[2026-01-28 05:32:55] [INFO]: 📦 Loading game data from files...
+[2026-01-28 11:38:45] [INFO]: Loading game data from files...
+[2026-01-28 11:38:45] [INFO]: 📦 Loading game data...
 
-[2026-01-28 05:32:55] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
-[2026-01-28 05:32:55] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
-[2026-01-28 05:32:55] [INFO]: ✅ Loaded 10 maps
-[2026-01-28 05:32:55] [INFO]: ✅ Loaded 31 NPCs
-[2026-01-28 05:32:55] [INFO]: ✅ Loaded 80 mob templates
-[2026-01-28 05:32:55] [INFO]: 
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 10 maps
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-28 11:38:45] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-28 11:38:45] [INFO]: 
 ✅ All game data loaded successfully!
-[2026-01-28 05:32:55] [INFO]: 
+[2026-01-28 11:38:45] [INFO]: 
 📊 Game Data Summary:
-[2026-01-28 05:32:55] [INFO]:    Maps: 10
-[2026-01-28 05:32:55] [INFO]:    NPCs: 31
-[2026-01-28 05:32:55] [INFO]:    Mobs: 80
-[2026-01-28 05:32:55] [INFO]:    TileSetInfo: Loaded
-[2026-01-28 05:32:55] [INFO]:    ItemBgData: Loaded
-[2026-01-28 05:32:55] [INFO]: 
+[2026-01-28 11:38:45] [INFO]:    Maps: 10
+[2026-01-28 11:38:45] [INFO]:    NPCs: 31
+[2026-01-28 11:38:45] [INFO]:    Mobs: 80
+[2026-01-28 11:38:45] [INFO]:    Items: 2046
+[2026-01-28 11:38:45] [INFO]:    Classes: 3
+[2026-01-28 11:38:45] [INFO]:    Tasks: 33
+[2026-01-28 11:38:45] [INFO]:    TileSetInfo: Loaded
+[2026-01-28 11:38:45] [INFO]:    ItemBgData: Loaded
+[2026-01-28 11:38:45] [INFO]: 
 ✅ Server started successfully!
-[2026-01-28 05:32:55] [INFO]:    MySQL: Connected
-[2026-01-28 05:32:55] [INFO]:    Game Data: Loaded
-[2026-01-28 05:32:55] [INFO]:    Server Port: 14445
+[2026-01-28 11:38:45] [INFO]:    MySQL: Connected
+[2026-01-28 11:38:45] [INFO]:    Game Data: Loaded
+[2026-01-28 11:38:45] [INFO]:    Server Port: 14445
 
-[2026-01-28 05:32:55] [INFO]: Server is listening on port 14445
-[2026-01-28 05:32:55] [INFO]: New connection from ::ffff:127.0.0.1:52161
-[2026-01-28 05:33:27] [INFO]: Session disconnected.
-[2026-01-28 05:33:27] [INFO]: New connection from ::ffff:127.0.0.1:52168
-[2026-01-28 05:34:01] [INFO]: Session disconnected.
-[2026-01-28 05:34:01] [INFO]: New connection from ::ffff:127.0.0.1:52174
-[2026-01-28 05:34:53] [INFO]: Session disconnected.
-[2026-01-28 05:34:53] [INFO]: New connection from ::ffff:127.0.0.1:52186
-[2026-01-28 05:35:29] [INFO]: Session disconnected.
-[2026-01-28 05:35:29] [INFO]: New connection from ::ffff:127.0.0.1:52195
-[2026-01-28 05:36:11] [INFO]: Session disconnected.
-[2026-01-28 05:36:11] [INFO]: New connection from ::ffff:127.0.0.1:52203
-[2026-01-28 05:37:03] [INFO]: Session disconnected.
-[2026-01-28 05:37:03] [INFO]: New connection from ::ffff:127.0.0.1:52218
-[2026-01-28 05:38:19] [INFO]: Session disconnected.
-[2026-01-28 05:38:19] [INFO]: New connection from ::ffff:127.0.0.1:52244
-[2026-01-28 05:38:31] [INFO]: Session disconnected.
-[2026-01-28 05:38:39] [INFO]: New connection from ::ffff:127.0.0.1:52248
-[2026-01-28 05:39:13] [INFO]: Session disconnected.
-[2026-01-28 05:39:13] [INFO]: New connection from ::ffff:127.0.0.1:52256
-[2026-01-28 05:42:21] [INFO]: Session disconnected.
-[2026-01-28 05:42:30] [INFO]: New connection from ::ffff:127.0.0.1:52298
-[2026-01-28 05:43:05] [INFO]: Session disconnected.
-[2026-01-28 05:43:05] [INFO]: New connection from ::ffff:127.0.0.1:52307
-[2026-01-28 05:48:17] [INFO]: Session disconnected.
-[2026-01-28 05:48:17] [INFO]: New connection from ::ffff:127.0.0.1:52429
-[2026-01-28 05:48:48] [INFO]: Session disconnected.
-[2026-01-28 05:48:48] [INFO]: New connection from ::ffff:127.0.0.1:52434
-[2026-01-28 05:49:43] [INFO]: Session disconnected.
-[2026-01-28 05:49:43] [INFO]: New connection from ::ffff:127.0.0.1:52442
-[2026-01-28 05:53:33] [INFO]: Session disconnected.
-[2026-01-28 05:53:33] [INFO]: New connection from ::ffff:127.0.0.1:52487
-[2026-01-28 05:55:38] [INFO]: Session disconnected.
-[2026-01-28 05:55:38] [INFO]: New connection from ::ffff:127.0.0.1:52511
-[2026-01-28 05:56:15] [INFO]: Session disconnected.
-[2026-01-28 05:56:15] [INFO]: New connection from ::ffff:127.0.0.1:52521
-[2026-01-28 05:58:24] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 05:58:24] [INFO]: Connecting to MySQL...
-[2026-01-28 05:58:24] [INFO]: Connected to MySQL Database successfully.
-[2026-01-28 05:58:24] [INFO]: ✅ MySQL connected successfully
+[2026-01-28 11:38:45] [ERROR]: Server error: listen EADDRINUSE: address already in use :::14445
+[2026-01-28 11:39:22] [DEBUG]: [NETWORK] Received 5 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:39:22] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 5, Hex: e3002100
+[2026-01-28 11:39:22] [DEBUG]: [NETWORK] Wait for body: buffer=5, needed=36
+[2026-01-28 11:39:22] [DEBUG]: [NETWORK] Received 31 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:39:22] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 36, Hex: e3002100
+[2026-01-28 11:39:22] [DEBUG]: 📨 Received CMD: -29, DataLen: 33
+[2026-01-28 11:39:22] [INFO]: Authenticating user: admin
+[2026-01-28 11:39:22] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-28 11:39:22] [DEBUG]: Query executed. Found 0 accounts.
+[2026-01-28 11:39:22] [DEBUG]: [NETWORK] Sending CMD: 13, Len: 53, Encrypted: true
+[2026-01-28 11:39:47] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:39:47] [INFO]: Session disconnected.
+[2026-01-28 11:39:55] [INFO]: New connection from ::ffff:127.0.0.1:60207
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:39:55] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:39:55] [DEBUG]: Sent version res to client
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Received 35 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 35, Hex: e3002502
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Wait for body: buffer=35, needed=40
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Received 5 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:39:55] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:39:55] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:39:55] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:39:55] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:40:44] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:40:44] [INFO]: Session disconnected.
+[2026-01-28 11:42:11] [INFO]: New connection from ::ffff:127.0.0.1:60305
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:42:11] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:42:11] [DEBUG]: Sent version res to client
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 3, Hex: e30025
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Wait for body: buffer=3, needed=40
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Received 37 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:42:11] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:42:11] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:42:11] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:42:11] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:42:25] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:42:25] [INFO]: Session disconnected.
+[2026-01-28 11:42:56] [INFO]: New connection from ::ffff:127.0.0.1:60333
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:42:56] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:42:56] [DEBUG]: Sent version res to client
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Received 38 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:42:56] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:42:56] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:42:56] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:42:56] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:42:58] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:42:58] [INFO]: Session disconnected.
+[2026-01-28 11:43:11] [INFO]: New connection from ::ffff:127.0.0.1:60346
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:43:11] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:43:11] [DEBUG]: Sent version res to client
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Received 4 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 4, Hex: e3002502
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Wait for body: buffer=4, needed=40
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Received 36 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:43:11] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:43:11] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:43:11] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:43:11] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Received 28 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 30, Hex: e3001b00
+[2026-01-28 11:43:26] [DEBUG]: 📨 Received CMD: -29, DataLen: 27
+[2026-01-28 11:43:26] [INFO]: Authenticating user: facebook
+[2026-01-28 11:43:26] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'facebook'...
+[2026-01-28 11:43:26] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:43:26] [DEBUG]: Loaded player minhtran (ID: 231)
+[2026-01-28 11:43:26] [INFO]: ✅ Initialized 9 maps
+[2026-01-28 11:43:26] [INFO]: ✅ Player minhtran added to Map 0, Zone 0
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-28 11:43:26] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:43:26] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-28 11:43:26] [DEBUG]: Sent tile_set_info to client
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-28 11:43:26] [INFO]: ✅ Sent mapInfo to player minhtran: Map 0, Zone 0
+[2026-01-28 11:43:26] [INFO]: Player minhtran logged in successfully
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 2, Hex: a900
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 3, Hex: a90000
+[2026-01-28 11:43:26] [DEBUG]: 📨 Received CMD: -87, DataLen: 0
+[2026-01-28 11:43:26] [WARN]: updateData not implemented yet
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Received 8 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:43:26] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:43:26] [WARN]: updateSkill not implemented yet
+[2026-01-28 11:43:26] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:43:26] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:43:26] [DEBUG]: Update item data - Not implemented
+[2026-01-28 11:43:26] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:43:26] [INFO]: Session disconnected.
+[2026-01-28 11:46:39] [INFO]: New connection from ::ffff:127.0.0.1:60416
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:46:39] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:46:39] [DEBUG]: Sent version res to client
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Received 4 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 4, Hex: e3002502
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Wait for body: buffer=4, needed=40
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Received 36 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:46:39] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:46:39] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:46:39] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:46:39] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Received 28 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 30, Hex: e3001b00
+[2026-01-28 11:47:07] [DEBUG]: 📨 Received CMD: -29, DataLen: 27
+[2026-01-28 11:47:07] [INFO]: Authenticating user: facebook
+[2026-01-28 11:47:07] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'facebook'...
+[2026-01-28 11:47:07] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:47:07] [DEBUG]: Loaded player minhtran (ID: 231)
+[2026-01-28 11:47:07] [INFO]: ✅ Player minhtran added to Map 0, Zone 0
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-28 11:47:07] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:47:07] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-28 11:47:07] [DEBUG]: Sent tile_set_info to client
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-28 11:47:07] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-28 11:47:07] [INFO]: ✅ Sent mapInfo to player minhtran: Map 0, Zone 0
+[2026-01-28 11:47:07] [INFO]: Player minhtran logged in successfully
+[2026-01-28 11:47:08] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:47:08] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 1, Hex: a9
+[2026-01-28 11:47:08] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:47:08] [DEBUG]: [NETWORK] Received 10 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:47:08] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 11, Hex: a90000e4
+[2026-01-28 11:47:08] [DEBUG]: 📨 Received CMD: -87, DataLen: 0
+[2026-01-28 11:47:08] [WARN]: updateData not implemented yet
+[2026-01-28 11:47:08] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:47:08] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:47:08] [WARN]: updateSkill not implemented yet
+[2026-01-28 11:47:08] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:47:08] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:47:08] [DEBUG]: Update item data - Not implemented
+[2026-01-28 11:47:08] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:47:08] [INFO]: Session disconnected.
+[2026-01-28 11:48:20] [INFO]: New connection from ::ffff:127.0.0.1:60445
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:48:20] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:48:20] [DEBUG]: Sent version res to client
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 1, Hex: e3
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Received 39 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:48:20] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:48:20] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:48:20] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:48:20] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Received 5 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 5, Hex: e3001b00
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Wait for body: buffer=5, needed=30
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Received 25 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 30, Hex: e3001b00
+[2026-01-28 11:48:35] [DEBUG]: 📨 Received CMD: -29, DataLen: 27
+[2026-01-28 11:48:35] [INFO]: Authenticating user: facebook
+[2026-01-28 11:48:35] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'facebook'...
+[2026-01-28 11:48:35] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:48:35] [DEBUG]: Loaded player minhtran (ID: 231)
+[2026-01-28 11:48:35] [INFO]: ✅ Player minhtran added to Map 0, Zone 0
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-28 11:48:35] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:48:35] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-28 11:48:35] [DEBUG]: Sent tile_set_info to client
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-28 11:48:35] [INFO]: ✅ Sent mapInfo to player minhtran: Map 0, Zone 0
+[2026-01-28 11:48:35] [INFO]: Player minhtran logged in successfully
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 1, Hex: a9
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 3, Hex: a90000
+[2026-01-28 11:48:35] [DEBUG]: 📨 Received CMD: -87, DataLen: 0
+[2026-01-28 11:48:35] [WARN]: updateData not implemented yet
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 2, Hex: e400
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Received 6 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:48:35] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:48:35] [WARN]: updateSkill not implemented yet
+[2026-01-28 11:48:35] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:48:35] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:48:35] [DEBUG]: Update item data - Not implemented
+[2026-01-28 11:48:35] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:48:35] [INFO]: Session disconnected.
+[2026-01-28 11:49:45] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 11:49:45] [INFO]: Connecting to MySQL...
+[2026-01-28 11:49:45] [INFO]: Connected to MySQL Database successfully.
+[2026-01-28 11:49:45] [INFO]: ✅ MySQL connected successfully
 
-[2026-01-28 05:58:24] [INFO]: Loading game data from files...
-[2026-01-28 05:58:24] [INFO]: 📦 Loading game data from files...
+[2026-01-28 11:49:45] [INFO]: Loading game data from files...
+[2026-01-28 11:49:45] [INFO]: 📦 Loading game data...
 
-[2026-01-28 05:58:24] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
-[2026-01-28 05:58:24] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
-[2026-01-28 05:58:24] [INFO]: ✅ Loaded 10 maps
-[2026-01-28 05:58:24] [INFO]: ✅ Loaded 31 NPCs
-[2026-01-28 05:58:24] [INFO]: ✅ Loaded 80 mob templates
-[2026-01-28 05:58:24] [INFO]: 
+[2026-01-28 11:49:45] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-28 11:49:45] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-28 11:49:45] [INFO]: ✅ Loaded 10 maps
+[2026-01-28 11:49:45] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-28 11:49:45] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-28 11:49:46] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-28 11:49:46] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-28 11:49:46] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-28 11:49:46] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-28 11:49:46] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-28 11:49:46] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-28 11:49:46] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-28 11:49:46] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-28 11:49:46] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-28 11:49:46] [INFO]: 
 ✅ All game data loaded successfully!
-[2026-01-28 05:58:24] [INFO]: 
+[2026-01-28 11:49:46] [INFO]: 
 📊 Game Data Summary:
-[2026-01-28 05:58:24] [INFO]:    Maps: 10
-[2026-01-28 05:58:24] [INFO]:    NPCs: 31
-[2026-01-28 05:58:24] [INFO]:    Mobs: 80
-[2026-01-28 05:58:24] [INFO]:    TileSetInfo: Loaded
-[2026-01-28 05:58:24] [INFO]:    ItemBgData: Loaded
-[2026-01-28 05:58:24] [INFO]: 
+[2026-01-28 11:49:46] [INFO]:    Maps: 10
+[2026-01-28 11:49:46] [INFO]:    NPCs: 31
+[2026-01-28 11:49:46] [INFO]:    Mobs: 80
+[2026-01-28 11:49:46] [INFO]:    Items: 2046
+[2026-01-28 11:49:46] [INFO]:    Classes: 3
+[2026-01-28 11:49:46] [INFO]:    Tasks: 33
+[2026-01-28 11:49:46] [INFO]:    TileSetInfo: Loaded
+[2026-01-28 11:49:46] [INFO]:    ItemBgData: Loaded
+[2026-01-28 11:49:46] [INFO]: 
 ✅ Server started successfully!
-[2026-01-28 05:58:24] [INFO]:    MySQL: Connected
-[2026-01-28 05:58:24] [INFO]:    Game Data: Loaded
-[2026-01-28 05:58:24] [INFO]:    Server Port: 14445
+[2026-01-28 11:49:46] [INFO]:    MySQL: Connected
+[2026-01-28 11:49:46] [INFO]:    Game Data: Loaded
+[2026-01-28 11:49:46] [INFO]:    Server Port: 14445
 
-[2026-01-28 05:58:24] [INFO]: Server is listening on port 14445
-[2026-01-28 05:58:29] [INFO]: New connection from ::ffff:127.0.0.1:52556
-[2026-01-28 05:59:07] [INFO]: Session disconnected.
-[2026-01-28 05:59:08] [INFO]: New connection from ::ffff:127.0.0.1:52561
-[2026-01-28 06:02:35] [INFO]: Session disconnected.
-[2026-01-28 06:02:35] [INFO]: New connection from ::ffff:127.0.0.1:52607
-[2026-01-28 06:03:07] [INFO]: Session disconnected.
-[2026-01-28 06:03:07] [INFO]: New connection from ::ffff:127.0.0.1:52619
-[2026-01-28 06:04:07] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 06:04:07] [INFO]: Connecting to MySQL...
-[2026-01-28 06:04:07] [INFO]: Connected to MySQL Database successfully.
-[2026-01-28 06:04:07] [INFO]: ✅ MySQL connected successfully
+[2026-01-28 11:49:46] [INFO]: Server is listening on port 14445
+[2026-01-28 11:49:52] [INFO]: New connection from ::ffff:127.0.0.1:60485
+[2026-01-28 11:49:52] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:49:52] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:49:52] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:49:52] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:49:52] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:49:52] [DEBUG]: Sent version res to client
+[2026-01-28 11:49:52] [DEBUG]: [NETWORK] Received 40 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:49:52] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:49:52] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:49:52] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:49:52] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:49:52] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Received 25 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 27, Hex: e3001800
+[2026-01-28 11:50:04] [DEBUG]: 📨 Received CMD: -29, DataLen: 24
+[2026-01-28 11:50:04] [INFO]: Authenticating user: admin
+[2026-01-28 11:50:04] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-28 11:50:04] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:50:04] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-28 11:50:04] [INFO]: ✅ Initialized 9 maps
+[2026-01-28 11:50:04] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-28 11:50:04] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:50:04] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-28 11:50:04] [DEBUG]: Sent tile_set_info to client
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-28 11:50:04] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-28 11:50:04] [INFO]: Player admin logged in successfully
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 2, Hex: a900
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Received 9 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:50:04] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 11, Hex: a90000e4
+[2026-01-28 11:50:04] [DEBUG]: 📨 Received CMD: -87, DataLen: 0
+[2026-01-28 11:50:05] [DEBUG]: [NETWORK] Sending CMD: 169, Len: 6, Encrypted: true
+[2026-01-28 11:50:05] [DEBUG]: Sent updateData (empty)
+[2026-01-28 11:50:05] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:50:05] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:50:05] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:50:05] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:50:05] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:50:05] [DEBUG]: Update item data - Not implemented
+[2026-01-28 11:50:05] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:50:05] [INFO]: Session disconnected.
+[2026-01-28 11:51:22] [INFO]: New connection from ::ffff:127.0.0.1:60527
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:51:22] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:51:22] [DEBUG]: Sent version res to client
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 3, Hex: e30025
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Wait for body: buffer=3, needed=40
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Received 37 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:51:22] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:51:22] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:51:22] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:51:22] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Received 25 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 27, Hex: e3001800
+[2026-01-28 11:51:32] [DEBUG]: 📨 Received CMD: -29, DataLen: 24
+[2026-01-28 11:51:32] [INFO]: Authenticating user: admin
+[2026-01-28 11:51:32] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-28 11:51:32] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:51:32] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-28 11:51:32] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-28 11:51:32] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:51:32] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-28 11:51:32] [DEBUG]: Sent tile_set_info to client
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-28 11:51:32] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-28 11:51:32] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-28 11:51:32] [INFO]: Player admin logged in successfully
+[2026-01-28 11:51:33] [DEBUG]: [NETWORK] Received 11 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:33] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 11, Hex: a90000e4
+[2026-01-28 11:51:33] [DEBUG]: 📨 Received CMD: -87, DataLen: 0
+[2026-01-28 11:51:33] [DEBUG]: [NETWORK] Sending CMD: 169, Len: 6, Encrypted: true
+[2026-01-28 11:51:33] [DEBUG]: Sent updateData (empty)
+[2026-01-28 11:51:33] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:51:33] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:51:33] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:51:33] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:51:33] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:51:33] [DEBUG]: Update item data - Not implemented
+[2026-01-28 11:51:33] [ERROR]: Session error: write ECONNRESET
+[2026-01-28 11:51:33] [INFO]: Session disconnected.
+[2026-01-28 11:51:44] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 11:51:44] [INFO]: Connecting to MySQL...
+[2026-01-28 11:51:44] [INFO]: Connected to MySQL Database successfully.
+[2026-01-28 11:51:44] [INFO]: ✅ MySQL connected successfully
 
-[2026-01-28 06:04:07] [INFO]: Loading game data from files...
-[2026-01-28 06:04:07] [INFO]: 📦 Loading game data from files...
+[2026-01-28 11:51:44] [INFO]: Loading game data from files...
+[2026-01-28 11:51:44] [INFO]: 📦 Loading game data...
 
-[2026-01-28 06:04:07] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
-[2026-01-28 06:04:07] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
-[2026-01-28 06:04:07] [INFO]: ✅ Loaded 10 maps
-[2026-01-28 06:04:07] [INFO]: ✅ Loaded 31 NPCs
-[2026-01-28 06:04:07] [INFO]: ✅ Loaded 80 mob templates
-[2026-01-28 06:04:07] [INFO]: 
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 10 maps
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-28 11:51:44] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-28 11:51:44] [INFO]: 
 ✅ All game data loaded successfully!
-[2026-01-28 06:04:07] [INFO]: 
+[2026-01-28 11:51:44] [INFO]: 
 📊 Game Data Summary:
-[2026-01-28 06:04:07] [INFO]:    Maps: 10
-[2026-01-28 06:04:07] [INFO]:    NPCs: 31
-[2026-01-28 06:04:07] [INFO]:    Mobs: 80
-[2026-01-28 06:04:07] [INFO]:    TileSetInfo: Loaded
-[2026-01-28 06:04:07] [INFO]:    ItemBgData: Loaded
-[2026-01-28 06:04:07] [INFO]: 
+[2026-01-28 11:51:44] [INFO]:    Maps: 10
+[2026-01-28 11:51:44] [INFO]:    NPCs: 31
+[2026-01-28 11:51:44] [INFO]:    Mobs: 80
+[2026-01-28 11:51:44] [INFO]:    Items: 2046
+[2026-01-28 11:51:44] [INFO]:    Classes: 3
+[2026-01-28 11:51:44] [INFO]:    Tasks: 33
+[2026-01-28 11:51:44] [INFO]:    TileSetInfo: Loaded
+[2026-01-28 11:51:44] [INFO]:    ItemBgData: Loaded
+[2026-01-28 11:51:44] [INFO]: 
 ✅ Server started successfully!
-[2026-01-28 06:04:07] [INFO]:    MySQL: Connected
-[2026-01-28 06:04:07] [INFO]:    Game Data: Loaded
-[2026-01-28 06:04:07] [INFO]:    Server Port: 14445
+[2026-01-28 11:51:44] [INFO]:    MySQL: Connected
+[2026-01-28 11:51:44] [INFO]:    Game Data: Loaded
+[2026-01-28 11:51:44] [INFO]:    Server Port: 14445
 
-[2026-01-28 06:04:07] [ERROR]: Server error: listen EADDRINUSE: address already in use :::14445
-[2026-01-28 06:04:20] [INFO]: Initializing NRO Node.js Server...
-[2026-01-28 06:04:21] [INFO]: Connecting to MySQL...
-[2026-01-28 06:04:21] [INFO]: Connected to MySQL Database successfully.
-[2026-01-28 06:04:21] [INFO]: ✅ MySQL connected successfully
+[2026-01-28 11:51:44] [INFO]: Server is listening on port 14445
+[2026-01-28 11:51:48] [INFO]: New connection from ::ffff:127.0.0.1:60547
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:51:48] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:51:48] [DEBUG]: Sent version res to client
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Received 38 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:51:48] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:51:48] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:51:48] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:51:48] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:51:51] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:51:51] [INFO]: Session disconnected.
+[2026-01-28 11:52:48] [INFO]: New connection from ::ffff:127.0.0.1:60564
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:52:48] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:52:48] [DEBUG]: Sent version res to client
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Received 26 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 26, Hex: e3002502
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Wait for body: buffer=26, needed=40
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Received 14 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:52:48] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:52:48] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:52:48] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Received 25 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:52:48] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 27, Hex: e3001800
+[2026-01-28 11:52:48] [DEBUG]: 📨 Received CMD: -29, DataLen: 24
+[2026-01-28 11:52:48] [INFO]: Authenticating user: admin
+[2026-01-28 11:52:48] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-28 11:52:48] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:52:48] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-28 11:52:49] [INFO]: ✅ Initialized 9 maps
+[2026-01-28 11:52:49] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-28 11:52:49] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:52:49] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-28 11:52:49] [DEBUG]: Sent tile_set_info to client
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-28 11:52:49] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-28 11:52:49] [INFO]: Player admin logged in successfully
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 1, Hex: a9
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Received 10 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Peek CMD: -87, Current Buffer: 11, Hex: a90000e4
+[2026-01-28 11:52:49] [DEBUG]: 📨 Received CMD: -87, DataLen: 0
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Sending CMD: 169, Len: 25, Encrypted: true
+[2026-01-28 11:52:49] [DEBUG]: Sent updateData (empty)
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:52:49] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:52:49] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:52:49] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:52:49] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:52:49] [DEBUG]: Update item data - Not implemented
+[2026-01-28 11:52:49] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:52:49] [INFO]: Session disconnected.
+[2026-01-28 11:55:01] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 11:55:01] [INFO]: Connecting to MySQL...
+[2026-01-28 11:55:01] [INFO]: Connected to MySQL Database successfully.
+[2026-01-28 11:55:01] [INFO]: ✅ MySQL connected successfully
 
-[2026-01-28 06:04:21] [INFO]: Loading game data from files...
-[2026-01-28 06:04:21] [INFO]: 📦 Loading game data from files...
+[2026-01-28 11:55:01] [INFO]: Loading game data from files...
+[2026-01-28 11:55:01] [INFO]: 📦 Loading game data...
 
-[2026-01-28 06:04:21] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
-[2026-01-28 06:04:21] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
-[2026-01-28 06:04:21] [INFO]: ✅ Loaded 10 maps
-[2026-01-28 06:04:21] [INFO]: ✅ Loaded 31 NPCs
-[2026-01-28 06:04:21] [INFO]: ✅ Loaded 80 mob templates
-[2026-01-28 06:04:21] [INFO]: 
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 10 maps
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-28 11:55:01] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-28 11:55:01] [INFO]: 
 ✅ All game data loaded successfully!
-[2026-01-28 06:04:21] [INFO]: 
+[2026-01-28 11:55:01] [INFO]: 
 📊 Game Data Summary:
-[2026-01-28 06:04:21] [INFO]:    Maps: 10
-[2026-01-28 06:04:21] [INFO]:    NPCs: 31
-[2026-01-28 06:04:21] [INFO]:    Mobs: 80
-[2026-01-28 06:04:21] [INFO]:    TileSetInfo: Loaded
-[2026-01-28 06:04:21] [INFO]:    ItemBgData: Loaded
-[2026-01-28 06:04:21] [INFO]: 
+[2026-01-28 11:55:01] [INFO]:    Maps: 10
+[2026-01-28 11:55:01] [INFO]:    NPCs: 31
+[2026-01-28 11:55:01] [INFO]:    Mobs: 80
+[2026-01-28 11:55:01] [INFO]:    Items: 2046
+[2026-01-28 11:55:01] [INFO]:    Classes: 3
+[2026-01-28 11:55:01] [INFO]:    Tasks: 33
+[2026-01-28 11:55:01] [INFO]:    TileSetInfo: Loaded
+[2026-01-28 11:55:01] [INFO]:    ItemBgData: Loaded
+[2026-01-28 11:55:02] [INFO]: 
 ✅ Server started successfully!
-[2026-01-28 06:04:21] [INFO]:    MySQL: Connected
-[2026-01-28 06:04:21] [INFO]:    Game Data: Loaded
-[2026-01-28 06:04:21] [INFO]:    Server Port: 14445
+[2026-01-28 11:55:02] [INFO]:    MySQL: Connected
+[2026-01-28 11:55:02] [INFO]:    Game Data: Loaded
+[2026-01-28 11:55:02] [INFO]:    Server Port: 14445
 
-[2026-01-28 06:04:21] [INFO]: Server is listening on port 14445
-[2026-01-28 06:04:22] [INFO]: New connection from ::ffff:127.0.0.1:52645
-[2026-01-28 06:04:55] [INFO]: Session disconnected.
-[2026-01-28 06:04:55] [INFO]: New connection from ::ffff:127.0.0.1:52647
-[2026-01-28 06:05:00] [INFO]: Session disconnected.
+[2026-01-28 11:55:02] [INFO]: Server is listening on port 14445
+[2026-01-28 11:55:04] [INFO]: New connection from ::ffff:127.0.0.1:60619
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:55:04] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:55:04] [DEBUG]: Sent version res to client
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Received 6 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 6, Hex: e3002502
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Wait for body: buffer=6, needed=40
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Received 34 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:55:04] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:55:04] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:55:04] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:55:04] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 3, Hex: e30018
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Wait for body: buffer=3, needed=27
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Received 24 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 27, Hex: e3001800
+[2026-01-28 11:55:05] [DEBUG]: 📨 Received CMD: -29, DataLen: 24
+[2026-01-28 11:55:05] [INFO]: Authenticating user: admin
+[2026-01-28 11:55:05] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-28 11:55:05] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:55:05] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-28 11:55:05] [INFO]: ✅ Initialized 9 maps
+[2026-01-28 11:55:05] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-28 11:55:05] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:55:05] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-28 11:55:05] [DEBUG]: Sent tile_set_info to client
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-28 11:55:05] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-28 11:55:05] [INFO]: Player admin logged in successfully
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Received 8 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:55:05] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:55:05] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:55:05] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:55:05] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:55:05] [ERROR]: Error updating item: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:55:06] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:55:06] [INFO]: Session disconnected.
+[2026-01-28 11:56:22] [INFO]: New connection from ::ffff:127.0.0.1:60641
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:56:22] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:56:22] [DEBUG]: Sent version res to client
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Received 5 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 5, Hex: e3002502
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Wait for body: buffer=5, needed=40
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Received 35 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:56:22] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:56:22] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:56:22] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:56:22] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Received 34 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 36, Hex: e3002100
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -29, DataLen: 33
+[2026-01-28 11:56:23] [INFO]: Authenticating user: mtrungtin45
+[2026-01-28 11:56:23] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'mtrungtin45'...
+[2026-01-28 11:56:23] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 215, Len: 546, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 2, Len: 0, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Received 5 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 5, Hex: e4000107
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:56:23] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 1, Hex: e4
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:56:23] [ERROR]: Error updating item: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Received 23 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 23, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 374883, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 18, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 18698, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 13, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 3423, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 8, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4464, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 3, Hex: e00002
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Wait for body: buffer=3, needed=5
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Received 42 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 45, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 13635, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 40, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 15882, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 35, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 26704, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 30, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 11634, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 25, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2161, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 20, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 6746, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 15, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 1423, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 10, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2680, Encrypted: true
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 5, Hex: e0000200
+[2026-01-28 11:56:23] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:56:23] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4257, Encrypted: true
+[2026-01-28 11:58:38] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 11:58:38] [INFO]: Connecting to MySQL...
+[2026-01-28 11:58:38] [INFO]: Connected to MySQL Database successfully.
+[2026-01-28 11:58:38] [INFO]: ✅ MySQL connected successfully
+
+[2026-01-28 11:58:38] [INFO]: Loading game data from files...
+[2026-01-28 11:58:38] [INFO]: 📦 Loading game data...
+
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 10 maps
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-28 11:58:38] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-28 11:58:38] [INFO]: 
+✅ All game data loaded successfully!
+[2026-01-28 11:58:38] [INFO]: 
+📊 Game Data Summary:
+[2026-01-28 11:58:38] [INFO]:    Maps: 10
+[2026-01-28 11:58:38] [INFO]:    NPCs: 31
+[2026-01-28 11:58:38] [INFO]:    Mobs: 80
+[2026-01-28 11:58:38] [INFO]:    Items: 2046
+[2026-01-28 11:58:38] [INFO]:    Classes: 3
+[2026-01-28 11:58:38] [INFO]:    Tasks: 33
+[2026-01-28 11:58:38] [INFO]:    TileSetInfo: Loaded
+[2026-01-28 11:58:38] [INFO]:    ItemBgData: Loaded
+[2026-01-28 11:58:38] [INFO]: 
+✅ Server started successfully!
+[2026-01-28 11:58:38] [INFO]:    MySQL: Connected
+[2026-01-28 11:58:38] [INFO]:    Game Data: Loaded
+[2026-01-28 11:58:38] [INFO]:    Server Port: 14445
+
+[2026-01-28 11:58:38] [INFO]: Server is listening on port 14445
+[2026-01-28 11:58:42] [INFO]: New connection from ::ffff:127.0.0.1:60705
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:58:42] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:58:42] [DEBUG]: Sent version res to client
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 1, Hex: e3
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Received 39 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:58:42] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:58:42] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:58:42] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:58:42] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Received 34 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 36, Hex: e3002100
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -29, DataLen: 33
+[2026-01-28 11:58:43] [INFO]: Authenticating user: mtrungtin45
+[2026-01-28 11:58:43] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'mtrungtin45'...
+[2026-01-28 11:58:43] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 215, Len: 546, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 2, Len: 0, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 2, Hex: e400
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Received 6 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:58:43] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:58:43] [ERROR]: Error updating item: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Received 65 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 65, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 374883, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 60, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 18698, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 55, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 3423, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 50, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4464, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 45, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 13635, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 40, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 15882, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 35, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 26704, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 30, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 11634, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 25, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2161, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 20, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 6746, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 15, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 1423, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 10, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2680, Encrypted: true
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 5, Hex: e0000200
+[2026-01-28 11:58:43] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:58:43] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4257, Encrypted: true
+[2026-01-28 11:59:10] [INFO]: New connection from ::ffff:127.0.0.1:60710
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:59:10] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:59:10] [DEBUG]: Sent version res to client
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Received 9 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 9, Hex: e3002100
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Wait for body: buffer=9, needed=36
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Received 27 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 36, Hex: e3002100
+[2026-01-28 11:59:10] [DEBUG]: 📨 Received CMD: -29, DataLen: 33
+[2026-01-28 11:59:10] [INFO]: Authenticating user: mtrungtin45
+[2026-01-28 11:59:10] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'mtrungtin45'...
+[2026-01-28 11:59:10] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:59:10] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Sending CMD: 215, Len: 546, Encrypted: true
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Sending CMD: 2, Len: 0, Encrypted: true
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Received 40 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:59:10] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:59:10] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:59:10] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Received 8 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:59:10] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:59:10] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:59:10] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:59:10] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:59:10] [ERROR]: Error updating item: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:59:12] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:59:12] [INFO]: Session disconnected.
+[2026-01-28 11:59:14] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:59:14] [INFO]: Session disconnected.
+[2026-01-28 11:59:21] [INFO]: New connection from ::ffff:127.0.0.1:60721
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:59:21] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:59:21] [DEBUG]: Sent version res to client
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Received 38 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:59:21] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:59:21] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:59:21] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:59:21] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Received 3 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 3, Hex: e30018
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Wait for body: buffer=3, needed=27
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Received 24 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 27, Hex: e3001800
+[2026-01-28 11:59:22] [DEBUG]: 📨 Received CMD: -29, DataLen: 24
+[2026-01-28 11:59:22] [INFO]: Authenticating user: admin
+[2026-01-28 11:59:22] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-28 11:59:22] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:59:22] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-28 11:59:22] [INFO]: ✅ Initialized 9 maps
+[2026-01-28 11:59:22] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-28 11:59:22] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:59:22] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-28 11:59:22] [DEBUG]: Sent tile_set_info to client
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-28 11:59:22] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-28 11:59:22] [INFO]: Player admin logged in successfully
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Received 8 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:59:22] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:59:22] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:59:22] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:59:22] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:59:22] [ERROR]: Error updating item: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:59:22] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:59:22] [INFO]: Session disconnected.
+[2026-01-28 11:59:25] [INFO]: New connection from ::ffff:127.0.0.1:60732
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 11:59:25] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 11:59:25] [DEBUG]: Sent version res to client
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Received 5 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 5, Hex: e3002502
+[2026-01-28 11:59:25] [DEBUG]: [NETWORK] Wait for body: buffer=5, needed=40
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Received 35 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 11:59:26] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 11:59:26] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Received 36 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 36, Hex: e3002100
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -29, DataLen: 33
+[2026-01-28 11:59:26] [INFO]: Authenticating user: mtrungtin45
+[2026-01-28 11:59:26] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'mtrungtin45'...
+[2026-01-28 11:59:26] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 215, Len: 546, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 2, Len: 0, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 2, Hex: e400
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Received 6 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:59:26] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 11:59:26] [ERROR]: Error updating item: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Received 65 bytes from ::ffff:127.0.0.1
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 65, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 374883, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 60, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 18698, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 55, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 3423, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 50, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4464, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 45, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 13635, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 40, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 15882, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 35, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 26704, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 30, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 11634, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 25, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2161, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 20, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 6746, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 15, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 1423, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 10, Hex: e0000200
+[2026-01-28 11:59:26] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2680, Encrypted: true
+[2026-01-28 11:59:26] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 5, Hex: e0000200
+[2026-01-28 11:59:27] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 11:59:27] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4257, Encrypted: true
+[2026-01-28 11:59:29] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 11:59:29] [INFO]: Session disconnected.
+[2026-01-28 12:02:03] [INFO]: Initializing NRO Node.js Server...
+[2026-01-28 12:02:03] [INFO]: Connecting to MySQL...
+[2026-01-28 12:02:03] [INFO]: Connected to MySQL Database successfully.
+[2026-01-28 12:02:03] [INFO]: ✅ MySQL connected successfully
+
+[2026-01-28 12:02:03] [INFO]: Loading game data from files...
+[2026-01-28 12:02:03] [INFO]: 📦 Loading game data...
+
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 10 maps
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 2046 Item Templates from DB
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 210 Item Option Templates from DB
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded Skills for 3 Classes from DB
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 365 Head Avatars from DB
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 133 Flag Bags from DB
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 27 Intrinsics from DB
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 33 Main Tasks from DB
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 59 Side Tasks from DB
+[2026-01-28 12:02:03] [INFO]: ✅ Loaded 22 Captions from DB
+[2026-01-28 12:02:03] [INFO]: 
+✅ All game data loaded successfully!
+[2026-01-28 12:02:03] [INFO]: 
+📊 Game Data Summary:
+[2026-01-28 12:02:03] [INFO]:    Maps: 10
+[2026-01-28 12:02:03] [INFO]:    NPCs: 31
+[2026-01-28 12:02:03] [INFO]:    Mobs: 80
+[2026-01-28 12:02:03] [INFO]:    Items: 2046
+[2026-01-28 12:02:03] [INFO]:    Classes: 3
+[2026-01-28 12:02:03] [INFO]:    Tasks: 33
+[2026-01-28 12:02:03] [INFO]:    TileSetInfo: Loaded
+[2026-01-28 12:02:03] [INFO]:    ItemBgData: Loaded
+[2026-01-28 12:02:03] [INFO]: 
+✅ Server started successfully!
+[2026-01-28 12:02:03] [INFO]:    MySQL: Connected
+[2026-01-28 12:02:03] [INFO]:    Game Data: Loaded
+[2026-01-28 12:02:03] [INFO]:    Server Port: 14445
+
+[2026-01-28 12:02:03] [INFO]: Server is listening on port 14445
+[2026-01-28 12:02:10] [INFO]: New connection from ::ffff:127.0.0.1:60784
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 12:02:10] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 12:02:10] [DEBUG]: Sent version res to client
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 1, Hex: e3
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Received 39 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 12:02:10] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 12:02:10] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 12:02:10] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 12:02:10] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Received 25 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 27, Hex: e3001800
+[2026-01-28 12:02:11] [DEBUG]: 📨 Received CMD: -29, DataLen: 24
+[2026-01-28 12:02:11] [INFO]: Authenticating user: admin
+[2026-01-28 12:02:11] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-28 12:02:11] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 12:02:11] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-28 12:02:11] [INFO]: ✅ Initialized 9 maps
+[2026-01-28 12:02:11] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-28 12:02:11] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 12:02:11] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-28 12:02:11] [DEBUG]: Sent tile_set_info to client
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-28 12:02:11] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-28 12:02:11] [INFO]: Player admin logged in successfully
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 2, Hex: e400
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Received 6 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 12:02:11] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 12:02:11] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 12:02:11] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 12:02:11] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 12:02:11] [ERROR]: Error updating item: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 12:02:11] [ERROR]: Session error: read ECONNRESET
+[2026-01-28 12:02:11] [INFO]: Session disconnected.
+[2026-01-28 12:02:14] [INFO]: New connection from ::ffff:127.0.0.1:60794
+[2026-01-28 12:02:14] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:14] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 1, Hex: e5
+[2026-01-28 12:02:14] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 12:02:14] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:14] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 3, Hex: e50000
+[2026-01-28 12:02:14] [DEBUG]: 📨 Received CMD: -27, DataLen: 0
+[2026-01-28 12:02:14] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-28 12:02:14] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-28 12:02:14] [DEBUG]: Sent version res to client
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 2, Hex: e300
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Received 38 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 40, Hex: e3002502
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -29, DataLen: 37
+[2026-01-28 12:02:15] [DEBUG]: setClientType Body: 02040200000002000000012c01010015506320706c6174666f726d207878787c322e322e35
+[2026-01-28 12:02:15] [DEBUG]: Client Info: Type=4, Zoom=2, Res=512x300, Platform=Pc platform xxx|2.2.5
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 227, Len: 36, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Received 4 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 4, Hex: e3002100
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Wait for body: buffer=4, needed=36
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Received 32 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 36, Hex: e3002100
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -29, DataLen: 33
+[2026-01-28 12:02:15] [INFO]: Authenticating user: mtrungtin45
+[2026-01-28 12:02:15] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'mtrungtin45'...
+[2026-01-28 12:02:15] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: Sent item_bg_data to client
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 215, Len: 546, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 2, Len: 0, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Received 2 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 2, Hex: e400
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Received 6 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 8, Hex: e4000107
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 12:02:15] [ERROR]: Error updating skill: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -28, Current Buffer: 4, Hex: e4000108
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -28, DataLen: 1
+[2026-01-28 12:02:15] [ERROR]: Error updating item: TypeError [ERR_INVALID_ARG_TYPE]: The first argument must be of type string or an instance of Buffer, ArrayBuffer, or Array or an Array-like Object. Received undefined
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Received 1 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 1, Hex: e0
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Wait for header 3 bytes, current: 1
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Received 64 bytes from ::ffff:127.0.0.1
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 65, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 374883, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 60, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 18698, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 55, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 3423, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 50, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4464, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 45, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 13635, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 40, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 15882, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 35, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 26704, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 30, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 11634, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 25, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2161, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 20, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 6746, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 15, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 1423, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 10, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 2680, Encrypted: true
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Peek CMD: -32, Current Buffer: 5, Hex: e0000200
+[2026-01-28 12:02:15] [DEBUG]: 📨 Received CMD: -32, DataLen: 2
+[2026-01-28 12:02:15] [DEBUG]: [NETWORK] Sending CMD: 224, Len: 4257, Encrypted: true
+[2026-01-30 09:54:14] [INFO]: Initializing NRO Node.js Server...
+[2026-01-30 09:54:14] [INFO]: Connecting to MySQL...
+[2026-01-30 09:54:14] [ERROR]: Database connection failed (Continuing in Offline/Mock Mode):
+[2026-01-30 09:54:14] [INFO]: ✅ MySQL connected successfully
+
+[2026-01-30 09:54:14] [INFO]: Loading game data from files...
+[2026-01-30 09:54:14] [INFO]: 📦 Loading game data...
+
+[2026-01-30 09:54:14] [INFO]: ✅ Loaded tile_set_info (1387 bytes)
+[2026-01-30 09:54:14] [INFO]: ✅ Loaded item_bg_data (3650 bytes)
+[2026-01-30 09:54:14] [INFO]: ✅ Loaded 10 maps
+[2026-01-30 09:54:14] [INFO]: ✅ Loaded 31 NPCs
+[2026-01-30 09:54:14] [INFO]: ✅ Loaded 80 mob templates
+[2026-01-30 09:54:14] [ERROR]: Failed to load Item Templates:
+[2026-01-30 09:54:14] [ERROR]: Failed to load Item Option Templates:
+[2026-01-30 09:54:14] [ERROR]: Failed to load Skills:
+[2026-01-30 09:54:14] [ERROR]: Failed to load Head Avatars:
+[2026-01-30 09:54:14] [ERROR]: Failed to load Flag Bags:
+[2026-01-30 09:54:14] [ERROR]: Failed to load Intrinsics:
+[2026-01-30 09:54:14] [ERROR]: Failed to load Tasks:
+[2026-01-30 09:54:14] [ERROR]: Failed to load Side Tasks:
+[2026-01-30 09:54:14] [ERROR]: Failed to load Captions:
+[2026-01-30 09:54:14] [INFO]: 
+✅ All game data loaded successfully!
+[2026-01-30 09:54:14] [INFO]: 
+📊 Game Data Summary:
+[2026-01-30 09:54:14] [INFO]:    Maps: 10
+[2026-01-30 09:54:14] [INFO]:    NPCs: 31
+[2026-01-30 09:54:14] [INFO]:    Mobs: 80
+[2026-01-30 09:54:14] [INFO]:    Items: 0
+[2026-01-30 09:54:14] [INFO]:    Classes: 0
+[2026-01-30 09:54:14] [INFO]:    Tasks: 0
+[2026-01-30 09:54:14] [INFO]:    TileSetInfo: Loaded
+[2026-01-30 09:54:14] [INFO]:    ItemBgData: Loaded
+[2026-01-30 09:54:14] [INFO]: 
+✅ Server started successfully!
+[2026-01-30 09:54:14] [INFO]:    MySQL: Connected
+[2026-01-30 09:54:14] [INFO]:    Game Data: Loaded
+[2026-01-30 09:54:14] [INFO]:    Server Port: 14445
+
+[2026-01-30 09:54:14] [INFO]: WebSocket Server is listening on port 14446
+[2026-01-30 09:54:14] [INFO]: TCP Server is listening on port 14445
+[2026-01-30 09:55:45] [INFO]: New WS connection from ::1
+[2026-01-30 09:55:45] [DEBUG]: [NETWORK] Received 4 bytes from ::1
+[2026-01-30 09:55:45] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 4, Hex: e5000101
+[2026-01-30 09:55:45] [DEBUG]: 📨 Received CMD: -27, DataLen: 1
+[2026-01-30 09:55:45] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-30 09:55:45] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-30 09:55:45] [DEBUG]: Sent version res to client
+[2026-01-30 09:55:49] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 09:55:49] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 09:55:49] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 09:55:49] [INFO]: Authenticating user: admin
+[2026-01-30 09:55:49] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 09:55:49] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 09:55:49] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 09:55:49] [INFO]: ✅ Initialized 9 maps
+[2026-01-30 09:55:49] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 09:55:49] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 09:55:49] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 09:55:49] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 09:55:49] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 09:55:49] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 09:55:49] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 09:55:50] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 09:55:50] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 09:55:50] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 09:55:50] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 09:55:50] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 09:55:50] [INFO]: Player admin logged in successfully
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 09:55:57] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 09:55:57] [INFO]: Authenticating user: admin
+[2026-01-30 09:55:57] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 09:55:57] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 09:55:57] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 09:55:57] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 09:55:57] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 09:55:57] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 09:55:57] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 09:55:57] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 09:55:57] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 09:55:57] [INFO]: Player admin logged in successfully
+[2026-01-30 09:56:02] [INFO]: Session disconnected.
+[2026-01-30 09:56:23] [INFO]: New WS connection from ::1
+[2026-01-30 09:56:23] [DEBUG]: [NETWORK] Received 4 bytes from ::1
+[2026-01-30 09:56:23] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 4, Hex: e5000101
+[2026-01-30 09:56:23] [DEBUG]: 📨 Received CMD: -27, DataLen: 1
+[2026-01-30 09:56:23] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-30 09:56:23] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-30 09:56:23] [DEBUG]: Sent version res to client
+[2026-01-30 09:56:24] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 09:56:24] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 09:56:24] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 09:56:24] [INFO]: Authenticating user: admin
+[2026-01-30 09:56:24] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 09:56:24] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 09:56:24] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 09:56:24] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 09:56:24] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 09:56:24] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 09:56:24] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 09:56:24] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 09:56:24] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 09:56:24] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 09:56:24] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 09:56:24] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 09:56:24] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 09:56:24] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 09:56:24] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 09:56:24] [INFO]: Player admin logged in successfully
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 09:56:30] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 09:56:30] [INFO]: Authenticating user: admin
+[2026-01-30 09:56:30] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 09:56:30] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 09:56:30] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 09:56:30] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 09:56:30] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 09:56:30] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 09:56:30] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 09:56:30] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 09:56:30] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 09:56:30] [INFO]: Player admin logged in successfully
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:01:56] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:01:56] [INFO]: Authenticating user: admin
+[2026-01-30 10:01:56] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:01:56] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:01:56] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:01:56] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:01:56] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:01:56] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:01:56] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:01:56] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:01:56] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:01:56] [INFO]: Player admin logged in successfully
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:02:47] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:02:47] [INFO]: Authenticating user: admin
+[2026-01-30 10:02:47] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:02:47] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:02:47] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:02:47] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:02:47] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:02:47] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:02:47] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:02:47] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:02:47] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:02:47] [INFO]: Player admin logged in successfully
+[2026-01-30 10:02:51] [INFO]: Session disconnected.
+[2026-01-30 10:02:51] [INFO]: New WS connection from ::1
+[2026-01-30 10:02:51] [DEBUG]: [NETWORK] Received 4 bytes from ::1
+[2026-01-30 10:02:51] [DEBUG]: [NETWORK] Peek CMD: -27, Current Buffer: 4, Hex: e5000101
+[2026-01-30 10:02:51] [DEBUG]: 📨 Received CMD: -27, DataLen: 1
+[2026-01-30 10:02:51] [DEBUG]: [NETWORK] Sending CMD: -27, Len: 18, Encrypted: false
+[2026-01-30 10:02:52] [DEBUG]: [NETWORK] Sending CMD: 182, Len: 5, Encrypted: true
+[2026-01-30 10:02:52] [DEBUG]: Sent version res to client
+[2026-01-30 10:02:53] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:02:53] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:02:53] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:02:53] [INFO]: Authenticating user: admin
+[2026-01-30 10:02:53] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:02:53] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:02:53] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:02:53] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:02:53] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:02:53] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:02:53] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:02:53] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:02:53] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:02:53] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:02:53] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:02:53] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:02:53] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:02:53] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:02:53] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:02:53] [INFO]: Player admin logged in successfully
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:02:57] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:02:57] [INFO]: Authenticating user: admin
+[2026-01-30 10:02:57] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:02:57] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:02:57] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:02:57] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:02:57] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:02:57] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:02:57] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:02:57] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:02:57] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:02:57] [INFO]: Player admin logged in successfully
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Received 29 bytes from ::1
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Peek CMD: -29, Current Buffer: 29, Hex: e3001a00
+[2026-01-30 10:03:26] [DEBUG]: 📨 Received CMD: -29, DataLen: 26
+[2026-01-30 10:03:26] [INFO]: Authenticating user: admin
+[2026-01-30 10:03:26] [DEBUG]: Executing query: SELECT * FROM account WHERE username = 'admin'...
+[2026-01-30 10:03:26] [DEBUG]: Query executed. Found 1 accounts.
+[2026-01-30 10:03:26] [DEBUG]: Loaded player admin (ID: 1)
+[2026-01-30 10:03:26] [INFO]: ✅ Player admin added to Map 0, Zone 0
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 179, Len: 25119, Encrypted: true
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 163, Len: 0, Encrypted: true
+[2026-01-30 10:03:26] [DEBUG]: Sent cached message: -93 (1630679752231_-93_r)
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 228, Len: 167, Encrypted: true
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 225, Len: 3650, Encrypted: true
+[2026-01-30 10:03:26] [DEBUG]: Sent item_bg_data to client
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 174, Len: 1387, Encrypted: true
+[2026-01-30 10:03:26] [DEBUG]: Sent tile_set_info to client
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 214, Len: 54, Encrypted: true
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 251, Len: 54, Encrypted: true
+[2026-01-30 10:03:26] [DEBUG]: [NETWORK] Sending CMD: 232, Len: 33, Encrypted: true
+[2026-01-30 10:03:26] [INFO]: ✅ Sent mapInfo to player admin: Map 0, Zone 0
+[2026-01-30 10:03:26] [INFO]: Player admin logged in successfully

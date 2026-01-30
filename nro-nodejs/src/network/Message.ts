@@ -12,7 +12,7 @@ export class Message {
         } else if (typeof command === 'number') {
             this.command = command;
             this.writeBuffer = [];
-            this.data = Buffer.alloc(0);
+            this.data = data || Buffer.alloc(0);
         } else {
             this.command = -1;
             this.data = data || Buffer.alloc(0);
@@ -34,12 +34,21 @@ export class Message {
         return this.data;
     }
 
+    private _reader: MessageReader | null = null;
+    private _writer: MessageWriter | null = null;
+
     public get reader(): MessageReader {
-        return new MessageReader(this.data);
+        if (!this._reader) {
+            this._reader = new MessageReader(this.data);
+        }
+        return this._reader;
     }
 
     public get writer(): MessageWriter {
-        return new MessageWriter(this);
+        if (!this._writer) {
+            this._writer = new MessageWriter(this);
+        }
+        return this._writer;
     }
 
     public cleanup(): void {
@@ -132,7 +141,7 @@ export class MessageWriter {
 
     public writeByte(val: number): void {
         const buf = Buffer.alloc(1);
-        buf.writeInt8(val);
+        buf.writeUInt8(val & 0xFF);
         this.chunks.push(buf);
     }
 

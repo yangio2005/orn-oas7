@@ -5,6 +5,8 @@ class Message {
     constructor(command, data) {
         this.readIndex = 0;
         this.writeBuffer = [];
+        this._reader = null;
+        this._writer = null;
         if (command instanceof Buffer) {
             this.command = -1; // Unknown when created from raw buffer alone, usually set later or parsed
             this.data = command;
@@ -12,7 +14,7 @@ class Message {
         else if (typeof command === 'number') {
             this.command = command;
             this.writeBuffer = [];
-            this.data = Buffer.alloc(0);
+            this.data = data || Buffer.alloc(0);
         }
         else {
             this.command = -1;
@@ -32,10 +34,16 @@ class Message {
         return this.data;
     }
     get reader() {
-        return new MessageReader(this.data);
+        if (!this._reader) {
+            this._reader = new MessageReader(this.data);
+        }
+        return this._reader;
     }
     get writer() {
-        return new MessageWriter(this);
+        if (!this._writer) {
+            this._writer = new MessageWriter(this);
+        }
+        return this._writer;
     }
     cleanup() {
         this.data = Buffer.alloc(0);
@@ -113,7 +121,7 @@ class MessageWriter {
     }
     writeByte(val) {
         const buf = Buffer.alloc(1);
-        buf.writeInt8(val);
+        buf.writeUInt8(val & 0xFF);
         this.chunks.push(buf);
     }
     writeBytes(val) {

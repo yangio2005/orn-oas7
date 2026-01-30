@@ -17,18 +17,23 @@ export class AuthService {
         return AuthService.instance;
     }
 
+
     public async login(session: Session, user: string, pass: string): Promise<Player | null> {
         try {
-            // Check account
+            Logger.info(`Authenticating user: ${user}`);
             const pool = DB.getPool();
             if (!pool) {
+                Logger.error("Login failed: Database pool is null");
                 Service.getInstance().sendThongBaoOK(session, "Lỗi kết nối database");
                 return null;
             }
+
+            Logger.debug(`Executing query: SELECT * FROM account WHERE username = '${user}'...`);
             const [rows] = await pool.query<RowDataPacket[]>(
                 "SELECT * FROM account WHERE username = ? AND password = ?",
                 [user, pass]
             );
+            Logger.debug(`Query executed. Found ${rows.length} accounts.`);
 
             if (rows.length > 0) {
                 const account = rows[0];
@@ -43,17 +48,16 @@ export class AuthService {
                     session.isAdmin = true;
                 }
 
-                // Check player via DAO
                 const player = await PlayerDAO.getPlayerByAccountId(accountId);
 
                 if (!player) {
-                    // Send create character message
+                    DataGame.sendVersionGame(session);
+                    DataGame.sendDataItemBG(session);
+                    Service.getInstance().sendCaption(session, 0);
                     Service.getInstance().switchToCreateChar(session);
-                    // Also need to set session.userId to accountId so creating character knows who it is
                     session.userId = accountId;
                     return null;
                 } else {
-                    // Update account last login
                     await pool.query("UPDATE account SET last_time_login = NOW() WHERE id = ?", [accountId]);
 
                     session.player = player;
@@ -62,7 +66,7 @@ export class AuthService {
                     // Initialize player zone
                     const { MapService } = await import("./MapService");
                     const mapService = MapService.getInstance();
-                    const map = mapService.getMapById(player.location.mapId);
+                    const map = mapService.getMapById(player.mapId);
                     if (map) {
                         const zone = map.getAvailableZone();
                         if (zone) {
@@ -70,33 +74,24 @@ export class AuthService {
                             Logger.info(`✅ Player ${player.name} added to Map ${map.mapId}, Zone ${zone.zoneId}`);
                         }
                     } else {
-                        // Default to starting map based on gender
                         const startMap = mapService.getStartingMap(player.gender);
                         if (startMap) {
                             const zone = startMap.getAvailableZone();
                             if (zone) {
                                 zone.addPlayer(player);
-                                player.location.mapId = startMap.mapId;
-                                player.location.zoneId = zone.zoneId;
+                                player.mapId = startMap.mapId;
+                                player.zoneId = zone.zoneId;
                                 Logger.info(`✅ Player ${player.name} added to starting map ${startMap.mapId}`);
                             }
                         }
                     }
 
-                    // Send successful login sequence (EXACT Java sequence line 173-196)
-                    // Line 174: -77 max small
+                    // Java logic: Controller.login (line 173-196)
                     DataGame.sendSmallVersion(session);
-
-                    // Line 176: -93 bgitem version
                     Service.getInstance().sendMessage(session, -93, "1630679752231_-93_r");
-
-                    // Line 193: -28 -4 version data game
                     DataGame.sendVersionGame(session);
-
-                    // Line 195: -31 data item background
                     DataGame.sendDataItemBG(session);
 
-                    // Line 196: Send full player info
                     import("../server/Controller").then(({ Controller }) => {
                         Controller.getInstance().sendInfo(session);
                     });
@@ -120,29 +115,20 @@ export class AuthService {
      */
     public async createCharacter(session: Session, name: string, gender: number, head: number): Promise<void> {
         try {
-            // Validate input
             if (!name || name.length < 3 || name.length > 20) {
                 Service.getInstance().sendThongBaoOK(session, "Tên nhân vật phải từ 3-20 ký tự");
                 return;
             }
-
             if (gender < 0 || gender > 2) {
                 Service.getInstance().sendThongBaoOK(session, "Giới tính không hợp lệ");
                 return;
             }
-
-            // Check if user has account ID
             if (!session.userId) {
                 Service.getInstance().sendThongBaoOK(session, "Lỗi: Chưa đăng nhập");
                 return;
             }
-
-            // Check if name already exists
             const pool = DB.getPool();
-            if (!pool) {
-                Service.getInstance().sendThongBaoOK(session, "Lỗi kết nối database");
-                return;
-            }
+            if (!pool) return;
 
             const [existingPlayers] = await pool.query<RowDataPacket[]>(
                 "SELECT id FROM player WHERE name = ?",
@@ -154,26 +140,22 @@ export class AuthService {
                 return;
             }
 
-            // Create player
             const player = await PlayerDAO.createNewPlayer(session.userId, name, gender, head);
 
             if (player) {
                 Logger.info(`✅ Created character: ${name} for account ${session.userId}`);
-
-                // Set player to session
                 session.player = player;
                 player.session = session;
 
-                // Update last login
                 await pool.query("UPDATE account SET last_time_login = NOW() WHERE id = ?", [session.userId]);
 
-                // Send success and login sequence
                 DataGame.sendVersionGame(session);
                 DataGame.sendDataItemBG(session);
                 Service.getInstance().sendThongBaoOK(session, "Tạo nhân vật thành công!");
 
-                // Send player info
-                this.sendInfo(session);
+                import("../server/Controller").then(({ Controller }) => {
+                    Controller.getInstance().sendInfo(session);
+                });
             } else {
                 Service.getInstance().sendThongBaoOK(session, "Không thể tạo nhân vật");
             }
@@ -188,45 +170,53 @@ export class AuthService {
         const player = session.player;
         if (!player) return;
 
-        // Send game data sequence to client
-        // This replicates the Java Controller.sendInfo() method
+        // Java: Controller.sendInfo (line 120-170 approx in decompiler or 781+ in original)
+        // Order matters!
 
-        // 1. Send tile set info (map tiles)
+        // 1. Send tile set info (map tiles) -82
         DataGame.sendTileSetInfo(session);
 
-        // 2. Send player intrinsic info (cmd 112)
+        // 2. Send player intrinsic info (112)
         // TODO: Service.getInstance().sendIntrinsic(player);
 
-        // 3. Send player point (stats) (cmd -42)
+        // 3. Send player point (stats) (-42)
         // TODO: Service.getInstance().point(player);
 
-        // 4. Send task info (cmd 40)
+        // 4. Send task info (40)
         // TODO: TaskService.getInstance().sendTaskMain(player);
 
-        // 5. Clear map (cmd -22)
+        // 5. Clear map (-22)
         // TODO: Service.getInstance().clearMap(player);
 
-        // 6. Send clan info (cmd -53)
+        // 6. Send clan info (-53)
         // TODO: Service.getInstance().sendClanInfo(player);
 
-        // 7. Send stamina (cmd -69, -68)
+        // 7. Send stamina (-69, -68)
         // TODO: Service.getInstance().sendStamina(player);
 
-        // 8. Send pet info (cmd -107)
+        // 8. Send pet info (-107)
         // TODO: Service.getInstance().sendHavePet(player);
 
-        // 9. Send top rank (cmd -119)
+        // 9. Send top rank (-119)
         // TODO: Service.getInstance().sendTopRank(player);
 
-        // 10. Send notifications (cmd -50)
+        // 10. Send notifications (-50)
         // TODO: Service.getInstance().sendNotifyTab(player);
 
-        // 11. Join map (cmd -24)
-        // TODO: player.zone.load_Me_To_Another(player);
-        // TODO: player.zone.mapInfo(player);
+        // 11. Join map (-24)
+        if (player.zone) {
+            player.zone.load_Me_To_Another(player);
+            player.zone.mapInfo(player);
+        }
 
-        // For now, send welcome message
-        Service.getInstance().sendThongBao(session, "Chào mừng đến NRO Node.js Server!");
+        // 12. Send time (-127/127 lucky round?)
+        // TODO: LuckyRound.gI().sendTime(player);
+
+        // 13. Send global server message
+        Service.getInstance().sendThongBao(session, "|5| Ngọc rồng Node.js\n|6| Chào mừng bạn đến với NRO Node.js\n|1| Chúc chơi game vui vẻ!");
+
+        // 14. Clear special items (610)
+        // TODO: clearVTSK(player)
 
         Logger.info(`Player ${player.name} logged in successfully`);
     }

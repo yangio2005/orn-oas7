@@ -4,6 +4,7 @@ import { Cmd } from "../constants/Cmd";
 import { AuthService } from "../services/AuthService";
 import { Logger } from "../utils/Logger";
 import { DataGame } from "../services/DataGame";
+import { Service } from "../services/Service";
 
 /**
  * Controller - Complete port from Java Controller.java
@@ -34,8 +35,7 @@ export class Controller {
             switch (cmd) {
                 // Java: line 574-577
                 case -27: // GET_SESSION_ID
-                    // Session already sent key in constructor
-                    // Send version res
+                    session.sendSessionKey();
                     DataGame.sendVersionRes(session);
                     break;
 
@@ -202,8 +202,8 @@ export class Controller {
                 // Java: line 346-358
                 case -7: // PLAYER_MOVE
                     if (session.player) {
-                        let toX = session.player.location?.x || 0;
-                        let toY = session.player.location?.y || 0;
+                        let toX = session.player.x || 0;
+                        let toY = session.player.y || 0;
                         try {
                             msg.reader.readByte();
                             toX = msg.reader.readShort();
@@ -302,7 +302,7 @@ export class Controller {
                 // Java: line 491-493
                 case -41: // UPDATE_CAPTION
                     const captionType = msg.reader.readByte();
-                    // TODO: Service.getInstance().sendCaption(session, captionType);
+                    Service.getInstance().sendCaption(session, captionType);
                     Logger.debug(`Update caption: ${captionType}`);
                     break;
 
@@ -347,9 +347,7 @@ export class Controller {
                     break;
 
                 case 2: // CLIENT_TYPE (set client type)
-                    import("../services/Service").then(({ Service }) => {
-                        Service.getInstance().setClientType(session, msg);
-                    });
+                    Service.getInstance().setClientType(session, msg);
                     break;
 
                 default:
@@ -366,6 +364,7 @@ export class Controller {
      */
     private messageNotMap(session: Session, msg: Message): void {
         try {
+            const player = session.player;
             const cmd = msg.reader.readByte();
             switch (cmd) {
                 case 2: // CREATE_CHAR
@@ -381,8 +380,7 @@ export class Controller {
                     break;
 
                 case 8: // UPDATE_ITEM
-                    // TODO: ItemData.updateItem(session);
-                    Logger.debug("Update item data");
+                    DataGame.updateItem(session);
                     break;
 
                 case 10: // REQUEST_MAPTEMPLATE
@@ -391,12 +389,32 @@ export class Controller {
                     break;
 
                 case 13: // CLIENT_OK
-                    if (session.player) {
-                        // TODO: Full client OK sequence
-                        // Service.getInstance().player(player);
-                        // Service.getInstance().Send_Caitrang(player);
-                        // player.zone.load_Another_To_Me(player);
-                        Logger.debug("Client OK - player ready");
+                    if (player) {
+                        Service.gI().player(player);
+                        Service.gI().Send_Caitrang(player);
+
+                        if (player.zone) {
+                            player.zone.load_Another_To_Me(player);
+                        }
+
+                        // -64 my flag bag
+                        Service.gI().sendFlagBag(player);
+
+                        // ItemTimeService (Not implemented)
+                        // ItemTimeService.gI().sendTextBanDoKhoBau(player);
+                        // ItemTimeService.gI().sendTextDoanhTrai(player);
+                        // ItemTimeService.gI().sendTextGas(player);
+
+                        // -113 skill shortcut
+                        if (player.playerSkill) {
+                            player.playerSkill.sendSkillShortCut();
+                        }
+
+                        // item time (Not implemented)
+                        // ItemTimeService.gI().sendAllItemTime(player);
+
+                        // send current task (Not implemented)
+                        // TaskService.gI().sendInfoCurrentTask(player);
                     }
                     break;
 
@@ -475,7 +493,7 @@ export class Controller {
             // TODO: IntrinsicService.gI().sendInfoIntrinsic(player);
 
             // -42 my point
-            // TODO: Service.getInstance().point(player);
+            Service.getInstance().point(player);
 
             // 40 task
             // TODO: TaskService.gI().sendTaskMain(player);
